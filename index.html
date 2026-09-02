@@ -2736,185 +2736,6 @@ if(!Array.isArray(usedPromoCodes))
 
 
 /* =========================
-   CASE DATABASE
-========================= */
-
-const cases={
-
-ore:{
-    name:"Ore Case",
-    icon:"⛏️",
-    price:20,
-    items:[
-        {name:"Уголь",price:10,icon:"⚫",chance:40},
-        {name:"Железо",price:30,icon:"🔩",chance:30},
-        {name:"Золото",price:60,icon:"🟨",chance:15},
-        {name:"Алмаз",price:100,icon:"💎",chance:9},
-        {name:"Титан",price:250,icon:"🔷",chance:5},
-        {name:"Палладий",price:500,icon:"🟣",chance:1}
-    ]
-},
-
-nano:{
-    name:"Nano Case",
-    icon:"💻",
-    price:100,
-    items:[
-        {name:"Телефон",price:50,icon:"📱",chance:50},
-        {name:"ПК",price:100,icon:"🖥️",chance:35},
-        {name:"Геймпад",price:1000,icon:"🎮",chance:15}
-    ]
-},
-
-animal:{
-    name:"Animal Case",
-    icon:"🐾",
-    price:150,
-    items:[
-        {name:"Свинья",price:50,icon:"🐷",chance:50},
-        {name:"Собака",price:150,icon:"🐶",chance:40},
-        {name:"Лошадь",price:300,icon:"🐴",chance:9},
-        {name:"Кот",price:2500,icon:"🐱",chance:1}
-    ]
-},
-
-transport:{
-    name:"Transport Case",
-    icon:"🚗",
-    price:500,
-    items:[
-        {name:"Машина",price:250,icon:"🚗",chance:60},
-        {name:"Корабль",price:700,icon:"🚢",chance:30},
-        {name:"Поезд",price:1500,icon:"🚆",chance:9.5},
-        {name:"Самолёт",price:10000,icon:"✈️",chance:.5}
-    ]
-},
-
-halloween:{
-    name:"Halloween Case",
-    icon:"🎃",
-    price:10000,
-    limited:true,
-    items:[
-        {name:"Тыква",price:5000,icon:"🎃",chance:50},
-        {name:"Ведьмина шляпа",price:15000,icon:"🧙",chance:20},
-        {name:"Призрак",price:40000,icon:"👻",chance:10},
-        {name:"Вампир",price:50000,icon:"🧛",chance:5},
-        {name:"Золотой череп",price:100000,icon:"💀",chance:4.5},
-        {name:"Проклятый артефакт",price:1000000,icon:"🔮",chance:.1},
-        {name:"Паук",price:45000,icon:"🕷️",chance:10.4}
-    ]
-},
-
-newyear:{
-    name:"New Year Case",
-    icon:"🎄",
-    price:50000,
-    limited:true,
-    items:[
-        {name:"Подарок",price:5000,icon:"🎁",chance:45},
-        {name:"Снежинка",price:12000,icon:"❄️",chance:25},
-        {name:"Снеговик",price:25000,icon:"⛄",chance:15},
-        {name:"Ёлка",price:50000,icon:"🎄",chance:8},
-        {name:"Золотой колокольчик",price:100000,icon:"🔔",chance:5},
-        {name:"Рудольф",price:250000,icon:"🦌",chance:1.5},
-        {name:"Корона Деда Мороза",price:1000000,icon:"👑",chance:.5}
-    ]
-},
-
-space:{
-    name:"Space Case",
-    icon:"🚀",
-    price:100000,
-    limited:true,
-    items:[
-        {name:"Лунный камень",price:25000,icon:"🪨",chance:45},
-        {name:"Спутник",price:60000,icon:"🛰️",chance:25},
-        {name:"Луна",price:150000,icon:"🌕",chance:15},
-        {name:"Астронавт",price:400000,icon:"👨‍🚀",chance:9},
-        {name:"Ракета",price:1000000,icon:"🚀",chance:5},
-        {name:"Сатурн",price:5000000,icon:"🪐",chance:.9},
-        {name:"Галактика",price:25000000,icon:"🌌",chance:.1}
-    ]
-},
-
-golden:{
-    name:"Golden Era Case",
-    icon:"🏆",
-    price:1000000,
-    limited:true,
-    items:[
-        {name:"Золотая монета",price:100000,icon:"🪙",chance:45},
-        {name:"Золотые часы",price:250000,icon:"⌚",chance:25},
-        {name:"Золотое кольцо",price:600000,icon:"💍",chance:15},
-        {name:"Золотая корона",price:1500000,icon:"👑",chance:8},
-        {name:"Золотая статуя",price:5000000,icon:"🗿",chance:5},
-        {name:"Золотой трофей",price:15000000,icon:"🏆",chance:1.9},
-        {name:"Golden Relic",price:100000000,icon:"💎",chance:.1}
-    ]
-},
-
-/* =========================
-   NFT CASE
-========================= */
-
-nft:{
-    name:"NFT Case",
-    icon:"💎",
-    price:2500000,
-    limited:false,
-    items:[
-        {name:"Common NFT",price:1000000,icon:"🖼️",chance:45},
-        {name:"Rare NFT",price:2000000,icon:"🎨",chance:30},
-        {name:"Epic NFT",price:5000000,icon:"💠",chance:15},
-        {name:"Legendary NFT",price:15000000,icon:"👑",chance:7},
-        {name:"Mythic NFT",price:50000000,icon:"💎",chance:2.5},
-        {name:"Golden NFT",price:250000000,icon:"🌟",chance:.5}
-    ]
-},
-
-/* =========================
-   NFT GOLD CASE
-========================= */
-
-nftgold:{
-    name:"NFT Gold Case",
-    icon:"💰",
-    price:10000000,
-    limited:false,
-    items:[
-        {name:"Golden Pixel",price:5000000,icon:"🟨",chance:45},
-        {name:"Gold Art NFT",price:10000000,icon:"🎨",chance:30},
-        {name:"Golden Crown NFT",price:25000000,icon:"👑",chance:15},
-        {name:"Golden Dragon NFT",price:75000000,icon:"🐉",chance:7},
-        {name:"Diamond NFT",price:200000000,icon:"💎",chance:2.5},
-        {name:"Golden Galaxy NFT",price:1000000000,icon:"🌌",chance:.5}
-    ]
-},
-
-/* =========================
-   NFT LEGEND CASE
-========================= */
-
-nftlegend:{
-    name:"NFT Legend Case",
-    icon:"👑",
-    price:50000000,
-    limited:false,
-    items:[
-        {name:"Legend Pixel",price:25000000,icon:"🖼️",chance:45},
-        {name:"Legend Art",price:50000000,icon:"🎨",chance:30},
-        {name:"Royal NFT",price:150000000,icon:"👑",chance:15},
-        {name:"Dragon NFT",price:500000000,icon:"🐉",chance:7},
-        {name:"Galaxy NFT",price:2000000000,icon:"🌌",chance:2.5},
-        {name:"Infinity NFT",price:10000000000,icon:"♾️",chance:.5}
-    ]
-}
-
-};
-
-
-/* =========================
    PROMO
 ========================= */
 
@@ -2926,14 +2747,12 @@ const promoCodes={
 
 function openPromo(){
 
-    const input=
-        prompt("🎟️ Введите промокод:");
+    const input=prompt("🎟️ Введите промокод:");
 
     if(input===null)
         return;
 
-    const code=
-        input.trim().toUpperCase();
+    const code=input.trim().toUpperCase();
 
     if(!Object.prototype.hasOwnProperty.call(
         promoCodes,
@@ -2946,15 +2765,11 @@ function openPromo(){
 
     if(usedPromoCodes.includes(code)){
 
-        alert(
-            "⚠️ Этот промокод уже использован!"
-        );
-
+        alert("⚠️ Этот промокод уже использован!");
         return;
     }
 
-    const reward=
-        promoCodes[code];
+    const reward=promoCodes[code];
 
     balance+=reward;
 
@@ -3000,10 +2815,14 @@ function saveGame(){
 
 function updateBalance(){
 
-    document.getElementById(
-        "balance"
-    ).textContent=
-        balance.toLocaleString("ru-RU");
+    const balanceElement=
+        document.getElementById("balance");
+
+    if(balanceElement){
+
+        balanceElement.textContent=
+            balance.toLocaleString("ru-RU");
+    }
 
     saveGame();
 }
@@ -3064,6 +2883,9 @@ function inspectCase(type){
 
     }
 
+    if(!selectedCase)
+        return;
+
     selectedAmount=1;
 
     document.getElementById(
@@ -3109,9 +2931,10 @@ function closeCaseModal(){
 function createMultipliers(){
 
     const box=
-        document.getElementById(
-            "multipliers"
-        );
+        document.getElementById("multipliers");
+
+    if(!box)
+        return;
 
     box.innerHTML="";
 
@@ -3153,14 +2976,18 @@ function createMultipliers(){
 
 function updateOpenButton(){
 
+    if(!selectedCase)
+        return;
+
     const total=
         selectedCase.price*
         selectedAmount;
 
     const btn=
-        document.getElementById(
-            "openSelected"
-        );
+        document.getElementById("openSelected");
+
+    if(!btn)
+        return;
 
     btn.textContent=
         "ОТКРЫТЬ ×"+
@@ -3183,9 +3010,10 @@ function updateOpenButton(){
 function showChances(){
 
     const box=
-        document.getElementById(
-            "chances"
-        );
+        document.getElementById("chances");
+
+    if(!box || !selectedCase)
+        return;
 
     box.innerHTML="";
 
@@ -3239,8 +3067,7 @@ function showChances(){
 
 function randomItem(items){
 
-    let random=
-        Math.random()*100;
+    let random=Math.random()*100;
 
     let current=0;
 
@@ -3263,6 +3090,9 @@ function randomItem(items){
 function startOpening(){
 
     if(opening)
+        return;
+
+    if(!selectedCase)
         return;
 
     const total=
@@ -3318,7 +3148,14 @@ function startNormalOpening(){
             "loadingText"
         );
 
+    if(!overlay || !grid || !text){
+
+        opening=false;
+        return;
+    }
+
     grid.innerHTML="";
+
     text.textContent="Открытие...";
 
     overlay.classList.add("show");
@@ -3482,9 +3319,10 @@ function animateTrack(track){
 function updateInventory(){
 
     const box=
-        document.getElementById(
-            "inventory"
-        );
+        document.getElementById("inventory");
+
+    if(!box)
+        return;
 
     if(inventory.length===0){
 
@@ -3535,7 +3373,7 @@ function updateInventory(){
             <div class="item-actions">
 
                 <button
-                    class="small pin small"
+                    class="small pin"
                     onclick="toggleLock(${index})">
 
                     ${item.locked?"🔓":"📌"}
@@ -3689,6 +3527,9 @@ function updateIndex(){
             "indexContent"
         );
 
+    if(!box)
+        return;
+
     box.innerHTML="";
 
     Object.values(cases).forEach(c=>{
@@ -3771,13 +3612,17 @@ function updateIndex(){
         <div class="index-row">
 
             <div class="index-left">
-                ◼️
+
+                <span>◼️</span>
+
                 <div>
                     Все предметы игры
+
                     <div class="index-chance">
                         Шанс: ???
                     </div>
                 </div>
+
             </div>
 
             <div class="index-price">
@@ -3867,6 +3712,13 @@ function startBlackMarket(){
         );
 
 
+    if(!overlay){
+
+        opening=false;
+        return;
+    }
+
+
     const item=
         selectedCase.items[
             Math.floor(
@@ -3900,6 +3752,7 @@ function startBlackMarket(){
     ).textContent=
         item.price.toLocaleString("ru-RU")+
         " 🪙";
+
 
     overlay.classList.add("show");
 
@@ -4036,6 +3889,9 @@ function renderUpgradeLists(){
             "upgradeTargetList"
         );
 
+    if(!inventoryList || !targetList)
+        return;
+
     inventoryList.innerHTML="";
     targetList.innerHTML="";
 
@@ -4122,14 +3978,17 @@ function renderUpgradeLists(){
 
     if(upgradeYourItem){
 
-        unique.splice(
-            0,
-            unique.length,
-            ...unique.filter(
+        const filtered=
+            unique.filter(
                 item=>
                     item.price>
                     upgradeYourItem.price
-            )
+            );
+
+        unique.length=0;
+
+        filtered.forEach(item=>
+            unique.push(item)
         );
     }
 
@@ -4212,6 +4071,11 @@ function updateUpgradeUI(){
         );
 
 
+    if(!yourBox || !targetBox ||
+       !chanceBox || !spin)
+        return;
+
+
     if(upgradeYourItem){
 
         yourBox.innerHTML=`
@@ -4231,6 +4095,7 @@ function updateUpgradeUI(){
                 </div>
 
             </div>
+
         `;
 
         yourBox.classList.add("active");
@@ -4519,9 +4384,7 @@ function spinUpgrade(){
             renderUpgradeLists();
             updateUpgradeUI();
 
-
         },1300);
-
 
     },5300);
 }
