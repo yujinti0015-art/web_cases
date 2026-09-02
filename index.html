@@ -82,6 +82,19 @@ button:disabled{
     box-shadow:none;
 }
 
+.fuse-button{
+    border-color:#ff7b00;
+    color:#ffd36a;
+    text-shadow:0 0 8px #ff7b00;
+}
+
+.fuse-button:hover{
+    border-color:#ffb300;
+    box-shadow:
+        0 0 15px #ff7b00,
+        0 0 30px #ff7b0044;
+}
+
 .balance{
     padding:10px 14px;
     border-radius:11px;
@@ -131,10 +144,6 @@ h1{
     color:#c9a5ff;
     text-shadow:0 0 10px #8d4cff,0 0 25px #00d9ff;
 }
-
-/* =========================
-   PREMIUM CASES
-========================= */
 
 .premium-title{
     color:#ffd86b;
@@ -398,6 +407,11 @@ h1{
 .inventory-item.locked{
     border-color:#7047ff;
     background:#1b192c;
+}
+
+.inventory-item.fuse-locked{
+    border-color:#ff8c00;
+    background:#24190e;
 }
 
 .item-info{
@@ -994,9 +1008,10 @@ h1{
     font-size:17px;
 }
 
-.shop-modal{
+.shop-modal,
+.diamond-modal,
+.fuse-modal{
     position:fixed;
-    z-index:1100;
     inset:0;
     display:none;
     align-items:center;
@@ -1006,7 +1021,21 @@ h1{
     backdrop-filter:blur(7px);
 }
 
-.shop-modal.show{
+.shop-modal{
+    z-index:1100;
+}
+
+.diamond-modal{
+    z-index:1150;
+}
+
+.fuse-modal{
+    z-index:1250;
+}
+
+.shop-modal.show,
+.diamond-modal.show,
+.fuse-modal.show{
     display:flex;
 }
 
@@ -1104,22 +1133,6 @@ h1{
     display:block;
 }
 
-.diamond-modal{
-    position:fixed;
-    z-index:1150;
-    inset:0;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:15px;
-    background:#000c;
-    backdrop-filter:blur(7px);
-}
-
-.diamond-modal.show{
-    display:flex;
-}
-
 .diamond-box{
     width:500px;
     max-width:100%;
@@ -1214,6 +1227,277 @@ h1{
     font-size:11px;
 }
 
+/* =========================
+   FUSE
+========================= */
+
+.fuse-box{
+    width:900px;
+    max-width:100%;
+    max-height:94vh;
+    overflow-y:auto;
+    padding:25px;
+    border-radius:22px;
+    background:
+        radial-gradient(circle at 50% 0%,#35200d,#15121a 45%,#0b0b11);
+    border:1px solid #ff8c00;
+    box-shadow:
+        0 25px 100px #000,
+        0 0 50px #ff7b0022;
+}
+
+.fuse-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.fuse-header h2{
+    margin:0;
+    color:#ffd36a;
+    text-shadow:
+        0 0 10px #ff8c00,
+        0 0 25px #ff5e00;
+}
+
+.fuse-description{
+    margin-top:8px;
+    color:#999;
+    text-align:center;
+}
+
+.fuse-slots{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:25px;
+}
+
+.fuse-slot{
+    min-height:180px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    border-radius:17px;
+    background:
+        radial-gradient(circle,#251b10,#101016 75%);
+    border:2px dashed #5a421e;
+    transition:.2s;
+}
+
+.fuse-slot:hover{
+    border-color:#ff9d24;
+    box-shadow:0 0 25px #ff7b0033;
+}
+
+.fuse-empty{
+    width:65px;
+    height:65px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:8px;
+    border-radius:15px;
+    background:#19151d;
+    border:1px solid #493b27;
+    color:#777;
+    font-size:38px;
+}
+
+.fuse-slot-icon{
+    font-size:65px;
+    margin-bottom:8px;
+}
+
+.fuse-slot-name{
+    max-width:100%;
+    font-size:12px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.fuse-slot-price{
+    margin-top:5px;
+    color:#aaa;
+    font-size:11px;
+}
+
+.fuse-slot-remove{
+    margin-top:8px;
+    padding:5px 9px;
+    background:#38242a;
+    color:#ff8888;
+    font-size:10px;
+}
+
+.fuse-summary{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:18px;
+}
+
+.fuse-total,
+.fuse-price{
+    padding:14px;
+    text-align:center;
+    border-radius:13px;
+    background:#111018;
+    border:1px solid #343044;
+}
+
+.fuse-total-title,
+.fuse-price-title{
+    color:#777;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+.fuse-total-number{
+    margin-top:5px;
+    font-size:22px;
+    font-weight:900;
+    color:#fff;
+}
+
+.fuse-price-number{
+    margin-top:5px;
+    font-size:22px;
+    font-weight:900;
+    color:#ffd36a;
+    text-shadow:0 0 12px #ff8c00;
+}
+
+.fuse-timer{
+    min-height:28px;
+    margin-top:15px;
+    text-align:center;
+    color:#ffb347;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.fuse-inventory-title{
+    margin:18px 0 10px;
+    color:#aaa;
+    font-size:12px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.fuse-inventory{
+    max-height:260px;
+    overflow-y:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+}
+
+.fuse-inventory-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    padding:10px;
+    border-radius:10px;
+    background:#15151f;
+    border:1px solid #29293c;
+    cursor:pointer;
+}
+
+.fuse-inventory-item:hover{
+    border-color:#ff8c00;
+    background:#211a13;
+}
+
+.fuse-inventory-item.selected{
+    border-color:#ff9d24;
+    box-shadow:0 0 15px #ff7b0033;
+}
+
+.fuse-inventory-item.disabled{
+    opacity:.35;
+    cursor:not-allowed;
+}
+
+.fuse-item-left{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    min-width:0;
+}
+
+.fuse-item-icon{
+    font-size:32px;
+}
+
+.fuse-item-name{
+    font-size:11px;
+    font-weight:bold;
+}
+
+.fuse-item-price{
+    margin-top:3px;
+    color:#888;
+    font-size:9px;
+}
+
+.fuse-selected-number{
+    width:25px;
+    height:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:none;
+    border-radius:50%;
+    background:#ff8c00;
+    color:#111;
+    font-size:11px;
+    font-weight:900;
+}
+
+.combined-icon{
+    position:relative;
+    width:45px;
+    height:40px;
+    flex:none;
+}
+
+.combined-icon span{
+    position:absolute;
+    width:27px;
+    height:27px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:8px;
+    background:#20202d;
+    border:1px solid #ff8c00;
+    font-size:18px;
+}
+
+.combined-icon span:nth-child(1){
+    left:0;
+    top:7px;
+}
+
+.combined-icon span:nth-child(2){
+    left:9px;
+    top:0;
+}
+
+.combined-icon span:nth-child(3){
+    left:18px;
+    top:10px;
+}
+
+.fuse-finished{
+    border-color:#ffb300 !important;
+    box-shadow:0 0 20px #ff8c0033;
+}
+
 @media(max-width:700px){
 
     .header{
@@ -1286,6 +1570,18 @@ h1{
     .shop-buy{
         width:100%;
     }
+
+    .fuse-slots{
+        grid-template-columns:1fr;
+    }
+
+    .fuse-inventory{
+        grid-template-columns:1fr;
+    }
+
+    .fuse-summary{
+        grid-template-columns:1fr;
+    }
 }
 </style>
 </head>
@@ -1301,6 +1597,7 @@ h1{
 <button class="icon-btn" onclick="resetGame()" title="Старт с нуля">↻</button>
 <button class="icon-btn" onclick="toggleIndex()" title="Индекс">📖</button>
 <button class="icon-btn" onclick="openUpgrade()" title="Upgrade">🔄</button>
+<button class="icon-btn fuse-button" onclick="openFuse()" title="Fuse">🔥</button>
 <button class="icon-btn" onclick="openShop()" title="Магазин">🛒</button>
 <button class="icon-btn" onclick="openDiamondMarket()" title="Алмазный рынок">💎</button>
 
@@ -1466,6 +1763,93 @@ oninput="updateDiamondCost()">
 </div>
 </div>
 
+<!-- FUSE -->
+
+<div id="fuseModal" class="fuse-modal">
+
+<div class="fuse-box">
+
+<div class="fuse-header">
+
+<h2>🔥 FUSE</h2>
+
+<button class="close" onclick="closeFuse()">×</button>
+
+</div>
+
+<div class="fuse-description">
+Объедини 3 предмета в один
+</div>
+
+<div class="fuse-slots">
+
+<div id="fuseSlot0" class="fuse-slot">
+<div class="fuse-empty">+</div>
+<div>СЛОТ 1</div>
+</div>
+
+<div id="fuseSlot1" class="fuse-slot">
+<div class="fuse-empty">+</div>
+<div>СЛОТ 2</div>
+</div>
+
+<div id="fuseSlot2" class="fuse-slot">
+<div class="fuse-empty">+</div>
+<div>СЛОТ 3</div>
+</div>
+
+</div>
+
+<div class="fuse-summary">
+
+<div class="fuse-total">
+
+<div class="fuse-total-title">
+ОБЩАЯ СТОИМОСТЬ
+</div>
+
+<div id="fuseTotal" class="fuse-total-number">
+0 🪙
+</div>
+
+</div>
+
+<div class="fuse-price">
+
+<div class="fuse-price-title">
+ЦЕНА FUSE
+</div>
+
+<div id="fusePrice" class="fuse-price-number">
+0 🪙
+</div>
+
+</div>
+
+</div>
+
+<div id="fuseTimer" class="fuse-timer"></div>
+
+<div class="fuse-inventory-title">
+ВЫБЕРИ 3 ПРЕДМЕТА ИЗ ИНВЕНТАРЯ
+</div>
+
+<div id="fuseInventory" class="fuse-inventory"></div>
+
+<button
+id="fuseStartButton"
+class="upgrade-spin"
+onclick="startFuse()"
+disabled>
+
+🔥 ЗАПУСТИТЬ FUSE
+
+</button>
+
+</div>
+
+</div>
+
 <div id="luckTimer" class="luck-timer"></div>
 
 <main class="container">
@@ -1571,7 +1955,7 @@ oninput="updateDiamondCost()">
 
 </div>
 
-<!-- НОВЫЙ РАЗДЕЛ PREMIUM CASES -->
+<!-- PREMIUM CASES -->
 
 <div class="section-title premium-title">
 👑 PREMIUM CASES
@@ -1885,6 +2269,75 @@ if(!Number.isFinite(diamonds)) diamonds=0;
 if(!Number.isFinite(luckMultiplier)||luckMultiplier<1) luckMultiplier=1;
 if(!Number.isFinite(luckEndTime)) luckEndTime=0;
 
+/* FUSE DATA */
+
+let fuseSlots=[null,null,null];
+
+let fuseEndTime=Number(
+localStorage.getItem("fuseEndTime")
+);
+
+let fuseSourceIds=JSON.parse(
+localStorage.getItem("fuseSourceIds")||"[]"
+);
+
+let fuseRunning=
+localStorage.getItem("fuseRunning")==="true";
+
+if(!Number.isFinite(fuseEndTime))
+fuseEndTime=0;
+
+if(!Array.isArray(fuseSourceIds))
+fuseSourceIds=[];
+
+/* ITEM IDS */
+
+function createItemId(){
+
+return Date.now().toString(36)+"-"+
+
+Math.random()
+.toString(36)
+.slice(2);
+
+}
+
+function ensureInventoryIds(){
+
+let changed=false;
+
+inventory.forEach(item=>{
+
+if(!item.id){
+item.id=createItemId();
+changed=true;
+}
+
+if(typeof item.locked!=="boolean"){
+item.locked=false;
+changed=true;
+}
+
+if(typeof item.fuseLocked!=="boolean"){
+item.fuseLocked=false;
+changed=true;
+}
+
+});
+
+if(changed){
+
+localStorage.setItem(
+"caseInventory",
+JSON.stringify(inventory)
+);
+
+}
+
+}
+
+ensureInventoryIds();
+
 /* CASE DATABASE */
 
 const cases={
@@ -2053,10 +2506,6 @@ items:[
 ]
 },
 
-/* =========================
-   НОВЫЙ PREMIUM CASE
-========================= */
-
 prehistoric:{
 name:"PREHISTORIC CASE",
 icon:"🦖",
@@ -2167,6 +2616,21 @@ localStorage.setItem("caseInventory",JSON.stringify(inventory));
 localStorage.setItem("caseDiamonds",String(diamonds));
 localStorage.setItem("luckMultiplier",String(luckMultiplier));
 localStorage.setItem("luckEndTime",String(luckEndTime));
+
+localStorage.setItem(
+"fuseEndTime",
+String(fuseEndTime)
+);
+
+localStorage.setItem(
+"fuseSourceIds",
+JSON.stringify(fuseSourceIds)
+);
+
+localStorage.setItem(
+"fuseRunning",
+fuseRunning?"true":"false"
+);
 
 }
 
@@ -2826,10 +3290,12 @@ setTimeout(()=>{
 winners.forEach(item=>{
 
 inventory.push({
+id:createItemId(),
 name:item.name,
 price:item.price,
 icon:item.icon,
-locked:false
+locked:false,
+fuseLocked:false
 });
 
 });
@@ -2919,7 +3385,27 @@ track.style.transform=
 
 /* INVENTORY */
 
+function getInventoryIconHTML(item){
+
+if(Array.isArray(item.combinedIcons)){
+
+return `
+<div class="combined-icon">
+${item.combinedIcons
+.map(icon=>`<span>${icon}</span>`)
+.join("")}
+</div>
+`;
+
+}
+
+return item.icon;
+
+}
+
 function updateInventory(){
+
+ensureInventoryIds();
 
 const box=document.getElementById("inventory");
 
@@ -2941,18 +3427,22 @@ inventory.forEach((item,index)=>{
 if(typeof item.locked!=="boolean")
 item.locked=false;
 
+if(typeof item.fuseLocked!=="boolean")
+item.fuseLocked=false;
+
 const div=document.createElement("div");
 
 div.className=
 "inventory-item"+
-(item.locked?" locked":"");
+(item.locked?" locked":"")+
+(item.fuseLocked?" fuse-locked":"");
 
 div.innerHTML=`
 
 <div class="item-info">
 
 <div class="item-icon">
-${item.icon}
+${getInventoryIconHTML(item)}
 </div>
 
 <div>
@@ -2965,6 +3455,11 @@ ${item.name}
 ${item.price.toLocaleString("ru-RU")} 🪙
 </div>
 
+${item.fuseLocked?
+`<div style="color:#ff9d24;font-size:9px;margin-top:3px">
+🔥 FUSE — ЗАНЯТ
+</div>`:""}
+
 </div>
 
 </div>
@@ -2973,7 +3468,8 @@ ${item.price.toLocaleString("ru-RU")} 🪙
 
 <button
 class="small pin"
-onclick="toggleLock(${index})">
+onclick="toggleLock(${index})"
+${item.fuseLocked?"disabled":""}>
 
 ${item.locked?"🔓":"📌"}
 
@@ -2982,7 +3478,7 @@ ${item.locked?"🔓":"📌"}
 <button
 class="small sell"
 onclick="sellItem(${index})"
-${item.locked?"disabled":""}>
+${item.locked||item.fuseLocked?"disabled":""}>
 
 ПРОДАТЬ
 
@@ -3002,6 +3498,14 @@ function toggleLock(index){
 
 if(!inventory[index])return;
 
+if(inventory[index].fuseLocked){
+
+alert("🔥 Этот предмет сейчас участвует в FUSE!");
+
+return;
+
+}
+
 inventory[index].locked=
 !inventory[index].locked;
 
@@ -3015,6 +3519,17 @@ function sellItem(index){
 const item=inventory[index];
 
 if(!item)return;
+
+if(item.fuseLocked){
+
+alert(
+"🔥 Этот предмет участвует в FUSE!\n"+
+"Дождись окончания."
+);
+
+return;
+
+}
 
 if(item.locked){
 
@@ -3039,11 +3554,11 @@ updateInventory();
 function sellAll(){
 
 const sellable=
-inventory.filter(item=>!item.locked);
+inventory.filter(item=>!item.locked&&!item.fuseLocked);
 
 if(sellable.length===0){
 
-alert("📌 Все предметы закреплены!");
+alert("📌 Нет предметов для продажи!");
 
 return;
 
@@ -3067,7 +3582,7 @@ return;
 balance+=total;
 
 inventory=
-inventory.filter(item=>item.locked);
+inventory.filter(item=>item.locked||item.fuseLocked);
 
 updateBalance();
 updateInventory();
@@ -3231,7 +3746,8 @@ const answer=confirm(
 "• алмазы\n"+
 "• инвентарь\n"+
 "• использованные промокоды\n"+
-"• активная удача\n\n"+
+"• активная удача\n"+
+"• активный FUSE\n\n"+
 "Начать заново?"
 );
 
@@ -3244,6 +3760,11 @@ usedPromoCodes=[];
 luckMultiplier=1;
 luckEndTime=0;
 
+fuseSlots=[null,null,null];
+fuseRunning=false;
+fuseEndTime=0;
+fuseSourceIds=[];
+
 localStorage.removeItem("caseBalance");
 localStorage.removeItem("caseInventory");
 localStorage.removeItem("usedPromoCodes");
@@ -3251,10 +3772,15 @@ localStorage.removeItem("caseDiamonds");
 localStorage.removeItem("luckMultiplier");
 localStorage.removeItem("luckEndTime");
 
+localStorage.removeItem("fuseEndTime");
+localStorage.removeItem("fuseSourceIds");
+localStorage.removeItem("fuseRunning");
+
 updateBalance();
 updateDiamonds();
 updateInventory();
 updateLuckTimer();
+updateFuseUI();
 
 alert(
 "Игра сброшена!\n"+
@@ -3328,10 +3854,12 @@ itemBox.classList.add("fly");
 setTimeout(()=>{
 
 inventory.push({
+id:createItemId(),
 name:item.name,
 price:item.price,
 icon:item.icon,
-locked:false
+locked:false,
+fuseLocked:false
 });
 
 saveGame();
@@ -3428,7 +3956,7 @@ div.innerHTML=`
 <div class="upgrade-list-left">
 
 <div class="upgrade-list-icon">
-${item.icon}
+${getInventoryIconHTML(item)}
 </div>
 
 <div>
@@ -3450,6 +3978,14 @@ ${item.price.toLocaleString("ru-RU")} 🪙
 div.onclick=()=>{
 
 if(upgradeSpinning)return;
+
+if(item.fuseLocked){
+
+alert("🔥 Этот предмет участвует в FUSE!");
+
+return;
+
+}
 
 if(item.locked){
 
@@ -3580,7 +4116,7 @@ yourBox.innerHTML=`
 <div class="selected-content">
 
 <div class="icon">
-${upgradeYourItem.icon}
+${getInventoryIconHTML(upgradeYourItem)}
 </div>
 
 <b>
@@ -3687,10 +4223,9 @@ return;
 const index=
 inventory.findIndex(
 item=>
-item.name===upgradeYourItem.name&&
-item.price===upgradeYourItem.price&&
-item.icon===upgradeYourItem.icon&&
-!item.locked
+item.id===upgradeYourItem.id&&
+!item.locked&&
+!item.fuseLocked
 );
 
 if(index===-1){
@@ -3768,10 +4303,12 @@ inventory.splice(index,1);
 
 inventory.push({
 
+id:createItemId(),
 name:upgradeTargetItem.name,
 price:upgradeTargetItem.price,
 icon:upgradeTargetItem.icon,
-locked:false
+locked:false,
+fuseLocked:false
 
 });
 
@@ -3829,6 +4366,714 @@ updateUpgradeUI();
 
 }
 
+/* =========================
+   FUSE SYSTEM
+========================= */
+
+function openFuse(){
+
+if(fuseRunning){
+
+document
+.getElementById("fuseModal")
+.classList.add("show");
+
+updateFuseUI();
+
+return;
+
+}
+
+fuseSlots=[null,null,null];
+
+document
+.getElementById("fuseModal")
+.classList.add("show");
+
+renderFuseInventory();
+updateFuseUI();
+
+}
+
+function closeFuse(){
+
+if(fuseRunning)return;
+
+document
+.getElementById("fuseModal")
+.classList.remove("show");
+
+}
+
+function getFuseTotal(){
+
+return fuseSlots.reduce(
+(sum,item)=>
+sum+(item?Number(item.price)||0:0),
+0
+);
+
+}
+
+function getFusePrice(){
+
+return Math.floor(
+getFuseTotal()/2
+);
+
+}
+
+function selectFuseItem(id){
+
+if(fuseRunning)return;
+
+const item=
+inventory.find(
+x=>x.id===id
+);
+
+if(!item)return;
+
+if(item.locked){
+
+alert("📌 Этот предмет закреплён!");
+
+return;
+
+}
+
+if(item.fuseLocked){
+
+alert("🔥 Этот предмет уже участвует в FUSE!");
+
+return;
+
+}
+
+if(fuseSlots.some(x=>x&&x.id===id)){
+
+return;
+
+}
+
+const slot=
+fuseSlots.findIndex(
+x=>x===null
+);
+
+if(slot===-1){
+
+alert("❌ Все 3 слота уже заняты!");
+
+return;
+
+}
+
+fuseSlots[slot]=item;
+
+renderFuseInventory();
+updateFuseUI();
+
+}
+
+function removeFuseItem(slot){
+
+if(fuseRunning)return;
+
+if(slot<0||slot>2)return;
+
+fuseSlots[slot]=null;
+
+renderFuseInventory();
+updateFuseUI();
+
+}
+
+function renderFuseInventory(){
+
+const box=
+document.getElementById("fuseInventory");
+
+if(!box)return;
+
+box.innerHTML="";
+
+if(inventory.length===0){
+
+box.innerHTML=
+`<div style="color:#777;grid-column:1/-1;text-align:center">
+Инвентарь пуст
+</div>`;
+
+return;
+
+}
+
+inventory.forEach(item=>{
+
+const selectedIndex=
+fuseSlots.findIndex(
+x=>x&&x.id===item.id
+);
+
+const div=
+document.createElement("div");
+
+div.className=
+"fuse-inventory-item"+
+(selectedIndex!==-1?" selected":"")+
+(
+item.locked||
+item.fuseLocked||
+fuseRunning
+?" disabled":""
+);
+
+div.innerHTML=`
+
+<div class="fuse-item-left">
+
+<div class="fuse-item-icon">
+${getInventoryIconHTML(item)}
+</div>
+
+<div>
+
+<div class="fuse-item-name">
+${item.name}
+</div>
+
+<div class="fuse-item-price">
+${Number(item.price).toLocaleString("ru-RU")} 🪙
+</div>
+
+</div>
+
+</div>
+
+${
+selectedIndex!==-1
+?
+`<div class="fuse-selected-number">
+${selectedIndex+1}
+</div>`
+:
+""
+}
+
+`;
+
+if(
+!item.locked&&
+!item.fuseLocked&&
+!fuseRunning
+){
+
+div.onclick=()=>
+selectFuseItem(item.id);
+
+}
+
+box.appendChild(div);
+
+});
+
+}
+
+function updateFuseUI(){
+
+const totalBox=
+document.getElementById("fuseTotal");
+
+const priceBox=
+document.getElementById("fusePrice");
+
+const timerBox=
+document.getElementById("fuseTimer");
+
+const startButton=
+document.getElementById("fuseStartButton");
+
+if(!totalBox||!priceBox||!startButton)
+return;
+
+const total=getFuseTotal();
+const price=getFusePrice();
+
+totalBox.textContent=
+total.toLocaleString("ru-RU")+
+" 🪙";
+
+priceBox.textContent=
+price.toLocaleString("ru-RU")+
+" 🪙";
+
+for(let i=0;i<3;i++){
+
+const slot=
+document.getElementById(
+"fuseSlot"+i
+);
+
+if(!slot)continue;
+
+const item=fuseSlots[i];
+
+if(item){
+
+slot.innerHTML=`
+
+<div class="fuse-slot-icon">
+${getInventoryIconHTML(item)}
+</div>
+
+<div class="fuse-slot-name">
+${item.name}
+</div>
+
+<div class="fuse-slot-price">
+${Number(item.price).toLocaleString("ru-RU")} 🪙
+</div>
+
+<button
+class="fuse-slot-remove"
+onclick="removeFuseItem(${i})"
+${fuseRunning?"disabled":""}>
+
+✕ УБРАТЬ
+
+</button>
+
+`;
+
+slot.classList.add("fuse-finished");
+
+}else{
+
+slot.classList.remove("fuse-finished");
+
+slot.innerHTML=`
+
+<div class="fuse-empty">
++
+</div>
+
+<div>
+СЛОТ ${i+1}
+</div>
+
+`;
+
+}
+
+}
+
+if(fuseRunning){
+
+startButton.disabled=true;
+
+startButton.textContent=
+"🔥 FUSE ЗАПУЩЕН";
+
+if(timerBox){
+
+const seconds=
+Math.max(
+0,
+Math.ceil(
+(fuseEndTime-Date.now())/1000
+)
+);
+
+timerBox.textContent=
+"🔥 Объединение через "+
+seconds+
+" сек.";
+
+}
+
+renderFuseInventory();
+
+return;
+
+}
+
+if(timerBox)
+timerBox.textContent=
+"";
+
+startButton.disabled=
+fuseSlots.some(x=>!x)||
+balance<price;
+
+if(fuseSlots.every(Boolean)){
+
+if(balance<price){
+
+startButton.textContent=
+"❌ НЕДОСТАТОЧНО МОНЕТ";
+
+}else{
+
+startButton.textContent=
+"🔥 ЗАПУСТИТЬ FUSE — "+
+price.toLocaleString("ru-RU")+
+" 🪙";
+
+}
+
+}else{
+
+startButton.textContent=
+"🔥 ЗАПУСТИТЬ FUSE";
+
+}
+
+renderFuseInventory();
+
+}
+
+function startFuse(){
+
+if(fuseRunning)return;
+
+if(fuseSlots.some(x=>!x)){
+
+alert(
+"❌ Выбери 3 предмета!"
+);
+
+return;
+
+}
+
+const ids=
+fuseSlots.map(item=>item.id);
+
+if(new Set(ids).size!==3){
+
+alert(
+"❌ Нельзя выбрать один предмет несколько раз!"
+);
+
+return;
+
+}
+
+const sourceItems=
+ids.map(
+id=>
+inventory.find(
+item=>item.id===id
+)
+);
+
+if(sourceItems.some(item=>!item)){
+
+alert(
+"❌ Один из предметов больше не существует!"
+);
+
+fuseSlots=[null,null,null];
+
+renderFuseInventory();
+updateFuseUI();
+
+return;
+
+}
+
+if(sourceItems.some(
+item=>
+item.locked||
+item.fuseLocked
+)){
+
+alert(
+"❌ Один из предметов закреплён или уже участвует в FUSE!"
+);
+
+return;
+
+}
+
+const total=
+sourceItems.reduce(
+(sum,item)=>
+sum+Number(item.price||0),
+0
+);
+
+const cost=
+Math.floor(total/2);
+
+if(balance<cost){
+
+alert(
+"❌ Недостаточно монет!\n\n"+
+"Цена FUSE: "+
+cost.toLocaleString("ru-RU")+
+" 🪙\n"+
+"Есть: "+
+balance.toLocaleString("ru-RU")+
+" 🪙"
+);
+
+return;
+
+}
+
+balance-=cost;
+
+sourceItems.forEach(
+item=>{
+item.fuseLocked=true;
+}
+);
+
+fuseSourceIds=ids;
+
+fuseEndTime=
+Date.now()+60000;
+
+fuseRunning=true;
+
+saveGame();
+
+updateBalance();
+updateInventory();
+updateFuseUI();
+
+alert(
+"🔥 FUSE ЗАПУЩЕН!\n\n"+
+"3 предмета будут объединены через 60 секунд.\n\n"+
+"Общая стоимость: "+
+total.toLocaleString("ru-RU")+
+" 🪙\n"+
+"Цена FUSE: "+
+cost.toLocaleString("ru-RU")+
+" 🪙"
+);
+
+startFuseTimer();
+
+}
+
+function startFuseTimer(){
+
+if(window.fuseTimerInterval)
+clearInterval(
+window.fuseTimerInterval
+);
+
+window.fuseTimerInterval=
+setInterval(()=>{
+
+if(!fuseRunning){
+
+clearInterval(
+window.fuseTimerInterval
+);
+
+return;
+
+}
+
+updateFuseUI();
+
+if(
+fuseEndTime<=Date.now()
+){
+
+clearInterval(
+window.fuseTimerInterval
+);
+
+completeFuse();
+
+}
+
+},250);
+
+}
+
+function completeFuse(){
+
+if(!fuseRunning)return;
+
+const sourceItems=
+fuseSourceIds.map(
+id=>
+inventory.find(
+item=>item.id===id
+)
+);
+
+if(sourceItems.length!==3||
+sourceItems.some(item=>!item)
+){
+
+inventory.forEach(item=>{
+if(
+fuseSourceIds.includes(item.id)
+)
+item.fuseLocked=false;
+});
+
+fuseRunning=false;
+fuseEndTime=0;
+fuseSourceIds=[];
+fuseSlots=[null,null,null];
+
+saveGame();
+updateInventory();
+updateFuseUI();
+
+alert(
+"❌ FUSE не удалось завершить."
+);
+
+return;
+
+}
+
+const total=
+sourceItems.reduce(
+(sum,item)=>
+sum+Number(item.price||0),
+0
+);
+
+const names=
+sourceItems.map(
+item=>item.name
+);
+
+const icons=
+sourceItems.map(
+item=>item.icon
+);
+
+inventory=
+inventory.filter(
+item=>
+!fuseSourceIds.includes(item.id)
+);
+
+inventory.push({
+
+id:createItemId(),
+
+name:"FUSED ITEM",
+
+price:total,
+
+icon:"🔥",
+
+combinedIcons:icons,
+
+locked:false,
+
+fuseLocked:false,
+
+fused:true,
+
+fusedItems:names
+
+});
+
+fuseRunning=false;
+fuseEndTime=0;
+fuseSourceIds=[];
+fuseSlots=[null,null,null];
+
+saveGame();
+
+updateInventory();
+updateFuseUI();
+
+document
+.getElementById("fuseModal")
+.classList.add("show");
+
+alert(
+"🔥 FUSE ЗАВЕРШЁН!\n\n"+
+"3 предмета объединены в один.\n\n"+
+"Новая стоимость: "+
+total.toLocaleString("ru-RU")+
+" 🪙"
+);
+
+}
+
+function restoreFuse(){
+
+if(
+!fuseRunning||
+fuseSourceIds.length!==3
+){
+
+fuseRunning=false;
+fuseEndTime=0;
+fuseSourceIds=[];
+
+saveGame();
+
+return;
+
+}
+
+const restored=
+fuseSourceIds.map(
+id=>
+inventory.find(
+item=>item.id===id
+)
+);
+
+if(restored.some(item=>!item)){
+
+inventory.forEach(item=>{
+if(
+fuseSourceIds.includes(item.id)
+)
+item.fuseLocked=false;
+});
+
+fuseRunning=false;
+fuseEndTime=0;
+fuseSourceIds=[];
+fuseSlots=[null,null,null];
+
+saveGame();
+updateInventory();
+
+return;
+
+}
+
+fuseSlots=restored;
+
+restored.forEach(
+item=>{
+item.fuseLocked=true;
+}
+);
+
+if(
+fuseEndTime<=Date.now()
+){
+
+completeFuse();
+
+return;
+
+}
+
+startFuseTimer();
+
+}
+
 /* START */
 
 updateBalance();
@@ -3836,6 +5081,8 @@ updateDiamonds();
 updateInventory();
 updateLuckTimer();
 updateDiamondMarket();
+updateFuseUI();
+restoreFuse();
 
 </script>
 
