@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -39,8 +40,6 @@ button:disabled{
     transform:none;
     box-shadow:none;
 }
-
-/* HEADER */
 
 .header{
     position:fixed;
@@ -96,8 +95,6 @@ button:disabled{
     border:1px solid #393958;
     box-shadow:none;
 }
-
-/* MAIN */
 
 .container{
     max-width:1100px;
@@ -181,8 +178,6 @@ h1{
     text-shadow:0 0 10px #7047ff;
 }
 
-/* MARVEL */
-
 .marvel-case{
     border-color:#6b2430;
     background:
@@ -203,8 +198,6 @@ h1{
         0 0 35px #ff304f;
 }
 
-/* DC */
-
 .dc-case{
     border-color:#263f70;
     background:
@@ -224,8 +217,6 @@ h1{
         0 0 15px #4b8cff,
         0 0 35px #4b8cff;
 }
-
-/* CASES */
 
 .cases{
     display:grid;
@@ -308,8 +299,6 @@ h1{
     border-color:#505050;
 }
 
-/* WINDOWS */
-
 .window{
     position:fixed;
     top:82px;
@@ -363,8 +352,6 @@ h1{
     margin-bottom:12px;
     background:#d53c3c;
 }
-
-/* INVENTORY */
 
 .inventory-item{
     display:flex;
@@ -424,8 +411,6 @@ h1{
     background:#d53c3c;
 }
 
-/* INDEX */
-
 .index-case{
     margin-bottom:20px;
 }
@@ -469,8 +454,6 @@ h1{
     color:#b9a8ff;
     font-weight:bold;
 }
-
-/* CASE MODAL */
 
 .modal{
     position:fixed;
@@ -561,8 +544,6 @@ h1{
     border:1px solid #29293c;
     font-size:12px;
 }
-
-/* ROULETTE */
 
 .roulette-overlay{
     position:fixed;
@@ -659,8 +640,6 @@ h1{
     font-size:10px;
 }
 
-/* BLACK MARKET */
-
 .black-overlay{
     position:fixed;
     z-index:800;
@@ -741,8 +720,6 @@ h1{
 .black-result.show{
     opacity:1;
 }
-
-/* UPGRADE */
 
 .upgrade-modal{
     position:fixed;
@@ -987,8 +964,6 @@ h1{
     font-size:17px;
 }
 
-/* SHOP */
-
 .shop-modal{
     position:fixed;
     z-index:1100;
@@ -1098,8 +1073,6 @@ h1{
 .luck-timer.show{
     display:block;
 }
-
-/* DIAMOND MARKET */
 
 .diamond-modal{
     position:fixed;
@@ -1211,8 +1184,6 @@ h1{
     font-size:11px;
 }
 
-/* MOBILE */
-
 @media(max-width:700px){
 
     .header{
@@ -1298,13 +1269,9 @@ h1{
 <div class="logo">CASE WEB</div>
 
 <button class="icon-btn" onclick="resetGame()" title="Старт с нуля">↻</button>
-
 <button class="icon-btn" onclick="toggleIndex()" title="Индекс">📖</button>
-
 <button class="icon-btn" onclick="openUpgrade()" title="Upgrade">🔄</button>
-
 <button class="icon-btn" onclick="openShop()" title="Магазин">🛒</button>
-
 <button class="icon-btn" onclick="openDiamondMarket()" title="Алмазный рынок">💎</button>
 
 </div>
@@ -1327,8 +1294,6 @@ h1{
 
 </header>
 
-<!-- INVENTORY -->
-
 <div id="inventoryWindow" class="window inventory-window">
 
 <div class="window-header">
@@ -1342,8 +1307,6 @@ h1{
 
 </div>
 
-<!-- INDEX -->
-
 <div id="indexWindow" class="window index-window">
 
 <div class="window-header">
@@ -1354,8 +1317,6 @@ h1{
 <div id="indexContent"></div>
 
 </div>
-
-<!-- SHOP -->
 
 <div id="shopModal" class="shop-modal">
 
@@ -1421,8 +1382,6 @@ h1{
 </div>
 </div>
 
-<!-- АЛМАЗНЫЙ РЫНОК -->
-
 <div id="diamondModal" class="diamond-modal">
 
 <div class="diamond-box">
@@ -1477,11 +1436,7 @@ oninput="updateDiamondCost()">
 </div>
 </div>
 
-<!-- LUCK TIMER -->
-
 <div id="luckTimer" class="luck-timer"></div>
-
-<!-- MAIN -->
 
 <main class="container">
 
@@ -1519,8 +1474,6 @@ oninput="updateDiamondCost()">
 
 </div>
 
-<!-- LIMITED -->
-
 <div class="section-title limited-title">
 🔥 LIMITED CASES
 </div>
@@ -1555,16 +1508,12 @@ oninput="updateDiamondCost()">
 <button onclick="inspectCase('golden')">ОСМОТРЕТЬ</button>
 </div>
 
-<!-- MARVEL CASE -->
-
 <div class="case limited-case marvel-case">
 <div class="case-icon">🦸</div>
 <div class="case-name">MARVEL CASE</div>
 <div class="case-price">Цена: <b>5 000 000 🪙</b></div>
 <button onclick="inspectCase('marvel')">ОСМОТРЕТЬ</button>
 </div>
-
-<!-- DC CASE -->
 
 <div class="case limited-case dc-case">
 <div class="case-icon">🦇</div>
@@ -1574,8 +1523,6 @@ oninput="updateDiamondCost()">
 </div>
 
 </div>
-
-<!-- NFT -->
 
 <div class="section-title nft-title">
 💎 NFT CASES
@@ -1591,8 +1538,6 @@ oninput="updateDiamondCost()">
 </div>
 
 </div>
-
-<!-- DIAMOND CASES -->
 
 <div class="section-title crystal-title">
 💎 DIAMOND CASES
@@ -1640,8 +1585,6 @@ DARK VOID CASE
 
 </div>
 
-<!-- BLACK MARKET -->
-
 <div class="section-title black-title">
 ◼ BLACK MARKET
 </div>
@@ -1672,8 +1615,6 @@ Black Market Case
 
 </main>
 
-<!-- CASE MODAL -->
-
 <div id="caseModal" class="modal">
 
 <div class="modal-box">
@@ -1682,7 +1623,9 @@ Black Market Case
 
 <h2 id="modalTitle"></h2>
 
-<button class="close" onclick="closeCaseModal">
+<!-- ИСПРАВЛЕНО: добавлены () -->
+
+<button class="close" onclick="closeCaseModal()">
 ×
 </button>
 
@@ -1711,8 +1654,6 @@ Black Market Case
 </div>
 </div>
 
-<!-- ROULETTE -->
-
 <div id="rouletteOverlay" class="roulette-overlay">
 
 <div class="roulette-wrapper">
@@ -1730,8 +1671,6 @@ style="text-align:center;margin-top:18px;color:#aaa">
 
 </div>
 </div>
-
-<!-- BLACK MARKET ANIMATION -->
 
 <div id="blackOverlay" class="black-overlay">
 
@@ -1763,8 +1702,6 @@ style="margin-top:5px;color:#aaa">
 
 </div>
 </div>
-
-<!-- UPGRADE -->
 
 <div id="upgradeModal" class="upgrade-modal">
 
@@ -1894,23 +1831,12 @@ let luckEndTime=Number(
 localStorage.getItem("luckEndTime")
 );
 
-if(!Number.isFinite(balance))
-balance=100;
-
-if(!Array.isArray(inventory))
-inventory=[];
-
-if(!Array.isArray(usedPromoCodes))
-usedPromoCodes=[];
-
-if(!Number.isFinite(diamonds))
-diamonds=0;
-
-if(!Number.isFinite(luckMultiplier)||luckMultiplier<1)
-luckMultiplier=1;
-
-if(!Number.isFinite(luckEndTime))
-luckEndTime=0;
+if(!Number.isFinite(balance)) balance=100;
+if(!Array.isArray(inventory)) inventory=[];
+if(!Array.isArray(usedPromoCodes)) usedPromoCodes=[];
+if(!Number.isFinite(diamonds)) diamonds=0;
+if(!Number.isFinite(luckMultiplier)||luckMultiplier<1) luckMultiplier=1;
+if(!Number.isFinite(luckEndTime)) luckEndTime=0;
 
 /* CASE DATABASE */
 
@@ -2029,8 +1955,6 @@ items:[
 ]
 },
 
-/* MARVEL CASE */
-
 marvel:{
 name:"MARVEL CASE",
 icon:"🦸",
@@ -2047,8 +1971,6 @@ items:[
 {name:"Doctor Doom",price:800000000,icon:"🟣",chance:.1}
 ]
 },
-
-/* DC CASE */
 
 dc:{
 name:"DC CASE",
@@ -2082,8 +2004,6 @@ items:[
 ]
 },
 
-/* CRYSTAL CASE */
-
 crystal:{
 name:"CRYSTAL CASE",
 icon:"💎",
@@ -2102,8 +2022,6 @@ items:[
 {name:"Singularity",price:555000000,icon:"💎",chance:.1}
 ]
 },
-
-/* DARK VOID CASE */
 
 darkvoid:{
 name:"DARK VOID CASE",
@@ -3010,8 +2928,6 @@ box.appendChild(div);
 
 }
 
-/* LOCK */
-
 function toggleLock(index){
 
 if(!inventory[index])return;
@@ -3023,8 +2939,6 @@ saveGame();
 updateInventory();
 
 }
-
-/* SELL */
 
 function sellItem(index){
 
@@ -3323,9 +3237,7 @@ item.price.toLocaleString("ru-RU")+
 overlay.classList.add("show");
 
 circle.classList.remove("show","hide");
-
 itemBox.classList.remove("fly");
-
 result.classList.remove("show");
 
 setTimeout(()=>{
@@ -3361,9 +3273,7 @@ setTimeout(()=>{
 overlay.classList.remove("show");
 
 circle.classList.remove("show","hide");
-
 itemBox.classList.remove("fly");
-
 result.classList.remove("show");
 
 opening=false;
@@ -3689,8 +3599,6 @@ upgradeSpinning;
 
 }
 
-/* UPGRADE SPIN */
-
 function spinUpgrade(){
 
 if(upgradeSpinning)return;
@@ -3860,3 +3768,4 @@ updateDiamondMarket();
 
 </body>
 </html>
+```
