@@ -1315,48 +1315,6 @@ h1{
 
     </div>
 
-
-    <div class="case nft-case">
-
-        <div class="case-icon">
-            💰
-        </div>
-
-        <div class="case-name">
-            NFT Gold Case
-        </div>
-
-        <div class="case-price">
-            Цена: <b>10 000 000 🪙</b>
-        </div>
-
-        <button onclick="inspectCase('nftgold')">
-            ОСМОТРЕТЬ
-        </button>
-
-    </div>
-
-
-    <div class="case nft-case">
-
-        <div class="case-icon">
-            👑
-        </div>
-
-        <div class="case-name">
-            NFT Legend Case
-        </div>
-
-        <div class="case-price">
-            Цена: <b>50 000 000 🪙</b>
-        </div>
-
-        <button onclick="inspectCase('nftlegend')">
-            ОСМОТРЕТЬ
-        </button>
-
-    </div>
-
 </div>
 
 
@@ -1390,10 +1348,7 @@ h1{
 
 </div>
 
-</main>
-
-
-<!-- CASE MODAL -->
+</main><!-- CASE MODAL -->
 
 <div
     id="caseModal"
@@ -1664,9 +1619,10 @@ h1{
 </div>
 
 
-<!-- НЕ ДОБАВЛЯЙ ЗДЕСЬ ВТОРОЙ SCRIPT -->
+<!-- НЕ ДОБАВЛЯЙ ВТОРОЙ SCRIPT -->
 
-<script><script>
+<script>
+
 /* =========================
    SAVE DATA
 ========================= */
@@ -1857,36 +1813,6 @@ const cases = {
             {name:"Royal Dragon",price:500000000,icon:"🐉",chance:7},
             {name:"Royal Galaxy",price:2000000000,icon:"🌌",chance:2.5},
             {name:"Royal Infinity",price:10000000000,icon:"♾️",chance:.5}
-        ]
-    },
-
-    nftgold:{
-        name:"NFT Gold Case",
-        icon:"💰",
-        price:10000000,
-        limited:false,
-        items:[
-            {name:"Golden Pixel",price:5000000,icon:"🟨",chance:45},
-            {name:"Gold Art NFT",price:10000000,icon:"🎨",chance:30},
-            {name:"Golden Crown NFT",price:25000000,icon:"👑",chance:15},
-            {name:"Golden Dragon NFT",price:75000000,icon:"🐉",chance:7},
-            {name:"Diamond NFT",price:200000000,icon:"💎",chance:2.5},
-            {name:"Golden Galaxy NFT",price:1000000000,icon:"🌌",chance:.5}
-        ]
-    },
-
-    nftlegend:{
-        name:"NFT Legend Case",
-        icon:"👑",
-        price:50000000,
-        limited:false,
-        items:[
-            {name:"Legend Pixel",price:25000000,icon:"🖼️",chance:45},
-            {name:"Legend Art",price:50000000,icon:"🎨",chance:30},
-            {name:"Royal NFT",price:150000000,icon:"👑",chance:15},
-            {name:"Dragon NFT",price:500000000,icon:"🐉",chance:7},
-            {name:"Galaxy NFT",price:2000000000,icon:"🌌",chance:2.5},
-            {name:"Infinity NFT",price:10000000000,icon:"♾️",chance:.5}
         ]
     },
 
@@ -2273,8 +2199,7 @@ function startRoulette(results){
                 animateTrack(
                     document.getElementById(
                         `track-${index}`
-                    ),
-                    result
+                    )
                 );
 
             }
@@ -2403,8 +2328,7 @@ function animateTrack(track){
             -target+randomOffset
         }px)`;
 
-}
-
+}<script>
 
 /* =========================
    INVENTORY
@@ -2412,22 +2336,17 @@ function animateTrack(track){
 
 function updateInventory(){
 
-    const box=
-        document.getElementById(
-            "inventory"
-        );
+    const inventoryBox =
+        document.getElementById("inventory");
 
-    if(!box) return;
+    if(!inventoryBox) return;
 
-    box.innerHTML="";
+    inventoryBox.innerHTML="";
 
     if(inventory.length===0){
 
-        box.innerHTML=`
-            <div style="
-                text-align:center;
-                color:#666;
-                padding:25px">
+        inventoryBox.innerHTML=`
+            <div class="empty-inventory">
                 Инвентарь пуст
             </div>
         `;
@@ -2435,118 +2354,57 @@ function updateInventory(){
         return;
     }
 
-    inventory.forEach(
-        (item,index)=>{
+    inventory.forEach((item,index)=>{
 
-            const row=
-                document.createElement("div");
+        const card =
+            document.createElement("div");
 
-            row.className=
-                "inventory-item"+
-                (item.locked ? " locked":"");
+        card.className="inventory-item";
 
-            row.innerHTML=`
+        card.innerHTML=`
+            <div class="inventory-icon">
+                ${item.icon}
+            </div>
 
-                <div class="item-info">
+            <div class="inventory-name">
+                ${item.name}
+            </div>
 
-                    <div class="item-icon">
-                        ${item.icon}
-                    </div>
+            <div class="inventory-price">
+                ${item.price.toLocaleString("ru-RU")} 🪙
+            </div>
 
-                    <div>
+            <button
+                class="sell-button"
+                onclick="sellItem(${index})">
+                ПРОДАТЬ
+            </button>
+        `;
 
-                        <div class="item-name">
-                            ${item.name}
-                        </div>
+        inventoryBox.appendChild(card);
 
-                        <div class="item-price">
-                            ${item.price.toLocaleString("ru-RU")} 🪙
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="item-actions">
-
-                    <button
-                        class="small pin"
-                        onclick="toggleLock(${index})">
-                        ${item.locked ? "🔓":"🔒"}
-                    </button>
-
-                    <button
-                        class="small sell"
-                        onclick="sellItem(${index})"
-                        ${item.locked ? "disabled":""}>
-                        ПРОДАТЬ
-                    </button>
-
-                </div>
-            `;
-
-            box.appendChild(row);
-
-        }
-    );
+    });
 
 }
 
 
-function toggleLock(index){
-
-    if(!inventory[index]) return;
-
-    inventory[index].locked=
-        !inventory[index].locked;
-
-    saveData();
-    updateInventory();
-
-}
-
+/* =========================
+   SELL ITEM
+========================= */
 
 function sellItem(index){
 
     const item=inventory[index];
 
-    if(!item || item.locked) return;
+    if(!item) return;
 
     balance+=item.price;
 
     inventory.splice(index,1);
 
     saveData();
-
     updateBalance();
     updateInventory();
-
-}
-
-
-function sellAll(){
-
-    let earned=0;
-
-    inventory=
-        inventory.filter(item=>{
-
-            if(item.locked){
-                return true;
-            }
-
-            earned+=item.price;
-            return false;
-
-        });
-
-    balance+=earned;
-
-    saveData();
-
-    updateBalance();
-    updateInventory();
-
 }
 
 
@@ -2554,26 +2412,25 @@ function sellAll(){
    WINDOWS
 ========================= */
 
-function toggleInventory(){
+function openWindow(id){
 
-    document
-        .getElementById("inventoryWindow")
-        .classList.toggle("open");
+    const element=
+        document.getElementById(id);
+
+    if(element){
+        element.classList.add("show");
+    }
 
 }
 
 
-function toggleIndex(){
+function closeWindow(id){
 
-    const window=
-        document.getElementById(
-            "indexWindow"
-        );
+    const element=
+        document.getElementById(id);
 
-    window.classList.toggle("open");
-
-    if(window.classList.contains("open")){
-        updateIndex();
+    if(element){
+        element.classList.remove("show");
     }
 
 }
@@ -2583,62 +2440,75 @@ function toggleIndex(){
    PROMO
 ========================= */
 
-const promoCodes={
-    "START":500,
-    "CASEWEB":5000,
-    "QUANTUM":10000,
-    "NFT":1000000
-};
+function activatePromo(){
 
+    const input=
+        document.getElementById("promoInput");
 
-function openPromo(){
+    const message=
+        document.getElementById("promoMessage");
+
+    if(!input || !message) return;
 
     const code=
-        prompt(
-            "Введите промокод:"
-        );
+        input.value.trim().toUpperCase();
 
-    if(!code) return;
+    if(!code){
 
-    const normalized=
-        code.trim().toUpperCase();
+        message.textContent=
+            "Введите промокод";
 
-    if(!promoCodes[normalized]){
-
-        alert("❌ Промокод не найден!");
         return;
-
     }
 
-    if(
-        usedPromoCodes.includes(
-            normalized
-        )
-    ){
+    if(usedPromoCodes.includes(code)){
 
-        alert(
-            "❌ Этот промокод уже использован!"
-        );
+        message.textContent=
+            "Этот промокод уже использован";
+
+        return;
+    }
+
+    const promos={
+
+        CASEWEB:{
+            reward:100000
+        },
+
+        QUANTUM:{
+            reward:500000
+        },
+
+        START:{
+            reward:10000
+        }
+
+    };
+
+    if(!promos[code]){
+
+        message.textContent=
+            "Неверный промокод";
 
         return;
     }
 
     const reward=
-        promoCodes[normalized];
+        promos[code].reward;
 
     balance+=reward;
 
-    usedPromoCodes.push(normalized);
+    usedPromoCodes.push(code);
 
     saveData();
     updateBalance();
 
-    alert(
-        "✅ Промокод активирован!\n"+
-        "+"+
+    message.textContent=
+        "Получено +"+
         reward.toLocaleString("ru-RU")+
-        " 🪙"
-    );
+        " 🪙";
+
+    input.value="";
 
 }
 
@@ -2649,101 +2519,58 @@ function openPromo(){
 
 function updateIndex(){
 
-    const box=
-        document.getElementById(
-            "indexContent"
-        );
+    const allItems=
+        getAllItems();
 
-    if(!box) return;
+    const indexBox=
+        document.getElementById("index");
 
-    box.innerHTML="";
+    if(!indexBox) return;
 
-    Object.entries(cases).forEach(
-        ([id,data])=>{
+    indexBox.innerHTML="";
 
-            const wrapper=
-                document.createElement("div");
+    allItems.forEach(item=>{
 
-            wrapper.className=
-                "index-case";
+        const element=
+            document.createElement("div");
 
-            const title=
-                document.createElement("div");
+        element.className="index-item";
 
-            title.className=
-                "index-title";
+        element.innerHTML=`
+            <div class="index-icon">
+                ${item.icon}
+            </div>
 
-            if(data.limited){
-                title.classList.add(
-                    "index-limited"
-                );
-            }
+            <div>
+                <div class="index-name">
+                    ${item.name}
+                </div>
 
-            title.textContent=
-                data.icon+" "+data.name;
+                <div class="index-price">
+                    ${item.price.toLocaleString("ru-RU")} 🪙
+                </div>
+            </div>
+        `;
 
-            wrapper.appendChild(title);
+        indexBox.appendChild(element);
 
-            data.items.forEach(item=>{
-
-                const row=
-                    document.createElement("div");
-
-                row.className=
-                    "index-row";
-
-                row.innerHTML=`
-
-                    <div class="index-left">
-
-                        <div>
-                            ${item.icon}
-                        </div>
-
-                        <div>
-
-                            <div>
-                                ${item.name}
-                            </div>
-
-                            <div class="index-chance">
-                                ${item.chance}%
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="index-price">
-                        ${item.price.toLocaleString("ru-RU")} 🪙
-                    </div>
-
-                `;
-
-                wrapper.appendChild(row);
-
-            });
-
-            box.appendChild(wrapper);
-
-        }
-    );
+    });
 
 }
 
 
 /* =========================
-   RESET
+   RESET GAME
 ========================= */
 
 function resetGame(){
 
-    const confirmReset=
+    const confirmed=
         confirm(
-            "Точно сбросить весь прогресс?"
+            "Сбросить весь прогресс?"
         );
 
-    if(!confirmReset) return;
+    if(!confirmed) return;
 
     balance=100;
     inventory=[];
@@ -2753,10 +2580,7 @@ function resetGame(){
 
     updateBalance();
     updateInventory();
-
-    alert(
-        "✅ Игра полностью сброшена!"
-    );
+    updateIndex();
 
 }
 
@@ -2766,8 +2590,6 @@ function resetGame(){
 ========================= */
 
 function startBlackMarket(){
-
-    closeCaseModal();
 
     const overlay=
         document.getElementById(
@@ -2782,11 +2604,6 @@ function startBlackMarket(){
     const itemBox=
         document.getElementById(
             "blackItem"
-        );
-
-    const resultBox=
-        document.getElementById(
-            "blackResult"
         );
 
     const itemIcon=
@@ -2804,6 +2621,11 @@ function startBlackMarket(){
             "blackItemPrice"
         );
 
+    const result=
+        document.getElementById(
+            "blackResult"
+        );
+
     const resultTitle=
         document.getElementById(
             "blackResultTitle"
@@ -2813,6 +2635,8 @@ function startBlackMarket(){
         document.getElementById(
             "blackResultPrice"
         );
+
+    if(!selectedCase) return;
 
     const item=
         selectedCase.items[
@@ -2824,88 +2648,67 @@ function startBlackMarket(){
 
     overlay.classList.add("show");
 
-    circle.classList.remove(
-        "show",
-        "hide"
-    );
+    result.classList.remove("show");
 
-    itemBox.classList.remove("fly");
+    itemBox.classList.remove("show");
 
-    resultBox.classList.remove(
-        "show"
-    );
+    circle.classList.remove("spin");
 
-    itemIcon.textContent="";
-    itemName.textContent="";
-    itemPrice.textContent="";
-    resultTitle.textContent="";
-    resultPrice.textContent="";
+    void circle.offsetWidth;
 
-    setTimeout(()=>{
+    circle.classList.add("spin");
 
-        circle.classList.add("show");
+    itemIcon.textContent=
+        item.icon;
 
-    },100);
+    itemName.textContent=
+        item.name;
+
+    itemPrice.textContent=
+        item.price.toLocaleString("ru-RU")+
+        " 🪙";
 
     setTimeout(()=>{
 
-        circle.classList.add("hide");
+        itemBox.classList.add("show");
 
-    },1500);
-
-    setTimeout(()=>{
-
-        itemIcon.textContent=
-            item.icon;
-
-        itemName.textContent=
-            item.name;
-
-        itemPrice.textContent=
-            item.price.toLocaleString(
-                "ru-RU"
-            )+" 🪙";
-
-        itemBox.classList.add("fly");
-
-    },1700);
+    },1800);
 
     setTimeout(()=>{
 
         inventory.push({
+
             ...item,
+
             locked:false,
+
             id:
                 Date.now()+
                 Math.random()
+
         });
 
         saveData();
         updateInventory();
 
         resultTitle.textContent=
-            "🎉 "+item.name;
+            "🎉 ПОЛУЧЕНО!";
 
         resultPrice.textContent=
-            "+"+
-            item.price.toLocaleString(
-                "ru-RU"
-            )+
+            item.name+
+            " — "+
+            item.price.toLocaleString("ru-RU")+
             " 🪙";
 
-        resultBox.classList.add(
-            "show"
-        );
+        result.classList.add("show");
 
     },3500);
 
     setTimeout(()=>{
 
-        overlay.classList.remove(
-            "show"
-        );
+        overlay.classList.remove("show");
 
-    },5000);
+    },5500);
 
 }
 
@@ -2919,30 +2722,51 @@ let upgradeTargetItem=null;
 let upgradeBusy=false;
 
 
+/* =========================
+   OPEN UPGRADE
+========================= */
+
 function openUpgrade(){
 
-    document
-        .getElementById("upgradeModal")
-        .classList.add("show");
+    const modal=
+        document.getElementById(
+            "upgradeModal"
+        );
+
+    if(!modal) return;
+
+    modal.classList.add("show");
 
     upgradeYourItem=null;
     upgradeTargetItem=null;
+    upgradeBusy=false;
 
     renderUpgrade();
 
 }
 
 
+/* =========================
+   CLOSE UPGRADE
+========================= */
+
 function closeUpgrade(){
 
-    if(upgradeBusy) return;
+    const modal=
+        document.getElementById(
+            "upgradeModal"
+        );
 
-    document
-        .getElementById("upgradeModal")
-        .classList.remove("show");
+    if(modal){
+        modal.classList.remove("show");
+    }
 
 }
 
+
+/* =========================
+   RENDER UPGRADE
+========================= */
 
 function renderUpgrade(){
 
@@ -2954,6 +2778,10 @@ function renderUpgrade(){
 }
 
 
+/* =========================
+   YOUR ITEM
+========================= */
+
 function renderYourItem(){
 
     const box=
@@ -2961,10 +2789,9 @@ function renderYourItem(){
             "upgradeYourItem"
         );
 
-    if(!upgradeYourItem){
+    if(!box) return;
 
-        box.className=
-            "upgrade-selected";
+    if(!upgradeYourItem){
 
         box.innerHTML=`
             <div class="upgrade-placeholder">
@@ -2975,29 +2802,28 @@ function renderYourItem(){
         return;
     }
 
-    box.className=
-        "upgrade-selected active";
-
     box.innerHTML=`
-        <div class="selected-content">
+        <div class="upgrade-icon">
+            ${upgradeYourItem.icon}
+        </div>
 
-            <div class="icon">
-                ${upgradeYourItem.icon}
-            </div>
-
+        <div>
             <div>
                 ${upgradeYourItem.name}
             </div>
 
-            <div class="price">
+            <div class="upgrade-item-price">
                 ${upgradeYourItem.price.toLocaleString("ru-RU")} 🪙
             </div>
-
         </div>
     `;
 
 }
 
+
+/* =========================
+   TARGET ITEM
+========================= */
 
 function renderTargetItem(){
 
@@ -3006,10 +2832,9 @@ function renderTargetItem(){
             "upgradeTargetItem"
         );
 
-    if(!upgradeTargetItem){
+    if(!box) return;
 
-        box.className=
-            "upgrade-selected";
+    if(!upgradeTargetItem){
 
         box.innerHTML=`
             <div class="upgrade-placeholder">
@@ -3020,33 +2845,32 @@ function renderTargetItem(){
         return;
     }
 
-    box.className=
-        "upgrade-selected active";
-
     box.innerHTML=`
-        <div class="selected-content">
+        <div class="upgrade-icon">
+            ${upgradeTargetItem.icon}
+        </div>
 
-            <div class="icon">
-                ${upgradeTargetItem.icon}
-            </div>
-
+        <div>
             <div>
                 ${upgradeTargetItem.name}
             </div>
 
-            <div class="price">
+            <div class="upgrade-item-price">
                 ${upgradeTargetItem.price.toLocaleString("ru-RU")} 🪙
             </div>
-
         </div>
     `;
 
 }
 
 
+/* =========================
+   UPGRADE LISTS
+========================= */
+
 function renderUpgradeLists(){
 
-    const yourList=
+    const inventoryList=
         document.getElementById(
             "upgradeInventoryList"
         );
@@ -3056,115 +2880,99 @@ function renderUpgradeLists(){
             "upgradeTargetList"
         );
 
-    yourList.innerHTML="";
-    targetList.innerHTML="";
+    if(!inventoryList || !targetList){
+        return;
+    }
 
+    inventoryList.innerHTML="";
+    targetList.innerHTML="";
 
     inventory.forEach(
         (item,index)=>{
 
-            if(item.locked) return;
+            const yourItem=
+                document.createElement("button");
 
-            const row=
-                document.createElement("div");
-
-            row.className=
+            yourItem.className=
                 "upgrade-list-item";
 
-            row.innerHTML=`
+            yourItem.innerHTML=`
+                <span>
+                    ${item.icon}
+                    ${item.name}
+                </span>
 
-                <div class="upgrade-list-left">
-
-                    <div class="upgrade-list-icon">
-                        ${item.icon}
-                    </div>
-
-                    <div>
-
-                        <div class="upgrade-list-name">
-                            ${item.name}
-                        </div>
-
-                        <div class="upgrade-list-price">
-                            ${item.price.toLocaleString("ru-RU")} 🪙
-                        </div>
-
-                    </div>
-
-                </div>
+                <span>
+                    ${item.price.toLocaleString("ru-RU")} 🪙
+                </span>
             `;
 
-            row.onclick=()=>{
+            yourItem.onclick=()=>{
+
+                if(upgradeBusy) return;
 
                 upgradeYourItem={
                     ...item,
                     inventoryIndex:index
                 };
 
-                renderUpgrade();
+                updateUpgradeChance();
+                renderYourItem();
 
             };
 
-            yourList.appendChild(row);
+            inventoryList.appendChild(
+                yourItem
+            );
 
         }
     );
 
 
-    getAllItems()
-        .filter(item=>
-            !upgradeYourItem ||
-            item.price>
-            upgradeYourItem.price
-        )
-        .sort(
-            (a,b)=>a.price-b.price
-        )
-        .forEach(item=>{
+    getAllItems().forEach(item=>{
 
-            const row=
-                document.createElement("div");
+        const target=
+            document.createElement("button");
 
-            row.className=
-                "upgrade-list-item";
+        target.className=
+            "upgrade-list-item";
 
-            row.innerHTML=`
+        target.innerHTML=`
+            <span>
+                ${item.icon}
+                ${item.name}
+            </span>
 
-                <div class="upgrade-list-left">
+            <span>
+                ${item.price.toLocaleString("ru-RU")} 🪙
+            </span>
+        `;
 
-                    <div class="upgrade-list-icon">
-                        ${item.icon}
-                    </div>
+        target.onclick=()=>{
 
-                    <div>
+            if(upgradeBusy) return;
 
-                        <div class="upgrade-list-name">
-                            ${item.name}
-                        </div>
-
-                        <div class="upgrade-list-price">
-                            ${item.price.toLocaleString("ru-RU")} 🪙
-                        </div>
-
-                    </div>
-
-                </div>
-            `;
-
-            row.onclick=()=>{
-
-                upgradeTargetItem=item;
-
-                renderUpgrade();
-
+            upgradeTargetItem={
+                ...item
             };
 
-            targetList.appendChild(row);
+            updateUpgradeChance();
+            renderTargetItem();
 
-        });
+        };
+
+        targetList.appendChild(
+            target
+        );
+
+    });
 
 }
 
+
+/* =========================
+   UPGRADE CHANCE
+========================= */
 
 function updateUpgradeChance(){
 
@@ -3183,15 +2991,37 @@ function updateUpgradeChance(){
         !upgradeTargetItem
     ){
 
-        chanceElement.textContent="0%";
-        button.disabled=true;
-        return;
+        if(chanceElement){
+            chanceElement.textContent="0%";
+        }
 
+        if(button){
+            button.disabled=true;
+        }
+
+        return;
+    }
+
+    if(
+        upgradeTargetItem.price <=
+        upgradeYourItem.price
+    ){
+
+        if(chanceElement){
+            chanceElement.textContent=
+                "95%";
+        }
+
+        if(button){
+            button.disabled=false;
+        }
+
+        return;
     }
 
     let chance=
         (
-            upgradeYourItem.price/
+            upgradeYourItem.price /
             upgradeTargetItem.price
         )*100;
 
@@ -3204,14 +3034,18 @@ function updateUpgradeChance(){
             )
         );
 
-    chanceElement.textContent=
-        chance.toFixed(1)+"%";
+    chance=
+        Math.round(chance*100)/100;
 
-    button.disabled=
-        upgradeBusy;
+    if(chanceElement){
+        chanceElement.textContent=
+            chance+"%";
+    }
 
-    button.dataset.chance=
-        chance;
+    if(button){
+        button.disabled=
+            upgradeBusy;
+    }
 
 }
 
@@ -3226,12 +3060,9 @@ function spinUpgrade(){
         upgradeBusy ||
         !upgradeYourItem ||
         !upgradeTargetItem
-    ) return;
-
-    const index=
-        upgradeYourItem.inventoryIndex;
-
-    if(!inventory[index]) return;
+    ){
+        return;
+    }
 
     upgradeBusy=true;
 
@@ -3240,88 +3071,193 @@ function spinUpgrade(){
             "upgradeSpinButton"
         );
 
-    button.disabled=true;
-
     const result=
         document.getElementById(
             "upgradeResult"
         );
 
-    result.className=
-        "upgrade-result";
-
-    result.textContent=
-        "🎰 Крутим...";
-
-    const chance=
-        Number(button.dataset.chance);
-
-    const win=
-        Math.random()*100<chance;
-
-    const wheel=
+    const spinner=
         document.getElementById(
             "wheelSpinner"
         );
 
-    const rotation=
-        1800+
-        Math.floor(
-            Math.random()*720
-        )+
-        (win ? 0:180);
+    if(button){
+        button.disabled=true;
+    }
 
-    wheel.style.transform=
-        `rotate(${rotation}deg)`;
+    if(result){
+        result.textContent="";
+        result.className=
+            "upgrade-result";
+    }
+
+    if(spinner){
+
+        spinner.classList.remove(
+            "wheel-spin"
+        );
+
+        void spinner.offsetWidth;
+
+        spinner.classList.add(
+            "wheel-spin"
+        );
+
+    }
+
+    let chance;
+
+    if(
+        upgradeTargetItem.price <=
+        upgradeYourItem.price
+    ){
+
+        chance=95;
+
+    }else{
+
+        chance=
+            (
+                upgradeYourItem.price /
+                upgradeTargetItem.price
+            )*100;
+
+        chance=
+            Math.max(
+                1,
+                Math.min(
+                    95,
+                    chance
+                )
+            );
+
+    }
+
+    const win=
+        Math.random()*100 < chance;
 
     setTimeout(()=>{
 
+        const index=
+            upgradeYourItem.inventoryIndex;
+
+        if(
+            index>=0 &&
+            index<inventory.length
+        ){
+
+            inventory.splice(
+                index,
+                1
+            );
+
+        }
+
         if(win){
 
-            inventory.splice(index,1);
-
             inventory.push({
-                ...upgradeTargetItem,
+
+                name:
+                    upgradeTargetItem.name,
+
+                price:
+                    upgradeTargetItem.price,
+
+                icon:
+                    upgradeTargetItem.icon,
+
+                chance:
+                    upgradeTargetItem.chance,
+
                 locked:false,
+
                 id:
                     Date.now()+
                     Math.random()
+
             });
 
-            result.className=
-                "upgrade-result win";
+            if(result){
 
-            result.textContent=
-                "🎉 УСПЕХ!";
+                result.textContent=
+                    "🎉 УСПЕХ! Ты получил "+
+                    upgradeTargetItem.name;
+
+                result.classList.add(
+                    "success"
+                );
+
+            }
 
         }else{
 
-            inventory.splice(index,1);
+            if(result){
 
-            result.className=
-                "upgrade-result lose";
+                result.textContent=
+                    "❌ НЕУДАЧА! Предмет потерян";
 
-            result.textContent=
-                "❌ ПРОИГРЫШ";
+                result.classList.add(
+                    "fail"
+                );
+
+            }
 
         }
 
         saveData();
-
+        updateBalance();
         updateInventory();
 
         upgradeYourItem=null;
         upgradeTargetItem=null;
 
-        renderUpgrade();
-
         upgradeBusy=false;
 
-        button.disabled=true;
+        renderUpgrade();
 
-    },5200);
+    },3000);
 
 }
+
+
+/* =========================
+   CLOSE MODALS BY CLICK
+========================= */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        const caseModal=
+            document.getElementById(
+                "caseModal"
+            );
+
+        const upgradeModal=
+            document.getElementById(
+                "upgradeModal"
+            );
+
+        if(
+            caseModal &&
+            event.target===caseModal
+        ){
+
+            closeCaseModal();
+
+        }
+
+        if(
+            upgradeModal &&
+            event.target===upgradeModal
+        ){
+
+            closeUpgrade();
+
+        }
+
+    }
+);
 
 
 /* =========================
