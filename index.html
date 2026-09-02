@@ -126,6 +126,13 @@ h1{
     color:#ddd;
 }
 
+/* NFT */
+
+.nft-title{
+    color:#6ee7ff;
+    text-shadow:0 0 15px #00d9ff;
+}
+
 /* CASES */
 
 .cases{
@@ -188,6 +195,19 @@ h1{
 
 .golden-case:hover{
     border-color:#ffd83e;
+}
+
+.nft-case{
+    border-color:#236b7a;
+    background:
+        radial-gradient(circle at center,#102c35,#101016 70%);
+}
+
+.nft-case:hover{
+    border-color:#00d9ff;
+    box-shadow:
+        0 0 25px #00d9ff33,
+        0 15px 50px #0008;
 }
 
 .black-case{
@@ -1229,6 +1249,38 @@ h1{
 </div>
 
 
+<!-- NFT -->
+
+<div class="section-title nft-title">
+    💎 NFT CASES
+</div>
+
+
+<div class="cases">
+
+    <div class="case nft-case">
+
+        <div class="case-icon">
+            💎
+        </div>
+
+        <div class="case-name">
+            NFT Case
+        </div>
+
+        <div class="case-price">
+            Цена: <b>2 500 000 🪙</b>
+        </div>
+
+        <button onclick="inspectCase('nft')">
+            ОСМОТРЕТЬ
+        </button>
+
+    </div>
+
+</div>
+
+
 <!-- BLACK MARKET -->
 
 <div class="section-title black-title">
@@ -1423,8 +1475,6 @@ h1{
 
         <div class="upgrade-selects">
 
-            <!-- YOUR ITEM -->
-
             <div class="upgrade-side">
 
                 <h3>
@@ -1453,8 +1503,6 @@ h1{
                 →
             </div>
 
-
-            <!-- TARGET -->
 
             <div class="upgrade-side">
 
@@ -1691,6 +1739,21 @@ golden:{
         {name:"Золотой трофей",price:15000000,icon:"🏆",chance:1.9},
         {name:"Golden Relic",price:100000000,icon:"💎",chance:.1}
     ]
+},
+
+nft:{
+    name:"NFT Case",
+    icon:"💎",
+    price:2500000,
+    limited:false,
+    items:[
+        {name:"Common NFT",price:1000000,icon:"🖼️",chance:45},
+        {name:"Rare NFT",price:2000000,icon:"🎨",chance:30},
+        {name:"Epic NFT",price:5000000,icon:"💠",chance:15},
+        {name:"Legendary NFT",price:15000000,icon:"👑",chance:7},
+        {name:"Mythic NFT",price:50000000,icon:"💎",chance:2.5},
+        {name:"Golden NFT",price:250000000,icon:"🌟",chance:.5}
+    ]
 }
 
 };
@@ -1814,10 +1877,7 @@ function getAllItems(){
     });
 
     return result;
-}
-
-
-/* =========================
+}/* =========================
    INSPECT CASE
 ========================= */
 
@@ -1871,6 +1931,7 @@ function inspectCase(type){
         "caseModal"
     ).classList.add("show");
 }
+
 
 function closeCaseModal(){
 
@@ -2647,10 +2708,21 @@ function startBlackMarket(){
             "blackResult"
         );
 
+
+    /*
+        ИЗМЕНЕНО ТОЛЬКО ЗДЕСЬ:
+        Black Market выбирает
+        случайный предмет из всего списка.
+    */
+
     const item=
-        randomItem(
-            selectedCase.items
-        );
+        selectedCase.items[
+            Math.floor(
+                Math.random()*
+                selectedCase.items.length
+            )
+        ];
+
 
     document.getElementById(
         "blackItemIcon"
@@ -2823,9 +2895,7 @@ function renderUpgradeLists(){
     targetList.innerHTML="";
 
 
-    /*
-        ИНВЕНТАРЬ
-    */
+    /* ИНВЕНТАРЬ */
 
     inventory.forEach((item,index)=>{
 
@@ -2888,17 +2958,11 @@ function renderUpgradeLists(){
     });
 
 
-    /*
-        ЦЕЛИ
-    */
+    /* ЦЕЛИ */
 
     let allItems=
         getAllItems();
 
-
-    /*
-        Убираем одинаковые предметы.
-    */
 
     const unique=[];
 
@@ -2964,8 +3028,8 @@ function renderUpgradeLists(){
 
         div.onclick=()=>{
 
-            if(!upgradeYourItem)
-            {
+            if(!upgradeYourItem){
+
                 alert(
                     "Сначала выбери свой предмет!"
                 );
@@ -3008,9 +3072,7 @@ function updateUpgradeUI(){
         );
 
 
-    /*
-        YOUR ITEM
-    */
+    /* YOUR ITEM */
 
     if(upgradeYourItem){
 
@@ -3049,9 +3111,7 @@ function updateUpgradeUI(){
     }
 
 
-    /*
-        TARGET
-    */
+    /* TARGET */
 
     if(upgradeTargetItem){
 
@@ -3091,9 +3151,7 @@ function updateUpgradeUI(){
     }
 
 
-    /*
-        CHANCE
-    */
+    /* CHANCE */
 
     if(
         upgradeYourItem &&
@@ -3143,11 +3201,6 @@ function spinUpgrade(){
         return;
     }
 
-
-    /*
-        Находим именно этот
-        предмет в инвентаре.
-    */
 
     const index=
         inventory.findIndex(
@@ -3202,10 +3255,6 @@ function spinUpgrade(){
         "🎰 Колесо вращается...";
 
 
-    /*
-        Шанс.
-    */
-
     const chance=
         calculateUpgradeChance(
             upgradeYourItem,
@@ -3213,17 +3262,9 @@ function spinUpgrade(){
         );
 
 
-    /*
-        Решение результата.
-    */
-
     const won=
         Math.random()*100<=chance;
 
-
-    /*
-        Несколько оборотов.
-    */
 
     const turns=
         5+
@@ -3237,20 +3278,12 @@ function spinUpgrade(){
 
     if(won){
 
-        /*
-            ЗЕЛЁНАЯ половина.
-        */
-
         angle=
             turns*360+
             20+
             Math.random()*120;
 
     }else{
-
-        /*
-            КРАСНАЯ половина.
-        */
 
         angle=
             turns*360+
@@ -3271,27 +3304,14 @@ function spinUpgrade(){
     },50);
 
 
-    /*
-        РЕЗУЛЬТАТ
-    */
-
     setTimeout(()=>{
 
         if(won){
-
-            /*
-                Удаляем старый.
-            */
 
             inventory.splice(
                 index,
                 1
             );
-
-
-            /*
-                Добавляем цель.
-            */
 
             inventory.push({
 
@@ -3321,11 +3341,6 @@ function spinUpgrade(){
 
         }else{
 
-            /*
-                Проигрыш —
-                предмет теряется.
-            */
-
             inventory.splice(
                 index,
                 1
@@ -3353,11 +3368,6 @@ function spinUpgrade(){
 
 
             if(won){
-
-                /*
-                    Новый предмет
-                    становится текущим.
-                */
 
                 upgradeYourItem={
                     ...upgradeTargetItem
