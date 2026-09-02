@@ -89,6 +89,17 @@ button:disabled{
     border-radius:11px;
     background:#171722;
     border:1px solid #393958;
+    white-space:nowrap;
+}
+
+.diamonds{
+    padding:10px 14px;
+    border-radius:11px;
+    background:#10252c;
+    border:1px solid #23788b;
+    color:#6ee7ff;
+    white-space:nowrap;
+    text-shadow:0 0 10px #00d9ff;
 }
 
 .promo{
@@ -125,8 +136,6 @@ h1{
 .black-title{
     color:#ddd;
 }
-
-/* NFT */
 
 .nft-title{
     color:#6ee7ff;
@@ -244,6 +253,11 @@ h1{
 
 .index-window{
     left:15px;
+    width:420px;
+}
+
+.shop-window{
+    right:15px;
     width:420px;
 }
 
@@ -376,6 +390,124 @@ h1{
 .index-price{
     color:#b9a8ff;
     font-weight:bold;
+}
+
+/* SHOP */
+
+.potion-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:15px;
+    margin-bottom:10px;
+    border-radius:14px;
+    background:linear-gradient(145deg,#191925,#101016);
+    border:1px solid #34344c;
+}
+
+.potion-card:hover{
+    border-color:#7047ff;
+}
+
+.potion-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.potion-icon{
+    width:52px;
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:#241b38;
+    border:1px solid #7047ff;
+    font-size:30px;
+}
+
+.potion-name{
+    font-weight:bold;
+    font-size:15px;
+}
+
+.potion-description{
+    color:#888;
+    font-size:11px;
+    margin-top:4px;
+}
+
+.potion-price{
+    color:#b9a8ff;
+    font-size:12px;
+    margin-top:5px;
+}
+
+.potion-buy{
+    white-space:nowrap;
+    padding:9px 12px;
+    font-size:11px;
+}
+
+/* LUCK TIMER */
+
+.luck-timer{
+    position:fixed;
+    z-index:900;
+    left:15px;
+    bottom:15px;
+    width:240px;
+    padding:14px;
+    display:none;
+    border-radius:14px;
+    background:#12121df5;
+    border:1px solid #7047ff;
+    box-shadow:
+        0 0 25px #7047ff44,
+        0 15px 50px #000b;
+    backdrop-filter:blur(12px);
+}
+
+.luck-timer.show{
+    display:block;
+}
+
+.luck-title{
+    color:#c6a9ff;
+    font-weight:900;
+    font-size:12px;
+    letter-spacing:1px;
+}
+
+.luck-level{
+    margin-top:5px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.luck-time{
+    margin-top:4px;
+    color:#aaa;
+    font-size:12px;
+}
+
+.luck-bar{
+    height:7px;
+    margin-top:10px;
+    overflow:hidden;
+    border-radius:10px;
+    background:#252535;
+}
+
+.luck-bar-fill{
+    width:100%;
+    height:100%;
+    border-radius:10px;
+    background:linear-gradient(90deg,#7047ff,#c06bff);
+    box-shadow:0 0 12px #7047ff;
+    transition:width:1s linear;
 }
 
 /* CASE MODAL */
@@ -650,9 +782,7 @@ h1{
     opacity:1;
 }
 
-/* =========================
-   UPGRADE
-========================= */
+/* UPGRADE */
 
 .upgrade-modal{
     position:fixed;
@@ -920,9 +1050,10 @@ h1{
         padding:9px 5px;
     }
 
-    .balance{
+    .balance,
+    .diamonds{
         padding:8px 6px;
-        font-size:11px;
+        font-size:10px;
     }
 
     .container{
@@ -942,7 +1073,8 @@ h1{
     }
 
     .inventory-window,
-    .index-window{
+    .index-window,
+    .shop-window{
         left:10px;
         right:10px;
         width:auto;
@@ -962,6 +1094,22 @@ h1{
         width:260px;
         height:260px;
     }
+
+    .luck-timer{
+        left:10px;
+        bottom:10px;
+        width:220px;
+    }
+
+    .potion-card{
+        padding:11px;
+    }
+
+    .potion-icon{
+        width:44px;
+        height:44px;
+        font-size:25px;
+    }
 }
 </style>
 </head>
@@ -976,33 +1124,35 @@ h1{
             CASE WEB
         </div>
 
-        <button
-            class="icon-btn"
+        <button class="icon-btn"
             onclick="resetGame()"
             title="Старт с нуля">
             ↻
         </button>
 
-        <button
-            class="icon-btn"
+        <button class="icon-btn"
             onclick="toggleIndex()"
             title="Индекс">
             📖
         </button>
 
-        <button
-            class="icon-btn"
+        <button class="icon-btn"
             onclick="openUpgrade()"
             title="Upgrade">
             🔄
+        </button>
+
+        <button class="icon-btn"
+            onclick="toggleShop()"
+            title="Магазин">
+            🛒
         </button>
 
     </div>
 
     <div class="header-right">
 
-        <button
-            class="promo"
+        <button class="promo"
             onclick="openPromo()">
             🎟️ ПРОМО
         </button>
@@ -1011,8 +1161,11 @@ h1{
             🪙 <span id="balance">100</span>
         </div>
 
-        <button
-            class="icon-btn"
+        <div class="diamonds">
+            💎 <span id="diamonds">0</span>
+        </div>
+
+        <button class="icon-btn"
             onclick="toggleInventory()"
             title="Инвентарь">
             🎒
@@ -1025,24 +1178,21 @@ h1{
 
 <!-- INVENTORY -->
 
-<div
-    id="inventoryWindow"
-    class="window inventory-window">
+<div id="inventoryWindow"
+     class="window inventory-window">
 
     <div class="window-header">
 
         <h2>🎒 Инвентарь</h2>
 
-        <button
-            class="close"
+        <button class="close"
             onclick="toggleInventory()">
             ×
         </button>
 
     </div>
 
-    <button
-        class="sell-all"
+    <button class="sell-all"
         onclick="sellAll()">
         💰 ПРОДАТЬ ВСЁ
     </button>
@@ -1054,16 +1204,14 @@ h1{
 
 <!-- INDEX -->
 
-<div
-    id="indexWindow"
-    class="window index-window">
+<div id="indexWindow"
+     class="window index-window">
 
     <div class="window-header">
 
         <h2>📖 Индекс</h2>
 
-        <button
-            class="close"
+        <button class="close"
             onclick="toggleIndex()">
             ×
         </button>
@@ -1075,12 +1223,36 @@ h1{
 </div>
 
 
+<!-- SHOP -->
+
+<div id="shopWindow"
+     class="window shop-window">
+
+    <div class="window-header">
+
+        <h2>🛒 Магазин</h2>
+
+        <button class="close"
+            onclick="toggleShop()">
+            ×
+        </button>
+
+    </div>
+
+    <div style="color:#888;font-size:12px;margin-bottom:15px">
+        🧪 Зелья удачи действуют 60 секунд
+    </div>
+
+    <div id="potionShop"></div>
+
+</div>
+
+
 <!-- MAIN -->
 
 <main class="container">
 
 <h1>STARTER CASES</h1>
-
 
 <div class="cases">
 
@@ -1168,7 +1340,6 @@ h1{
     🔥 LIMITED CASES
 </div>
 
-
 <div class="cases">
 
     <div class="case limited-case">
@@ -1255,7 +1426,6 @@ h1{
     💎 NFT CASES
 </div>
 
-
 <div class="cases">
 
     <div class="case nft-case">
@@ -1287,7 +1457,6 @@ h1{
     ◼ BLACK MARKET
 </div>
 
-
 <div class="cases">
 
     <div class="case black-case">
@@ -1315,11 +1484,38 @@ h1{
 </main>
 
 
+<!-- LUCK TIMER -->
+
+<div id="luckTimer"
+     class="luck-timer">
+
+    <div class="luck-title">
+        🧪 ЗЕЛЬЕ УДАЧИ
+    </div>
+
+    <div id="luckLevel"
+         class="luck-level">
+        Уровень I
+    </div>
+
+    <div id="luckTime"
+         class="luck-time">
+        60 сек
+    </div>
+
+    <div class="luck-bar">
+        <div id="luckBarFill"
+             class="luck-bar-fill">
+        </div>
+    </div>
+
+</div>
+
+
 <!-- CASE MODAL -->
 
-<div
-    id="caseModal"
-    class="modal">
+<div id="caseModal"
+     class="modal">
 
     <div class="modal-box">
 
@@ -1327,22 +1523,19 @@ h1{
 
             <h2 id="modalTitle"></h2>
 
-            <button
-                class="close"
+            <button class="close"
                 onclick="closeCaseModal()">
                 ×
             </button>
 
         </div>
 
-        <div
-            id="modalIcon"
-            class="preview">
+        <div id="modalIcon"
+             class="preview">
         </div>
 
-        <div
-            id="modalPrice"
-            class="preview-price">
+        <div id="modalPrice"
+             class="preview-price">
         </div>
 
         <div>
@@ -1351,13 +1544,11 @@ h1{
 
         <br>
 
-        <div
-            id="multipliers"
-            class="multipliers">
+        <div id="multipliers"
+             class="multipliers">
         </div>
 
-        <button
-            id="openSelected"
+        <button id="openSelected"
             class="open-case">
         </button>
 
@@ -1374,9 +1565,8 @@ h1{
 
 <!-- ROULETTE -->
 
-<div
-    id="rouletteOverlay"
-    class="roulette-overlay">
+<div id="rouletteOverlay"
+     class="roulette-overlay">
 
     <div class="roulette-wrapper">
 
@@ -1384,14 +1574,12 @@ h1{
             Открытие кейсов...
         </div>
 
-        <div
-            id="rouletteGrid"
-            class="roulette-grid">
+        <div id="rouletteGrid"
+             class="roulette-grid">
         </div>
 
-        <div
-            id="loadingText"
-            style="text-align:center;margin-top:18px;color:#aaa">
+        <div id="loadingText"
+             style="text-align:center;margin-top:18px;color:#aaa">
             Открытие...
         </div>
 
@@ -1400,49 +1588,41 @@ h1{
 </div>
 
 
-<!-- BLACK MARKET ANIMATION -->
+<!-- BLACK MARKET -->
 
-<div
-    id="blackOverlay"
-    class="black-overlay">
+<div id="blackOverlay"
+     class="black-overlay">
 
     <div class="black-scene">
 
-        <div
-            id="blackCircle"
-            class="black-circle">
+        <div id="blackCircle"
+             class="black-circle">
         </div>
 
-        <div
-            id="blackItem"
-            class="black-item">
+        <div id="blackItem"
+             class="black-item">
 
-            <div
-                id="blackItemIcon"
-                style="font-size:60px">
+            <div id="blackItemIcon"
+                 style="font-size:60px">
             </div>
 
             <div id="blackItemName"></div>
 
-            <div
-                id="blackItemPrice"
-                style="margin-top:5px;color:#aaa">
+            <div id="blackItemPrice"
+                 style="margin-top:5px;color:#aaa">
             </div>
 
         </div>
 
-        <div
-            id="blackResult"
-            class="black-result">
+        <div id="blackResult"
+             class="black-result">
 
-            <div
-                id="blackResultTitle"
-                style="font-size:22px">
+            <div id="blackResultTitle"
+                 style="font-size:22px">
             </div>
 
-            <div
-                id="blackResultPrice"
-                style="margin-top:5px;color:#aaa">
+            <div id="blackResultPrice"
+                 style="margin-top:5px;color:#aaa">
             </div>
 
         </div>
@@ -1454,9 +1634,8 @@ h1{
 
 <!-- UPGRADE -->
 
-<div
-    id="upgradeModal"
-    class="upgrade-modal">
+<div id="upgradeModal"
+     class="upgrade-modal">
 
     <div class="upgrade-box">
 
@@ -1464,14 +1643,12 @@ h1{
 
             <h2>🔄 UPGRADE</h2>
 
-            <button
-                class="close"
+            <button class="close"
                 onclick="closeUpgrade()">
                 ×
             </button>
 
         </div>
-
 
         <div class="upgrade-selects">
 
@@ -1481,9 +1658,8 @@ h1{
                     ТВОЙ ПРЕДМЕТ
                 </h3>
 
-                <div
-                    id="upgradeYourItem"
-                    class="upgrade-selected">
+                <div id="upgradeYourItem"
+                     class="upgrade-selected">
 
                     <div class="upgrade-placeholder">
                         Выбери предмет
@@ -1491,18 +1667,15 @@ h1{
 
                 </div>
 
-                <div
-                    id="upgradeInventoryList"
-                    class="upgrade-list">
+                <div id="upgradeInventoryList"
+                     class="upgrade-list">
                 </div>
 
             </div>
 
-
             <div class="upgrade-arrow">
                 →
             </div>
-
 
             <div class="upgrade-side">
 
@@ -1510,9 +1683,8 @@ h1{
                     ЦЕЛЬ
                 </h3>
 
-                <div
-                    id="upgradeTargetItem"
-                    class="upgrade-selected">
+                <div id="upgradeTargetItem"
+                     class="upgrade-selected">
 
                     <div class="upgrade-placeholder">
                         Выбери цель
@@ -1520,15 +1692,13 @@ h1{
 
                 </div>
 
-                <div
-                    id="upgradeTargetList"
-                    class="upgrade-list">
+                <div id="upgradeTargetList"
+                     class="upgrade-list">
                 </div>
 
             </div>
 
         </div>
-
 
         <div class="upgrade-chance">
 
@@ -1536,14 +1706,12 @@ h1{
                 ШАНС УСПЕХА
             </div>
 
-            <div
-                id="upgradeChance"
-                class="chance-number">
+            <div id="upgradeChance"
+                 class="chance-number">
                 0%
             </div>
 
         </div>
-
 
         <div class="upgrade-wheel-area">
 
@@ -1553,9 +1721,8 @@ h1{
                     ▼
                 </div>
 
-                <div
-                    id="wheelSpinner"
-                    class="wheel-spinner">
+                <div id="wheelSpinner"
+                     class="wheel-spinner">
 
                     <div class="wheel-green">
                         ПОБЕДА
@@ -1571,15 +1738,11 @@ h1{
 
         </div>
 
-
-        <div
-            id="upgradeResult"
-            class="upgrade-result">
+        <div id="upgradeResult"
+             class="upgrade-result">
         </div>
 
-
-        <button
-            id="upgradeSpinButton"
+        <button id="upgradeSpinButton"
             class="upgrade-spin"
             onclick="spinUpgrade()"
             disabled>
@@ -1612,6 +1775,9 @@ let usedPromoCodes =
         localStorage.getItem("usedPromoCodes") || "[]"
     );
 
+let diamonds =
+    Number(localStorage.getItem("caseDiamonds"));
+
 if(!Number.isFinite(balance))
     balance=100;
 
@@ -1620,6 +1786,54 @@ if(!Array.isArray(inventory))
 
 if(!Array.isArray(usedPromoCodes))
     usedPromoCodes=[];
+
+if(!Number.isFinite(diamonds))
+    diamonds=0;
+
+
+/* =========================
+   LUCK SYSTEM
+========================= */
+
+let activeLuckLevel =
+    Number(localStorage.getItem("activeLuckLevel")) || 0;
+
+let luckEndTime =
+    Number(localStorage.getItem("luckEndTime")) || 0;
+
+const potions={
+
+    1:{
+        name:"Зелье удачи I",
+        price:1000000,
+        luck:1.5
+    },
+
+    2:{
+        name:"Зелье удачи II",
+        price:5000000,
+        luck:2
+    },
+
+    3:{
+        name:"Зелье удачи III",
+        price:10000000,
+        luck:3
+    },
+
+    4:{
+        name:"Зелье удачи IV",
+        price:50000000,
+        luck:5
+    },
+
+    5:{
+        name:"Зелье удачи V",
+        price:100000000,
+        luck:8
+    }
+
+};
 
 
 /* =========================
@@ -1836,6 +2050,21 @@ function saveGame(){
         "caseInventory",
         JSON.stringify(inventory)
     );
+
+    localStorage.setItem(
+        "caseDiamonds",
+        String(diamonds)
+    );
+
+    localStorage.setItem(
+        "activeLuckLevel",
+        String(activeLuckLevel)
+    );
+
+    localStorage.setItem(
+        "luckEndTime",
+        String(luckEndTime)
+    );
 }
 
 
@@ -1849,6 +2078,502 @@ function updateBalance(){
         "balance"
     ).textContent=
         balance.toLocaleString("ru-RU");
+
+    document.getElementById(
+        "diamonds"
+    ).textContent=
+        diamonds.toLocaleString("ru-RU");
+
+    saveGame();
+}
+
+
+/* =========================
+   ALL ITEMS
+========================= */
+
+function getAllItems(){
+
+    const result=[];
+
+    Object.values(cases).forEach(c=>{
+
+        c.items.forEach(item=>{
+
+            result.push({
+                name:item.name,
+                price:item.price,
+                icon:item.icon,
+                chance:item.chance
+            });
+
+        });
+
+    });
+
+    return result;
+}
+
+
+/* =========================
+   SHOP
+========================= */
+
+function toggleShop(){
+
+    const shop=
+        document.getElementById(
+            "shopWindow"
+        );
+
+    shop.classList.toggle("open");
+
+    if(shop.classList.contains("open"))
+        updatePotionShop();
+}
+
+
+function updatePotionShop(){
+
+    const box=
+        document.getElementById(
+            "potionShop"
+        );
+
+    box.innerHTML="";
+
+    Object.entries(potions).forEach(
+        ([level,potion])=>{
+
+            const card=
+                document.createElement("div");
+
+            card.className="potion-card";
+
+            const roman=[
+                "",
+                "I",
+                "II",
+                "III",
+                "IV",
+                "V"
+            ][Number(level)];
+
+            card.innerHTML=`
+
+                <div class="potion-left">
+
+                    <div class="potion-icon">
+                        🧪
+                    </div>
+
+                    <div>
+
+                        <div class="potion-name">
+                            ${potion.name}
+                        </div>
+
+                        <div class="potion-description">
+                            Удача ×${potion.luck}
+                            · 60 секунд
+                        </div>
+
+                        <div class="potion-price">
+                            ${potion.price.toLocaleString("ru-RU")}
+                            🪙
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="potion-buy"
+                    onclick="buyPotion(${level})">
+
+                    ВЫПИТЬ
+
+                </button>
+
+            `;
+
+            box.appendChild(card);
+        }
+    );
+}
+
+
+function buyPotion(level){
+
+    const potion=
+        potions[level];
+
+    if(!potion)
+        return;
+
+    if(balance<potion.price){
+
+        alert(
+            "❌ Недостаточно монет!\n\n"+
+            "Нужно: "+
+            potion.price.toLocaleString("ru-RU")+
+            " 🪙"
+        );
+
+        return;
+    }
+
+    balance-=potion.price;
+
+    activeLuckLevel=
+        Number(level);
+
+    luckEndTime=
+        Date.now()+60000;
+
+    updateBalance();
+    updatePotionShop();
+    updateLuckTimer();
+
+    alert(
+        "🧪 Зелье удачи "+
+        level+
+        " активировано!\n\n"+
+        "Удача: ×"+
+        potion.luck+
+        "\nВремя: 60 секунд"
+    );
+}<script>
+
+/* =========================
+   SAVE DATA
+========================= */
+
+let balance =
+    Number(localStorage.getItem("caseBalance"));
+
+let inventory =
+    JSON.parse(
+        localStorage.getItem("caseInventory") || "[]"
+    );
+
+let usedPromoCodes =
+    JSON.parse(
+        localStorage.getItem("usedPromoCodes") || "[]"
+    );
+
+let diamonds =
+    Number(localStorage.getItem("caseDiamonds"));
+
+let activeLuckLevel =
+    Number(localStorage.getItem("activeLuckLevel")) || 0;
+
+let luckEndTime =
+    Number(localStorage.getItem("luckEndTime")) || 0;
+
+if(!Number.isFinite(balance))
+    balance=100;
+
+if(!Number.isFinite(diamonds))
+    diamonds=0;
+
+if(!Array.isArray(inventory))
+    inventory=[];
+
+if(!Array.isArray(usedPromoCodes))
+    usedPromoCodes=[];
+
+
+/* =========================
+   POTIONS
+========================= */
+
+const potions={
+    1:{
+        name:"Зелье удачи I",
+        price:1000000,
+        luck:1.5,
+        icon:"🧪"
+    },
+
+    2:{
+        name:"Зелье удачи II",
+        price:5000000,
+        luck:2,
+        icon:"🧪"
+    },
+
+    3:{
+        name:"Зелье удачи III",
+        price:10000000,
+        luck:3,
+        icon:"🧪"
+    },
+
+    4:{
+        name:"Зелье удачи IV",
+        price:50000000,
+        luck:5,
+        icon:"🧪"
+    },
+
+    5:{
+        name:"Зелье удачи V",
+        price:100000000,
+        luck:8,
+        icon:"🧪"
+    }
+};
+
+
+/* =========================
+   CASE DATABASE
+========================= */
+
+const cases={
+
+ore:{
+    name:"Ore Case",
+    icon:"⛏️",
+    price:20,
+    items:[
+        {name:"Уголь",price:10,icon:"⚫",chance:40},
+        {name:"Железо",price:30,icon:"🔩",chance:30},
+        {name:"Золото",price:60,icon:"🟨",chance:15},
+        {name:"Алмаз",price:100,icon:"💎",chance:9},
+        {name:"Титан",price:250,icon:"🔷",chance:5},
+        {name:"Палладий",price:500,icon:"🟣",chance:1}
+    ]
+},
+
+nano:{
+    name:"Nano Case",
+    icon:"💻",
+    price:100,
+    items:[
+        {name:"Телефон",price:50,icon:"📱",chance:50},
+        {name:"ПК",price:100,icon:"🖥️",chance:35},
+        {name:"Геймпад",price:1000,icon:"🎮",chance:15}
+    ]
+},
+
+animal:{
+    name:"Animal Case",
+    icon:"🐾",
+    price:150,
+    items:[
+        {name:"Свинья",price:50,icon:"🐷",chance:50},
+        {name:"Собака",price:150,icon:"🐶",chance:40},
+        {name:"Лошадь",price:300,icon:"🐴",chance:9},
+        {name:"Кот",price:2500,icon:"🐱",chance:1}
+    ]
+},
+
+transport:{
+    name:"Transport Case",
+    icon:"🚗",
+    price:500,
+    items:[
+        {name:"Машина",price:250,icon:"🚗",chance:60},
+        {name:"Корабль",price:700,icon:"🚢",chance:30},
+        {name:"Поезд",price:1500,icon:"🚆",chance:9.5},
+        {name:"Самолёт",price:10000,icon:"✈️",chance:.5}
+    ]
+},
+
+halloween:{
+    name:"Halloween Case",
+    icon:"🎃",
+    price:10000,
+    limited:true,
+    items:[
+        {name:"Тыква",price:5000,icon:"🎃",chance:50},
+        {name:"Ведьмина шляпа",price:15000,icon:"🧙",chance:20},
+        {name:"Призрак",price:40000,icon:"👻",chance:10},
+        {name:"Вампир",price:50000,icon:"🧛",chance:5},
+        {name:"Золотой череп",price:100000,icon:"💀",chance:4.5},
+        {name:"Проклятый артефакт",price:1000000,icon:"🔮",chance:.1},
+        {name:"Паук",price:45000,icon:"🕷️",chance:10.4}
+    ]
+},
+
+newyear:{
+    name:"New Year Case",
+    icon:"🎄",
+    price:50000,
+    limited:true,
+    items:[
+        {name:"Подарок",price:5000,icon:"🎁",chance:45},
+        {name:"Снежинка",price:12000,icon:"❄️",chance:25},
+        {name:"Снеговик",price:25000,icon:"⛄",chance:15},
+        {name:"Ёлка",price:50000,icon:"🎄",chance:8},
+        {name:"Золотой колокольчик",price:100000,icon:"🔔",chance:5},
+        {name:"Рудольф",price:250000,icon:"🦌",chance:1.5},
+        {name:"Корона Деда Мороза",price:1000000,icon:"👑",chance:.5}
+    ]
+},
+
+space:{
+    name:"Space Case",
+    icon:"🚀",
+    price:100000,
+    limited:true,
+    items:[
+        {name:"Лунный камень",price:25000,icon:"🪨",chance:45},
+        {name:"Спутник",price:60000,icon:"🛰️",chance:25},
+        {name:"Луна",price:150000,icon:"🌕",chance:15},
+        {name:"Астронавт",price:400000,icon:"👨‍🚀",chance:9},
+        {name:"Ракета",price:1000000,icon:"🚀",chance:5},
+        {name:"Сатурн",price:5000000,icon:"🪐",chance:.9},
+        {name:"Галактика",price:25000000,icon:"🌌",chance:.1}
+    ]
+},
+
+golden:{
+    name:"Golden Era Case",
+    icon:"🏆",
+    price:1000000,
+    limited:true,
+    items:[
+        {name:"Золотая монета",price:100000,icon:"🪙",chance:45},
+        {name:"Золотые часы",price:250000,icon:"⌚",chance:25},
+        {name:"Золотое кольцо",price:600000,icon:"💍",chance:15},
+        {name:"Золотая корона",price:1500000,icon:"👑",chance:8},
+        {name:"Золотая статуя",price:5000000,icon:"🗿",chance:5},
+        {name:"Золотой трофей",price:15000000,icon:"🏆",chance:1.9},
+        {name:"Golden Relic",price:100000000,icon:"💎",chance:.1}
+    ]
+},
+
+nft:{
+    name:"NFT Case",
+    icon:"💎",
+    price:2500000,
+    items:[
+        {name:"Common NFT",price:1000000,icon:"🖼️",chance:45},
+        {name:"Rare NFT",price:2000000,icon:"🎨",chance:30},
+        {name:"Epic NFT",price:5000000,icon:"💠",chance:15},
+        {name:"Legendary NFT",price:15000000,icon:"👑",chance:7},
+        {name:"Mythic NFT",price:50000000,icon:"💎",chance:2.5},
+        {name:"Golden NFT",price:250000000,icon:"🌟",chance:.5}
+    ]
+}
+
+};
+
+
+/* =========================
+   PROMO
+========================= */
+
+const promoCodes={
+    START:10000,
+    "2026":50000,
+    LIMITED:500000
+};
+
+function openPromo(){
+
+    const input=prompt("🎟️ Введите промокод:");
+
+    if(input===null)
+        return;
+
+    const code=input.trim().toUpperCase();
+
+    if(!Object.prototype.hasOwnProperty.call(
+        promoCodes,
+        code
+    )){
+
+        alert("❌ Промокод не найден!");
+        return;
+    }
+
+    if(usedPromoCodes.includes(code)){
+
+        alert("⚠️ Этот промокод уже использован!");
+        return;
+    }
+
+    const reward=promoCodes[code];
+
+    balance+=reward;
+
+    usedPromoCodes.push(code);
+
+    updateBalance();
+
+    alert(
+        "🎉 ПРОМОКОД АКТИВИРОВАН!\n\n"+
+        "+"+
+        reward.toLocaleString("ru-RU")+
+        " 🪙"
+    );
+}
+
+
+/* =========================
+   SAVE
+========================= */
+
+function saveGame(){
+
+    localStorage.setItem(
+        "caseBalance",
+        String(balance)
+    );
+
+    localStorage.setItem(
+        "caseInventory",
+        JSON.stringify(inventory)
+    );
+
+    localStorage.setItem(
+        "usedPromoCodes",
+        JSON.stringify(usedPromoCodes)
+    );
+
+    localStorage.setItem(
+        "caseDiamonds",
+        String(diamonds)
+    );
+
+    localStorage.setItem(
+        "activeLuckLevel",
+        String(activeLuckLevel)
+    );
+
+    localStorage.setItem(
+        "luckEndTime",
+        String(luckEndTime)
+    );
+}
+
+
+/* =========================
+   BALANCE
+========================= */
+
+function updateBalance(){
+
+    const balanceEl=
+        document.getElementById("balance");
+
+    const diamondsEl=
+        document.getElementById("diamonds");
+
+    if(balanceEl){
+
+        balanceEl.textContent=
+            balance.toLocaleString("ru-RU");
+    }
+
+    if(diamondsEl){
+
+        diamondsEl.textContent=
+            diamonds.toLocaleString("ru-RU");
+    }
 
     saveGame();
 }
@@ -1877,7 +2602,220 @@ function getAllItems(){
     });
 
     return result;
-}/* =========================
+}
+
+
+/* =========================
+   SHOP
+========================= */
+
+function toggleShop(){
+
+    const shop=
+        document.getElementById("shopWindow");
+
+    if(!shop)
+        return;
+
+    shop.classList.toggle("open");
+
+    if(shop.classList.contains("open"))
+        updatePotionShop();
+}
+
+
+function updatePotionShop(){
+
+    const box=
+        document.getElementById("potionShop");
+
+    if(!box)
+        return;
+
+    box.innerHTML="";
+
+    Object.entries(potions).forEach(
+        ([level,potion])=>{
+
+            const card=
+                document.createElement("div");
+
+            card.className="potion-card";
+
+            const active=
+                activeLuckLevel===
+                Number(level) &&
+                Date.now()<luckEndTime;
+
+            card.innerHTML=`
+
+                <div class="potion-left">
+
+                    <div class="potion-icon">
+                        ${potion.icon}
+                    </div>
+
+                    <div>
+
+                        <div class="potion-name">
+                            ${potion.name}
+                        </div>
+
+                        <div class="potion-description">
+                            Удача ×${potion.luck}
+                            <br>
+                            Действует 60 секунд
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <div class="potion-price">
+                        ${potion.price.toLocaleString("ru-RU")} 🪙
+                    </div>
+
+                    <button
+                        class="potion-buy"
+                        onclick="buyPotion(${level})"
+                        ${active?"disabled":""}>
+
+                        ${active?"АКТИВНО":"ВЫПИТЬ"}
+
+                    </button>
+
+                </div>
+
+            `;
+
+            box.appendChild(card);
+        }
+    );
+}
+
+
+function buyPotion(level){
+
+    const potion=
+        potions[level];
+
+    if(!potion)
+        return;
+
+    if(
+        activeLuckLevel===Number(level) &&
+        Date.now()<luckEndTime
+    ){
+
+        alert("🧪 Это зелье уже активно!");
+        return;
+    }
+
+    if(balance<potion.price){
+
+        alert("❌ Недостаточно монет!");
+        return;
+    }
+
+    balance-=potion.price;
+
+    activeLuckLevel=
+        Number(level);
+
+    luckEndTime=
+        Date.now()+60000;
+
+    updateBalance();
+    updatePotionShop();
+    updateLuckTimer();
+
+    alert(
+        "🧪 "+
+        potion.name+
+        " выпито!\n\n"+
+        "Удача ×"+
+        potion.luck+
+        "\n"+
+        "Время: 60 секунд"
+    );
+}
+
+
+/* =========================
+   LUCK TIMER
+========================= */
+
+function updateLuckTimer(){
+
+    const timer=
+        document.getElementById("luckTimer");
+
+    const levelText=
+        document.getElementById("luckLevel");
+
+    const timeText=
+        document.getElementById("luckTime");
+
+    const fill=
+        document.getElementById("luckBarFill");
+
+    if(!timer)
+        return;
+
+    const remaining=
+        luckEndTime-Date.now();
+
+    if(
+        activeLuckLevel>0 &&
+        remaining>0
+    ){
+
+        const seconds=
+            Math.ceil(remaining/1000);
+
+        timer.classList.add("show");
+
+        levelText.textContent=
+            "Уровень "+
+            ["","I","II","III","IV","V"]
+            [activeLuckLevel];
+
+        timeText.textContent=
+            seconds+" сек";
+
+        fill.style.width=
+            Math.min(
+                100,
+                remaining/60000*100
+            )+"%";
+
+    }else{
+
+        if(activeLuckLevel!==0){
+
+            activeLuckLevel=0;
+            luckEndTime=0;
+
+            saveGame();
+            updatePotionShop();
+        }
+
+        timer.classList.remove("show");
+    }
+}
+
+
+/* Обновляем таймер каждую секунду */
+
+setInterval(
+    updateLuckTimer,
+    1000
+);
+
+
+/* =========================
    INSPECT CASE
 ========================= */
 
@@ -2019,79 +2957,89 @@ function updateOpenButton(){
 
 
 /* =========================
-   CHANCES
-========================= */
-
-function showChances(){
-
-    const box=
-        document.getElementById(
-            "chances"
-        );
-
-    box.innerHTML="";
-
-    if(selectedCase.black){
-
-        box.innerHTML=`
-
-            <div class="chance-row">
-                <span>Любой предмет игры</span>
-                <span>???</span>
-            </div>
-
-            <div style="color:#777;font-size:11px">
-                Шансы засекречены.
-            </div>
-
-        `;
-
-        return;
-    }
-
-    selectedCase.items.forEach(item=>{
-
-        const row=
-            document.createElement("div");
-
-        row.className="chance-row";
-
-        row.innerHTML=`
-
-            <span>
-                ${item.icon}
-                ${item.name}
-            </span>
-
-            <span>
-                ${item.chance}% ·
-                ${item.price.toLocaleString("ru-RU")} 🪙
-            </span>
-
-        `;
-
-        box.appendChild(row);
-    });
-}
-
-
-/* =========================
-   RANDOM ITEM
+   LUCK RANDOM
 ========================= */
 
 function randomItem(items){
 
+    if(!items || items.length===0)
+        return null;
+
+    if(
+        activeLuckLevel<=0 ||
+        Date.now()>=luckEndTime
+    ){
+
+        let random=
+            Math.random()*100;
+
+        let current=0;
+
+        for(const item of items){
+
+            current+=item.chance;
+
+            if(random<=current)
+                return item;
+        }
+
+        return items[items.length-1];
+    }
+
+
+    /*
+        Чем предмет реже,
+        тем сильнее его повышает зелье.
+
+        Первый предмет:
+        ×1
+
+        Последний:
+        максимальный бонус.
+    */
+
+    if(items.length===1)
+        return items[0];
+
+    const potion=
+        potions[activeLuckLevel];
+
+    const luck=
+        potion ? potion.luck : 1;
+
+    let total=0;
+
+    const weights=
+        items.map((item,index)=>{
+
+            const rarity=
+                index/(items.length-1);
+
+            const multiplier=
+                Math.pow(
+                    luck,
+                    rarity
+                );
+
+            const weight=
+                item.chance*
+                multiplier;
+
+            total+=weight;
+
+            return weight;
+        });
+
+
     let random=
-        Math.random()*100;
+        Math.random()*total;
 
-    let current=0;
+    for(let i=0;i<items.length;i++){
 
-    for(const item of items){
+        random-=weights[i];
 
-        current+=item.chance;
-
-        if(random<=current)
-            return item;
+        if(random<=0)
+            return items[i];
     }
 
     return items[items.length-1];
@@ -2258,12 +3206,17 @@ function createTrack(track,winner){
 
         let item;
 
-        if(i===winningIndex)
+        if(i===winningIndex){
+
             item=winner;
-        else
+
+        }else{
+
             item=randomItem(
                 selectedCase.items
             );
+
+        }
 
         const element=
             document.createElement("div");
@@ -2377,7 +3330,7 @@ function updateInventory(){
             <div class="item-actions">
 
                 <button
-                    class="small pin small"
+                    class="small pin"
                     onclick="toggleLock(${index})">
 
                     ${item.locked?"🔓":"📌"}
@@ -2648,8 +3601,10 @@ function resetGame(){
             "⚠️ СТАРТ С НУЛЯ\n\n"+
             "Будут удалены:\n"+
             "• монеты\n"+
+            "• алмазы\n"+
             "• инвентарь\n"+
-            "• использованные промокоды\n\n"+
+            "• использованные промокоды\n"+
+            "• активное зелье\n\n"+
             "Начать заново?"
         );
 
@@ -2657,8 +3612,11 @@ function resetGame(){
         return;
 
     balance=100;
+    diamonds=0;
     inventory=[];
     usedPromoCodes=[];
+    activeLuckLevel=0;
+    luckEndTime=0;
 
     localStorage.removeItem(
         "caseBalance"
@@ -2672,12 +3630,27 @@ function resetGame(){
         "usedPromoCodes"
     );
 
+    localStorage.removeItem(
+        "caseDiamonds"
+    );
+
+    localStorage.removeItem(
+        "activeLuckLevel"
+    );
+
+    localStorage.removeItem(
+        "luckEndTime"
+    );
+
     updateBalance();
     updateInventory();
+    updatePotionShop();
+    updateLuckTimer();
 
     alert(
         "Игра сброшена!\n"+
-        "💰 100 🪙"
+        "💰 100 🪙\n"+
+        "💎 0"
     );
 }
 
@@ -2709,19 +3682,12 @@ function startBlackMarket(){
         );
 
 
-    /*
-        ИЗМЕНЕНО ТОЛЬКО ЗДЕСЬ:
-        Black Market выбирает
-        случайный предмет из всего списка.
-    */
+    /* Теперь Black Market тоже учитывает удачу */
 
     const item=
-        selectedCase.items[
-            Math.floor(
-                Math.random()*
-                selectedCase.items.length
-            )
-        ];
+        randomItem(
+            selectedCase.items
+        );
 
 
     document.getElementById(
@@ -2849,13 +3815,6 @@ function closeUpgrade(){
 }
 
 
-/*
-    Формула шанса:
-
-    50 -> 1000 = 5%
-    50 -> 25000000 = минимум 0.01%
-*/
-
 function calculateUpgradeChance(from,to){
 
     if(!from || !to)
@@ -2894,8 +3853,6 @@ function renderUpgradeLists(){
     inventoryList.innerHTML="";
     targetList.innerHTML="";
 
-
-    /* ИНВЕНТАРЬ */
 
     inventory.forEach((item,index)=>{
 
@@ -2958,11 +3915,8 @@ function renderUpgradeLists(){
     });
 
 
-    /* ЦЕЛИ */
-
     let allItems=
         getAllItems();
-
 
     const unique=[];
 
@@ -2982,15 +3936,15 @@ function renderUpgradeLists(){
 
     if(upgradeYourItem){
 
-        unique.splice(
-            0,
-            unique.length,
-            ...unique.filter(
+        const filtered=
+            unique.filter(
                 item=>
                     item.price>
                     upgradeYourItem.price
-            )
-        );
+            );
+
+        unique.length=0;
+        unique.push(...filtered);
     }
 
 
@@ -3072,8 +4026,6 @@ function updateUpgradeUI(){
         );
 
 
-    /* YOUR ITEM */
-
     if(upgradeYourItem){
 
         yourBox.innerHTML=`
@@ -3093,6 +4045,7 @@ function updateUpgradeUI(){
                 </div>
 
             </div>
+
         `;
 
         yourBox.classList.add("active");
@@ -3110,8 +4063,6 @@ function updateUpgradeUI(){
         yourBox.classList.remove("active");
     }
 
-
-    /* TARGET */
 
     if(upgradeTargetItem){
 
@@ -3150,8 +4101,6 @@ function updateUpgradeUI(){
         targetBox.classList.remove("active");
     }
 
-
-    /* CHANCE */
 
     if(
         upgradeYourItem &&
@@ -3346,7 +4295,6 @@ function spinUpgrade(){
                 1
             );
 
-
             result.className=
                 "upgrade-result lose";
 
@@ -3381,13 +4329,10 @@ function spinUpgrade(){
 
             upgradeTargetItem=null;
 
-
             renderUpgradeLists();
             updateUpgradeUI();
 
-
         },1300);
-
 
     },5300);
 }
@@ -3399,8 +4344,7 @@ function spinUpgrade(){
 
 updateBalance();
 updateInventory();
+updatePotionShop();
+updateLuckTimer();
 
 </script>
-
-</body>
-</html>
