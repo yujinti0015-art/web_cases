@@ -133,6 +133,44 @@ h1{
     text-shadow:0 0 15px #00d9ff;
 }
 
+/* CRYSTAL */
+
+.crystal-title{
+    color:#c9a5ff;
+    text-shadow:
+        0 0 10px #8d4cff,
+        0 0 25px #00d9ff;
+}
+
+.crystal-case{
+    border-color:#5c4b9e;
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #24204a,
+            #101016 72%
+        );
+}
+
+.crystal-case:hover{
+    border-color:#a98aff;
+    box-shadow:
+        0 0 30px #7047ff66,
+        0 0 60px #00d9ff22,
+        0 15px 50px #0008;
+}
+
+.crystal-case .case-icon{
+    text-shadow:
+        0 0 15px #00d9ff,
+        0 0 35px #7047ff;
+}
+
+.index-crystal{
+    color:#c9a5ff;
+    text-shadow:0 0 10px #7047ff;
+}
+
 /* CASES */
 
 .cases{
@@ -1241,8 +1279,6 @@ h1{
             🛒
         </button>
 
-        <!-- НОВАЯ КНОПКА РЫНКА АЛМАЗОВ -->
-
         <button
             class="icon-btn"
             onclick="openDiamondMarket()"
@@ -1791,6 +1827,38 @@ h1{
 </div>
 
 
+<!-- DIAMOND CASES -->
+
+<div class="section-title crystal-title">
+    💎 DIAMOND CASES
+</div>
+
+
+<div class="cases">
+
+    <div class="case crystal-case">
+
+        <div class="case-icon">
+            💎
+        </div>
+
+        <div class="case-name">
+            CRYSTAL CASE
+        </div>
+
+        <div class="case-price">
+            Цена: <b>2 500 💎</b>
+        </div>
+
+        <button onclick="inspectCase('crystal')">
+            ОСМОТРЕТЬ
+        </button>
+
+    </div>
+
+</div>
+
+
 <!-- BLACK MARKET -->
 
 <div class="section-title black-title">
@@ -2122,12 +2190,8 @@ let usedPromoCodes =
         localStorage.getItem("usedPromoCodes") || "[]"
     );
 
-/* НОВАЯ ВАЛЮТА */
-
 let diamonds =
     Number(localStorage.getItem("caseDiamonds"));
-
-/* УДАЧА */
 
 let luckMultiplier =
     Number(localStorage.getItem("luckMultiplier"));
@@ -2286,6 +2350,29 @@ nft:{
         {name:"Mythic NFT",price:50000000,icon:"💎",chance:2.5},
         {name:"Golden NFT",price:250000000,icon:"🌟",chance:.5}
     ]
+},
+
+/* =========================
+   CRYSTAL CASE
+========================= */
+
+crystal:{
+    name:"CRYSTAL CASE",
+    icon:"💎",
+    price:2500,
+    currency:"diamonds",
+    items:[
+        {name:"Shattered",price:500000,icon:"🔹",chance:35},
+        {name:"Radiant",price:1500000,icon:"💠",chance:25},
+        {name:"Eternal",price:5000000,icon:"🔷",chance:15},
+        {name:"Celestial",price:15000000,icon:"✨",chance:10},
+        {name:"Voidborn",price:25000000,icon:"🌌",chance:6},
+        {name:"Abyssal",price:50000000,icon:"🌀",chance:4},
+        {name:"Oblivion",price:100000000,icon:"🖤",chance:2.5},
+        {name:"Genesis",price:199000000,icon:"🌟",chance:1.5},
+        {name:"Divine",price:270000000,icon:"👑",chance:.9},
+        {name:"Singularity",price:555000000,icon:"💎",chance:.1}
+    ]
 }
 
 };
@@ -2439,14 +2526,6 @@ function updateDiamonds(){
 let diamondRate=100;
 let diamondRateTime=10;
 
-
-/*
-    Курс:
-    1 💎 = от 1 до 100 000 🪙
-
-    Меняется каждые 10 секунд.
-*/
-
 function generateDiamondRate(){
 
     diamondRate=
@@ -2459,9 +2538,6 @@ function generateDiamondRate(){
     updateDiamondMarket();
 
 }
-
-
-/* Обновление рынка */
 
 function updateDiamondMarket(){
 
@@ -2496,12 +2572,6 @@ function updateDiamondMarket(){
     updateDiamondCost();
 }
 
-
-/*
-    Каждую секунду идёт таймер.
-    Каждые 10 секунд новый случайный курс.
-*/
-
 setInterval(()=>{
 
     diamondRateTime--;
@@ -2518,9 +2588,6 @@ setInterval(()=>{
 
 },1000);
 
-
-/* Открытие рынка */
-
 function openDiamondMarket(){
 
     updateDiamondMarket();
@@ -2531,9 +2598,6 @@ function openDiamondMarket(){
 
 }
 
-
-/* Закрытие рынка */
-
 function closeDiamondMarket(){
 
     document.getElementById(
@@ -2541,9 +2605,6 @@ function closeDiamondMarket(){
     ).classList.remove("show");
 
 }
-
-
-/* Расчёт стоимости */
 
 function updateDiamondCost(){
 
@@ -2596,9 +2657,6 @@ function updateDiamondCost(){
     }
 
 }
-
-
-/* Покупка алмазов */
 
 function buyDiamonds(){
 
@@ -2710,7 +2768,6 @@ const luckMultipliers={
     5:8
 };
 
-
 function openShop(){
 
     updateDiamonds();
@@ -2720,14 +2777,12 @@ function openShop(){
     ).classList.add("show");
 }
 
-
 function closeShop(){
 
     document.getElementById(
         "shopModal"
     ).classList.remove("show");
 }
-
 
 function buyLuck(level){
 
@@ -2765,7 +2820,6 @@ function buyLuck(level){
         "Время: 60 секунд"
     );
 }
-
 
 function updateLuckTimer(){
 
@@ -2807,7 +2861,6 @@ function updateLuckTimer(){
 
     timer.classList.add("show");
 }
-
 
 setInterval(
     updateLuckTimer,
@@ -2880,12 +2933,19 @@ function inspectCase(type){
         "modalIcon"
     ).textContent=selectedCase.icon;
 
+    const currency=
+        selectedCase.currency==="diamonds"
+        ?"💎"
+        :"🪙";
+
     document.getElementById(
         "modalPrice"
     ).innerHTML=
         "Цена: <b>"+
         selectedCase.price.toLocaleString("ru-RU")+
-        " 🪙</b>";
+        " "+
+        currency+
+        "</b>";
 
     createMultipliers();
     showChances();
@@ -2895,7 +2955,6 @@ function inspectCase(type){
         "caseModal"
     ).classList.add("show");
 }
-
 
 function closeCaseModal(){
 
@@ -2968,15 +3027,29 @@ function updateOpenButton(){
             "openSelected"
         );
 
+    const isDiamond=
+        selectedCase.currency==="diamonds";
+
+    const currency=
+        isDiamond
+        ?"💎"
+        :"🪙";
+
+    const available=
+        isDiamond
+        ?diamonds
+        :balance;
+
     btn.textContent=
         "ОТКРЫТЬ ×"+
         selectedAmount+
         " — "+
         total.toLocaleString("ru-RU")+
-        " 🪙";
+        " "+
+        currency;
 
     btn.disabled=
-        balance<total;
+        available<total;
 
     btn.onclick=startOpening;
 }
@@ -3045,11 +3118,6 @@ function showChances(){
 
 function randomItem(items){
 
-    /*
-        Black Market НЕ использует эту функцию.
-        Удача влияет только на обычные кейсы.
-    */
-
     let modifiedItems=
         items.map(item=>({
             ...item,
@@ -3102,15 +3170,47 @@ function startOpening(){
         selectedCase.price*
         selectedAmount;
 
-    if(balance<total){
+    const isDiamond=
+        selectedCase.currency==="diamonds";
 
-        alert("❌ Недостаточно монет!");
-        return;
+    if(isDiamond){
+
+        if(diamonds<total){
+
+            alert(
+                "❌ Недостаточно алмазов!\n\n"+
+                "Нужно: "+
+                total.toLocaleString("ru-RU")+
+                " 💎\n"+
+                "Есть: "+
+                diamonds.toLocaleString("ru-RU")+
+                " 💎"
+            );
+
+            return;
+        }
+
+        diamonds-=total;
+
+        updateDiamonds();
+        saveGame();
+
+    }else{
+
+        if(balance<total){
+
+            alert(
+                "❌ Недостаточно монет!"
+            );
+
+            return;
+        }
+
+        balance-=total;
+
+        updateBalance();
+
     }
-
-    balance-=total;
-
-    updateBalance();
 
     opening=true;
 
@@ -3541,9 +3641,19 @@ function updateIndex(){
                 "index-limited"
             );
 
+        if(c.currency==="diamonds")
+            title.classList.add(
+                "index-crystal"
+            );
+
+        const currency=
+            c.currency==="diamonds"
+            ?"💎"
+            :"🪙";
+
         title.textContent=
             `${c.icon} ${c.name} — `+
-            `${c.price.toLocaleString("ru-RU")} 🪙`;
+            `${c.price.toLocaleString("ru-RU")} ${currency}`;
 
         block.appendChild(title);
 
