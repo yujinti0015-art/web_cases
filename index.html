@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -180,6 +179,50 @@ h1{
 .index-crystal{
     color:#c9a5ff;
     text-shadow:0 0 10px #7047ff;
+}
+
+/* MARVEL */
+
+.marvel-case{
+    border-color:#6b2430;
+    background:
+        radial-gradient(circle at 50% 20%,#35151d,#101016 75%);
+}
+
+.marvel-case:hover{
+    border-color:#ff304f;
+    box-shadow:
+        0 0 30px #ff304f55,
+        0 0 60px #ff304f22,
+        0 15px 50px #0008;
+}
+
+.marvel-case .case-icon{
+    text-shadow:
+        0 0 15px #ff304f,
+        0 0 35px #ff304f;
+}
+
+/* DC */
+
+.dc-case{
+    border-color:#263f70;
+    background:
+        radial-gradient(circle at 50% 20%,#142342,#101016 75%);
+}
+
+.dc-case:hover{
+    border-color:#4b8cff;
+    box-shadow:
+        0 0 30px #4b8cff55,
+        0 0 60px #4b8cff22,
+        0 15px 50px #0008;
+}
+
+.dc-case .case-icon{
+    text-shadow:
+        0 0 15px #4b8cff,
+        0 0 35px #4b8cff;
 }
 
 /* CASES */
@@ -1284,7 +1327,6 @@ h1{
 
 </header>
 
-
 <!-- INVENTORY -->
 
 <div id="inventoryWindow" class="window inventory-window">
@@ -1300,7 +1342,6 @@ h1{
 
 </div>
 
-
 <!-- INDEX -->
 
 <div id="indexWindow" class="window index-window">
@@ -1313,7 +1354,6 @@ h1{
 <div id="indexContent"></div>
 
 </div>
-
 
 <!-- SHOP -->
 
@@ -1381,7 +1421,6 @@ h1{
 </div>
 </div>
 
-
 <!-- АЛМАЗНЫЙ РЫНОК -->
 
 <div id="diamondModal" class="diamond-modal">
@@ -1438,11 +1477,9 @@ oninput="updateDiamondCost()">
 </div>
 </div>
 
-
 <!-- LUCK TIMER -->
 
 <div id="luckTimer" class="luck-timer"></div>
-
 
 <!-- MAIN -->
 
@@ -1482,7 +1519,6 @@ oninput="updateDiamondCost()">
 
 </div>
 
-
 <!-- LIMITED -->
 
 <div class="section-title limited-title">
@@ -1519,8 +1555,25 @@ oninput="updateDiamondCost()">
 <button onclick="inspectCase('golden')">ОСМОТРЕТЬ</button>
 </div>
 
+<!-- MARVEL CASE -->
+
+<div class="case limited-case marvel-case">
+<div class="case-icon">🦸</div>
+<div class="case-name">MARVEL CASE</div>
+<div class="case-price">Цена: <b>5 000 000 🪙</b></div>
+<button onclick="inspectCase('marvel')">ОСМОТРЕТЬ</button>
 </div>
 
+<!-- DC CASE -->
+
+<div class="case limited-case dc-case">
+<div class="case-icon">🦇</div>
+<div class="case-name">DC CASE</div>
+<div class="case-price">Цена: <b>5 000 000 🪙</b></div>
+<button onclick="inspectCase('dc')">ОСМОТРЕТЬ</button>
+</div>
+
+</div>
 
 <!-- NFT -->
 
@@ -1538,7 +1591,6 @@ oninput="updateDiamondCost()">
 </div>
 
 </div>
-
 
 <!-- DIAMOND CASES -->
 
@@ -1566,9 +1618,6 @@ CRYSTAL CASE
 
 </div>
 
-
-<!-- НОВЫЙ DARK VOID CASE -->
-
 <div class="case dark-void-case">
 
 <div class="case-icon">
@@ -1590,7 +1639,6 @@ DARK VOID CASE
 </div>
 
 </div>
-
 
 <!-- BLACK MARKET -->
 
@@ -1624,7 +1672,6 @@ Black Market Case
 
 </main>
 
-
 <!-- CASE MODAL -->
 
 <div id="caseModal" class="modal">
@@ -1635,7 +1682,7 @@ Black Market Case
 
 <h2 id="modalTitle"></h2>
 
-<button class="close" onclick="closeCaseModal()">
+<button class="close" onclick="closeCaseModal">
 ×
 </button>
 
@@ -1664,7 +1711,6 @@ Black Market Case
 </div>
 </div>
 
-
 <!-- ROULETTE -->
 
 <div id="rouletteOverlay" class="roulette-overlay">
@@ -1684,7 +1730,6 @@ style="text-align:center;margin-top:18px;color:#aaa">
 
 </div>
 </div>
-
 
 <!-- BLACK MARKET ANIMATION -->
 
@@ -1718,7 +1763,6 @@ style="margin-top:5px;color:#aaa">
 
 </div>
 </div>
-
 
 <!-- UPGRADE -->
 
@@ -1826,7 +1870,6 @@ disabled>
 </div>
 </div>
 
-
 <script>
 
 /* SAVE DATA */
@@ -1868,7 +1911,6 @@ luckMultiplier=1;
 
 if(!Number.isFinite(luckEndTime))
 luckEndTime=0;
-
 
 /* CASE DATABASE */
 
@@ -1987,6 +2029,44 @@ items:[
 ]
 },
 
+/* MARVEL CASE */
+
+marvel:{
+name:"MARVEL CASE",
+icon:"🦸",
+price:5000000,
+limited:true,
+items:[
+{name:"Spider-Man",price:1000000,icon:"🕷️",chance:40},
+{name:"Captain America",price:5000000,icon:"🛡️",chance:25},
+{name:"Hulk",price:15000000,icon:"💚",chance:15},
+{name:"Thor",price:30000000,icon:"⚡",chance:10},
+{name:"Doctor Strange",price:75000000,icon:"🌀",chance:6},
+{name:"Wolverine",price:150000000,icon:"🧬",chance:3},
+{name:"Scarlet Witch",price:300000000,icon:"🔴",chance:.9},
+{name:"Doctor Doom",price:800000000,icon:"🟣",chance:.1}
+]
+},
+
+/* DC CASE */
+
+dc:{
+name:"DC CASE",
+icon:"🦇",
+price:5000000,
+limited:true,
+items:[
+{name:"Batman",price:1000000,icon:"🦇",chance:40},
+{name:"The Flash",price:5000000,icon:"⚡",chance:25},
+{name:"Wonder Woman",price:15000000,icon:"🛡️",chance:15},
+{name:"Aquaman",price:30000000,icon:"🔱",chance:10},
+{name:"Green Lantern",price:75000000,icon:"💚",chance:6},
+{name:"Superman",price:150000000,icon:"☀️",chance:3},
+{name:"Joker",price:300000000,icon:"🃏",chance:.9},
+{name:"Darkseid",price:800000000,icon:"⚫",chance:.1}
+]
+},
+
 nft:{
 name:"NFT Case",
 icon:"💎",
@@ -2044,7 +2124,6 @@ items:[
 
 };
 
-
 /* PROMO */
 
 const promoCodes={
@@ -2091,7 +2170,6 @@ alert(
 
 }
 
-
 /* SAVE */
 
 function saveGame(){
@@ -2104,7 +2182,6 @@ localStorage.setItem("luckEndTime",String(luckEndTime));
 
 }
 
-
 /* BALANCE */
 
 function updateBalance(){
@@ -2116,7 +2193,6 @@ updateDiamonds();
 saveGame();
 
 }
-
 
 /* DIAMONDS */
 
@@ -2132,7 +2208,6 @@ if(shopDiamondsBox)
 shopDiamondsBox.textContent=diamonds.toLocaleString("ru-RU");
 
 }
-
 
 /* DIAMOND MARKET */
 
@@ -2180,7 +2255,6 @@ updateDiamondMarket();
 
 },1000);
 
-
 function openDiamondMarket(){
 
 updateDiamondMarket();
@@ -2223,7 +2297,6 @@ if(buyButton)
 buyButton.disabled=balance<cost;
 
 }
-
 
 function buyDiamonds(){
 
@@ -2280,7 +2353,6 @@ diamondRate.toLocaleString("ru-RU")+" 🪙"
 updateDiamondCost();
 
 }
-
 
 /* SHOP */
 
@@ -2378,7 +2450,6 @@ timer.classList.add("show");
 
 setInterval(updateLuckTimer,250);
 
-
 /* ALL ITEMS */
 
 function getAllItems(){
@@ -2402,7 +2473,6 @@ icon:item.icon
 return result;
 
 }
-
 
 /* INSPECT CASE */
 
@@ -2429,6 +2499,8 @@ items:getAllItems()
 selectedCase=cases[type];
 
 }
+
+if(!selectedCase)return;
 
 selectedAmount=1;
 
@@ -2458,7 +2530,6 @@ document.getElementById("caseModal").classList.add("show");
 
 }
 
-
 function closeCaseModal(){
 
 if(opening)return;
@@ -2467,16 +2538,7 @@ document.getElementById("caseModal").classList.remove("show");
 
 }
 
-
 /* MULTIPLIERS */
-
-/*
-Обычные кейсы:
-×1 — ×10
-
-Black Market:
-только ×1
-*/
 
 function createMultipliers(){
 
@@ -2522,7 +2584,6 @@ box.appendChild(btn);
 
 }
 
-
 /* OPEN BUTTON */
 
 function updateOpenButton(){
@@ -2556,7 +2617,6 @@ btn.disabled=available<total;
 btn.onclick=startOpening;
 
 }
-
 
 /* CHANCES */
 
@@ -2611,7 +2671,6 @@ box.appendChild(row);
 
 }
 
-
 /* RANDOM ITEM */
 
 function randomItem(items){
@@ -2654,7 +2713,6 @@ return item;
 return modifiedItems[modifiedItems.length-1];
 
 }
-
 
 /* START OPENING */
 
@@ -2717,7 +2775,6 @@ else
 startNormalOpening();
 
 }
-
 
 /* NORMAL OPENING */
 
@@ -2808,7 +2865,6 @@ opening=false;
 
 }
 
-
 /* CREATE TRACK */
 
 function createTrack(track,winner){
@@ -2850,7 +2906,6 @@ track.appendChild(element);
 
 }
 
-
 function animateTrack(track){
 
 const parent=track.parentElement;
@@ -2873,7 +2928,6 @@ track.style.transform=
 },50);
 
 }
-
 
 /* INVENTORY */
 
@@ -2956,7 +3010,6 @@ box.appendChild(div);
 
 }
 
-
 /* LOCK */
 
 function toggleLock(index){
@@ -2970,7 +3023,6 @@ saveGame();
 updateInventory();
 
 }
-
 
 /* SELL */
 
@@ -2999,7 +3051,6 @@ updateBalance();
 updateInventory();
 
 }
-
 
 function sellAll(){
 
@@ -3039,7 +3090,6 @@ updateInventory();
 
 }
 
-
 /* WINDOWS */
 
 function toggleInventory(){
@@ -3049,7 +3099,6 @@ document
 .classList.toggle("open");
 
 }
-
 
 function toggleIndex(){
 
@@ -3062,7 +3111,6 @@ if(win.classList.contains("open"))
 updateIndex();
 
 }
-
 
 /* INDEX */
 
@@ -3142,7 +3190,6 @@ box.appendChild(block);
 
 });
 
-
 const black=document.createElement("div");
 
 black.className="index-case";
@@ -3183,7 +3230,6 @@ black.innerHTML=`
 box.appendChild(black);
 
 }
-
 
 /* RESET */
 
@@ -3230,7 +3276,6 @@ alert(
 );
 
 }
-
 
 /* BLACK MARKET */
 
@@ -3327,7 +3372,6 @@ opening=false;
 
 }
 
-
 /* UPGRADE */
 
 let upgradeYourItem=null;
@@ -3379,7 +3423,6 @@ return Number(chance.toFixed(2));
 
 }
 
-
 function renderUpgradeLists(){
 
 const inventoryList=
@@ -3390,7 +3433,6 @@ document.getElementById("upgradeTargetList");
 
 inventoryList.innerHTML="";
 targetList.innerHTML="";
-
 
 inventory.forEach((item,index)=>{
 
@@ -3449,7 +3491,6 @@ inventoryList.appendChild(div);
 
 });
 
-
 let allItems=getAllItems();
 
 const unique=[];
@@ -3468,7 +3509,6 @@ unique.push(item);
 
 });
 
-
 if(upgradeYourItem){
 
 unique.splice(
@@ -3482,7 +3522,6 @@ upgradeYourItem.price
 );
 
 }
-
 
 unique.forEach(item=>{
 
@@ -3537,7 +3576,6 @@ targetList.appendChild(div);
 
 }
 
-
 function updateUpgradeUI(){
 
 const yourBox=
@@ -3551,7 +3589,6 @@ document.getElementById("upgradeChance");
 
 const spin=
 document.getElementById("upgradeSpinButton");
-
 
 if(upgradeYourItem){
 
@@ -3591,7 +3628,6 @@ yourBox.classList.remove("active");
 
 }
 
-
 if(upgradeTargetItem){
 
 targetBox.innerHTML=`
@@ -3630,7 +3666,6 @@ targetBox.classList.remove("active");
 
 }
 
-
 if(upgradeYourItem&&upgradeTargetItem){
 
 const chance=
@@ -3647,14 +3682,12 @@ chanceBox.textContent="0%";
 
 }
 
-
 spin.disabled=
 !upgradeYourItem||
 !upgradeTargetItem||
 upgradeSpinning;
 
 }
-
 
 /* UPGRADE SPIN */
 
@@ -3815,7 +3848,6 @@ updateUpgradeUI();
 
 }
 
-
 /* START */
 
 updateBalance();
@@ -3828,4 +3860,3 @@ updateDiamondMarket();
 
 </body>
 </html>
-```
