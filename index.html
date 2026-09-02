@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -131,6 +130,37 @@ h1{
 .crystal-title{
     color:#c9a5ff;
     text-shadow:0 0 10px #8d4cff,0 0 25px #00d9ff;
+}
+
+/* =========================
+   PREMIUM CASES
+========================= */
+
+.premium-title{
+    color:#ffd86b;
+    text-shadow:
+        0 0 10px #ffb300,
+        0 0 25px #ff7b00;
+}
+
+.premium-case{
+    border-color:#8a5b19;
+    background:
+        radial-gradient(circle at 50% 15%,#3b2910,#111016 72%);
+}
+
+.premium-case:hover{
+    border-color:#ffd34d;
+    box-shadow:
+        0 0 30px #ffb30066,
+        0 0 65px #ff7b0022,
+        0 15px 50px #0008;
+}
+
+.premium-case .case-icon{
+    text-shadow:
+        0 0 15px #ffd34d,
+        0 0 35px #ff8c00;
 }
 
 .crystal-case{
@@ -1524,6 +1554,8 @@ oninput="updateDiamondCost()">
 
 </div>
 
+<!-- NFT НЕ ТРОГАЛ -->
+
 <div class="section-title nft-title">
 💎 NFT CASES
 </div>
@@ -1535,6 +1567,23 @@ oninput="updateDiamondCost()">
 <div class="case-name">NFT Case</div>
 <div class="case-price">Цена: <b>2 500 000 🪙</b></div>
 <button onclick="inspectCase('nft')">ОСМОТРЕТЬ</button>
+</div>
+
+</div>
+
+<!-- НОВЫЙ РАЗДЕЛ PREMIUM CASES -->
+
+<div class="section-title premium-title">
+👑 PREMIUM CASES
+</div>
+
+<div class="cases">
+
+<div class="case premium-case">
+<div class="case-icon">🦖</div>
+<div class="case-name">PREHISTORIC CASE</div>
+<div class="case-price">Цена: <b>10 000 000 🪙</b></div>
+<button onclick="inspectCase('prehistoric')">ОСМОТРЕТЬ</button>
 </div>
 
 </div>
@@ -1622,8 +1671,6 @@ Black Market Case
 <div class="modal-header">
 
 <h2 id="modalTitle"></h2>
-
-<!-- ИСПРАВЛЕНО: добавлены () -->
 
 <button class="close" onclick="closeCaseModal()">
 ×
@@ -1989,6 +2036,8 @@ items:[
 ]
 },
 
+/* NFT НЕ ИЗМЕНЁН */
+
 nft:{
 name:"NFT Case",
 icon:"💎",
@@ -2001,6 +2050,27 @@ items:[
 {name:"Legendary NFT",price:15000000,icon:"👑",chance:7},
 {name:"Mythic NFT",price:50000000,icon:"💎",chance:2.5},
 {name:"Golden NFT",price:250000000,icon:"🌟",chance:.5}
+]
+},
+
+/* =========================
+   НОВЫЙ PREMIUM CASE
+========================= */
+
+prehistoric:{
+name:"PREHISTORIC CASE",
+icon:"🦖",
+price:10000000,
+premium:true,
+items:[
+{name:"Fossil",price:5000000,icon:"🦴",chance:40},
+{name:"Dinosaur Egg",price:10000000,icon:"🥚",chance:25},
+{name:"Triceratops",price:25000000,icon:"🦏",chance:15},
+{name:"Velociraptor",price:50000000,icon:"🦎",chance:10},
+{name:"T-Rex",price:100000000,icon:"🦖",chance:6},
+{name:"Spinosaurus",price:250000000,icon:"🐊",chance:3},
+{name:"Ancient Dragon",price:500000000,icon:"🐉",chance:.9},
+{name:"PRIMAL TITAN",price:1000000000,icon:"👑",chance:.1}
 ]
 },
 
@@ -3051,6 +3121,9 @@ title.classList.add("index-limited");
 if(c.currency==="diamonds")
 title.classList.add("index-crystal");
 
+if(c.premium)
+title.style.color="#ffd86b";
+
 const currency=
 c.currency==="diamonds"
 ?"💎"
@@ -3768,4 +3841,3 @@ updateDiamondMarket();
 
 </body>
 </html>
-```
