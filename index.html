@@ -14,540 +14,306 @@ body{
     font-family:Arial,sans-serif;
     color:#fff;
     background:
-        radial-gradient(circle at 20% 20%,#30206055,transparent 30%),
-        radial-gradient(circle at 80% 80%,#1d4d8055,transparent 30%),
-        #08080d;
+        radial-gradient(circle at 50% -10%,#35206b,#09090f 65%);
 }
 
 button{
     border:0;
-    color:#fff;
+    border-radius:10px;
+    padding:11px 16px;
+    color:white;
+    background:linear-gradient(135deg,#7047ff,#9b5cff);
+    font-weight:bold;
     cursor:pointer;
-    font-weight:900;
+    transition:.2s;
 }
 
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 20px #7047ff66;
+}
+
+button:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+    transform:none;
+    box-shadow:none;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
 .header{
-    height:70px;
+    position:fixed;
+    z-index:100;
+    top:0;
+    left:0;
+    width:100%;
+    height:72px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     padding:0 20px;
+    background:#0c0c14ee;
+    border-bottom:1px solid #29293c;
+    backdrop-filter:blur(12px);
+}
+
+.header-left,
+.header-right{
     display:flex;
     align-items:center;
-    gap:10px;
-    background:#101018ee;
-    border-bottom:1px solid #29293a;
-    position:sticky;
-    top:0;
-    z-index:100;
-    backdrop-filter:blur(15px);
+    gap:8px;
 }
 
 .logo{
     font-size:22px;
-    font-weight:1000;
-    margin-right:auto;
+    font-weight:900;
     letter-spacing:2px;
-}
-
-.logo span{
-    color:#8d62ff;
+    text-shadow:0 0 15px #7047ff;
 }
 
 .icon-btn{
     width:42px;
     height:42px;
-    border-radius:10px;
-    background:#191923;
-    border:1px solid #303044;
-    transition:.2s;
-}
-
-.icon-btn:hover{
-    background:#272735;
-    border-color:#7550ff;
-    transform:translateY(-2px);
+    padding:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#171722;
+    border:1px solid #393958;
+    box-shadow:none;
 }
 
 .balance{
-    padding:11px 14px;
-    border-radius:10px;
-    background:#171720;
-    border:1px solid #2d2d3d;
-    font-size:13px;
-    font-weight:900;
+    padding:10px 14px;
+    border-radius:11px;
+    background:#171722;
+    border:1px solid #393958;
 }
 
+.promo{
+    background:#171722;
+    border:1px solid #393958;
+    box-shadow:none;
+}
+
+
+/* =========================
+   SHOP BUTTON
+========================= */
+
+.shop-btn{
+    padding:10px 13px;
+    background:linear-gradient(
+        135deg,
+        #20a95a,
+        #36d878
+    );
+    border:1px solid #54ef91;
+    box-shadow:
+        0 0 12px #25d76a44;
+}
+
+.shop-btn:hover{
+    box-shadow:
+        0 0 22px #25d76a88;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
 .container{
-    width:min(1250px,94%);
-    margin:30px auto;
+    max-width:1100px;
+    margin:auto;
+    padding:105px 20px 60px;
+}
+
+h1{
+    text-align:center;
+    font-size:40px;
+    text-shadow:0 0 20px #7047ff;
 }
 
 .section-title{
-    margin:35px 0 15px;
-    font-size:22px;
-    font-weight:1000;
+    margin:42px 0 18px;
+    font-size:27px;
+    font-weight:900;
 }
 
-.section-title:first-child{
-    margin-top:0;
+.limited-title{
+    color:#ff914d;
+    text-shadow:0 0 15px #ff6b22;
 }
+
+.black-title{
+    color:#ddd;
+}
+
+
+/* =========================
+   NFT
+========================= */
+
+.nft-title{
+    color:#6ee7ff;
+    text-shadow:0 0 15px #00d9ff;
+}
+
+
+/* =========================
+   CASES
+========================= */
 
 .cases{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
-    gap:15px;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
 }
 
 .case{
-    min-height:250px;
-    padding:20px;
-    border-radius:18px;
-    background:linear-gradient(145deg,#171722,#0e0e15);
-    border:1px solid #29293a;
-    box-shadow:0 15px 35px #0006;
+    padding:28px;
+    text-align:center;
+    border-radius:20px;
+    background:linear-gradient(145deg,#191925,#101016);
+    border:1px solid #34344c;
+    box-shadow:0 15px 50px #0008;
     transition:.25s;
-    position:relative;
-    overflow:hidden;
 }
 
 .case:hover{
     transform:translateY(-5px);
-    border-color:#7651ff;
-    box-shadow:0 20px 50px #0009,0 0 25px #7047ff22;
+    border-color:#7047ff;
 }
 
 .case-icon{
-    height:110px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:75px;
-}
-
-.case-name{
-    text-align:center;
-    font-size:16px;
-    font-weight:1000;
-}
-
-.case-price{
-    text-align:center;
-    color:#aaa;
-    margin-top:8px;
-    font-size:12px;
-}
-
-.open-case{
-    width:100%;
-    margin-top:15px;
-    padding:12px;
-    border-radius:10px;
-    background:linear-gradient(135deg,#6840e8,#9a62ff);
-    transition:.2s;
-}
-
-.open-case:hover{
-    filter:brightness(1.15);
-    transform:scale(1.02);
-}
-
-.limited-badge{
-    position:absolute;
-    top:10px;
-    right:10px;
-    padding:5px 8px;
-    border-radius:7px;
-    background:#e54848;
-    font-size:9px;
-    font-weight:1000;
-}
-
-.nft{
-    border-color:#b05cff;
-    box-shadow:0 0 30px #9c4cff22;
-}
-
-.nft .case-name{
-    color:#d38aff;
-}
-
-.window{
-    position:fixed;
-    z-index:500;
-    top:85px;
-    right:-500px;
-    width:450px;
-    max-width:calc(100% - 20px);
-    max-height:calc(100vh - 100px);
-    overflow:auto;
-    padding:20px;
-    border-radius:18px;
-    background:#111119f5;
-    border:1px solid #333348;
-    box-shadow:0 25px 80px #000c;
-    backdrop-filter:blur(20px);
-    transition:.3s;
-}
-
-.window.open{
-    right:15px;
-}
-
-.window-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:20px;
-}
-
-.window-header h2{
-    margin:0;
-    font-size:19px;
-}
-
-.close{
-    width:34px;
-    height:34px;
-    border-radius:9px;
-    background:#252532;
-    font-size:20px;
-}
-
-.close:hover{
-    background:#e04444;
-}
-
-.inventory-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:9px;
-}
-
-.inv-item{
-    padding:12px 7px;
-    text-align:center;
-    border-radius:10px;
-    background:#181821;
-    border:1px solid #29293a;
-}
-
-.inv-icon{
-    font-size:30px;
-}
-
-.inv-name{
-    margin-top:5px;
-    font-size:10px;
-    font-weight:900;
-}
-
-.inv-price{
-    color:#9d86ff;
-    font-size:10px;
-    margin-top:3px;
-}
-
-.inv-count{
-    color:#777;
-    font-size:9px;
-    margin-top:3px;
-}
-
-.case-modal{
-    position:fixed;
-    inset:0;
-    z-index:700;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    background:#000b;
-    backdrop-filter:blur(10px);
-}
-
-.case-modal.show{
-    display:flex;
-}
-
-.modal-box{
-    width:550px;
-    max-width:94%;
-    padding:25px;
-    border-radius:20px;
-    background:#111119;
-    border:1px solid #36364a;
-    box-shadow:0 30px 100px #000;
-}
-
-.modal-title{
-    text-align:center;
-    font-size:22px;
-    font-weight:1000;
-}
-
-.modal-price{
-    text-align:center;
-    color:#999;
-    margin-top:6px;
-    font-size:12px;
-}
-
-.modal-items{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
-    margin-top:20px;
-}
-
-.modal-item{
-    padding:10px;
-    border-radius:10px;
-    background:#191923;
-    border:1px solid #303045;
-    text-align:center;
-}
-
-.quantity{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
-    margin-top:20px;
-}
-
-.quantity button{
-    padding:12px;
-    border-radius:10px;
-    background:#1b1b27;
-    border:1px solid #303045;
-}
-
-.quantity button:hover,
-.quantity button.active{
-    border-color:#815cff;
-    background:#7047ff;
-}
-
-.start-btn{
-    width:100%;
-    margin-top:15px;
-    padding:14px;
-    border-radius:11px;
-    background:linear-gradient(135deg,#7047ff,#a66aff);
-}
-
-.roulette{
-    position:fixed;
-    inset:0;
-    z-index:800;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    background:#050509f5;
-    backdrop-filter:blur(8px);
-}
-
-.roulette.show{
-    display:flex;
-}
-
-.roulette-title{
-    margin-bottom:25px;
-    font-size:22px;
-    font-weight:1000;
-}
-
-.roulette-window{
-    width:min(900px,92%);
-    height:160px;
-    overflow:hidden;
-    position:relative;
-    border-radius:15px;
-    border:1px solid #39394d;
-    background:#101018;
-}
-
-.roulette-line{
-    height:100%;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    position:absolute;
-    left:0;
-}
-
-.roulette-item{
-    flex:0 0 130px;
-    height:130px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    border-radius:13px;
-    background:#191923;
-    border:1px solid #303045;
-}
-
-.roulette-item-icon{
-    font-size:45px;
-}
-
-.roulette-item-name{
-    margin-top:7px;
-    font-size:10px;
-    font-weight:900;
-}
-
-.roulette-pointer{
-    position:absolute;
-    left:50%;
-    top:0;
-    width:3px;
-    height:100%;
-    background:#fff;
-    box-shadow:0 0 15px #fff;
-    transform:translateX(-50%);
-    z-index:5;
-}
-
-.win-box{
-    margin-top:25px;
-    text-align:center;
-    display:none;
-}
-
-.win-box.show{
-    display:block;
-}
-
-.win-icon{
     font-size:70px;
 }
 
-.win-name{
-    margin-top:5px;
-    font-size:22px;
-    font-weight:1000;
+.case-name{
+    margin:8px 0;
+    font-size:23px;
+    font-weight:bold;
 }
 
-.win-value{
-    margin-top:6px;
-    color:#9d84ff;
+.case-price{
+    margin-bottom:18px;
+    color:#aaa;
 }
 
-.win-close{
-    margin-top:15px;
-    padding:11px 30px;
-    border-radius:10px;
-    background:#7047ff;
+.limited-case{
+    border-color:#6d3b27;
 }
 
-.black-market{
-    width:min(1100px,94%);
-    margin:20px auto;
-    padding:25px;
-    border-radius:20px;
-    background:linear-gradient(145deg,#15101d,#0d0b12);
-    border:1px solid #4b285f;
-    box-shadow:0 0 40px #b31cff14;
+.limited-case:hover{
+    border-color:#ff7135;
 }
 
-.black-title{
-    text-align:center;
-    color:#d36cff;
-    font-size:24px;
-    font-weight:1000;
+.space-case{
+    border-color:#38558c;
 }
 
-.black-subtitle{
-    text-align:center;
-    color:#777;
-    font-size:11px;
-    margin-top:5px;
+.space-case:hover{
+    border-color:#5f91ff;
 }
 
-.black-btn{
+.golden-case{
+    border-color:#796526;
+    background:
+        radial-gradient(
+            circle at center,
+            #30270e,
+            #101016 70%
+        );
+}
+
+.golden-case:hover{
+    border-color:#ffd83e;
+}
+
+.nft-case{
+    border-color:#236b7a;
+    background:
+        radial-gradient(
+            circle at center,
+            #102c35,
+            #101016 70%
+        );
+}
+
+.nft-case:hover{
+    border-color:#00d9ff;
+    box-shadow:
+        0 0 25px #00d9ff33,
+        0 15px 50px #0008;
+}
+
+.black-case{
+    background:
+        radial-gradient(
+            circle,
+            #191919,
+            #050505 75%
+        );
+    border-color:#505050;
+}
+
+
+/* =========================
+   WINDOWS
+========================= */
+
+.window{
+    position:fixed;
+    top:82px;
+    z-index:300;
+    display:none;
+    padding:20px;
+    max-height:calc(100vh - 100px);
+    overflow-y:auto;
+    background:#12121df7;
+    border:1px solid #393958;
+    border-radius:16px;
+    box-shadow:0 20px 70px #000b;
+    backdrop-filter:blur(15px);
+}
+
+.window.open{
     display:block;
-    width:260px;
-    max-width:100%;
-    margin:20px auto 0;
-    padding:13px;
-    border-radius:11px;
-    background:linear-gradient(135deg,#9d20ff,#d855ff);
 }
 
-.upgrade-list{
-    display:grid;
-    gap:10px;
+.inventory-window{
+    right:15px;
+    width:390px;
 }
 
-.upgrade-item{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:10px;
-    border-radius:11px;
-    background:#181821;
-    border:1px solid #2d2d40;
+.index-window{
+    left:15px;
+    width:420px;
 }
 
-.upgrade-item-icon{
-    font-size:35px;
-}
 
-.upgrade-item-info{
-    flex:1;
-}
-
-.upgrade-item-name{
-    font-size:11px;
-    font-weight:900;
-}
-
-.upgrade-item-price{
-    color:#9b83ff;
-    font-size:10px;
-    margin-top:3px;
-}
-
-.upgrade-item button{
-    padding:9px;
-    border-radius:8px;
-    background:#7047ff;
-    font-size:9px;
-}
-
-.promo{
-    display:flex;
-    gap:8px;
-}
-
-.promo input{
-    flex:1;
-    min-width:0;
-    padding:11px;
-    border-radius:9px;
-    border:1px solid #303045;
-    background:#181821;
-    color:#fff;
-    outline:none;
-}
-
-.promo button{
-    padding:11px 15px;
-    border-radius:9px;
-    background:#7047ff;
-}
-
-.empty{
-    color:#666;
-    text-align:center;
-    padding:30px 5px;
-    font-size:12px;
-}
-
-/* SHOP */
+/* =========================
+   SHOP WINDOW
+========================= */
 
 .shop-window{
-    right:-500px;
-    width:420px;
+    right:15px;
+    width:430px;
+}
+
+.shop-window .window-header{
+    margin-bottom:18px;
+}
+
+.shop-subtitle{
+    margin:0 0 15px;
+    color:#888;
+    font-size:12px;
 }
 
 .potion-card{
@@ -555,68 +321,98 @@ button{
     align-items:center;
     justify-content:space-between;
     gap:12px;
-    padding:14px;
-    margin-bottom:9px;
-    border-radius:13px;
+    padding:13px;
+    margin-bottom:8px;
+    border-radius:12px;
     background:#15151f;
-    border:1px solid #303044;
+    border:1px solid #29293c;
+    transition:.2s;
 }
 
-.potion-left{
+.potion-card:hover{
+    border-color:#31d86f;
+    box-shadow:0 0 15px #31d86f22;
+}
+
+.potion-info{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:11px;
     min-width:0;
 }
 
 .potion-icon{
-    width:42px;
-    height:42px;
+    width:45px;
+    height:45px;
     display:flex;
     align-items:center;
     justify-content:center;
     border-radius:11px;
-    background:#20202f;
-    font-size:25px;
+    background:#102318;
+    border:1px solid #2c9d55;
+    font-size:27px;
 }
 
 .potion-name{
-    font-weight:900;
-    font-size:13px;
+    font-weight:bold;
+    font-size:14px;
 }
 
-.potion-description{
-    margin-top:3px;
-    color:#888;
-    font-size:10px;
+.potion-luck{
+    margin-top:4px;
+    color:#54e887;
+    font-size:11px;
 }
 
 .potion-price{
-    margin-top:4px;
-    color:#b9a8ff;
-    font-size:11px;
+    margin-top:3px;
+    color:#aaa;
+    font-size:10px;
 }
 
 .potion-buy{
     min-width:105px;
-    padding:9px 8px;
-    border-radius:9px;
-    background:#7047ff;
-    font-size:10px;
+    padding:9px 7px;
+    background:linear-gradient(
+        135deg,
+        #15984c,
+        #32cf70
+    );
 }
+
+.potion-active{
+    border-color:#42e978;
+    box-shadow:
+        0 0 18px #42e97833;
+}
+
+.potion-active .potion-buy{
+    background:#285337;
+}
+
+.potion-disabled{
+    opacity:.55;
+}
+
+
+/* =========================
+   LUCK TIMER
+========================= */
 
 .luck-timer{
     position:fixed;
-    z-index:900;
+    z-index:450;
     left:15px;
     bottom:15px;
-    width:245px;
-    padding:13px;
-    border-radius:14px;
-    background:#12121df5;
-    border:1px solid #7047ff;
-    box-shadow:0 0 25px #7047ff44,0 15px 50px #0009;
+    width:280px;
     display:none;
+    padding:13px;
+    border-radius:13px;
+    background:#10151bf5;
+    border:1px solid #39db72;
+    box-shadow:
+        0 0 25px #39db7233,
+        0 15px 40px #0009;
     backdrop-filter:blur(12px);
 }
 
@@ -624,102 +420,572 @@ button{
     display:block;
 }
 
-.luck-title{
-    font-size:11px;
-    color:#b9a2ff;
-    letter-spacing:1px;
-    font-weight:900;
+.luck-timer-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:9px;
 }
 
-.luck-level{
-    margin-top:3px;
-    font-size:15px;
-    font-weight:900;
+.luck-name{
+    font-size:12px;
+    font-weight:bold;
 }
 
 .luck-time{
-    margin-top:5px;
-    color:#aaa;
-    font-size:12px;
+    color:#52ef83;
+    font-size:13px;
+    font-weight:900;
+}
+
+.luck-bar-background{
+    width:100%;
+    height:7px;
+    overflow:hidden;
+    border-radius:20px;
+    background:#202a23;
 }
 
 .luck-bar{
-    height:6px;
-    margin-top:8px;
-    overflow:hidden;
-    border-radius:10px;
-    background:#29293c;
+    width:100%;
+    height:100%;
+    border-radius:20px;
+    background:linear-gradient(
+        90deg,
+        #24bd5d,
+        #61f28d
+    );
+    box-shadow:0 0 10px #42e978;
+    transition:width .3s linear;
 }
 
-.luck-bar-fill{
-    height:100%;
-    width:100%;
-    background:linear-gradient(90deg,#7047ff,#d27aff);
-    transition:width 1s linear;
+
+/* =========================
+   WINDOW HEADER
+========================= */
+
+.window-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:15px;
 }
+
+.window-header h2{
+    margin:0;
+}
+
+.close{
+    width:33px;
+    height:33px;
+    padding:0;
+    background:#29293b;
+    box-shadow:none;
+}
+
+.sell-all{
+    width:100%;
+    margin-bottom:12px;
+    background:#d53c3c;
+}
+
+
+/* =========================
+   INVENTORY
+========================= */
+
+.inventory-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    padding:10px;
+    margin-bottom:7px;
+    border-radius:10px;
+    background:#15151f;
+    border:1px solid #29293c;
+}
+
+.inventory-item.locked{
+    border-color:#7047ff;
+    background:#1b192c;
+}
+
+.item-info{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    min-width:0;
+}
+
+.item-icon{
+    font-size:30px;
+}
+
+.item-name{
+    font-size:13px;
+    font-weight:bold;
+}
+
+.item-price{
+    color:#aaa;
+    font-size:11px;
+    margin-top:3px;
+}
+
+.item-actions{
+    display:flex;
+    gap:5px;
+}
+
+.small{
+    padding:7px 8px;
+    font-size:10px;
+    box-shadow:none;
+}
+
+.pin{
+    background:#38384e;
+}
+
+.sell{
+    background:#d53c3c;
+}
+
+
+/* =========================
+   INDEX
+========================= */
+
+.index-case{
+    margin-bottom:20px;
+}
+
+.index-title{
+    margin-bottom:8px;
+    font-weight:bold;
+    color:#b9a2ff;
+}
+
+.index-limited{
+    color:#ff914d;
+}
+
+.index-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:9px;
+    margin-bottom:5px;
+    border-radius:9px;
+    background:#15151f;
+    border:1px solid #29293c;
+    font-size:12px;
+}
+
+.index-left{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.index-chance{
+    color:#777;
+    font-size:10px;
+    margin-top:2px;
+}
+
+.index-price{
+    color:#b9a8ff;
+    font-weight:bold;
+}
+
+
+/* =========================
+   CASE MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    z-index:500;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    background:#000c;
+    backdrop-filter:blur(7px);
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:540px;
+    max-width:100%;
+    max-height:92vh;
+    overflow-y:auto;
+    padding:24px;
+    border-radius:20px;
+    background:linear-gradient(
+        145deg,
+        #1b1b2a,
+        #101016
+    );
+    border:1px solid #45455f;
+    box-shadow:0 20px 90px #000;
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.modal-header h2{
+    margin:0;
+}
+
+.preview{
+    text-align:center;
+    margin:12px 0;
+    font-size:75px;
+}
+
+.preview-price{
+    text-align:center;
+    color:#aaa;
+    margin-bottom:20px;
+}
+
+.multipliers{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+}
+
+.multiplier{
+    padding:10px 5px;
+    background:#20202e;
+    border:1px solid #393950;
+    box-shadow:none;
+}
+
+.multiplier.selected{
+    background:linear-gradient(
+        135deg,
+        #7047ff,
+        #9b5cff
+    );
+}
+
+.open-case{
+    width:100%;
+    margin-top:18px;
+}
+
+.chances-title{
+    margin-top:22px;
+    margin-bottom:8px;
+    font-weight:bold;
+}
+
+.chance-row{
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+    padding:9px;
+    margin-bottom:5px;
+    border-radius:8px;
+    background:#15151f;
+    border:1px solid #29293c;
+    font-size:12px;
+}
+
+
+/* =========================
+   ROULETTE
+========================= */
+
+.roulette-overlay{
+    position:fixed;
+    z-index:700;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    background:#000e;
+    backdrop-filter:blur(8px);
+}
+
+.roulette-overlay.show{
+    display:flex;
+}
+
+.roulette-wrapper{
+    width:min(1100px,95vw);
+    max-height:90vh;
+    overflow:auto;
+}
+
+.roulette-title{
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.roulette-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+}
+
+.single-roulette{
+    position:relative;
+    height:155px;
+    overflow:hidden;
+    border:2px solid #35354c;
+    border-radius:14px;
+    background:#08080d;
+}
+
+.center-line{
+    position:absolute;
+    z-index:5;
+    top:0;
+    left:50%;
+    width:4px;
+    height:100%;
+    transform:translateX(-50%);
+    background:#fff;
+    box-shadow:
+        0 0 10px #fff,
+        0 0 20px #7047ff;
+}
+
+.track{
+    position:absolute;
+    top:20px;
+    left:0;
+    display:flex;
+    gap:10px;
+    height:110px;
+}
+
+.roulette-item{
+    width:120px;
+    min-width:120px;
+    height:110px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    border-radius:11px;
+    background:linear-gradient(
+        145deg,
+        #262638,
+        #14141d
+    );
+    border:2px solid #44445d;
+}
+
+.roulette-icon{
+    font-size:33px;
+}
+
+.roulette-name{
+    margin-top:5px;
+    font-size:11px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.roulette-price{
+    margin-top:3px;
+    color:#b9a8ff;
+    font-size:10px;
+}
+
+
+/* =========================
+   BLACK MARKET
+========================= */
+
+.black-overlay{
+    position:fixed;
+    z-index:800;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:
+        radial-gradient(
+            circle,
+            #191919,
+            #020202 75%
+        );
+}
+
+.black-overlay.show{
+    display:flex;
+}
+
+.black-scene{
+    position:relative;
+    width:500px;
+    height:500px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.black-circle{
+    position:absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #2b2b2b,
+            #000 70%
+        );
+    border:3px solid #555;
+    box-shadow:
+        0 0 35px #000,
+        0 0 80px #fff1;
+    opacity:0;
+    transform:scale(.2);
+    transition:1s;
+}
+
+.black-circle.show{
+    opacity:1;
+    transform:scale(1);
+}
+
+.black-circle.hide{
+    opacity:0;
+    transform:scale(1.7);
+}
+
+.black-item{
+    position:absolute;
+    width:180px;
+    height:180px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    border-radius:22px;
+    background:
+        linear-gradient(
+            145deg,
+            #262626,
+            #0c0c0c
+        );
+    border:2px solid #555;
+    opacity:0;
+    transform:
+        translateX(-450px)
+        scale(.3);
+    transition:
+        1.4s
+        cubic-bezier(.16,.8,.2,1);
+    z-index:5;
+}
+
+.black-item.fly{
+    opacity:1;
+    transform:
+        translateX(0)
+        scale(1);
+}
+
+.black-result{
+    position:absolute;
+    bottom:10px;
+    text-align:center;
+    opacity:0;
+    transition:.7s;
+}
+
+.black-result.show{
+    opacity:1;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
     .header{
-        padding:0 8px;
-        gap:5px;
-        overflow-x:auto;
+        height:65px;
+        padding:0 7px;
     }
 
     .logo{
-        font-size:15px;
-    }
-
-    .balance{
-        padding:9px 7px;
-        font-size:10px;
-        white-space:nowrap;
+        font-size:14px;
     }
 
     .icon-btn{
-        width:35px;
-        height:35px;
-        flex-shrink:0;
+        width:37px;
+        height:37px;
+    }
+
+    .promo{
+        font-size:9px;
+        padding:9px 5px;
+    }
+
+    .shop-btn{
+        font-size:9px;
+        padding:9px 6px;
+    }
+
+    .balance{
+        padding:8px 6px;
+        font-size:11px;
+    }
+
+    .container{
+        padding:90px 12px 50px;
+    }
+
+    h1{
+        font-size:30px;
     }
 
     .cases{
-        grid-template-columns:repeat(2,1fr);
-        gap:9px;
+        grid-template-columns:1fr;
     }
 
-    .case{
-        min-height:215px;
-        padding:12px;
+    .roulette-grid{
+        grid-template-columns:1fr;
     }
 
-    .case-icon{
-        height:80px;
-        font-size:55px;
-    }
-
-    .case-name{
-        font-size:12px;
-    }
-
-    .window{
-        left:10px;
-        right:-100%;
-        width:auto;
-        max-width:none;
-    }
-
-    .window.open{
-        right:10px;
-    }
-
+    .inventory-window,
+    .index-window,
     .shop-window{
         left:10px;
-        right:-100%;
+        right:10px;
         width:auto;
     }
 
-    .shop-window.open{
-        right:10px;
+    .potion-card{
+        align-items:flex-start;
+    }
+
+    .potion-buy{
+        min-width:85px;
+        font-size:10px;
     }
 
     .luck-timer{
@@ -728,1017 +994,1197 @@ button{
         bottom:10px;
         width:auto;
     }
-
-    .roulette-window{
-        height:130px;
-    }
-
-    .roulette-item{
-        flex-basis:105px;
-        height:105px;
-    }
-
-    .modal-items{
-        grid-template-columns:repeat(2,1fr);
-    }
 }
 </style>
 </head>
 
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header class="header">
 
-    <div class="logo">
-        CASE <span>WEB</span>
-    </div>
+    <div class="header-left">
 
-    <button class="icon-btn"
-            onclick="toggleShop()"
-            title="Магазин">
-        🛒
-    </button>
+        <div class="logo">
+            CASE WEB
+        </div>
 
-    <button class="icon-btn"
-            onclick="toggleInventory()"
-            title="Инвентарь">
-        🎒
-    </button>
+        <button
+            class="icon-btn"
+            onclick="resetGame()"
+            title="Старт с нуля">
+            ↻
+        </button>
 
-    <button class="icon-btn"
+        <button
+            class="icon-btn"
             onclick="toggleIndex()"
             title="Индекс">
-        📖
-    </button>
+            📖
+        </button>
 
-    <button class="icon-btn"
+        <button
+            class="icon-btn"
             onclick="openUpgrade()"
             title="Upgrade">
-        ⚡
-    </button>
-
-    <button class="icon-btn"
-            onclick="openPromo()"
-            title="Промокод">
-        🎟️
-    </button>
-
-    <button class="icon-btn"
-            onclick="resetGame()"
-            title="Сброс">
-        ♻️
-    </button>
-
-    <div class="balance">
-        🪙 <span id="balance">100</span>
-    </div>
-
-    <div class="balance">
-        💎 <span id="diamonds">0</span>
-    </div>
-
-</header>
-
-<main class="container">
-
-    <div class="section-title">
-        📦 Обычные кейсы
-    </div>
-
-    <div class="cases">
-
-        <div class="case">
-            <div class="case-icon">⛏️</div>
-            <div class="case-name">Ore Case</div>
-            <div class="case-price">🪙 20</div>
-
-            <button class="open-case"
-                    onclick="inspectCase('ore')">
-                ОТКРЫТЬ
-            </button>
-        </div>
-
-        <div class="case">
-            <div class="case-icon">💻</div>
-            <div class="case-name">Nano Case</div>
-            <div class="case-price">🪙 100</div>
-
-            <button class="open-case"
-                    onclick="inspectCase('nano')">
-                ОТКРЫТЬ
-            </button>
-        </div>
-
-        <div class="case">
-            <div class="case-icon">🐾</div>
-            <div class="case-name">Animal Case</div>
-            <div class="case-price">🪙 150</div>
-
-            <button class="open-case"
-                    onclick="inspectCase('animal')">
-                ОТКРЫТЬ
-            </button>
-        </div>
-
-        <div class="case">
-            <div class="case-icon">🚗</div>
-            <div class="case-name">Transport Case</div>
-            <div class="case-price">🪙 500</div>
-
-            <button class="open-case"
-                    onclick="inspectCase('transport')">
-                ОТКРЫТЬ
-            </button>
-        </div>
-
-    </div>
-
-    <div class="section-title">
-        🔥 LIMITED CASES
-    </div>
-
-    <div class="cases">
-
-        <div class="case">
-            <div class="limited-badge">
-                LIMITED
-            </div>
-
-            <div class="case-icon">🎃</div>
-
-            <div class="case-name">
-                Halloween Case
-            </div>
-
-            <div class="case-price">
-                🪙 10,000
-            </div>
-
-            <button class="open-case"
-                    onclick="inspectCase('halloween')">
-                ОТКРЫТЬ
-            </button>
-        </div>
-
-        <div class="case">
-            <div class="limited-badge">
-                LIMITED
-            </div>
-
-            <div class="case-icon">🎄</div>
-
-            <div class="case-name">
-                New Year Case
-            </div>
-
-            <div class="case-price">
-                🪙 50,000
-            </div>
-
-            <button class="open-case"
-                    onclick="inspectCase('newyear')">
-                ОТКРЫТЬ
-            </button>
-        </div>
-
-        <div class="case">
-            <div class="limited-badge">
-                LIMITED
-            </div>
-
-            <div class="case-icon">🚀</div>
-
-            <div class="case-name">
-                Space Case
-            </div>
-
-            <div class="case-price">
-                🪙 100,000
-            </div>
-
-            <button class="open-case"
-                    onclick="inspectCase('space')">
-                ОТКРЫТЬ
-            </button>
-        </div>
-
-        <div class="case">
-            <div class="limited-badge">
-                LIMITED
-            </div>
-
-            <div class="case-icon">🏆</div>
-
-            <div class="case-name">
-                Golden Era Case
-            </div>
-
-            <div class="case-price">
-                🪙 1,000,000
-            </div>
-
-            <button class="open-case"
-                    onclick="inspectCase('golden')">
-                ОТКРЫТЬ
-            </button>
-        </div>
-
-    </div>
-
-    <div class="section-title">
-        💎 SPECIAL
-    </div>
-
-    <div class="cases">
-
-        <div class="case nft">
-
-            <div class="case-icon">
-                💎
-            </div>
-
-            <div class="case-name">
-                NFT Case
-            </div>
-
-            <div class="case-price">
-                🪙 2,500,000
-            </div>
-
-            <button class="open-case"
-                    onclick="inspectCase('nft')">
-                ОТКРЫТЬ
-            </button>
-
-        </div>
-
-    </div>
-
-    <div class="black-market">
-
-        <div class="black-title">
-            ☠️ BLACK MARKET
-        </div>
-
-        <div class="black-subtitle">
-            Редкие предметы · особая рулетка
-        </div>
-
-        <button class="black-btn"
-                onclick="openBlackMarket()">
-            ОТКРЫТЬ BLACK MARKET
+            🔄
         </button>
 
     </div>
 
-</main>
 
-<!-- INVENTORY -->
+    <div class="header-right">
 
-<div id="inventoryWindow"
-     class="window">
+        <button
+            class="promo"
+            onclick="openPromo()">
+            🎟️ ПРОМО
+        </button>
+
+        <button
+            class="shop-btn"
+            onclick="openShop()">
+            🛒 МАГАЗИН
+        </button>
+
+        <div class="balance">
+            🪙 <span id="balance">100</span>
+        </div>
+
+        <div class="balance">
+            💎 <span id="diamonds">0</span>
+        </div>
+
+        <button
+            class="icon-btn"
+            onclick="toggleInventory()"
+            title="Инвентарь">
+            🎒
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     INVENTORY
+========================= -->
+
+<div
+    id="inventoryWindow"
+    class="window inventory-window">
 
     <div class="window-header">
 
         <h2>🎒 Инвентарь</h2>
 
-        <button class="close"
-                onclick="toggleInventory()">
+        <button
+            class="close"
+            onclick="toggleInventory()">
             ×
         </button>
 
     </div>
 
-    <div id="inventoryGrid"
-         class="inventory-grid">
-    </div>
+
+    <button
+        class="sell-all"
+        onclick="sellAll()">
+        💰 ПРОДАТЬ ВСЁ
+    </button>
+
+
+    <div id="inventory"></div>
 
 </div>
 
-<!-- INDEX -->
 
-<div id="indexWindow"
-     class="window">
+<!-- =========================
+     INDEX
+========================= -->
+
+<div
+    id="indexWindow"
+    class="window index-window">
 
     <div class="window-header">
 
         <h2>📖 Индекс</h2>
 
-        <button class="close"
-                onclick="toggleIndex()">
+        <button
+            class="close"
+            onclick="toggleIndex()">
             ×
         </button>
 
     </div>
 
-    <div id="indexContent">
-    </div>
+
+    <div id="indexContent"></div>
 
 </div>
 
-<!-- SHOP -->
 
-<div id="shopWindow"
-     class="window shop-window">
+<!-- =========================
+     SHOP
+========================= -->
+
+<div
+    id="shopWindow"
+    class="window shop-window">
 
     <div class="window-header">
 
         <h2>🛒 Магазин</h2>
 
-        <button class="close"
-                onclick="toggleShop()">
+        <button
+            class="close"
+            onclick="closeShop()">
             ×
         </button>
 
     </div>
 
-    <div style="
-        color:#888;
-        font-size:12px;
-        margin-bottom:15px;
-    ">
-        🧪 Зелья удачи действуют 60 секунд
+
+    <div class="shop-subtitle">
+        🧪 Зелья удачи увеличивают шанс
+        получения редких предметов.
     </div>
+
 
     <div id="potionShop"></div>
 
 </div>
 
-<!-- PROMO -->
 
-<div id="promoWindow"
-     class="window">
+<!-- =========================
+     LUCK TIMER
+========================= -->
 
-    <div class="window-header">
+<div
+    id="luckTimer"
+    class="luck-timer">
 
-        <h2>🎟️ Промокод</h2>
+    <div class="luck-timer-header">
 
-        <button class="close"
-                onclick="closePromo()">
-            ×
-        </button>
+        <span id="luckName">
+            🧪 Зелье удачи
+        </span>
 
-    </div>
-
-    <div class="promo">
-
-        <input id="promoInput"
-               placeholder="Введите промокод">
-
-        <button onclick="usePromo()">
-            АКТИВИРОВАТЬ
-        </button>
+        <span
+            id="luckTime"
+            class="luck-time">
+            60 сек
+        </span>
 
     </div>
 
-</div>
 
-<!-- UPGRADE -->
+    <div class="luck-bar-background">
 
-<div id="upgradeWindow"
-     class="window">
-
-    <div class="window-header">
-
-        <h2>⚡ Upgrade</h2>
-
-        <button class="close"
-                onclick="closeUpgrade()">
-            ×
-        </button>
-
-    </div>
-
-    <div style="
-        color:#888;
-        font-size:11px;
-    ">
-        Выбери предмет для улучшения.
-    </div>
-
-    <div id="upgradeList"
-         class="upgrade-list"
-         style="margin-top:15px">
-    </div>
-
-</div>
-
-<!-- LUCK TIMER -->
-
-<div id="luckTimer"
-     class="luck-timer">
-
-    <div class="luck-title">
-        🧪 ЗЕЛЬЕ УДАЧИ
-    </div>
-
-    <div id="luckLevel"
-         class="luck-level">
-        Уровень I
-    </div>
-
-    <div id="luckTime"
-         class="luck-time">
-        60 сек
-    </div>
-
-    <div class="luck-bar">
-
-        <div id="luckBarFill"
-             class="luck-bar-fill">
+        <div
+            id="luckBar"
+            class="luck-bar">
         </div>
 
     </div>
 
 </div>
 
-<!-- CASE MODAL -->
 
-<div id="caseModal"
-     class="case-modal">
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="container">
+
+<h1>
+    STARTER CASES
+</h1>
+
+
+<div class="cases">
+
+    <div class="case">
+
+        <div class="case-icon">
+            ⛏️
+        </div>
+
+        <div class="case-name">
+            Ore Case
+        </div>
+
+        <div class="case-price">
+            Цена: <b>20 🪙</b>
+        </div>
+
+        <button onclick="inspectCase('ore')">
+            ОСМОТРЕТЬ
+        </button>
+
+    </div>
+
+
+    <div class="case">
+
+        <div class="case-icon">
+            💻
+        </div>
+
+        <div class="case-name">
+            Nano Case
+        </div>
+
+        <div class="case-price">
+            Цена: <b>100 🪙</b>
+        </div>
+
+        <button onclick="inspectCase('nano')">
+            ОСМОТРЕТЬ
+        </button>
+
+    </div>
+
+
+    <div class="case">
+
+        <div class="case-icon">
+            🐾
+        </div>
+
+        <div class="case-name">
+            Animal Case
+        </div>
+
+        <div class="case-price">
+            Цена: <b>150 🪙</b>
+        </div>
+
+        <button onclick="inspectCase('animal')">
+            ОСМОТРЕТЬ
+        </button>
+
+    </div>
+
+
+    <div class="case">
+
+        <div class="case-icon">
+            🚗
+        </div>
+
+        <div class="case-name">
+            Transport Case
+        </div>
+
+        <div class="case-price">
+            Цена: <b>500 🪙</b>
+        </div>
+
+        <button onclick="inspectCase('transport')">
+            ОСМОТРЕТЬ
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     LIMITED
+========================= -->
+
+<div class="section-title limited-title">
+    🔥 LIMITED CASES
+</div>
+
+
+<div class="cases">
+
+    <div class="case limited-case">
+
+        <div class="case-icon">
+            🎃
+        </div>
+
+        <div class="case-name">
+            Halloween Case
+        </div>
+
+        <div class="case-price">
+            Цена: <b>10 000 🪙</b>
+        </div>
+
+        <button onclick="inspectCase('halloween')">
+            ОСМОТРЕТЬ
+        </button>
+
+    </div>
+
+
+    <div class="case limited-case">
+
+        <div class="case-icon">
+            🎄
+        </div>
+
+        <div class="case-name">
+            New Year Case
+        </div>
+
+        <div class="case-price">
+            Цена: <b>50 000 🪙</b>
+        </div>
+
+        <button onclick="inspectCase('newyear')">
+            ОСМОТРЕТЬ
+        </button>
+
+    </div>
+
+
+    <div class="case limited-case space-case">
+
+        <div class="case-icon">
+            🚀
+        </div>
+
+        <div class="case-name">
+            Space Case
+        </div>
+
+        <div class="case-price">
+            Цена: <b>100 000 🪙</b>
+        </div>
+
+        <button onclick="inspectCase('space')">
+            ОСМОТРЕТЬ
+        </button>
+
+    </div>
+
+
+    <div class="case limited-case golden-case">
+
+        <div class="case-icon">
+            🏆
+        </div>
+
+        <div class="case-name">
+            Golden Era Case
+        </div>
+
+        <div class="case-price">
+            Цена: <b>1 000 000 🪙</b>
+        </div>
+
+        <button onclick="inspectCase('golden')">
+            ОСМОТРЕТЬ
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     NFT
+========================= -->
+
+<div class="section-title nft-title">
+    💎 NFT CASES
+</div>
+
+
+<div class="cases">
+
+    <div class="case nft-case">
+
+        <div class="case-icon">
+            💎
+        </div>
+
+        <div class="case-name">
+            NFT Case
+        </div>
+
+        <div class="case-price">
+            Цена: <b>2 500 000 🪙</b>
+        </div>
+
+        <button onclick="inspectCase('nft')">
+            ОСМОТРЕТЬ
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     BLACK MARKET
+========================= -->
+
+<div class="section-title black-title">
+    ◼ BLACK MARKET
+</div>
+
+
+<div class="cases">
+
+    <div class="case black-case">
+
+        <div class="case-icon">
+            ◼️
+        </div>
+
+        <div class="case-name">
+            Black Market Case
+        </div>
+
+        <div class="case-price">
+            Цена: <b>33 333 🪙</b>
+        </div>
+
+        <button onclick="inspectCase('black')">
+            ОСМОТРЕТЬ
+        </button>
+
+    </div>
+
+</div>
+
+</main><!-- =========================
+     CASE MODAL
+========================= -->
+
+<div
+    id="caseModal"
+    class="modal">
 
     <div class="modal-box">
 
-        <div id="modalTitle"
-             class="modal-title">
-            Case
+        <div class="modal-header">
+
+            <h2 id="caseTitle">
+                CASE
+            </h2>
+
+            <button
+                class="close"
+                onclick="closeCase()">
+                ×
+            </button>
+
         </div>
 
-        <div id="modalPrice"
-             class="modal-price">
-            🪙 0
+
+        <div
+            id="casePreview"
+            class="preview">
+            📦
         </div>
 
-        <div id="modalItems"
-             class="modal-items">
+
+        <div
+            id="casePrice"
+            class="preview-price">
+            Цена: 0 🪙
         </div>
 
-        <div class="quantity">
 
-            <button id="q1"
-                    onclick="setQuantity(1)">
+        <div
+            id="multipliers"
+            class="multipliers">
+
+            <button
+                class="multiplier selected"
+                onclick="setMultiplier(1)">
                 ×1
             </button>
 
-            <button id="q2"
-                    onclick="setQuantity(2)">
+            <button
+                class="multiplier"
+                onclick="setMultiplier(2)">
                 ×2
             </button>
 
-            <button id="q5"
-                    onclick="setQuantity(5)">
+            <button
+                class="multiplier"
+                onclick="setMultiplier(5)">
                 ×5
             </button>
 
-            <button id="q10"
-                    onclick="setQuantity(10)">
+            <button
+                class="multiplier"
+                onclick="setMultiplier(10)">
                 ×10
+            </button>
+
+            <button
+                class="multiplier"
+                onclick="setMultiplier(25)">
+                ×25
             </button>
 
         </div>
 
-        <button class="start-btn"
-                onclick="startOpening()">
+
+        <button
+            id="openCaseButton"
+            class="open-case"
+            onclick="openSelectedCase()">
             ОТКРЫТЬ
         </button>
 
+
+        <div class="chances-title">
+            Шансы:
+        </div>
+
+
+        <div id="chanceList"></div>
+
     </div>
 
 </div>
 
-<!-- ROULETTE -->
 
-<div id="roulette"
-     class="roulette">
+<!-- =========================
+     ROULETTE
+========================= -->
 
-    <div class="roulette-title">
-        🎰 ОТКРЫТИЕ КЕЙСА
-    </div>
+<div
+    id="rouletteOverlay"
+    class="roulette-overlay">
 
-    <div class="roulette-window">
+    <div class="roulette-wrapper">
 
-        <div class="roulette-pointer"></div>
-
-        <div id="rouletteLine"
-             class="roulette-line">
+        <div
+            id="rouletteTitle"
+            class="roulette-title">
+            ОТКРЫТИЕ...
         </div>
 
-    </div>
 
-    <div id="winBox"
-         class="win-box">
-
-        <div id="winIcon"
-             class="win-icon">
-            🎁
+        <div
+            id="rouletteGrid"
+            class="roulette-grid">
         </div>
-
-        <div id="winName"
-             class="win-name">
-            Предмет
-        </div>
-
-        <div id="winValue"
-             class="win-value">
-            🪙 0
-        </div>
-
-        <button class="win-close"
-                onclick="closeRoulette()">
-            ЗАБРАТЬ
-        </button>
 
     </div>
 
 </div>
+
+
+<!-- =========================
+     BLACK MARKET ANIMATION
+========================= -->
+
+<div
+    id="blackOverlay"
+    class="black-overlay">
+
+    <div class="black-scene">
+
+        <div
+            id="blackCircle"
+            class="black-circle">
+        </div>
+
+
+        <div
+            id="blackItem"
+            class="black-item">
+
+            <div
+                id="blackIcon"
+                class="roulette-icon">
+                ◼️
+            </div>
+
+            <div
+                id="blackName"
+                class="roulette-name">
+                ITEM
+            </div>
+
+            <div
+                id="blackPrice"
+                class="roulette-price">
+                0 🪙
+            </div>
+
+        </div>
+
+
+        <div
+            id="blackResult"
+            class="black-result">
+
+            <h2>
+                ПОЛУЧЕНО
+            </h2>
+
+            <button
+                onclick="closeBlackMarket()">
+                ПРОДОЛЖИТЬ
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     UPGRADE MODAL
+========================= -->
+
+<div
+    id="upgradeModal"
+    class="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>
+                🔄 UPGRADE
+            </h2>
+
+            <button
+                class="close"
+                onclick="closeUpgrade()">
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="upgradeContent">
+        </div>
+
+    </div>
+
+</div>
+
 
 <script>
+
+/* =========================================================
+   SAVE DATA
+========================================================= */
 
 let balance =
     Number(localStorage.getItem("caseBalance"));
 
 if(!Number.isFinite(balance)){
-    balance=100;
+    balance = 100;
 }
+
 
 let diamonds =
     Number(localStorage.getItem("caseDiamonds"));
 
-if(!Number.isFinite(diamonds)){
-    diamonds=0;
+if(!Number.isFinite(diamonds) || diamonds < 0){
+    diamonds = 0;
 }
+
 
 let inventory =
     JSON.parse(
         localStorage.getItem("caseInventory") || "[]"
     );
 
-if(!Array.isArray(inventory)){
-    inventory=[];
-}
 
-let usedPromoCodes =
+let usedPromo =
     JSON.parse(
-        localStorage.getItem("usedPromoCodes") || "[]"
+        localStorage.getItem("casePromo") || "[]"
     );
 
-if(!Array.isArray(usedPromoCodes)){
-    usedPromoCodes=[];
-}
 
 let activeLuckLevel =
     Number(
         localStorage.getItem("activeLuckLevel")
     ) || 0;
 
+
 let luckEndTime =
     Number(
         localStorage.getItem("luckEndTime")
     ) || 0;
 
-let selectedCase=null;
-let selectedQuantity=1;
-let currentWin=null;
 
-const potions={
+/* =========================================================
+   GLOBAL VARIABLES
+========================================================= */
 
-    1:{
-        name:"Зелье удачи I",
+let selectedCase = null;
+
+let selectedMultiplier = 1;
+
+let opening = false;
+
+let lockedItems = [];
+
+let upgradeItem = null;
+
+
+/* =========================================================
+   LUCK POTIONS
+========================================================= */
+
+const luckPotions = [
+
+    {
+        level:1,
         price:1000000,
-        luck:1.5
+        multiplier:1.5,
+        duration:60000
     },
 
-    2:{
-        name:"Зелье удачи II",
+    {
+        level:2,
         price:5000000,
-        luck:2
+        multiplier:2,
+        duration:60000
     },
 
-    3:{
-        name:"Зелье удачи III",
+    {
+        level:3,
         price:10000000,
-        luck:3
+        multiplier:3,
+        duration:60000
     },
 
-    4:{
-        name:"Зелье удачи IV",
+    {
+        level:4,
         price:50000000,
-        luck:5
+        multiplier:5,
+        duration:60000
     },
 
-    5:{
-        name:"Зелье удачи V",
+    {
+        level:5,
         price:100000000,
-        luck:8
+        multiplier:8,
+        duration:60000
+    }
+
+];
+
+
+/* =========================================================
+   CASE DATABASE
+========================================================= */
+
+const cases = {
+
+    ore:{
+        name:"Ore Case",
+        icon:"⛏️",
+        price:20,
+        items:[
+            {
+                name:"Камень",
+                icon:"🪨",
+                price:10,
+                chance:55
+            },
+            {
+                name:"Уголь",
+                icon:"⚫",
+                price:20,
+                chance:30
+            },
+            {
+                name:"Железо",
+                icon:"🔩",
+                price:40,
+                chance:10
+            },
+            {
+                name:"Золото",
+                icon:"🟡",
+                price:100,
+                chance:4
+            },
+            {
+                name:"Алмаз",
+                icon:"💎",
+                price:500,
+                chance:1
+            }
+        ]
+    },
+
+
+    nano:{
+        name:"Nano Case",
+        icon:"💻",
+        price:100,
+        items:[
+            {
+                name:"USB",
+                icon:"💾",
+                price:50,
+                chance:50
+            },
+            {
+                name:"RAM",
+                icon:"🧠",
+                price:120,
+                chance:30
+            },
+            {
+                name:"SSD",
+                icon:"💿",
+                price:300,
+                chance:15
+            },
+            {
+                name:"RTX",
+                icon:"🎮",
+                price:1000,
+                chance:4
+            },
+            {
+                name:"Quantum Chip",
+                icon:"⚛️",
+                price:5000,
+                chance:1
+            }
+        ]
+    },
+
+
+    animal:{
+        name:"Animal Case",
+        icon:"🐾",
+        price:150,
+        items:[
+            {
+                name:"Кот",
+                icon:"🐱",
+                price:100,
+                chance:45
+            },
+            {
+                name:"Собака",
+                icon:"🐶",
+                price:150,
+                chance:30
+            },
+            {
+                name:"Лиса",
+                icon:"🦊",
+                price:300,
+                chance:15
+            },
+            {
+                name:"Тигр",
+                icon:"🐯",
+                price:1000,
+                chance:8
+            },
+            {
+                name:"Дракон",
+                icon:"🐲",
+                price:10000,
+                chance:2
+            }
+        ]
+    },
+
+
+    transport:{
+        name:"Transport Case",
+        icon:"🚗",
+        price:500,
+        items:[
+            {
+                name:"Велосипед",
+                icon:"🚲",
+                price:300,
+                chance:45
+            },
+            {
+                name:"Мотоцикл",
+                icon:"🏍️",
+                price:700,
+                chance:30
+            },
+            {
+                name:"Автомобиль",
+                icon:"🚗",
+                price:1500,
+                chance:15
+            },
+            {
+                name:"Спорткар",
+                icon:"🏎️",
+                price:5000,
+                chance:8
+            },
+            {
+                name:"Гиперкар",
+                icon:"🚘",
+                price:25000,
+                chance:2
+            }
+        ]
+    },
+
+
+    halloween:{
+        name:"Halloween Case",
+        icon:"🎃",
+        price:10000,
+        items:[
+            {
+                name:"Конфета",
+                icon:"🍬",
+                price:5000,
+                chance:50
+            },
+            {
+                name:"Тыква",
+                icon:"🎃",
+                price:10000,
+                chance:30
+            },
+            {
+                name:"Ведьма",
+                icon:"🧙",
+                price:30000,
+                chance:12
+            },
+            {
+                name:"Призрак",
+                icon:"👻",
+                price:100000,
+                chance:7
+            },
+            {
+                name:"Демон",
+                icon:"😈",
+                price:500000,
+                chance:1
+            }
+        ]
+    },
+
+
+    newyear:{
+        name:"New Year Case",
+        icon:"🎄",
+        price:50000,
+        items:[
+            {
+                name:"Подарок",
+                icon:"🎁",
+                price:25000,
+                chance:50
+            },
+            {
+                name:"Снеговик",
+                icon:"⛄",
+                price:50000,
+                chance:30
+            },
+            {
+                name:"Дед Мороз",
+                icon:"🎅",
+                price:100000,
+                chance:12
+            },
+            {
+                name:"Северный олень",
+                icon:"🦌",
+                price:500000,
+                chance:7
+            },
+            {
+                name:"Новогодняя легенда",
+                icon:"✨",
+                price:2000000,
+                chance:1
+            }
+        ]
+    },
+
+
+    space:{
+        name:"Space Case",
+        icon:"🚀",
+        price:100000,
+        items:[
+            {
+                name:"Спутник",
+                icon:"🛰️",
+                price:50000,
+                chance:50
+            },
+            {
+                name:"Ракета",
+                icon:"🚀",
+                price:100000,
+                chance:30
+            },
+            {
+                name:"Астронавт",
+                icon:"👨‍🚀",
+                price:300000,
+                chance:12
+            },
+            {
+                name:"Планета",
+                icon:"🪐",
+                price:1000000,
+                chance:7
+            },
+            {
+                name:"Чёрная дыра",
+                icon:"🌌",
+                price:5000000,
+                chance:1
+            }
+        ]
+    },
+
+
+    golden:{
+        name:"Golden Era Case",
+        icon:"🏆",
+        price:1000000,
+        items:[
+            {
+                name:"Bronze",
+                icon:"🥉",
+                price:500000,
+                chance:50
+            },
+            {
+                name:"Silver",
+                icon:"🥈",
+                price:1000000,
+                chance:30
+            },
+            {
+                name:"Gold",
+                icon:"🥇",
+                price:3000000,
+                chance:12
+            },
+            {
+                name:"Golden Crown",
+                icon:"👑",
+                price:10000000,
+                chance:7
+            },
+            {
+                name:"Golden Relic",
+                icon:"🏆",
+                price:50000000,
+                chance:1
+            }
+        ]
+    },
+
+
+    nft:{
+        name:"NFT Case",
+        icon:"💎",
+        price:2500000,
+        items:[
+            {
+                name:"Common NFT",
+                icon:"🖼️",
+                price:1000000,
+                chance:45
+            },
+            {
+                name:"Rare NFT",
+                icon:"💠",
+                price:2000000,
+                chance:30
+            },
+            {
+                name:"Epic NFT",
+                icon:"🔷",
+                price:5000000,
+                chance:15
+            },
+            {
+                name:"Legendary NFT",
+                icon:"💎",
+                price:15000000,
+                chance:7
+            },
+            {
+                name:"Mythic NFT",
+                icon:"🌌",
+                price:50000000,
+                chance:2.5
+            },
+            {
+                name:"Golden NFT",
+                icon:"👑",
+                price:250000000,
+                chance:.5
+            }
+        ]
+    },
+
+
+    black:{
+        name:"Black Market Case",
+        icon:"◼️",
+        price:33333,
+        items:[]
     }
 
 };
 
-const cases={
 
-ore:{
- name:"Ore Case",
- icon:"⛏️",
- price:20,
+/* =========================================================
+   PROMO CODES
+========================================================= */
 
- items:[
-  {
-   name:"Уголь",
-   price:10,
-   icon:"⚫",
-   chance:40
-  },
-  {
-   name:"Железо",
-   price:30,
-   icon:"🔩",
-   chance:30
-  },
-  {
-   name:"Золото",
-   price:60,
-   icon:"🟨",
-   chance:15
-  },
-  {
-   name:"Алмаз",
-   price:100,
-   icon:"💎",
-   chance:9
-  },
-  {
-   name:"Титан",
-   price:250,
-   icon:"🔷",
-   chance:5
-  },
-  {
-   name:"Палладий",
-   price:500,
-   icon:"🟣",
-   chance:1
-  }
- ]
-},
+const promoCodes = {
 
-nano:{
- name:"Nano Case",
- icon:"💻",
- price:100,
+    START:10000,
 
- items:[
-  {
-   name:"Телефон",
-   price:50,
-   icon:"📱",
-   chance:50
-  },
-  {
-   name:"ПК",
-   price:100,
-   icon:"🖥️",
-   chance:35
-  },
-  {
-   name:"Геймпад",
-   price:1000,
-   icon:"🎮",
-   chance:15
-  }
- ]
-},
+    "2026":50000,
 
-animal:{
- name:"Animal Case",
- icon:"🐾",
- price:150,
-
- items:[
-  {
-   name:"Свинья",
-   price:50,
-   icon:"🐷",
-   chance:50
-  },
-  {
-   name:"Собака",
-   price:150,
-   icon:"🐶",
-   chance:40
-  },
-  {
-   name:"Лошадь",
-   price:300,
-   icon:"🐴",
-   chance:9
-  },
-  {
-   name:"Кот",
-   price:2500,
-   icon:"🐱",
-   chance:1
-  }
- ]
-},
-
-transport:{
- name:"Transport Case",
- icon:"🚗",
- price:500,
-
- items:[
-  {
-   name:"Машина",
-   price:250,
-   icon:"🚗",
-   chance:60
-  },
-  {
-   name:"Корабль",
-   price:700,
-   icon:"🚢",
-   chance:30
-  },
-  {
-   name:"Поезд",
-   price:1500,
-   icon:"🚆",
-   chance:9.5
-  },
-  {
-   name:"Самолёт",
-   price:10000,
-   icon:"✈️",
-   chance:.5
-  }
- ]
-},
-
-halloween:{
- name:"Halloween Case",
- icon:"🎃",
- price:10000,
- limited:true,
-
- items:[
-  {
-   name:"Тыква",
-   price:5000,
-   icon:"🎃",
-   chance:50
-  },
-  {
-   name:"Ведьмина шляпа",
-   price:15000,
-   icon:"🧙",
-   chance:20
-  },
-  {
-   name:"Призрак",
-   price:40000,
-   icon:"👻",
-   chance:10
-  },
-  {
-   name:"Вампир",
-   price:50000,
-   icon:"🧛",
-   chance:5
-  },
-  {
-   name:"Золотой череп",
-   price:100000,
-   icon:"💀",
-   chance:4.5
-  },
-  {
-   name:"Проклятый артефакт",
-   price:1000000,
-   icon:"🔮",
-   chance:.1
-  },
-  {
-   name:"Паук",
-   price:45000,
-   icon:"🕷️",
-   chance:10.4
-  }
- ]
-},
-
-newyear:{
- name:"New Year Case",
- icon:"🎄",
- price:50000,
- limited:true,
-
- items:[
-  {
-   name:"Подарок",
-   price:5000,
-   icon:"🎁",
-   chance:45
-  },
-  {
-   name:"Снежинка",
-   price:12000,
-   icon:"❄️",
-   chance:25
-  },
-  {
-   name:"Снеговик",
-   price:25000,
-   icon:"⛄",
-   chance:15
-  },
-  {
-   name:"Ёлка",
-   price:50000,
-   icon:"🎄",
-   chance:8
-  },
-  {
-   name:"Золотой колокольчик",
-   price:100000,
-   icon:"🔔",
-   chance:5
-  },
-  {
-   name:"Рудольф",
-   price:250000,
-   icon:"🦌",
-   chance:1.5
-  },
-  {
-   name:"Корона Деда Мороза",
-   price:1000000,
-   icon:"👑",
-   chance:.5
-  }
- ]
-},
-
-space:{
- name:"Space Case",
- icon:"🚀",
- price:100000,
- limited:true,
-
- items:[
-  {
-   name:"Лунный камень",
-   price:25000,
-   icon:"🪨",
-   chance:45
-  },
-  {
-   name:"Спутник",
-   price:60000,
-   icon:"🛰️",
-   chance:25
-  },
-  {
-   name:"Луна",
-   price:150000,
-   icon:"🌕",
-   chance:15
-  },
-  {
-   name:"Астронавт",
-   price:400000,
-   icon:"👨‍🚀",
-   chance:9
-  },
-  {
-   name:"Ракета",
-   price:1000000,
-   icon:"🚀",
-   chance:5
-  },
-  {
-   name:"Сатурн",
-   price:5000000,
-   icon:"🪐",
-   chance:.9
-  },
-  {
-   name:"Галактика",
-   price:25000000,
-   icon:"🌌",
-   chance:.1
-  }
- ]
-},
-
-golden:{
- name:"Golden Era Case",
- icon:"🏆",
- price:1000000,
- limited:true,
-
- items:[
-  {
-   name:"Золотая монета",
-   price:100000,
-   icon:"🪙",
-   chance:45
-  },
-  {
-   name:"Золотые часы",
-   price:250000,
-   icon:"⌚",
-   chance:25
-  },
-  {
-   name:"Золотое кольцо",
-   price:600000,
-   icon:"💍",
-   chance:15
-  },
-  {
-   name:"Золотая корона",
-   price:1500000,
-   icon:"👑",
-   chance:8
-  },
-  {
-   name:"Золотая статуя",
-   price:5000000,
-   icon:"🗿",
-   chance:5
-  },
-  {
-   name:"Золотой трофей",
-   price:15000000,
-   icon:"🏆",
-   chance:1.9
-  },
-  {
-   name:"Golden Relic",
-   price:100000000,
-   icon:"💎",
-   chance:.1
-  }
- ]
-},
-
-nft:{
- name:"NFT Case",
- icon:"💎",
- price:2500000,
-
- items:[
-  {
-   name:"Common NFT",
-   price:1000000,
-   icon:"🖼️",
-   chance:45
-  },
-  {
-   name:"Rare NFT",
-   price:2000000,
-   icon:"🎨",
-   chance:30
-  },
-  {
-   name:"Epic NFT",
-   price:5000000,
-   icon:"💠",
-   chance:15
-  },
-  {
-   name:"Legendary NFT",
-   price:15000000,
-   icon:"👑",
-   chance:7
-  },
-  {
-   name:"Mythic NFT",
-   price:50000000,
-   icon:"💎",
-   chance:2.5
-  },
-  {
-   name:"Golden NFT",
-   price:250000000,
-   icon:"🌟",
-   chance:.5
-  }
- ]
-}
+    LIMITED:500000
 
 };
+
+
+/* =========================================================
+   SAVE GAME
+========================================================= */
 
 function saveGame(){
 
     localStorage.setItem(
         "caseBalance",
-        String(balance)
+        balance
     );
 
     localStorage.setItem(
         "caseDiamonds",
-        String(diamonds)
+        diamonds
     );
 
     localStorage.setItem(
@@ -1747,206 +2193,402 @@ function saveGame(){
     );
 
     localStorage.setItem(
-        "usedPromoCodes",
-        JSON.stringify(usedPromoCodes)
+        "casePromo",
+        JSON.stringify(usedPromo)
     );
 
     localStorage.setItem(
         "activeLuckLevel",
-        String(activeLuckLevel)
+        activeLuckLevel
     );
 
     localStorage.setItem(
         "luckEndTime",
-        String(luckEndTime)
+        luckEndTime
     );
 
 }
 
+
+/* =========================================================
+   BALANCE UPDATE
+========================================================= */
+
 function updateBalance(){
 
-    document.getElementById("balance")
-        .textContent=
-        balance.toLocaleString("ru-RU");
+    const balanceElement =
+        document.getElementById("balance");
 
-    document.getElementById("diamonds")
-        .textContent=
-        diamonds.toLocaleString("ru-RU");
+    const diamondElement =
+        document.getElementById("diamonds");
 
-    saveGame();
 
-}
+    if(balanceElement){
 
-function toggleInventory(){
+        balanceElement.textContent =
+            Math.floor(balance).toLocaleString("ru-RU");
 
-    const win=
-        document.getElementById("inventoryWindow");
+    }
 
-    win.classList.toggle("open");
 
-    if(win.classList.contains("open")){
-        updateInventory();
+    if(diamondElement){
+
+        diamondElement.textContent =
+            Math.floor(diamonds).toLocaleString("ru-RU");
+
     }
 
 }
 
-function toggleIndex(){
 
-    const win=
-        document.getElementById("indexWindow");
-
-    win.classList.toggle("open");
-
-    if(win.classList.contains("open")){
-        updateIndex();
-    }
-
-}
-
-function toggleShop(){
-
-    const win=
-        document.getElementById("shopWindow");
-
-    win.classList.toggle("open");
-
-    if(win.classList.contains("open")){
-        updatePotionShop();
-    }
-
-}
+/* =========================================================
+   PROMO
+========================================================= */
 
 function openPromo(){
 
-    document
-        .getElementById("promoWindow")
-        .classList.add("open");
+    const code =
+        prompt("Введите промокод:");
+
+    if(!code){
+        return;
+    }
+
+
+    const normalized =
+        code.trim().toUpperCase();
+
+
+    if(!(normalized in promoCodes)){
+
+        alert("❌ Такого промокода нет!");
+
+        return;
+
+    }
+
+
+    if(usedPromo.includes(normalized)){
+
+        alert("❌ Этот промокод уже использован!");
+
+        return;
+
+    }
+
+
+    const reward =
+        promoCodes[normalized];
+
+
+    balance += reward;
+
+    usedPromo.push(normalized);
+
+
+    saveGame();
+
+    updateBalance();
+
+
+    alert(
+        "🎉 Промокод активирован!\n\n+" +
+        reward.toLocaleString("ru-RU") +
+        " 🪙"
+    );
 
 }
 
-function closePromo(){
+
+/* =========================================================
+   MULTIPLIER
+========================================================= */
+
+function setMultiplier(value){
+
+    selectedMultiplier = value;
+
 
     document
-        .getElementById("promoWindow")
-        .classList.remove("open");
+        .querySelectorAll(".multiplier")
+        .forEach(button => {
+
+            button.classList.remove(
+                "selected"
+            );
+
+        });
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".multiplier"
+        );
+
+
+    buttons.forEach(button => {
+
+        if(
+            button.textContent
+                .trim()
+                === "×" + value
+        ){
+
+            button.classList.add(
+                "selected"
+            );
+
+        }
+
+    });
+
+
+    updateOpenButton();
 
 }
+
+
+/* =========================================================
+   CASE PRICE
+========================================================= */
+
+function getOpenPrice(){
+
+    if(!selectedCase){
+        return 0;
+    }
+
+
+    return (
+        cases[selectedCase].price *
+        selectedMultiplier
+    );
+
+}
+
+
+/* =========================================================
+   OPEN BUTTON UPDATE
+========================================================= */
+
+function updateOpenButton(){
+
+    const button =
+        document.getElementById(
+            "openCaseButton"
+        );
+
+
+    if(!button){
+        return;
+    }
+
+
+    const price =
+        getOpenPrice();
+
+
+    button.textContent =
+        "ОТКРЫТЬ ×" +
+        selectedMultiplier +
+        " — " +
+        price.toLocaleString("ru-RU") +
+        " 🪙";
+
+
+    button.disabled =
+        opening ||
+        balance < price;
+
+}
+
+
+/* =========================================================
+   OPEN CASE MODAL
+========================================================= */
 
 function inspectCase(id){
+
+    if(opening){
+        return;
+    }
+
 
     if(!cases[id]){
         return;
     }
 
-    selectedCase=id;
-    selectedQuantity=1;
 
-    const c=cases[id];
+    selectedCase = id;
+
+    selectedMultiplier = 1;
+
+
+    const data =
+        cases[id];
+
+
+    document.getElementById(
+        "caseTitle"
+    ).textContent =
+        data.name;
+
+
+    document.getElementById(
+        "casePreview"
+    ).textContent =
+        data.icon;
+
+
+    document.getElementById(
+        "casePrice"
+    ).textContent =
+        "Цена: " +
+        data.price.toLocaleString("ru-RU") +
+        " 🪙";
+
 
     document
-        .getElementById("modalTitle")
-        .textContent=
-        c.icon+" "+c.name;
+        .querySelectorAll(".multiplier")
+        .forEach((button,index) => {
 
-    document
-        .getElementById("modalPrice")
-        .textContent=
-        "🪙 "+
-        c.price.toLocaleString("ru-RU")+
-        " за открытие";
+            button.classList.toggle(
+                "selected",
+                index === 0
+            );
 
-    const box=
-        document.getElementById("modalItems");
+        });
 
-    box.innerHTML="";
 
-    c.items.forEach(item=>{
+    renderChances();
 
-        const div=
-            document.createElement("div");
-
-        div.className="modal-item";
-
-        div.innerHTML=`
-            <div style="font-size:35px">
-                ${item.icon}
-            </div>
-
-            <div style="
-                margin-top:5px;
-                font-size:10px;
-                font-weight:900;
-            ">
-                ${item.name}
-            </div>
-
-            <div style="
-                margin-top:3px;
-                color:#9b83ff;
-                font-size:9px;
-            ">
-                ${item.price.toLocaleString("ru-RU")} 🪙
-            </div>
-
-            <div style="
-                margin-top:3px;
-                color:#777;
-                font-size:9px;
-            ">
-                ${item.chance}%
-            </div>
-        `;
-
-        box.appendChild(div);
-
-    });
-
-    setQuantity(1);
 
     document
         .getElementById("caseModal")
         .classList.add("show");
 
+
+    updateOpenButton();
+
 }
 
-function closeCaseModal(){
+
+/* =========================================================
+   CLOSE CASE
+========================================================= */
+
+function closeCase(){
+
+    if(opening){
+        return;
+    }
+
 
     document
         .getElementById("caseModal")
         .classList.remove("show");
 
+    selectedCase = null;
+
 }
 
-function setQuantity(q){
 
-    selectedQuantity=q;
+/* =========================================================
+   RENDER CHANCES
+========================================================= */
 
-    [1,2,5,10].forEach(n=>{
+function renderChances(){
 
-        document
-            .getElementById("q"+n)
-            .classList.remove("active");
+    if(!selectedCase){
+        return;
+    }
+
+
+    const data =
+        cases[selectedCase];
+
+
+    const list =
+        document.getElementById(
+            "chanceList"
+        );
+
+
+    list.innerHTML = "";
+
+
+    data.items.forEach(item => {
+
+        const row =
+            document.createElement("div");
+
+
+        row.className =
+            "chance-row";
+
+
+        row.innerHTML = `
+
+            <span>
+                ${item.icon}
+                ${item.name}
+            </span>
+
+            <span>
+                ${item.chance}%
+            </span>
+
+        `;
+
+
+        list.appendChild(row);
 
     });
 
-    document
-        .getElementById("q"+q)
-        .classList.add("active");
+}
 
-    if(selectedCase){
 
-        const total=
-            cases[selectedCase].price*q;
+/* =========================================================
+   STARTUP BALANCE
+========================================================= */
 
-        document
-            .querySelector(".start-btn")
-            .textContent=
-            "ОТКРЫТЬ · 🪙 "+
-            total.toLocaleString("ru-RU");
+updateBalance();
+/* =========================================================
+   LUCK SYSTEM
+========================================================= */
 
+function getActiveLuck(){
+
+    if(
+        !activeLuckLevel ||
+        !luckEndTime ||
+        Date.now() >= luckEndTime
+    ){
+
+        if(activeLuckLevel || luckEndTime){
+
+            activeLuckLevel = 0;
+            luckEndTime = 0;
+
+            saveGame();
+
+        }
+
+        return null;
     }
 
+
+    return luckPotions.find(
+        potion =>
+            potion.level === activeLuckLevel
+    ) || null;
+
 }
+
+
+/* =========================================================
+   RANDOM ITEM — NORMAL
+========================================================= */
 
 function randomItem(items){
 
@@ -1954,1081 +2596,1970 @@ function randomItem(items){
         return null;
     }
 
-    const luckActive=
-        activeLuckLevel>0 &&
-        Date.now()<luckEndTime;
 
-    if(!luckActive){
+    let total = 0;
 
-        let random=
-            Math.random()*100;
 
-        let current=0;
+    items.forEach(item => {
 
-        for(const item of items){
+        total += Number(item.chance) || 0;
 
-            current+=
-                Number(item.chance)||0;
-
-            if(random<=current){
-                return item;
-            }
-
-        }
-
-        return items[items.length-1];
-
-    }
-
-    const potion=
-        potions[activeLuckLevel];
-
-    const luck=
-        potion ? potion.luck : 1;
-
-    const chances=
-        items.map(
-            item=>Number(item.chance)||0
-        );
-
-    const maxChance=
-        Math.max(...chances);
-
-    let total=0;
-
-    const weights=
-        items.map(item=>{
-
-            const chance=
-                Number(item.chance)||0;
-
-            const rarity=
-                maxChance<=0
-                    ? 0
-                    : 1-(chance/maxChance);
-
-            const weight=
-                chance*
-                Math.pow(
-                    luck,
-                    rarity*4
-                );
-
-            total+=weight;
-
-            return weight;
-
-        });
-
-    let random=
-        Math.random()*total;
-
-    for(let i=0;i<items.length;i++){
-
-        random-=weights[i];
-
-        if(random<=0){
-            return items[i];
-        }
-
-    }
-
-    return items[items.length-1];
-
-}function addToInventory(item){
-
-    if(!item) return;
-
-    inventory.push({
-        name:item.name,
-        price:item.price,
-        icon:item.icon,
-        time:Date.now()
     });
 
-    saveGame();
-    updateInventory();
+
+    if(total <= 0){
+        return items[0];
+    }
+
+
+    let random =
+        Math.random() * total;
+
+
+    for(const item of items){
+
+        random -=
+            Number(item.chance) || 0;
+
+
+        if(random <= 0){
+            return item;
+        }
+
+    }
+
+
+    return items[items.length - 1];
 
 }
 
-function updateInventory(){
 
-    const box =
-        document.getElementById("inventoryGrid");
+/* =========================================================
+   RANDOM ITEM WITH LUCK
+========================================================= */
 
-    if(!inventory.length){
+function randomLuckItem(items){
 
-        box.innerHTML = `
-            <div class="empty"
-                 style="grid-column:1/-1">
-                Инвентарь пуст
-            </div>
-        `;
+    const luck =
+        getActiveLuck();
 
+
+    /*
+        Если зелье не активно —
+        обычные шансы остаются
+        полностью без изменений.
+    */
+
+    if(!luck){
+
+        return randomItem(items);
+
+    }
+
+
+    /*
+        Чем меньше исходный шанс,
+        тем сильнее его относительный
+        вес при активной удаче.
+
+        ×1.5
+        ×2
+        ×3
+        ×5
+        ×8
+    */
+
+    const weighted =
+        items.map(item => {
+
+            const chance =
+                Math.max(
+                    Number(item.chance) || 0,
+                    0.000001
+                );
+
+
+            const weight =
+                Math.pow(
+                    chance,
+                    1 / luck.multiplier
+                );
+
+
+            return {
+                item:item,
+                weight:weight
+            };
+
+        });
+
+
+    let total = 0;
+
+
+    weighted.forEach(entry => {
+
+        total += entry.weight;
+
+    });
+
+
+    let random =
+        Math.random() * total;
+
+
+    for(const entry of weighted){
+
+        random -= entry.weight;
+
+
+        if(random <= 0){
+
+            return entry.item;
+
+        }
+
+    }
+
+
+    return items[items.length - 1];
+
+}
+
+
+/* =========================================================
+   SHOP
+========================================================= */
+
+function openShop(){
+
+    if(opening){
         return;
     }
 
-    box.innerHTML = "";
 
-    const grouped = {};
+    renderPotionShop();
 
-    inventory.forEach(item=>{
 
-        const key =
-            item.name + "_" + item.price;
-
-        if(!grouped[key]){
-
-            grouped[key] = {
-                name:item.name,
-                price:item.price,
-                icon:item.icon,
-                count:0
-            };
-
-        }
-
-        grouped[key].count++;
-
-    });
-
-    Object.values(grouped)
-        .sort((a,b)=>b.price-a.price)
-        .forEach(item=>{
-
-            const div =
-                document.createElement("div");
-
-            div.className="inv-item";
-
-            div.innerHTML=`
-                <div class="inv-icon">
-                    ${item.icon}
-                </div>
-
-                <div class="inv-name">
-                    ${item.name}
-                </div>
-
-                <div class="inv-price">
-                    ${item.price.toLocaleString("ru-RU")} 🪙
-                </div>
-
-                <div class="inv-count">
-                    ×${item.count}
-                </div>
-            `;
-
-            box.appendChild(div);
-
-        });
+    document
+        .getElementById("shopWindow")
+        .classList.add("open");
 
 }
 
-function updateIndex(){
 
-    const box =
-        document.getElementById("indexContent");
+function closeShop(){
 
-    box.innerHTML="";
+    document
+        .getElementById("shopWindow")
+        .classList.remove("open");
 
-    Object.values(cases).forEach(c=>{
+}
 
-        const title =
+
+/* =========================================================
+   RENDER POTION SHOP
+========================================================= */
+
+function renderPotionShop(){
+
+    const container =
+        document.getElementById(
+            "potionShop"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    const activeLuck =
+        getActiveLuck();
+
+
+    container.innerHTML = "";
+
+
+    luckPotions.forEach(potion => {
+
+        const card =
             document.createElement("div");
 
-        title.style.cssText =
-            "font-size:13px;font-weight:900;margin:15px 0 8px";
 
-        title.textContent =
-            c.icon+" "+c.name;
+        const isActive =
+            activeLuck &&
+            activeLuck.level === potion.level;
 
-        box.appendChild(title);
 
-        c.items.forEach(item=>{
+        const cannotBuy =
+            opening ||
+            balance < potion.price;
 
-            const row =
-                document.createElement("div");
 
-            row.style.cssText =
-                "display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #20202b;font-size:10px";
+        card.className =
+            "potion-card" +
+            (isActive
+                ? " potion-active"
+                : "") +
+            (cannotBuy && !isActive
+                ? " potion-disabled"
+                : "");
 
-            row.innerHTML=`
-                <span style="font-size:22px">
-                    ${item.icon}
-                </span>
 
-                <span style="flex:1">
-                    ${item.name}
-                </span>
+        const buttonText =
+            isActive
+                ? "АКТИВНО"
+                : "КУПИТЬ";
 
-                <span style="color:#9d84ff">
-                    ${item.chance}%
-                </span>
-            `;
 
-            box.appendChild(row);
+        card.innerHTML = `
 
-        });
+            <div class="potion-info">
+
+                <div class="potion-icon">
+                    🧪
+                </div>
+
+                <div>
+
+                    <div class="potion-name">
+                        Зелье удачи ${potion.level}
+                    </div>
+
+                    <div class="potion-luck">
+                        Редкие предметы ×${potion.multiplier}
+                    </div>
+
+                    <div class="potion-price">
+                        ${potion.price.toLocaleString("ru-RU")} 🪙
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button
+                class="potion-buy"
+                ${cannotBuy || isActive ? "disabled" : ""}
+                onclick="buyLuckPotion(${potion.level})">
+
+                ${buttonText}
+
+            </button>
+
+        `;
+
+
+        container.appendChild(card);
 
     });
 
 }
 
-function updatePotionShop(){
 
-    const box =
-        document.getElementById("potionShop");
+/* =========================================================
+   BUY LUCK POTION
+========================================================= */
 
-    if(!box) return;
+function buyLuckPotion(level){
 
-    box.innerHTML="";
+    if(opening){
+        return;
+    }
 
-    Object.entries(potions).forEach(
-        ([level,potion])=>{
-
-            const div =
-                document.createElement("div");
-
-            div.className="potion-card";
-
-            div.innerHTML=`
-
-                <div class="potion-left">
-
-                    <div class="potion-icon">
-                        🧪
-                    </div>
-
-                    <div>
-
-                        <div class="potion-name">
-                            ${potion.name}
-                        </div>
-
-                        <div class="potion-description">
-                            Удача ×${potion.luck} · 60 секунд
-                        </div>
-
-                        <div class="potion-price">
-                            ${potion.price.toLocaleString("ru-RU")} 🪙
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <button class="potion-buy"
-                        onclick="buyPotion(${level})">
-                    КУПИТЬ
-                </button>
-            `;
-
-            box.appendChild(div);
-
-        }
-    );
-
-}
-
-function buyPotion(level){
 
     const potion =
-        potions[level];
+        luckPotions.find(
+            item =>
+                item.level === level
+        );
 
-    if(!potion) return;
+
+    if(!potion){
+        return;
+    }
+
 
     if(balance < potion.price){
 
         alert(
-            "❌ Недостаточно монет!"
-        );
-
-        return;
-    }
-
-    balance -= potion.price;
-
-    activeLuckLevel =
-        Number(level);
-
-    luckEndTime =
-        Date.now()+60000;
-
-    updateBalance();
-    updateLuckTimer();
-    saveGame();
-
-}
-
-function updateLuckTimer(){
-
-    const box =
-        document.getElementById("luckTimer");
-
-    const levelBox =
-        document.getElementById("luckLevel");
-
-    const timeBox =
-        document.getElementById("luckTime");
-
-    const fill =
-        document.getElementById("luckBarFill");
-
-    if(
-        activeLuckLevel<=0 ||
-        Date.now()>=luckEndTime
-    ){
-
-        if(
-            activeLuckLevel!==0 ||
-            luckEndTime!==0
-        ){
-
-            activeLuckLevel=0;
-            luckEndTime=0;
-
-            saveGame();
-
-        }
-
-        box.classList.remove("show");
-
-        return;
-    }
-
-    const potion =
-        potions[activeLuckLevel];
-
-    const remaining =
-        Math.max(
-            0,
-            luckEndTime-Date.now()
-        );
-
-    const seconds =
-        Math.ceil(
-            remaining/1000
-        );
-
-    const percent =
-        Math.max(
-            0,
-            Math.min(
-                100,
-                remaining/60000*100
-            )
-        );
-
-    levelBox.textContent =
-        potion.name+
-        " · ×"+
-        potion.luck+
-        " удачи";
-
-    timeBox.textContent =
-        seconds+" сек";
-
-    fill.style.width =
-        percent+"%";
-
-    box.classList.add("show");
-
-}
-
-function startOpening(){
-
-    if(!selectedCase) return;
-
-    const c =
-        cases[selectedCase];
-
-    const total =
-        c.price*selectedQuantity;
-
-    if(balance < total){
-
-        alert(
-            "❌ Недостаточно монет!"
-        );
-
-        return;
-    }
-
-    balance -= total;
-
-    updateBalance();
-
-    closeCaseModal();
-
-    startRoulette(
-        c,
-        selectedQuantity
-    );
-
-}
-
-function startRoulette(c,quantity){
-
-    const roulette =
-        document.getElementById("roulette");
-
-    const line =
-        document.getElementById("rouletteLine");
-
-    const winBox =
-        document.getElementById("winBox");
-
-    winBox.classList.remove("show");
-
-    line.innerHTML="";
-    line.style.transition="none";
-    line.style.transform="translateX(0)";
-
-    roulette.classList.add("show");
-
-    const winners=[];
-
-    for(
-        let i=0;
-        i<quantity;
-        i++
-    ){
-
-        winners.push(
-            randomItem(c.items)
-        );
-
-    }
-
-    const visual=[];
-
-    for(
-        let i=0;
-        i<50;
-        i++
-    ){
-
-        visual.push(
-            randomItem(c.items)
-        );
-
-    }
-
-    visual.push(
-        ...winners
-    );
-
-    for(
-        let i=0;
-        i<10;
-        i++
-    ){
-
-        visual.push(
-            randomItem(c.items)
-        );
-
-    }
-
-    visual.forEach(item=>{
-
-        const div =
-            document.createElement("div");
-
-        div.className="roulette-item";
-
-        div.innerHTML=`
-            <div class="roulette-item-icon">
-                ${item.icon}
-            </div>
-
-            <div class="roulette-item-name">
-                ${item.name}
-            </div>
-        `;
-
-        line.appendChild(div);
-
-    });
-
-    const targetIndex =
-        50+
-        Math.floor(
-            Math.random()*quantity
-        );
-
-    const cardWidth=140;
-
-    const offset =
-        targetIndex*cardWidth-
-        450+
-        Math.random()*40-
-        20;
-
-    setTimeout(()=>{
-
-        line.style.transition =
-            "transform 4s cubic-bezier(.12,.8,.18,1)";
-
-        line.style.transform =
-            `translateX(-${offset}px)`;
-
-    },50);
-
-    setTimeout(()=>{
-
-        winners.forEach(
-            item=>{
-                addToInventory(item);
-            }
-        );
-
-        currentWin =
-            winners[winners.length-1];
-
-        showWin(currentWin);
-
-    },4300);
-
-}
-
-function showWin(item){
-
-    if(!item) return;
-
-    document.getElementById("winIcon")
-        .textContent=item.icon;
-
-    document.getElementById("winName")
-        .textContent=item.name;
-
-    document.getElementById("winValue")
-        .textContent =
-        "🪙 "+
-        item.price.toLocaleString("ru-RU");
-
-    document.getElementById("winBox")
-        .classList.add("show");
-
-}
-
-function closeRoulette(){
-
-    document.getElementById("roulette")
-        .classList.remove("show");
-
-    document.getElementById("winBox")
-        .classList.remove("show");
-
-}
-
-function usePromo(){
-
-    const input =
-        document.getElementById("promoInput");
-
-    const code =
-        input.value
-            .trim()
-            .toUpperCase();
-
-    const rewards = {
-
-        START:10000,
-
-        "2026":50000,
-
-        LIMITED:500000
-
-    };
-
-    if(!code){
-
-        alert(
-            "❌ Введите промокод!"
-        );
-
-        return;
-    }
-
-    if(
-        usedPromoCodes.includes(code)
-    ){
-
-        alert(
-            "❌ Промокод уже использован!"
-        );
-
-        return;
-    }
-
-    if(!rewards[code]){
-
-        alert(
-            "❌ Неверный промокод!"
-        );
-
-        return;
-    }
-
-    balance += rewards[code];
-
-    usedPromoCodes.push(code);
-
-    input.value="";
-
-    updateBalance();
-
-    alert(
-        "✅ Промокод активирован!\n\n"+
-        "+"+
-        rewards[code]
-            .toLocaleString("ru-RU")+
-        " 🪙"
-    );
-
-}
-
-function openUpgrade(){
-
-    const win =
-        document.getElementById(
-            "upgradeWindow"
-        );
-
-    win.classList.add("open");
-
-    updateUpgrade();
-
-}
-
-function closeUpgrade(){
-
-    document.getElementById(
-        "upgradeWindow"
-    ).classList.remove("open");
-
-}
-
-function updateUpgrade(){
-
-    const box =
-        document.getElementById(
-            "upgradeList"
-        );
-
-    box.innerHTML="";
-
-    if(!inventory.length){
-
-        box.innerHTML=`
-            <div class="empty">
-                У тебя нет предметов
-                для Upgrade
-            </div>
-        `;
-
-        return;
-    }
-
-    const grouped={};
-
-    inventory.forEach(item=>{
-
-        const key =
-            item.name+"_"+item.price;
-
-        if(!grouped[key]){
-
-            grouped[key]={
-                ...item,
-                count:0
-            };
-
-        }
-
-        grouped[key].count++;
-
-    });
-
-    Object.values(grouped)
-        .sort((a,b)=>b.price-a.price)
-        .forEach(item=>{
-
-            const div =
-                document.createElement("div");
-
-            div.className="upgrade-item";
-
-            const safeName =
-                item.name
-                    .replace(/\\/g,"\\\\")
-                    .replace(/'/g,"\\'");
-
-            div.innerHTML=`
-
-                <div class="upgrade-item-icon">
-                    ${item.icon}
-                </div>
-
-                <div class="upgrade-item-info">
-
-                    <div class="upgrade-item-name">
-                        ${item.name}
-                    </div>
-
-                    <div class="upgrade-item-price">
-                        ${item.price.toLocaleString("ru-RU")}
-                        🪙 · ×${item.count}
-                    </div>
-
-                </div>
-
-                <button
-                    onclick="startUpgrade('${safeName}',${item.price})">
-                    UPGRADE
-                </button>
-
-            `;
-
-            box.appendChild(div);
-
-        });
-
-}
-
-function startUpgrade(name,price){
-
-    const sourceIndex =
-        inventory.findIndex(
-            item =>
-                item.name===name &&
-                item.price===price
-        );
-
-    if(sourceIndex===-1){
-
-        alert(
-            "❌ Предмет не найден!"
-        );
-
-        return;
-    }
-
-    const targets =
-        Object.values(cases)
-            .flatMap(c=>c.items)
-            .filter(
-                item=>item.price>price
-            )
-            .sort(
-                (a,b)=>a.price-b.price
-            );
-
-    if(!targets.length){
-
-        alert(
-            "❌ Нет предметов дороже!"
-        );
-
-        return;
-    }
-
-    let text =
-        "⚡ UPGRADE\n\n"+
-        "Твой предмет: "+
-        name+
-        "\nСтоимость: "+
-        price.toLocaleString("ru-RU")+
-        " 🪙\n\n";
-
-    targets.forEach(
-        (item,index)=>{
-
-            const chance =
-                Math.min(
-                    95,
-                    Math.max(
-                        .01,
-                        price/item.price*100
-                    )
-                );
-
-            text +=
-                (index+1)+
-                ". "+
-                item.icon+" "+
-                item.name+
-                " — "+
-                item.price.toLocaleString("ru-RU")+
-                " 🪙"+
-                " | "+
-                chance.toFixed(2)+
-                "%\n";
-
-        }
-    );
-
-    const answer =
-        prompt(
-            text+
-            "\nВведи номер цели:"
-        );
-
-    if(answer===null){
-        return;
-    }
-
-    const index =
-        Number(answer)-1;
-
-    if(
-        !Number.isInteger(index) ||
-        !targets[index]
-    ){
-
-        alert(
-            "❌ Неверный номер!"
-        );
-
-        return;
-    }
-
-    const target =
-        targets[index];
-
-    const chance =
-        Math.min(
-            95,
-            Math.max(
-                .01,
-                price/target.price*100
-            )
-        );
-
-    const success =
-        Math.random()*100 < chance;
-
-    inventory.splice(
-        sourceIndex,
-        1
-    );
-
-    if(success){
-
-        inventory.push({
-
-            name:target.name,
-
-            price:target.price,
-
-            icon:target.icon,
-
-            time:Date.now()
-
-        });
-
-        alert(
-            "🎉 UPGRADE УСПЕШНЫЙ!\n\n"+
-            target.icon+" "+
-            target.name+
-            "\nШанс: "+
-            chance.toFixed(2)+
-            "%"
-        );
-
-    }else{
-
-        alert(
-            "❌ UPGRADE ПРОВАЛЕН!\n\n"+
-            "Предмет потерян.\n"+
-            "Шанс: "+
-            chance.toFixed(2)+
-            "%"
-        );
-
-    }
-
-    saveGame();
-
-    updateInventory();
-
-    updateUpgrade();
-
-}
-
-function getAllItems(){
-
-    const all=[];
-
-    Object.values(cases)
-        .forEach(c=>{
-
-            c.items.forEach(item=>{
-
-                all.push({
-
-                    name:item.name,
-
-                    price:item.price,
-
-                    icon:item.icon
-
-                });
-
-            });
-
-        });
-
-    return all;
-
-}
-
-function openBlackMarket(){
-
-    const price=33333;
-
-    if(balance<price){
-
-        alert(
-            "❌ Нужно "+
-            price.toLocaleString("ru-RU")+
+            "❌ Недостаточно монет!\n\n" +
+            "Нужно: " +
+            potion.price.toLocaleString("ru-RU") +
             " 🪙"
         );
 
         return;
     }
 
-    const all =
-        getAllItems();
 
-    if(!all.length) return;
+    balance -= potion.price;
 
-    balance -= price;
+
+    activeLuckLevel =
+        potion.level;
+
+
+    luckEndTime =
+        Date.now() +
+        potion.duration;
+
+
+    saveGame();
 
     updateBalance();
 
-    const winner =
-        all[
-            Math.floor(
-                Math.random()*all.length
+    renderPotionShop();
+
+    updateLuckTimer();
+
+
+    alert(
+        "🧪 Зелье удачи " +
+        potion.level +
+        " активировано!\n\n" +
+
+        "Удача: ×" +
+        potion.multiplier +
+        "\n" +
+
+        "Время: 60 секунд"
+    );
+
+}
+
+
+/* =========================================================
+   LUCK TIMER
+========================================================= */
+
+function updateLuckTimer(){
+
+    const timer =
+        document.getElementById(
+            "luckTimer"
+        );
+
+
+    const timeElement =
+        document.getElementById(
+            "luckTime"
+        );
+
+
+    const bar =
+        document.getElementById(
+            "luckBar"
+        );
+
+
+    const name =
+        document.getElementById(
+            "luckName"
+        );
+
+
+    const luck =
+        getActiveLuck();
+
+
+    if(!luck){
+
+        timer.classList.remove("show");
+
+        if(bar){
+            bar.style.width = "0%";
+        }
+
+        return;
+    }
+
+
+    const remaining =
+        Math.max(
+            0,
+            luckEndTime - Date.now()
+        );
+
+
+    const seconds =
+        Math.ceil(
+            remaining / 1000
+        );
+
+
+    const percent =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                (remaining / 60000) * 100
             )
-        ];
-
-    const roulette =
-        document.getElementById(
-            "roulette"
         );
 
-    const line =
-        document.getElementById(
-            "rouletteLine"
+
+    timer.classList.add("show");
+
+
+    name.textContent =
+        "🧪 Зелье удачи " +
+        luck.level +
+        " • ×" +
+        luck.multiplier;
+
+
+    timeElement.textContent =
+        seconds + " сек";
+
+
+    bar.style.width =
+        percent + "%";
+
+
+    if(remaining <= 0){
+
+        activeLuckLevel = 0;
+        luckEndTime = 0;
+
+        saveGame();
+
+        renderPotionShop();
+
+        timer.classList.remove("show");
+
+    }
+
+}
+
+
+/* =========================================================
+   OPEN SELECTED CASE
+========================================================= */
+
+function openSelectedCase(){
+
+    if(opening){
+        return;
+    }
+
+
+    if(!selectedCase){
+        return;
+    }
+
+
+    const data =
+        cases[selectedCase];
+
+
+    if(!data){
+        return;
+    }
+
+
+    const price =
+        data.price *
+        selectedMultiplier;
+
+
+    if(balance < price){
+
+        alert(
+            "❌ Недостаточно монет!\n\n" +
+            "Нужно: " +
+            price.toLocaleString("ru-RU") +
+            " 🪙"
         );
 
-    const winBox =
+        return;
+    }
+
+
+    balance -= price;
+
+
+    updateBalance();
+
+    saveGame();
+
+
+    /*
+        Black Market специально
+        НЕ использует удачу.
+    */
+
+    if(selectedCase === "black"){
+
+        openBlackMarket();
+
+        return;
+    }
+
+
+    opening = true;
+
+
+    document
+        .getElementById("caseModal")
+        .classList.remove("show");
+
+
+    document
+        .getElementById("rouletteOverlay")
+        .classList.add("show");
+
+
+    createRoulette();
+
+
+}
+
+
+/* =========================================================
+   CREATE ROULETTE
+========================================================= */
+
+function createRoulette(){
+
+    const data =
+        cases[selectedCase];
+
+
+    const grid =
         document.getElementById(
-            "winBox"
+            "rouletteGrid"
         );
 
-    winBox.classList.remove("show");
 
-    line.innerHTML="";
-    line.style.transition="none";
-    line.style.transform=
-        "translateX(0)";
+    const title =
+        document.getElementById(
+            "rouletteTitle"
+        );
 
-    roulette.classList.add("show");
 
-    const visual=[];
+    grid.innerHTML = "";
+
+
+    title.textContent =
+        data.name +
+        " • ОТКРЫТИЕ";
+
+
+    const results = [];
+
 
     for(
-        let i=0;
-        i<55;
+        let i = 0;
+        i < selectedMultiplier;
         i++
     ){
 
-        visual.push(
-            all[
-                Math.floor(
-                    Math.random()*all.length
-                )
-            ]
+        results.push(
+            randomLuckItem(
+                data.items
+            )
         );
 
     }
 
-    visual.push(winner);
 
-    visual.forEach(item=>{
+    /*
+        Создаём отдельную рулетку
+        для каждого открытия.
+    */
 
-        const div =
-            document.createElement("div");
+    results.forEach(
+        (result,index) => {
 
-        div.className=
-            "roulette-item";
+            const roulette =
+                document.createElement(
+                    "div"
+                );
 
-        div.innerHTML=`
-            <div class="roulette-item-icon">
-                ${item.icon}
-            </div>
 
-            <div class="roulette-item-name">
-                ${item.name}
-            </div>
-        `;
+            roulette.className =
+                "single-roulette";
 
-        line.appendChild(div);
 
-    });
+            roulette.innerHTML = `
 
-    const offset =
-        55*140-
-        450+
-        Math.random()*40-
-        20;
+                <div class="center-line"></div>
 
-    setTimeout(()=>{
+                <div
+                    class="track"
+                    id="track-${index}">
+                </div>
 
-        line.style.transition =
-            "transform 4s cubic-bezier(.12,.8,.18,1)";
+            `;
 
-        line.style.transform =
-            `translateX(-${offset}px)`;
 
-    },50);
+            grid.appendChild(roulette);
 
-    setTimeout(()=>{
 
-        addToInventory(winner);
+            createTrack(
+                index,
+                result,
+                data.items
+            );
 
-        showWin(winner);
+        }
+    );
 
-    },4300);
+
+    setTimeout(
+        () => {
+
+            finishOpening(
+                results
+            );
+
+        },
+        3600
+    );
 
 }
 
-function resetGame(){
+
+/* =========================================================
+   CREATE TRACK
+========================================================= */
+
+function createTrack(
+    index,
+    result,
+    items
+){
+
+    const track =
+        document.getElementById(
+            "track-" + index
+        );
+
+
+    if(!track){
+        return;
+    }
+
+
+    const trackItems = [];
+
+
+    /*
+        Делаем длинную ленту.
+    */
+
+    for(
+        let i = 0;
+        i < 35;
+        i++
+    ){
+
+        trackItems.push(
+            randomItem(items)
+        );
+
+    }
+
+
+    /*
+        Последний предмет —
+        гарантированный результат.
+    */
+
+    trackItems.push(result);
+
+
+    track.innerHTML = "";
+
+
+    trackItems.forEach(item => {
+
+        const element =
+            document.createElement(
+                "div"
+            );
+
+
+        element.className =
+            "roulette-item";
+
+
+        element.innerHTML = `
+
+            <div class="roulette-icon">
+                ${item.icon}
+            </div>
+
+            <div class="roulette-name">
+                ${item.name}
+            </div>
+
+            <div class="roulette-price">
+                ${item.price.toLocaleString("ru-RU")} 🪙
+            </div>
+
+        `;
+
+
+        track.appendChild(element);
+
+    });
+
+
+    /*
+        Запускаем движение.
+    */
+
+    requestAnimationFrame(
+        () => {
+
+            const itemWidth = 130;
+
+            const target =
+                -(
+                    (trackItems.length - 1) *
+                    itemWidth
+                ) +
+                205;
+
+
+            track.style.transition =
+                "transform 3.3s cubic-bezier(.08,.7,.12,1)";
+
+
+            track.style.transform =
+                "translateX(" +
+                target +
+                "px)";
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   FINISH NORMAL OPENING
+========================================================= */
+
+function finishOpening(results){
+
+    if(!opening){
+        return;
+    }
+
+
+    results.forEach(item => {
+
+        inventory.push({
+            id:
+                Date.now() +
+                Math.random(),
+
+            name:item.name,
+
+            icon:item.icon,
+
+            price:item.price,
+
+            locked:false
+        });
+
+    });
+
+
+    saveGame();
+
+    renderInventory();
+
+
+    setTimeout(
+        () => {
+
+            document
+                .getElementById(
+                    "rouletteOverlay"
+                )
+                .classList.remove(
+                    "show"
+                );
+
+
+            opening = false;
+
+            selectedCase = null;
+
+            updateBalance();
+
+            renderPotionShop();
+
+        },
+        900
+    );
+
+}
+
+
+/* =========================================================
+   INVENTORY
+========================================================= */
+
+function renderInventory(){
+
+    const container =
+        document.getElementById(
+            "inventory"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    if(!inventory.length){
+
+        container.innerHTML = `
+
+            <div
+                style="
+                    text-align:center;
+                    padding:30px;
+                    color:#777;
+                ">
+
+                Инвентарь пуст
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    inventory.forEach(
+        (item,index) => {
+
+            const element =
+                document.createElement(
+                    "div"
+                );
+
+
+            element.className =
+                "inventory-item" +
+                (item.locked
+                    ? " locked"
+                    : "");
+
+
+            element.innerHTML = `
+
+                <div class="item-info">
+
+                    <div class="item-icon">
+                        ${item.icon}
+                    </div>
+
+                    <div>
+
+                        <div class="item-name">
+                            ${item.name}
+                        </div>
+
+                        <div class="item-price">
+                            ${item.price.toLocaleString("ru-RU")} 🪙
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="item-actions">
+
+                    <button
+                        class="small pin"
+                        onclick="toggleLock(${index})">
+
+                        ${item.locked
+                            ? "🔓"
+                            : "🔒"}
+
+                    </button>
+
+                    <button
+                        class="small sell"
+                        onclick="sellItem(${index})">
+
+                        💰
+
+                    </button>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                element
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   TOGGLE INVENTORY
+========================================================= */
+
+function toggleInventory(){
+
+    if(opening){
+        return;
+    }
+
+
+    const window =
+        document.getElementById(
+            "inventoryWindow"
+        );
+
+
+    window.classList.toggle(
+        "open"
+    );
+
 
     if(
-        !confirm(
-            "⚠️ Сбросить весь прогресс?"
+        window.classList.contains("open")
+    ){
+
+        renderInventory();
+
+    }
+
+}
+
+
+/* =========================================================
+   LOCK ITEM
+========================================================= */
+
+function toggleLock(index){
+
+    if(!inventory[index]){
+        return;
+    }
+
+
+    inventory[index].locked =
+        !inventory[index].locked;
+
+
+    saveGame();
+
+    renderInventory();
+
+}
+
+
+/* =========================================================
+   SELL ITEM
+========================================================= */
+
+function sellItem(index){
+
+    const item =
+        inventory[index];
+
+
+    if(!item){
+        return;
+    }
+
+
+    if(item.locked){
+
+        alert(
+            "🔒 Предмет заблокирован!\n\n" +
+            "Сначала разблокируй его."
+        );
+
+        return;
+    }
+
+
+    balance += item.price;
+
+
+    inventory.splice(
+        index,
+        1
+    );
+
+
+    saveGame();
+
+    updateBalance();
+
+    renderInventory();
+
+}
+
+
+/* =========================================================
+   SELL ALL
+========================================================= */
+
+function sellAll(){
+
+    let earned = 0;
+
+    const remaining = [];
+
+
+    inventory.forEach(item => {
+
+        if(item.locked){
+
+            remaining.push(item);
+
+        }else{
+
+            earned +=
+                Number(item.price) || 0;
+
+        }
+
+    });
+
+
+    if(earned <= 0){
+
+        alert(
+            "❌ Нет доступных предметов для продажи."
+        );
+
+        return;
+    }
+
+
+    balance += earned;
+
+
+    inventory =
+        remaining;
+
+
+    saveGame();
+
+    updateBalance();
+
+    renderInventory();
+
+
+    alert(
+        "💰 Продано!\n\n+" +
+        earned.toLocaleString("ru-RU") +
+        " 🪙"
+    );
+
+}
+
+
+/* =========================================================
+   SHOP / INVENTORY STARTUP
+========================================================= */
+
+renderInventory();
+
+renderPotionShop();
+
+updateLuckTimer();
+
+
+/* =========================================================
+   LUCK TIMER UPDATE
+========================================================= */
+
+setInterval(
+    updateLuckTimer,
+    250
+);
+/* =========================================================
+   GET ALL ITEMS
+========================================================= */
+
+function getAllItems(){
+
+    const allItems = [];
+
+
+    Object.keys(cases).forEach(
+        caseId => {
+
+            if(caseId === "black"){
+                return;
+            }
+
+
+            const data =
+                cases[caseId];
+
+
+            if(!data || !data.items){
+                return;
+            }
+
+
+            data.items.forEach(item => {
+
+                allItems.push(item);
+
+            });
+
+        }
+    );
+
+
+    return allItems;
+
+}
+
+
+/* =========================================================
+   INDEX
+========================================================= */
+
+function toggleIndex(){
+
+    if(opening){
+        return;
+    }
+
+
+    const window =
+        document.getElementById(
+            "indexWindow"
+        );
+
+
+    window.classList.toggle(
+        "open"
+    );
+
+
+    if(
+        window.classList.contains("open")
+    ){
+
+        renderIndex();
+
+    }
+
+}
+
+
+/* =========================================================
+   RENDER INDEX
+========================================================= */
+
+function renderIndex(){
+
+    const container =
+        document.getElementById(
+            "indexContent"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    Object.keys(cases).forEach(
+        caseId => {
+
+            if(caseId === "black"){
+                return;
+            }
+
+
+            const data =
+                cases[caseId];
+
+
+            const wrapper =
+                document.createElement(
+                    "div"
+                );
+
+
+            wrapper.className =
+                "index-case";
+
+
+            const limited =
+                [
+                    "halloween",
+                    "newyear",
+                    "space",
+                    "golden"
+                ].includes(caseId);
+
+
+            const nft =
+                caseId === "nft";
+
+
+            wrapper.innerHTML = `
+
+                <div
+                    class="
+                        index-title
+                        ${limited ? "index-limited" : ""}
+                    ">
+
+                    ${data.icon}
+                    ${data.name}
+
+                </div>
+
+            `;
+
+
+            data.items.forEach(item => {
+
+                const row =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                row.className =
+                    "index-row";
+
+
+                row.innerHTML = `
+
+                    <div class="index-left">
+
+                        <span>
+                            ${item.icon}
+                        </span>
+
+                        <div>
+
+                            <div>
+                                ${item.name}
+                            </div>
+
+                            <div
+                                class="index-chance">
+
+                                Шанс:
+                                ${item.chance}%
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="index-price">
+
+                        ${item.price.toLocaleString("ru-RU")}
+                        🪙
+
+                    </div>
+
+                `;
+
+
+                wrapper.appendChild(row);
+
+            });
+
+
+            container.appendChild(
+                wrapper
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   BLACK MARKET
+   =========================================================
+   ВАЖНО:
+   Black Market НЕ использует luck.
+   ========================================================= */
+
+function openBlackMarket(){
+
+    const allItems =
+        getAllItems();
+
+
+    if(!allItems.length){
+
+        opening = false;
+
+        return;
+
+    }
+
+
+    const result =
+        allItems[
+            Math.floor(
+                Math.random() *
+                allItems.length
+            )
+        ];
+
+
+    opening = true;
+
+
+    const overlay =
+        document.getElementById(
+            "blackOverlay"
+        );
+
+
+    const circle =
+        document.getElementById(
+            "blackCircle"
+        );
+
+
+    const item =
+        document.getElementById(
+            "blackItem"
+        );
+
+
+    const icon =
+        document.getElementById(
+            "blackIcon"
+        );
+
+
+    const name =
+        document.getElementById(
+            "blackName"
+        );
+
+
+    const price =
+        document.getElementById(
+            "blackPrice"
+        );
+
+
+    const resultBox =
+        document.getElementById(
+            "blackResult"
+        );
+
+
+    overlay.classList.add(
+        "show"
+    );
+
+
+    circle.classList.remove(
+        "show",
+        "hide"
+    );
+
+
+    item.classList.remove(
+        "fly"
+    );
+
+
+    resultBox.classList.remove(
+        "show"
+    );
+
+
+    icon.textContent =
+        result.icon;
+
+
+    name.textContent =
+        result.name;
+
+
+    price.textContent =
+        result.price.toLocaleString("ru-RU") +
+        " 🪙";
+
+
+    setTimeout(
+        () => {
+
+            circle.classList.add(
+                "show"
+            );
+
+        },
+        150
+    );
+
+
+    setTimeout(
+        () => {
+
+            item.classList.add(
+                "fly"
+            );
+
+        },
+        1200
+    );
+
+
+    setTimeout(
+        () => {
+
+            circle.classList.add(
+                "hide"
+            );
+
+        },
+        2400
+    );
+
+
+    setTimeout(
+        () => {
+
+            inventory.push({
+
+                id:
+                    Date.now() +
+                    Math.random(),
+
+                name:
+                    result.name,
+
+                icon:
+                    result.icon,
+
+                price:
+                    result.price,
+
+                locked:false
+
+            });
+
+
+            saveGame();
+
+            renderInventory();
+
+
+            resultBox.classList.add(
+                "show"
+            );
+
+        },
+        3300
+    );
+
+}
+
+
+/* =========================================================
+   CLOSE BLACK MARKET
+========================================================= */
+
+function closeBlackMarket(){
+
+    if(!opening){
+        return;
+    }
+
+
+    document
+        .getElementById(
+            "blackOverlay"
         )
+        .classList.remove(
+            "show"
+        );
+
+
+    document
+        .getElementById(
+            "blackCircle"
+        )
+        .classList.remove(
+            "show",
+            "hide"
+        );
+
+
+    document
+        .getElementById(
+            "blackItem"
+        )
+        .classList.remove(
+            "fly"
+        );
+
+
+    document
+        .getElementById(
+            "blackResult"
+        )
+        .classList.remove(
+            "show"
+        );
+
+
+    opening = false;
+
+    selectedCase = null;
+
+
+    renderInventory();
+
+}
+
+
+/* =========================================================
+   UPGRADE
+========================================================= */
+
+function openUpgrade(){
+
+    if(opening){
+        return;
+    }
+
+
+    document
+        .getElementById(
+            "upgradeModal"
+        )
+        .classList.add(
+            "show"
+        );
+
+
+    renderUpgrade();
+
+}
+
+
+/* =========================================================
+   CLOSE UPGRADE
+========================================================= */
+
+function closeUpgrade(){
+
+    document
+        .getElementById(
+            "upgradeModal"
+        )
+        .classList.remove(
+            "show"
+        );
+
+
+    upgradeItem = null;
+
+}
+
+
+/* =========================================================
+   RENDER UPGRADE
+========================================================= */
+
+function renderUpgrade(){
+
+    const container =
+        document.getElementById(
+            "upgradeContent"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    if(!inventory.length){
+
+        container.innerHTML = `
+
+            <div
+                style="
+                    text-align:center;
+                    padding:30px;
+                    color:#888;
+                ">
+
+                🎒 Инвентарь пуст
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    let html = `
+
+        <div
+            style="
+                color:#aaa;
+                font-size:12px;
+                margin-bottom:12px;
+            ">
+
+            Выбери предмет для Upgrade.
+            Чем дороже предмет,
+            тем выше потенциальная награда.
+
+        </div>
+
+    `;
+
+
+    inventory.forEach(
+        (item,index) => {
+
+            html += `
+
+                <div
+                    class="inventory-item">
+
+                    <div class="item-info">
+
+                        <div class="item-icon">
+                            ${item.icon}
+                        </div>
+
+                        <div>
+
+                            <div class="item-name">
+                                ${item.name}
+                            </div>
+
+                            <div class="item-price">
+                                ${item.price.toLocaleString("ru-RU")}
+                                🪙
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="small"
+                        onclick="selectUpgrade(${index})">
+
+                        UPGRADE
+
+                    </button>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+/* =========================================================
+   SELECT UPGRADE ITEM
+========================================================= */
+
+function selectUpgrade(index){
+
+    if(!inventory[index]){
+        return;
+    }
+
+
+    upgradeItem =
+        index;
+
+
+    renderUpgradeSelected();
+
+}
+
+
+/* =========================================================
+   RENDER SELECTED UPGRADE
+========================================================= */
+
+function renderUpgradeSelected(){
+
+    const container =
+        document.getElementById(
+            "upgradeContent"
+        );
+
+
+    if(
+        upgradeItem === null ||
+        !inventory[upgradeItem]
+    ){
+
+        renderUpgrade();
+
+        return;
+
+    }
+
+
+    const item =
+        inventory[upgradeItem];
+
+
+    const target =
+        Math.floor(
+            item.price * 2
+        );
+
+
+    container.innerHTML = `
+
+        <div
+            style="
+                text-align:center;
+                padding:20px 0;
+            ">
+
+            <div
+                style="
+                    font-size:65px;
+                    margin-bottom:10px;
+                ">
+
+                ${item.icon}
+
+            </div>
+
+
+            <div
+                style="
+                    font-size:20px;
+                    font-weight:bold;
+                ">
+
+                ${item.name}
+
+            </div>
+
+
+            <div
+                style="
+                    margin-top:8px;
+                    color:#aaa;
+                ">
+
+                Стоимость:
+                ${item.price.toLocaleString("ru-RU")}
+                🪙
+
+            </div>
+
+
+            <div
+                style="
+                    margin-top:5px;
+                    color:#b9a2ff;
+                ">
+
+                Цель:
+                ${target.toLocaleString("ru-RU")}
+                🪙
+
+            </div>
+
+
+            <button
+                class="open-case"
+                onclick="doUpgrade()">
+
+                🔄 ПОПРОБОВАТЬ UPGRADE
+
+            </button>
+
+
+            <button
+                style="
+                    width:100%;
+                    margin-top:8px;
+                    background:#29293b;
+                "
+                onclick="upgradeItem=null;renderUpgrade()">
+
+                НАЗАД
+
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   DO UPGRADE
+========================================================= */
+
+function doUpgrade(){
+
+    if(
+        upgradeItem === null ||
+        !inventory[upgradeItem]
     ){
         return;
     }
 
-    balance=100;
 
-    diamonds=0;
+    const item =
+        inventory[upgradeItem];
 
-    inventory=[];
 
-    usedPromoCodes=[];
+    /*
+        50% шанс на успешный Upgrade.
+    */
 
-    activeLuckLevel=0;
+    const success =
+        Math.random() < 0.5;
 
-    luckEndTime=0;
+
+    if(success){
+
+        const newPrice =
+            Math.floor(
+                item.price * 2
+            );
+
+
+        item.price =
+            newPrice;
+
+
+        saveGame();
+
+        renderInventory();
+
+        renderUpgradeSelected();
+
+
+        alert(
+            "🎉 UPGRADE УСПЕШНЫЙ!\n\n" +
+            item.name +
+            "\n" +
+            newPrice.toLocaleString("ru-RU") +
+            " 🪙"
+        );
+
+    }else{
+
+        inventory.splice(
+            upgradeItem,
+            1
+        );
+
+
+        saveGame();
+
+        renderInventory();
+
+
+        alert(
+            "❌ UPGRADE НЕ УДАЛСЯ!\n\n" +
+            "Предмет потерян."
+        );
+
+
+        upgradeItem = null;
+
+        renderUpgrade();
+
+    }
+
+}
+
+
+/* =========================================================
+   RESET GAME
+========================================================= */
+
+function resetGame(){
+
+    if(opening){
+        return;
+    }
+
+
+    const answer =
+        confirm(
+            "⚠️ Сбросить весь прогресс?\n\n" +
+            "Монеты, алмазы, инвентарь, " +
+            "промокоды и зелье удачи будут сброшены."
+        );
+
+
+    if(!answer){
+        return;
+    }
+
+
+    balance = 100;
+
+    diamonds = 0;
+
+    inventory = [];
+
+    usedPromo = [];
+
+    activeLuckLevel = 0;
+
+    luckEndTime = 0;
+
+    selectedCase = null;
+
+    selectedMultiplier = 1;
+
+    upgradeItem = null;
+
 
     localStorage.removeItem(
         "caseBalance"
@@ -3043,7 +4574,7 @@ function resetGame(){
     );
 
     localStorage.removeItem(
-        "usedPromoCodes"
+        "casePromo"
     );
 
     localStorage.removeItem(
@@ -3054,31 +4585,236 @@ function resetGame(){
         "luckEndTime"
     );
 
+
+    saveGame();
+
     updateBalance();
 
-    updateInventory();
+    renderInventory();
+
+    renderPotionShop();
 
     updateLuckTimer();
 
+
+    document
+        .getElementById(
+            "inventoryWindow"
+        )
+        .classList.remove(
+            "open"
+        );
+
+
+    document
+        .getElementById(
+            "indexWindow"
+        )
+        .classList.remove(
+            "open"
+        );
+
+
+    document
+        .getElementById(
+            "shopWindow"
+        )
+        .classList.remove(
+            "open"
+        );
+
+
+    document
+        .getElementById(
+            "caseModal"
+        )
+        .classList.remove(
+            "show"
+        );
+
+
+    document
+        .getElementById(
+            "upgradeModal"
+        )
+        .classList.remove(
+            "show"
+        );
+
+
     alert(
-        "✅ Прогресс сброшен!"
+        "✅ Прогресс полностью сброшен!"
     );
 
 }
 
+
+/* =========================================================
+   STARTUP
+========================================================= */
+
 updateBalance();
 
-updateInventory();
+renderInventory();
 
-updateIndex();
-
-updatePotionShop();
+renderPotionShop();
 
 updateLuckTimer();
 
-setInterval(
-    updateLuckTimer,
-    1000
+renderIndex();
+
+
+/* =========================================================
+   CLOSE WINDOWS BY CLICKING OUTSIDE
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        const shop =
+            document.getElementById(
+                "shopWindow"
+            );
+
+
+        const inventoryWindow =
+            document.getElementById(
+                "inventoryWindow"
+            );
+
+
+        const indexWindow =
+            document.getElementById(
+                "indexWindow"
+            );
+
+
+        if(
+            shop &&
+            shop.classList.contains("open") &&
+            !shop.contains(event.target) &&
+            !event.target.closest(".shop-btn")
+        ){
+
+            shop.classList.remove(
+                "open"
+            );
+
+        }
+
+
+        if(
+            inventoryWindow &&
+            inventoryWindow.classList.contains("open") &&
+            !inventoryWindow.contains(event.target) &&
+            !event.target.closest(".icon-btn")
+        ){
+
+            /*
+                Не закрываем инвентарь
+                по случайному клику,
+                если открыт другой интерфейс.
+            */
+
+        }
+
+
+        if(
+            indexWindow &&
+            indexWindow.classList.contains("open") &&
+            !indexWindow.contains(event.target) &&
+            !event.target.closest(".icon-btn")
+        ){
+
+            /*
+                Индекс также не мешает
+                остальному интерфейсу.
+            */
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   ESC — CLOSE WINDOWS
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key !== "Escape"){
+            return;
+        }
+
+
+        if(opening){
+            return;
+        }
+
+
+        document
+            .getElementById(
+                "shopWindow"
+            )
+            .classList.remove(
+                "open"
+            );
+
+
+        document
+            .getElementById(
+                "inventoryWindow"
+            )
+            .classList.remove(
+                "open"
+            );
+
+
+        document
+            .getElementById(
+                "indexWindow"
+            )
+            .classList.remove(
+                "open"
+            );
+
+
+        document
+            .getElementById(
+                "caseModal"
+            )
+            .classList.remove(
+                "show"
+            );
+
+
+        document
+            .getElementById(
+                "upgradeModal"
+            )
+            .classList.remove(
+                "show"
+            );
+
+    }
+);
+
+
+/* =========================================================
+   SAVE BEFORE PAGE CLOSE
+========================================================= */
+
+window.addEventListener(
+    "beforeunload",
+    function(){
+
+        saveGame();
+
+    }
 );
 
 </script>
