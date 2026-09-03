@@ -1330,6 +1330,147 @@ h1{
     min-width:130px;
 }
 
+
+/* =========================
+   TASKS
+========================= */
+
+.tasks-modal{
+    position:fixed;
+    z-index:1300;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    background:#000c;
+    backdrop-filter:blur(8px);
+}
+
+.tasks-modal.show{
+    display:flex;
+}
+
+.tasks-box{
+    width:700px;
+    max-width:100%;
+    max-height:92vh;
+    overflow-y:auto;
+    padding:24px;
+    border-radius:20px;
+    background:
+        radial-gradient(circle at 50% 0%,#252044,#101016 70%);
+    border:1px solid #7047ff;
+    box-shadow:0 20px 90px #000,0 0 45px #7047ff22;
+}
+
+.tasks-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:8px;
+}
+
+.tasks-header h2{
+    margin:0;
+    text-shadow:0 0 15px #7047ff;
+}
+
+.tasks-timer{
+    margin-bottom:16px;
+    padding:10px 13px;
+    text-align:center;
+    border-radius:10px;
+    background:#171722;
+    border:1px solid #393958;
+    color:#aaa;
+    font-size:12px;
+}
+
+.task-list{
+    display:grid;
+    gap:10px;
+}
+
+.task-card{
+    padding:14px;
+    border-radius:13px;
+    background:#15151f;
+    border:1px solid #29293c;
+    transition:.2s;
+}
+
+.task-card.completed{
+    border-color:#42ff72;
+    box-shadow:0 0 18px #42ff7222;
+}
+
+.task-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.task-name{
+    font-size:14px;
+    font-weight:900;
+}
+
+.task-reward{
+    flex:none;
+    color:#ffd86b;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.task-description{
+    margin-top:5px;
+    color:#888;
+    font-size:11px;
+}
+
+.task-progress{
+    height:8px;
+    margin-top:10px;
+    overflow:hidden;
+    border-radius:99px;
+    background:#0d0d14;
+    border:1px solid #29293c;
+}
+
+.task-progress-bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#7047ff,#42ff72);
+    transition:.25s;
+}
+
+.task-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    margin-top:8px;
+}
+
+.task-count{
+    color:#aaa;
+    font-size:11px;
+}
+
+.task-claim{
+    padding:7px 10px;
+    font-size:10px;
+}
+
+.task-claimed{
+    color:#42ff72;
+    font-size:11px;
+    font-weight:bold;
+}
+
 .luck-timer{
     position:fixed;
     z-index:1200;
@@ -1821,6 +1962,7 @@ h1{
 
 <div class="header-right">
 
+<button class="icon-btn" onclick="openTasks()" title="Задания">📋</button>
 <button class="promo" onclick="openPromo()">🎟️ ПРОМО</button>
 
 <div class="balance">
@@ -2115,6 +2257,25 @@ disabled>
 </div>
 </div>
 
+
+
+<div id="tasksModal" class="tasks-modal">
+
+<div class="tasks-box">
+
+<div class="tasks-header">
+<h2>📋 ЗАДАНИЯ</h2>
+<button class="close" onclick="closeTasks()">×</button>
+</div>
+
+<div id="tasksTimer" class="tasks-timer">
+Новые задания через 00:00:00
+</div>
+
+<div id="taskList" class="task-list"></div>
+
+</div>
+</div>
 
 <main class="container">
 
@@ -2636,6 +2797,216 @@ JSON.stringify(inventory)
 
 ensureInventoryIds();
 
+
+/* =========================
+   HOURLY TASKS
+========================= */
+
+const TASK_POOL = [
+    {id:"open1", icon:"📦", name:"Первое открытие", desc:"Открой 1 кейс", type:"open", target:1, reward:5000},
+    {id:"open3", icon:"📦", name:"Начало дня", desc:"Открой 3 кейса", type:"open", target:3, reward:15000},
+    {id:"open5", icon:"📦", name:"Коллекционер", desc:"Открой 5 кейсов", type:"open", target:5, reward:30000},
+    {id:"open10", icon:"📦", name:"Кейс-марафон", desc:"Открой 10 кейсов", type:"open", target:10, reward:75000},
+    {id:"open20", icon:"📦", name:"Без остановки", desc:"Открой 20 кейсов", type:"open", target:20, reward:150000},
+
+    {id:"sell1", icon:"💰", name:"Продажа", desc:"Продай 1 предмет", type:"sell", target:1, reward:5000},
+    {id:"sell3", icon:"💰", name:"Торговец", desc:"Продай 3 предмета", type:"sell", target:3, reward:15000},
+    {id:"sell5", icon:"💰", name:"Большая распродажа", desc:"Продай 5 предметов", type:"sell", target:5, reward:30000},
+    {id:"sell10", icon:"💰", name:"Оптовик", desc:"Продай 10 предметов", type:"sell", target:10, reward:80000},
+
+    {id:"earn10k", icon:"🪙", name:"Заработок", desc:"Заработай 10 000 🪙", type:"earn", target:10000, reward:10000},
+    {id:"earn50k", icon:"🪙", name:"Хороший доход", desc:"Заработай 50 000 🪙", type:"earn", target:50000, reward:30000},
+    {id:"earn100k", icon:"🪙", name:"Серьёзный доход", desc:"Заработай 100 000 🪙", type:"earn", target:100000, reward:60000},
+    {id:"earn1m", icon:"🪙", name:"Миллионер", desc:"Заработай 1 000 000 🪙", type:"earn", target:1000000, reward:250000},
+
+    {id:"diam1", icon:"💎", name:"Алмазный покупатель", desc:"Купи 1 💎", type:"diamond", target:1, reward:5000},
+    {id:"diam10", icon:"💎", name:"Алмазный запас", desc:"Купи 10 💎", type:"diamond", target:10, reward:25000},
+    {id:"diam100", icon:"💎", name:"Алмазный магнат", desc:"Купи 100 💎", type:"diamond", target:100, reward:100000},
+
+    {id:"fuse1", icon:"🔥", name:"Плавильщик", desc:"Заверши 1 FUSE", type:"fuse", target:1, reward:50000},
+    {id:"fuse3", icon:"🔥", name:"Мастер FUSE", desc:"Заверши 3 FUSE", type:"fuse", target:3, reward:200000},
+
+    {id:"upgrade1", icon:"🔄", name:"Апгрейд", desc:"Сделай 1 Upgrade", type:"upgrade", target:1, reward:25000},
+    {id:"upgrade3", icon:"🔄", name:"Улучшатель", desc:"Сделай 3 Upgrade", type:"upgrade", target:3, reward:100000},
+
+    {id:"rare1", icon:"✨", name:"Редкая находка", desc:"Получи предмет стоимостью от 100 000 🪙", type:"rare", target:1, reward:75000},
+    {id:"rare3", icon:"✨", name:"Охотник за редкостями", desc:"Получи 3 предмета стоимостью от 100 000 🪙", type:"rare", target:3, reward:250000},
+    {id:"million1", icon:"👑", name:"Дорогой дроп", desc:"Получи предмет стоимостью от 1 000 000 🪙", type:"million", target:1, reward:250000},
+    {id:"million3", icon:"👑", name:"Королевская охота", desc:"Получи 3 предмета от 1 000 000 🪙", type:"million", target:3, reward:750000},
+
+    {id:"luck1", icon:"🍀", name:"На удачу", desc:"Активируй зелье удачи", type:"luck", target:1, reward:15000},
+    {id:"luck3", icon:"🍀", name:"Удачливый", desc:"Активируй 3 зелья удачи", type:"luck", target:3, reward:75000},
+
+    {id:"black1", icon:"◼️", name:"Тёмная сделка", desc:"Открой Black Market Case", type:"black", target:1, reward:100000},
+    {id:"black3", icon:"◼️", name:"Чёрный рынок", desc:"Открой 3 Black Market Case", type:"black", target:3, reward:500000},
+
+    {id:"crystal1", icon:"💎", name:"Кристальный путь", desc:"Открой 1 Diamond Case", type:"crystal", target:1, reward:50000},
+    {id:"crystal3", icon:"💎", name:"Кристальный охотник", desc:"Открой 3 Diamond Case", type:"crystal", target:3, reward:200000},
+
+    {id:"premium1", icon:"👑", name:"Премиум", desc:"Открой 1 Premium Case", type:"premium", target:1, reward:100000},
+    {id:"premium3", icon:"👑", name:"Премиум-коллекционер", desc:"Открой 3 Premium Case", type:"premium", target:3, reward:500000},
+
+    {id:"nft1", icon:"💠", name:"NFT охотник", desc:"Открой 1 NFT Case", type:"nft", target:1, reward:100000},
+    {id:"nft3", icon:"💠", name:"NFT коллекционер", desc:"Открой 3 NFT Case", type:"nft", target:3, reward:500000},
+
+    {id:"daily1", icon:"🎡", name:"Колесо удачи", desc:"Используй ежедневное колесо", type:"daily", target:1, reward:50000},
+    {id:"daily3", icon:"🎡", name:"Любимец удачи", desc:"Получи 3 награды с колеса", type:"daily", target:3, reward:250000},
+
+    {id:"bigwin", icon:"🏆", name:"Большая победа", desc:"Получи предмет дороже 10 000 000 🪙", type:"bigwin", target:1, reward:1000000},
+    {id:"bigwin3", icon:"🏆", name:"Джекпот", desc:"Получи 3 предмета дороже 10 000 000 🪙", type:"bigwin", target:3, reward:3000000}
+];
+
+let taskState = JSON.parse(localStorage.getItem("caseTasksState") || "{}");
+let taskHourKey = localStorage.getItem("caseTasksHourKey") || "";
+
+function currentTaskHourKey(){
+    const d = new Date();
+    return d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()+"-"+d.getHours();
+}
+
+function taskSeed(){
+    const key = currentTaskHourKey();
+    let hash = 0;
+    for(let i=0;i<key.length;i++) hash = ((hash<<5)-hash)+key.charCodeAt(i);
+    return Math.abs(hash);
+}
+
+function getCurrentTasks(){
+    const pool = TASK_POOL.slice();
+    let seed = taskSeed();
+    const result = [];
+    while(result.length < 5 && pool.length){
+        seed = (seed * 9301 + 49297) % 233280;
+        const index = seed % pool.length;
+        result.push(pool.splice(index,1)[0]);
+    }
+    return result;
+}
+
+function ensureTaskHour(){
+    const key = currentTaskHourKey();
+    if(taskHourKey !== key){
+        taskHourKey = key;
+        taskState = {};
+        localStorage.setItem("caseTasksHourKey", key);
+        localStorage.setItem("caseTasksState", JSON.stringify(taskState));
+    }
+}
+
+function taskProgress(type, amount=1){
+    ensureTaskHour();
+    let changed = false;
+
+    getCurrentTasks().forEach(task=>{
+        if(task.type !== type) return;
+        const old = Number(taskState[task.id]?.progress || 0);
+        const value = Math.min(task.target, old + Number(amount || 0));
+        if(value !== old){
+            taskState[task.id] = {
+                progress:value,
+                claimed:Boolean(taskState[task.id]?.claimed)
+            };
+            changed = true;
+        }
+    });
+
+    if(changed){
+        localStorage.setItem("caseTasksState", JSON.stringify(taskState));
+        updateTasksUI();
+    }
+}
+
+function claimTask(id){
+    ensureTaskHour();
+    const task = getCurrentTasks().find(x=>x.id===id);
+    if(!task) return;
+
+    const state = taskState[id] || {progress:0, claimed:false};
+    if(state.claimed || state.progress < task.target) return;
+
+    state.claimed = true;
+    taskState[id] = state;
+    balance += task.reward;
+
+    localStorage.setItem("caseTasksState", JSON.stringify(taskState));
+    updateBalance();
+    updateTasksUI();
+
+    alert(
+        "🎉 ЗАДАНИЕ ВЫПОЛНЕНО!\n\n"+
+        task.icon+" "+task.name+"\n"+
+        "Награда: +"+task.reward.toLocaleString("ru-RU")+" 🪙"
+    );
+}
+
+function formatTaskTime(){
+    const now = new Date();
+    const next = new Date(now);
+    next.setMinutes(0,0,0);
+    next.setHours(next.getHours()+1);
+    let sec = Math.max(0, Math.ceil((next-now)/1000));
+    const h = Math.floor(sec/3600);
+    sec %= 3600;
+    const m = Math.floor(sec/60);
+    const s = sec%60;
+    return [h,m,s].map(x=>String(x).padStart(2,"0")).join(":");
+}
+
+function updateTasksUI(){
+    const box = document.getElementById("taskList");
+    const timer = document.getElementById("tasksTimer");
+    if(!box || !timer) return;
+
+    ensureTaskHour();
+    timer.textContent = "⏱️ Новые 5 заданий через "+formatTaskTime();
+
+    box.innerHTML = "";
+
+    getCurrentTasks().forEach(task=>{
+        const state = taskState[task.id] || {progress:0, claimed:false};
+        const progress = Math.min(task.target, Number(state.progress||0));
+        const percent = Math.min(100, (progress/task.target)*100);
+
+        const card = document.createElement("div");
+        card.className = "task-card"+(state.claimed ? " completed":"");
+
+        card.innerHTML = `
+            <div class="task-top">
+                <div class="task-name">${task.icon} ${task.name}</div>
+                <div class="task-reward">+${task.reward.toLocaleString("ru-RU")} 🪙</div>
+            </div>
+            <div class="task-description">${task.desc}</div>
+            <div class="task-progress">
+                <div class="task-progress-bar" style="width:${percent}%"></div>
+            </div>
+            <div class="task-bottom">
+                <div class="task-count">${progress.toLocaleString("ru-RU")} / ${task.target.toLocaleString("ru-RU")}</div>
+                ${
+                    state.claimed
+                    ? '<div class="task-claimed">✓ ПОЛУЧЕНО</div>'
+                    : `<button class="task-claim" onclick="claimTask('${task.id}')" ${progress<task.target?'disabled':''}>${progress>=task.target?'ЗАБРАТЬ':'В ПРОЦЕССЕ'}</button>`
+                }
+            </div>
+        `;
+        box.appendChild(card);
+    });
+}
+
+function openTasks(){
+    updateTasksUI();
+    document.getElementById("tasksModal").classList.add("show");
+}
+
+function closeTasks(){
+    document.getElementById("tasksModal").classList.remove("show");
+}
+
+setInterval(()=>{
+    ensureTaskHour();
+    updateTasksUI();
+},1000);
+
+
 /* CASE DATABASE */
 
 const cases={
@@ -3122,6 +3493,8 @@ return;
 balance-=cost;
 diamonds+=amount;
 
+taskProgress("diamond",amount);
+
 updateBalance();
 updateDiamonds();
 
@@ -3180,6 +3553,8 @@ return;
 }
 
 balance-=price;
+
+taskProgress("luck",1);
 
 luckMultiplier=multiplier;
 luckEndTime=Date.now()+60000;
@@ -3796,6 +4171,12 @@ updateBalance();
 
 opening=true;
 
+taskProgress("open", selectedAmount);
+if(selectedCase.black) taskProgress("black", selectedAmount);
+if(selectedCase.currency==="diamonds") taskProgress("crystal", selectedAmount);
+if(selectedCase.nft) taskProgress("nft", selectedAmount);
+if(selectedCase.premium) taskProgress("premium", selectedAmount);
+
 document.getElementById("caseModal").classList.remove("show");
 
 if(selectedCase.black)
@@ -3874,6 +4255,10 @@ icon:item.icon,
 locked:false,
 fuseLocked:false
 });
+
+if(Number(item.price)>=100000) taskProgress("rare",1);
+if(Number(item.price)>=1000000) taskProgress("million",1);
+if(Number(item.price)>10000000) taskProgress("bigwin",1);
 
 });
 
@@ -4123,6 +4508,9 @@ balance+=item.price;
 
 inventory.splice(index,1);
 
+taskProgress("sell",1);
+taskProgress("earn",Number(item.price)||0);
+
 updateBalance();
 updateInventory();
 
@@ -4160,6 +4548,9 @@ balance+=total;
 
 inventory=
 inventory.filter(item=>item.locked||item.fuseLocked);
+
+taskProgress("sell",sellable.length);
+taskProgress("earn",total);
 
 updateBalance();
 updateInventory();
@@ -4354,6 +4745,11 @@ localStorage.removeItem("dailyWheelDate");
 localStorage.removeItem("fuseEndTime");
 localStorage.removeItem("fuseSourceIds");
 localStorage.removeItem("fuseRunning");
+
+localStorage.removeItem("caseTasksState");
+localStorage.removeItem("caseTasksHourKey");
+taskState={};
+taskHourKey=currentTaskHourKey();
 
 updateBalance();
 updateDiamonds();
@@ -4917,6 +5313,8 @@ result.innerHTML=
 
 saveGame();
 updateInventory();
+
+taskProgress("upgrade",1);
 
 setTimeout(()=>{
 
@@ -5565,6 +5963,8 @@ fuseRunning=false;
 fuseEndTime=0;
 fuseSourceIds=[];
 fuseSlots=[null,null,null];
+
+taskProgress("fuse",1);
 
 saveGame();
 
