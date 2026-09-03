@@ -2803,57 +2803,58 @@ ensureInventoryIds();
 ========================= */
 
 const TASK_POOL = [
-    {id:"open1", icon:"📦", name:"Первое открытие", desc:"Открой 1 кейс", type:"open", target:1, reward:5000},
-    {id:"open3", icon:"📦", name:"Начало дня", desc:"Открой 3 кейса", type:"open", target:3, reward:15000},
-    {id:"open5", icon:"📦", name:"Коллекционер", desc:"Открой 5 кейсов", type:"open", target:5, reward:30000},
-    {id:"open10", icon:"📦", name:"Кейс-марафон", desc:"Открой 10 кейсов", type:"open", target:10, reward:75000},
-    {id:"open20", icon:"📦", name:"Без остановки", desc:"Открой 20 кейсов", type:"open", target:20, reward:150000},
+    {id:"open1", icon:"📦", name:"Первое открытие", desc:"Открой 1 кейс", type:"open", target:1, reward:25000},
+    {id:"open3", icon:"📦", name:"Начало дня", desc:"Открой 3 кейса", type:"open", target:3, reward:75000},
+    {id:"open5", icon:"📦", name:"Коллекционер", desc:"Открой 5 кейсов", type:"open", target:5, reward:150000},
+    {id:"open10", icon:"📦", name:"Кейс-марафон", desc:"Открой 10 кейсов", type:"open", target:10, reward:400000},
+    {id:"open20", icon:"📦", name:"Без остановки", desc:"Открой 20 кейсов", type:"open", target:20, reward:1000000},
 
-    {id:"sell1", icon:"💰", name:"Продажа", desc:"Продай 1 предмет", type:"sell", target:1, reward:5000},
-    {id:"sell3", icon:"💰", name:"Торговец", desc:"Продай 3 предмета", type:"sell", target:3, reward:15000},
-    {id:"sell5", icon:"💰", name:"Большая распродажа", desc:"Продай 5 предметов", type:"sell", target:5, reward:30000},
-    {id:"sell10", icon:"💰", name:"Оптовик", desc:"Продай 10 предметов", type:"sell", target:10, reward:80000},
+    {id:"sell1", icon:"💰", name:"Продажа", desc:"Продай 1 предмет", type:"sell", target:1, reward:25000},
+    {id:"sell3", icon:"💰", name:"Торговец", desc:"Продай 3 предмета", type:"sell", target:3, reward:75000},
+    {id:"sell5", icon:"💰", name:"Большая распродажа", desc:"Продай 5 предметов", type:"sell", target:5, reward:150000},
+    {id:"sell10", icon:"💰", name:"Оптовик", desc:"Продай 10 предметов", type:"sell", target:10, reward:400000},
 
-    {id:"earn10k", icon:"🪙", name:"Заработок", desc:"Заработай 10 000 🪙", type:"earn", target:10000, reward:10000},
-    {id:"earn50k", icon:"🪙", name:"Хороший доход", desc:"Заработай 50 000 🪙", type:"earn", target:50000, reward:30000},
-    {id:"earn100k", icon:"🪙", name:"Серьёзный доход", desc:"Заработай 100 000 🪙", type:"earn", target:100000, reward:60000},
-    {id:"earn1m", icon:"🪙", name:"Миллионер", desc:"Заработай 1 000 000 🪙", type:"earn", target:1000000, reward:250000},
+    {id:"earn10k", icon:"🪙", name:"Заработок", desc:"Заработай 10 000 🪙", type:"earn", target:10000, reward:25000},
+    {id:"earn50k", icon:"🪙", name:"Хороший доход", desc:"Заработай 50 000 🪙", type:"earn", target:50000, reward:100000},
+    {id:"earn100k", icon:"🪙", name:"Серьёзный доход", desc:"Заработай 100 000 🪙", type:"earn", target:100000, reward:250000},
+    {id:"earn1m", icon:"🪙", name:"Миллионер", desc:"Заработай 1 000 000 🪙", type:"earn", target:1000000, reward:1000000},
 
-    {id:"diam1", icon:"💎", name:"Алмазный покупатель", desc:"Купи 1 💎", type:"diamond", target:1, reward:5000},
-    {id:"diam10", icon:"💎", name:"Алмазный запас", desc:"Купи 10 💎", type:"diamond", target:10, reward:25000},
-    {id:"diam100", icon:"💎", name:"Алмазный магнат", desc:"Купи 100 💎", type:"diamond", target:100, reward:100000},
+    {id:"diam1", icon:"💎", name:"Алмазный покупатель", desc:"Купи 1 💎", type:"diamond", target:1, reward:25000},
+    {id:"diam10", icon:"💎", name:"Алмазный запас", desc:"Купи 10 💎", type:"diamond", target:10, reward:100000},
+    {id:"diam100", icon:"💎", name:"Алмазный магнат", desc:"Купи 100 💎", type:"diamond", target:100, reward:500000},
 
-    {id:"fuse1", icon:"🔥", name:"Плавильщик", desc:"Заверши 1 FUSE", type:"fuse", target:1, reward:50000},
-    {id:"fuse3", icon:"🔥", name:"Мастер FUSE", desc:"Заверши 3 FUSE", type:"fuse", target:3, reward:200000},
+    {id:"fuse1", icon:"🔥", name:"Плавильщик", desc:"Заверши 1 FUSE", type:"fuse", target:1, reward:150000},
+    {id:"fuse3", icon:"🔥", name:"Мастер FUSE", desc:"Заверши 3 FUSE", type:"fuse", target:3, reward:750000},
 
-    {id:"upgrade1", icon:"🔄", name:"Апгрейд", desc:"Сделай 1 Upgrade", type:"upgrade", target:1, reward:25000},
-    {id:"upgrade3", icon:"🔄", name:"Улучшатель", desc:"Сделай 3 Upgrade", type:"upgrade", target:3, reward:100000},
+    {id:"upgrade1", icon:"🔄", name:"Апгрейд", desc:"Сделай 1 Upgrade", type:"upgrade", target:1, reward:100000},
+    {id:"upgrade3", icon:"🔄", name:"Улучшатель", desc:"Сделай 3 Upgrade", type:"upgrade", target:3, reward:500000},
 
-    {id:"rare1", icon:"✨", name:"Редкая находка", desc:"Получи предмет стоимостью от 100 000 🪙", type:"rare", target:1, reward:75000},
-    {id:"rare3", icon:"✨", name:"Охотник за редкостями", desc:"Получи 3 предмета стоимостью от 100 000 🪙", type:"rare", target:3, reward:250000},
-    {id:"million1", icon:"👑", name:"Дорогой дроп", desc:"Получи предмет стоимостью от 1 000 000 🪙", type:"million", target:1, reward:250000},
-    {id:"million3", icon:"👑", name:"Королевская охота", desc:"Получи 3 предмета от 1 000 000 🪙", type:"million", target:3, reward:750000},
+    {id:"rare1", icon:"✨", name:"Редкая находка", desc:"Получи предмет стоимостью от 100 000 🪙", type:"rare", target:1, reward:250000},
+    {id:"rare3", icon:"✨", name:"Охотник за редкостями", desc:"Получи 3 предмета стоимостью от 100 000 🪙", type:"rare", target:3, reward:750000},
 
-    {id:"luck1", icon:"🍀", name:"На удачу", desc:"Активируй зелье удачи", type:"luck", target:1, reward:15000},
-    {id:"luck3", icon:"🍀", name:"Удачливый", desc:"Активируй 3 зелья удачи", type:"luck", target:3, reward:75000},
+    {id:"million1", icon:"👑", name:"Дорогой дроп", desc:"Получи предмет стоимостью от 1 000 000 🪙", type:"million", target:1, reward:750000},
+    {id:"million3", icon:"👑", name:"Королевская охота", desc:"Получи 3 предмета от 1 000 000 🪙", type:"million", target:3, reward:2500000},
 
-    {id:"black1", icon:"◼️", name:"Тёмная сделка", desc:"Открой Black Market Case", type:"black", target:1, reward:100000},
-    {id:"black3", icon:"◼️", name:"Чёрный рынок", desc:"Открой 3 Black Market Case", type:"black", target:3, reward:500000},
+    {id:"luck1", icon:"🍀", name:"На удачу", desc:"Активируй зелье удачи", type:"luck", target:1, reward:75000},
+    {id:"luck3", icon:"🍀", name:"Удачливый", desc:"Активируй 3 зелья удачи", type:"luck", target:3, reward:300000},
 
-    {id:"crystal1", icon:"💎", name:"Кристальный путь", desc:"Открой 1 Diamond Case", type:"crystal", target:1, reward:50000},
-    {id:"crystal3", icon:"💎", name:"Кристальный охотник", desc:"Открой 3 Diamond Case", type:"crystal", target:3, reward:200000},
+    {id:"black1", icon:"◼️", name:"Тёмная сделка", desc:"Открой Black Market Case", type:"black", target:1, reward:300000},
+    {id:"black3", icon:"◼️", name:"Чёрный рынок", desc:"Открой 3 Black Market Case", type:"black", target:3, reward:1500000},
 
-    {id:"premium1", icon:"👑", name:"Премиум", desc:"Открой 1 Premium Case", type:"premium", target:1, reward:100000},
-    {id:"premium3", icon:"👑", name:"Премиум-коллекционер", desc:"Открой 3 Premium Case", type:"premium", target:3, reward:500000},
+    {id:"crystal1", icon:"💎", name:"Кристальный путь", desc:"Открой 1 Diamond Case", type:"crystal", target:1, reward:250000},
+    {id:"crystal3", icon:"💎", name:"Кристальный охотник", desc:"Открой 3 Diamond Case", type:"crystal", target:3, reward:1000000},
 
-    {id:"nft1", icon:"💠", name:"NFT охотник", desc:"Открой 1 NFT Case", type:"nft", target:1, reward:100000},
-    {id:"nft3", icon:"💠", name:"NFT коллекционер", desc:"Открой 3 NFT Case", type:"nft", target:3, reward:500000},
+    {id:"premium1", icon:"👑", name:"Премиум", desc:"Открой 1 Premium Case", type:"premium", target:1, reward:500000},
+    {id:"premium3", icon:"👑", name:"Премиум-коллекционер", desc:"Открой 3 Premium Case", type:"premium", target:3, reward:2500000},
 
-    {id:"daily1", icon:"🎡", name:"Колесо удачи", desc:"Используй ежедневное колесо", type:"daily", target:1, reward:50000},
-    {id:"daily3", icon:"🎡", name:"Любимец удачи", desc:"Получи 3 награды с колеса", type:"daily", target:3, reward:250000},
+    {id:"nft1", icon:"💠", name:"NFT охотник", desc:"Открой 1 NFT Case", type:"nft", target:1, reward:500000},
+    {id:"nft3", icon:"💠", name:"NFT коллекционер", desc:"Открой 3 NFT Case", type:"nft", target:3, reward:2000000},
 
-    {id:"bigwin", icon:"🏆", name:"Большая победа", desc:"Получи предмет дороже 10 000 000 🪙", type:"bigwin", target:1, reward:1000000},
-    {id:"bigwin3", icon:"🏆", name:"Джекпот", desc:"Получи 3 предмета дороже 10 000 000 🪙", type:"bigwin", target:3, reward:3000000}
+    {id:"daily1", icon:"🎡", name:"Колесо удачи", desc:"Используй ежедневное колесо", type:"daily", target:1, reward:150000},
+    {id:"daily3", icon:"🎡", name:"Любимец удачи", desc:"Получи 3 награды с колеса", type:"daily", target:3, reward:750000},
+
+    {id:"bigwin", icon:"🏆", name:"Большая победа", desc:"Получи предмет дороже 10 000 000 🪙", type:"bigwin", target:1, reward:3000000},
+    {id:"bigwin3", icon:"🏆", name:"Джекпот", desc:"Получи 3 предмета дороже 10 000 000 🪙", type:"bigwin", target:3, reward:10000000}
 ];
 
 let taskState = JSON.parse(localStorage.getItem("caseTasksState") || "{}");
@@ -3193,20 +3194,18 @@ items:[
 },
 
 mythical:{
-name:"MYTHICAL CASE",
-icon:"🌌",
-price:150000000,
-premium:true,
-items:[
-{name:"Unicorn",price:50000000,icon:"🦄",chance:35},
-{name:"Griffin",price:100000000,icon:"🦁",chance:25},
-{name:"Fenrir",price:200000000,icon:"🐺",chance:15},
-{name:"Kraken",price:400000000,icon:"🐙",chance:10},
-{name:"Phoenix",price:750000000,icon:"🔥",chance:7},
-{name:"Ancient Dragon",price:1000000000,icon:"🐉",chance:5},
-{name:"Mythical Titan",price:1250000000,icon:"👑",chance:2.5},
-{name:"ETERNAL DRAGON",price:1500000000,icon:"🌌",chance:.5}
-]
+    price:150000000,
+    premium:true,
+    items:[
+        {name:"🦄 Unicorn",price:40000000,chance:55},
+        {name:"🦅 Griffin",price:80000000,chance:25},
+        {name:"🐺 Fenrir",price:160000000,chance:10},
+        {name:"🐙 Kraken",price:320000000,chance:5},
+        {name:"🔥 Phoenix",price:600000000,chance:3},
+        {name:"🐉 Ancient Dragon",price:800000000,chance:1.5},
+        {name:"👑 Mythical Titan",price:1000000000,chance:0.4},
+        {name:"🌌 ETERNAL DRAGON",price:1250000000,chance:0.1}
+    ]
 },
 
 billionaire:{
