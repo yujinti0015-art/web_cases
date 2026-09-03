@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>CASE WEB</title>
-
+<script src="https://webcases-production.up.railway.app/socket.io/socket.io.js"></script>
 <style>
 *{box-sizing:border-box}
 
@@ -5641,13 +5641,6 @@ if(fuseRunning)return;
 
 if(slot<0||slot>2)return;
 
-fuseSlots[slot]=null;
-
-renderFuseInventory();
-updateFuseUI();
-
-}
-
 function renderFuseInventory(){
 
 const box=
@@ -6235,7 +6228,179 @@ startFuseTimer();
 
 }
 
-/* START */
+
+/* ================================
+   CASE WEB ONLINE TRADE
+   RAILWAY SERVER
+================================ */
+
+const CASE_WEB_SERVER=
+"https://webcases-production.up.railway.app";
+
+let tradeSocket=null;
+let tradeOnline=false;
+
+
+/* SOCKET.IO */
+
+if(typeof io==="function"){
+
+tradeSocket=
+io(
+CASE_WEB_SERVER,
+{
+transports:[
+"websocket",
+"polling"
+],
+reconnection:true,
+reconnectionAttempts:Infinity,
+reconnectionDelay:1000,
+timeout:10000
+}
+);
+
+
+tradeSocket.on("connect",()=>{
+
+tradeOnline=true;
+
+console.log(
+"🤝 CASE WEB TRADE: ONLINE"
+);
+
+syncTradeData();
+
+});
+
+
+tradeSocket.on("disconnect",()=>{
+
+tradeOnline=false;
+
+console.log(
+"❌ CASE WEB TRADE: OFFLINE"
+);
+
+});
+
+
+tradeSocket.on(
+"connect_error",
+error=>{
+
+tradeOnline=false;
+
+console.log(
+"❌ TRADE SERVER ERROR:",
+error.message
+);
+
+});
+
+
+tradeSocket.on(
+"trade:connected",
+data=>{
+
+console.log(
+"🟢 TRADE ID:",
+data.id
+);
+
+});
+
+
+tradeSocket.on(
+"trade:waiting",
+()=>{
+
+console.log(
+"⏳ Ожидание второго игрока..."
+);
+
+});
+
+
+tradeSocket.on(
+"trade:found",
+data=>{
+
+console.log(
+"🤝 Игрок найден:",
+data.playerId
+);
+
+});
+
+}
+
+
+/* СИНХРОНИЗАЦИЯ */
+
+function syncTradeData(){
+
+if(
+!tradeSocket||
+!tradeSocket.connected
+)return;
+
+tradeSocket.emit(
+"trade:sync",
+{
+inventory:Array.isArray(inventory)
+?inventory
+:[],
+
+balance:Number(balance)||0
+}
+);
+
+}
+
+
+/* АВТОСИНХРОНИЗАЦИЯ */
+
+if(!window.caseWebTradeSync){
+
+window.caseWebTradeSync=
+setInterval(
+()=>{
+syncTradeData();
+},
+2000
+);
+
+}
+
+
+/* ПОИСК ИГРОКА */
+
+function findTradePlayer(){
+
+if(
+!tradeSocket||
+!tradeSocket.connected
+){
+
+alert(
+"❌ Сервер трейда недоступен!"
+);
+
+return;
+
+}
+
+tradeSocket.emit(
+"trade:find"
+);
+
+}
+
+
+/* ================================
+   START
+================================ */
 
 updateBalance();
 updateDiamonds();
