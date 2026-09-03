@@ -367,6 +367,44 @@ h1{
         0 0 25px #ff7b00;
 }
 
+/* CONTRABAND */
+
+.contraband-title{
+    color:#ff5c5c;
+    text-shadow:
+        0 0 10px #ff3030,
+        0 0 25px #ff000033;
+}
+
+.contraband-case{
+    border-color:#6b2a2a;
+    background:
+        radial-gradient(circle at 50% 20%,#321414,#09090d 75%);
+}
+
+.contraband-case:hover{
+    border-color:#ff3b3b;
+    box-shadow:
+        0 0 30px #ff303055,
+        0 0 60px #ff000022,
+        0 15px 50px #000;
+}
+
+.contraband-case .case-icon{
+    text-shadow:
+        0 0 15px #ff4444,
+        0 0 35px #ff0000;
+}
+
+.contraband-timer{
+    margin-top:10px;
+    margin-bottom:12px;
+    color:#ff7777;
+    font-size:12px;
+    font-weight:bold;
+    text-shadow:0 0 10px #ff3030;
+}
+
 .premium-case{
     border-color:#8a5b19;
     background:
@@ -1330,10 +1368,7 @@ h1{
     min-width:130px;
 }
 
-
-/* =========================
-   TASKS
-========================= */
+/* TASKS */
 
 .tasks-modal{
     position:fixed;
@@ -1583,9 +1618,7 @@ h1{
     font-size:11px;
 }
 
-/* =========================
-   FUSE
-========================= */
+/* FUSE */
 
 .fuse-box{
     width:900px;
@@ -2257,8 +2290,6 @@ disabled>
 </div>
 </div>
 
-
-
 <div id="tasksModal" class="tasks-modal">
 
 <div class="tasks-box">
@@ -2485,6 +2516,40 @@ Black Market Case
 
 </div>
 
+<!-- CONTRABAND -->
+
+<div class="section-title contraband-title">
+🚨 ОГРАНИЧЕННЫЕ ПО ВРЕМЕНИ
+</div>
+
+<div class="cases">
+
+<div class="case contraband-case">
+
+<div class="case-icon">
+☠️
+</div>
+
+<div class="case-name">
+CONTRABAND CASE
+</div>
+
+<div class="case-price">
+Цена: <b>25 000 000 🪙</b>
+</div>
+
+<div id="contrabandTimer" class="contraband-timer">
+Загрузка таймера...
+</div>
+
+<button onclick="inspectCase('contraband')">
+ОСМОТРЕТЬ
+</button>
+
+</div>
+
+</div>
+
 </main>
 
 <div id="caseModal" class="modal">
@@ -2701,6 +2766,29 @@ let luckEndTime=Number(
 localStorage.getItem("luckEndTime")
 );
 
+/* CONTRABAND TIMER */
+
+const CONTRABAND_DURATION =
+    7 * 24 * 60 * 60 * 1000;
+
+let contrabandEndTime =
+    Number(localStorage.getItem("contrabandEndTime"));
+
+if(
+    !Number.isFinite(contrabandEndTime) ||
+    contrabandEndTime <= Date.now()
+){
+
+    contrabandEndTime =
+        Date.now() + CONTRABAND_DURATION;
+
+    localStorage.setItem(
+        "contrabandEndTime",
+        String(contrabandEndTime)
+    );
+
+}
+
 /* DAILY LUCK WHEEL */
 
 let dailyWheelDate=
@@ -2718,8 +2806,6 @@ const dailyWheelRewards=[
     {type:"coins",name:"500 000 🪙",value:500000,chance:14.2142857},
     {type:"item",name:"DAILY LIMITED",value:1111111111,icon:"👑",chance:0.5}
 ];
-
-
 
 if(!Number.isFinite(balance)) balance=100;
 if(!Array.isArray(inventory)) inventory=[];
@@ -2797,10 +2883,7 @@ JSON.stringify(inventory)
 
 ensureInventoryIds();
 
-
-/* =========================
-   HOURLY TASKS
-========================= */
+/* HOURLY TASKS */
 
 const TASK_POOL = [
     {id:"open1", icon:"📦", name:"Первое открытие", desc:"Открой 1 кейс", type:"open", target:1, reward:25000},
@@ -3007,7 +3090,6 @@ setInterval(()=>{
     updateTasksUI();
 },1000);
 
-
 /* CASE DATABASE */
 
 const cases={
@@ -3159,8 +3241,6 @@ items:[
 ]
 },
 
-/* NFT НЕ ИЗМЕНЁН */
-
 nft:{
 name:"NFT Case",
 icon:"💎",
@@ -3194,6 +3274,8 @@ items:[
 },
 
 mythical:{
+    name:"MYTHICAL CASE",
+    icon:"🌌",
     price:150000000,
     premium:true,
     items:[
@@ -3203,8 +3285,8 @@ mythical:{
         {name:"🐙 Kraken",price:320000000,chance:5},
         {name:"🔥 Phoenix",price:600000000,chance:3},
         {name:"🐉 Ancient Dragon",price:800000000,chance:1.5},
-        {name:"👑 Mythical Titan",price:1000000000,chance:0.4},
-        {name:"🌌 ETERNAL DRAGON",price:1250000000,chance:0.1}
+        {name:"👑 Mythical Titan",price:1000000000,chance:.4},
+        {name:"🌌 ETERNAL DRAGON",price:1250000000,chance:.1}
     ]
 },
 
@@ -3220,6 +3302,24 @@ items:[
 {name:"Private Jet",price:250000000,icon:"✈️",chance:10},
 {name:"Billionaire Mansion",price:500000000,icon:"🏰",chance:7},
 {name:"Billionaire Empire",price:1000000000,icon:"💎",chance:3}
+]
+},
+
+/* CONTRABAND CASE */
+
+contraband:{
+name:"CONTRABAND CASE",
+icon:"☠️",
+price:25000000,
+limited:true,
+items:[
+{name:"Illegal Package",price:5000000,icon:"📦",chance:50},
+{name:"Secret Briefcase",price:10000000,icon:"💼",chance:25},
+{name:"Smuggled Diamond",price:20000000,icon:"💎",chance:12},
+{name:"Black Deal",price:40000000,icon:"🕶️",chance:7},
+{name:"Kingpin Contract",price:100000000,icon:"👑",chance:4},
+{name:"Underground Empire",price:300000000,icon:"🏙️",chance:1.8},
+{name:"FORBIDDEN ARTIFACT",price:1000000000,icon:"☠️",chance:.2}
 ]
 },
 
@@ -3260,6 +3360,57 @@ items:[
 }
 
 };
+
+/* CONTRABAND TIMER */
+
+function updateContrabandTimer(){
+
+const box =
+document.getElementById("contrabandTimer");
+
+if(!box)return;
+
+const remaining =
+contrabandEndTime-Date.now();
+
+if(remaining<=0){
+
+box.textContent =
+"⛔ КЕЙС ЗАКОНЧИЛСЯ";
+
+return;
+
+}
+
+let total =
+Math.floor(remaining/1000);
+
+const days =
+Math.floor(total/86400);
+
+total%=86400;
+
+const hours =
+Math.floor(total/3600);
+
+total%=3600;
+
+const minutes =
+Math.floor(total/60);
+
+const seconds =
+total%60;
+
+box.textContent =
+"⏳ "+
+days+" дн. "+
+String(hours).padStart(2,"0")+" ч. "+
+String(minutes).padStart(2,"0")+" мин. "+
+String(seconds).padStart(2,"0")+" сек.";
+
+}
+
+setInterval(updateContrabandTimer,1000);
 
 /* PROMO */
 
@@ -3314,9 +3465,21 @@ function saveGame(){
 localStorage.setItem("caseBalance",String(balance));
 localStorage.setItem("caseInventory",JSON.stringify(inventory));
 localStorage.setItem("caseDiamonds",String(diamonds));
-localStorage.setItem("luckMultiplier",String(luckMultiplier));
-localStorage.setItem("luckEndTime",String(luckEndTime));
-localStorage.setItem("dailyWheelDate",dailyWheelDate);
+
+localStorage.setItem(
+"luckMultiplier",
+String(luckMultiplier)
+);
+
+localStorage.setItem(
+"luckEndTime",
+String(luckEndTime)
+);
+
+localStorage.setItem(
+"dailyWheelDate",
+dailyWheelDate
+);
 
 localStorage.setItem(
 "fuseEndTime",
@@ -3786,10 +3949,6 @@ for(let i=0;i<dailyWheelRewards.length;i++){
 
 const reward=dailyWheelRewards[rewardIndex];
 
-/*
-Сектор расположен так, чтобы выбранная награда
-оказалась под верхним указателем.
-*/
 const sectorCenter=rewardIndex*45+22.5;
 
 const extraSpins=8;
@@ -3851,7 +4010,6 @@ updateDailyWheel();
 }
 
 setInterval(updateDailyWheel,1000);
-
 
 /* ALL ITEMS */
 
@@ -4123,6 +4281,18 @@ function startOpening(){
 
 if(opening)return;
 
+if(
+selectedCase.limited &&
+selectedCase.name==="CONTRABAND CASE" &&
+contrabandEndTime<=Date.now()
+){
+
+alert("⛔ CONTRABAND CASE закончился!");
+
+return;
+
+}
+
 const total=
 selectedCase.price*
 selectedAmount;
@@ -4255,9 +4425,14 @@ locked:false,
 fuseLocked:false
 });
 
-if(Number(item.price)>=100000) taskProgress("rare",1);
-if(Number(item.price)>=1000000) taskProgress("million",1);
-if(Number(item.price)>10000000) taskProgress("bigwin",1);
+if(Number(item.price)>=100000)
+taskProgress("rare",1);
+
+if(Number(item.price)>=1000000)
+taskProgress("million",1);
+
+if(Number(item.price)>10000000)
+taskProgress("bigwin",1);
 
 });
 
@@ -4747,6 +4922,7 @@ localStorage.removeItem("fuseRunning");
 
 localStorage.removeItem("caseTasksState");
 localStorage.removeItem("caseTasksHourKey");
+
 taskState={};
 taskHourKey=currentTaskHourKey();
 
@@ -4835,6 +5011,15 @@ icon:item.icon,
 locked:false,
 fuseLocked:false
 });
+
+if(Number(item.price)>=100000)
+taskProgress("rare",1);
+
+if(Number(item.price)>=1000000)
+taskProgress("million",1);
+
+if(Number(item.price)>10000000)
+taskProgress("bigwin",1);
 
 saveGame();
 updateInventory();
@@ -5342,9 +5527,7 @@ updateUpgradeUI();
 
 }
 
-/* =========================
-   FUSE SYSTEM
-========================= */
+/* FUSE SYSTEM */
 
 function openFuse(){
 
@@ -6061,6 +6244,7 @@ updateLuckTimer();
 updateDailyWheel();
 updateDiamondMarket();
 updateFuseUI();
+updateContrabandTimer();
 restoreFuse();
 
 </script>
