@@ -1995,6 +1995,8 @@ h1{
 
 <div class="header-right">
 
+<button class="icon-btn" onclick="openTrade()" title="Трейды">🤝</button>
+
 <button class="icon-btn" onclick="openTasks()" title="Задания">📋</button>
 <button class="promo" onclick="openPromo()">🎟️ ПРОМО</button>
 
@@ -2307,7 +2309,49 @@ disabled>
 
 </div>
 </div>
+<div id="tradeModal" class="trade-modal">
 
+<div class="trade-box">
+
+<div class="trade-header">
+<h2>🤝 ЛОКАЛЬНЫЕ ТРЕЙДЫ</h2>
+
+<button class="close" onclick="closeTrade()">×</button>
+</div>
+
+<div class="trade-server">
+
+<span>🖥️ LAN SERVER</span>
+
+<span id="tradeServerStatus">
+Проверка...
+</span>
+
+</div>
+
+<button
+class="trade-create"
+onclick="createTradeRoom()">
+
+➕ СОЗДАТЬ КОМНАТУ
+
+</button>
+
+<div class="trade-title">
+ДОСТУПНЫЕ КОМНАТЫ
+</div>
+
+<div id="tradeRooms" class="trade-rooms">
+
+<div class="trade-empty">
+Загрузка комнат...
+</div>
+
+</div>
+
+</div>
+
+</div>
 <main class="container">
 
 <h1>STARTER CASES</h1>
@@ -6236,6 +6280,7 @@ startFuseTimer();
 
 }
 
+```html
 /* START */
 
 updateBalance();
@@ -6248,7 +6293,374 @@ updateFuseUI();
 updateContrabandTimer();
 restoreFuse();
 
+
+/* =========================
+   LAN TRADE
+========================= */
+
+const LAN_SERVER = "http://127.0.0.1:8080";
+
+let tradeRoom = null;
+let tradePlayer = null;
+let tradeRole = null;
+let tradeRefreshTimer = null;
+
+
+async function checkTradeServer(){
+
+    const status =
+        document.getElementById("tradeServerStatus");
+
+    if(!status)return;
+
+    try{
+
+        const response =
+            await fetch(LAN_SERVER);
+
+        const data =
+            await response.json();
+
+        if(data.ok){
+
+            status.textContent =
+                "🟢 ONLINE";
+
+            status.style.color =
+                "#42ff72";
+
+            return true;
+        }
+
+    }catch(error){}
+
+    status.textContent =
+        "🔴 OFFLINE";
+
+    status.style.color =
+        "#ff5555";
+
+    return false;
+}
+
+
+async function loadTradeRooms(){
+
+    const box =
+        document.getElementById("tradeRooms");
+
+    if(!box)return;
+
+    try{
+
+        const response =
+            await fetch(
+                LAN_SERVER + "/rooms"
+            );
+
+        const data =
+            await response.json();
+
+        if(!data.ok){
+
+            box.innerHTML =
+                `<div class="trade-empty">
+                    ❌ Ошибка сервера
+                </div>`;
+
+            return;
+        }
+
+        if(!data.rooms.length){
+
+            box.innerHTML =
+                `<div class="trade-empty">
+                    Нет открытых комнат
+                </div>`;
+
+            return;
+        }
+
+        box.innerHTML = "";
+
+        data.rooms.forEach(room=>{
+
+            const div =
+                document.createElement("div");
+
+            div.className =
+                "trade-room";
+
+            div.innerHTML = `
+
+                <div class="trade-room-info">
+
+                    <div class="trade-room-name">
+                        👤 ${escapeTradeText(room.name)}
+                    </div>
+
+                    <div class="trade-room-id">
+                        Код: ${room.id}
+                    </div>
+
+                    <div class="trade-room-players">
+                        👥 ${room.players}/${room.maxPlayers}
+                    </div>
+
+                </div>
+
+                <button
+                    class="trade-join"
+                    onclick="joinTradeRoom('${room.id}')"
+                    ${room.full ? "disabled" : ""}>
+
+                    ${room.full ? "ЗАНЯТО" : "ВОЙТИ"}
+
+                </button>
+
+            `;
+
+            box.appendChild(div);
+
+        });
+
+    }catch(error){
+
+        box.innerHTML =
+            `<div class="trade-empty">
+                🔴 LAN-сервер недоступен
+            </div>`;
+
+    }
+
+}
+
+
+function escapeTradeText(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+function openTrade(){
+
+    const modal =
+        document.getElementById("tradeModal");
+
+    if(!modal)return;
+
+    modal.classList.add("show");
+
+    checkTradeServer();
+    loadTradeRooms();
+
+    if(tradeRefreshTimer){
+
+        clearInterval(
+            tradeRefreshTimer
+        );
+
+    }
+
+    tradeRefreshTimer =
+        setInterval(
+            loadTradeRooms,
+            1000
+        );
+
+}
+
+
+function closeTrade(){
+
+    const modal =
+        document.getElementById("tradeModal");
+
+    if(modal){
+
+        modal.classList.remove("show");
+
+    }
+
+    if(tradeRefreshTimer){
+
+        clearInterval(
+            tradeRefreshTimer
+        );
+
+        tradeRefreshTimer = null;
+
+    }
+
+}
+
+
+async function createTradeRoom(){
+
+    const name =
+        prompt(
+            "👤 Введи своё имя:"
+        );
+
+    if(name === null)return;
+
+    const playerName =
+        name.trim() || "PLAYER";
+
+    try{
+
+        const response =
+            await fetch(
+                LAN_SERVER +
+                "/trade/create",
+                {
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:JSON.stringify({
+                        name:playerName
+                    })
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if(!data.ok){
+
+            alert(
+                "❌ Не удалось создать комнату!"
+            );
+
+            return;
+        }
+
+        tradeRoom =
+            data.room;
+
+        tradePlayer =
+            data.player;
+
+        tradeRole =
+            data.role;
+
+        alert(
+            "✅ КОМНАТА СОЗДАНА!\n\n"+
+            "Код комнаты: "+
+            data.room
+        );
+
+        loadTradeRooms();
+
+    }catch(error){
+
+        alert(
+            "🔴 LAN-сервер недоступен!\n\n"+
+            "Сначала запусти lan_server.py"
+        );
+
+    }
+
+}
+
+
+async function joinTradeRoom(room){
+
+    const name =
+        prompt(
+            "👤 Введи своё имя:"
+        );
+
+    if(name === null)return;
+
+    const playerName =
+        name.trim() || "PLAYER";
+
+    try{
+
+        const response =
+            await fetch(
+                LAN_SERVER +
+                "/trade/join",
+                {
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:JSON.stringify({
+                        room:room,
+                        name:playerName
+                    })
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if(!data.ok){
+
+            if(data.error === "ROOM_FULL"){
+
+                alert(
+                    "❌ Комната уже заполнена!"
+                );
+
+            }else{
+
+                alert(
+                    "❌ Комната не найдена!"
+                );
+
+            }
+
+            loadTradeRooms();
+
+            return;
+        }
+
+        tradeRoom =
+            data.room;
+
+        tradePlayer =
+            data.player;
+
+        tradeRole =
+            data.role;
+
+        alert(
+            "✅ ТЫ ВОШЁЛ В КОМНАТУ!\n\n"+
+            "Комната: "+
+            data.room
+        );
+
+        loadTradeRooms();
+
+    }catch(error){
+
+        alert(
+            "🔴 LAN-сервер недоступен!"
+        );
+
+    }
+
+}
+
+
 </script>
 
 </body>
 </html>
+```
