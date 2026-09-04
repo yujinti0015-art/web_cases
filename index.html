@@ -1368,10 +1368,7 @@ h1{
     min-width:130px;
 }
 
-
-/* =========================
-   TASKS
-========================= */
+/* TASKS */
 
 .tasks-modal{
     position:fixed;
@@ -1602,4 +1599,4656 @@ h1{
 
 .diamond-cost{
     margin-top:12px;
-    padding:12
+    padding:12px;
+    text-align:center;
+    border-radius:10px;
+    background:#171722;
+    border:1px solid #29293c;
+}
+
+.diamond-buy{
+    width:100%;
+    margin-top:12px;
+}
+
+.diamond-info{
+    margin-top:10px;
+    color:#777;
+    text-align:center;
+    font-size:11px;
+}
+
+/* FUSE */
+
+.fuse-box{
+    width:900px;
+    max-width:100%;
+    max-height:94vh;
+    overflow-y:auto;
+    padding:25px;
+    border-radius:22px;
+    background:
+        radial-gradient(circle at 50% 0%,#35200d,#15121a 45%,#0b0b11);
+    border:1px solid #ff8c00;
+    box-shadow:
+        0 25px 100px #000,
+        0 0 50px #ff7b0022;
+}
+
+.fuse-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.fuse-header h2{
+    margin:0;
+    color:#ffd36a;
+    text-shadow:
+        0 0 10px #ff8c00,
+        0 0 25px #ff5e00;
+}
+
+.fuse-description{
+    margin-top:8px;
+    color:#999;
+    text-align:center;
+}
+
+.fuse-slots{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:25px;
+}
+
+.fuse-slot{
+    min-height:180px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    border-radius:17px;
+    background:
+        radial-gradient(circle,#251b10,#101016 75%);
+    border:2px dashed #5a421e;
+    transition:.2s;
+}
+
+.fuse-slot:hover{
+    border-color:#ff9d24;
+    box-shadow:0 0 25px #ff7b0033;
+}
+
+.fuse-empty{
+    width:65px;
+    height:65px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:8px;
+    border-radius:15px;
+    background:#19151d;
+    border:1px solid #493b27;
+    color:#777;
+    font-size:38px;
+}
+
+.fuse-slot-icon{
+    font-size:65px;
+    margin-bottom:8px;
+}
+
+.fuse-slot-name{
+    max-width:100%;
+    font-size:12px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.fuse-slot-price{
+    margin-top:5px;
+    color:#aaa;
+    font-size:11px;
+}
+
+.fuse-slot-remove{
+    margin-top:8px;
+    padding:5px 9px;
+    background:#38242a;
+    color:#ff8888;
+    font-size:10px;
+}
+
+.fuse-summary{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:18px;
+}
+
+.fuse-total,
+.fuse-price{
+    padding:14px;
+    text-align:center;
+    border-radius:13px;
+    background:#111018;
+    border:1px solid #343044;
+}
+
+.fuse-total-title,
+.fuse-price-title{
+    color:#777;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+.fuse-total-number{
+    margin-top:5px;
+    font-size:22px;
+    font-weight:900;
+    color:#fff;
+}
+
+.fuse-price-number{
+    margin-top:5px;
+    font-size:22px;
+    font-weight:900;
+    color:#ffd36a;
+    text-shadow:0 0 12px #ff8c00;
+}
+
+.fuse-timer{
+    min-height:28px;
+    margin-top:15px;
+    text-align:center;
+    color:#ffb347;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.fuse-inventory-title{
+    margin:18px 0 10px;
+    color:#aaa;
+    font-size:12px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.fuse-inventory{
+    max-height:260px;
+    overflow-y:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+}
+
+.fuse-inventory-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    padding:10px;
+    border-radius:10px;
+    background:#15151f;
+    border:1px solid #29293c;
+    cursor:pointer;
+}
+
+.fuse-inventory-item:hover{
+    border-color:#ff8c00;
+    background:#211a13;
+}
+
+.fuse-inventory-item.selected{
+    border-color:#ff9d24;
+    box-shadow:0 0 15px #ff7b0033;
+}
+
+.fuse-inventory-item.disabled{
+    opacity:.35;
+    cursor:not-allowed;
+}
+
+.fuse-item-left{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    min-width:0;
+}
+
+.fuse-item-icon{
+    font-size:32px;
+}
+
+.fuse-item-name{
+    font-size:11px;
+    font-weight:bold;
+}
+
+.fuse-item-price{
+    margin-top:3px;
+    color:#888;
+    font-size:9px;
+}
+
+.fuse-selected-number{
+    width:25px;
+    height:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:none;
+    border-radius:50%;
+    background:#ff8c00;
+    color:#111;
+    font-size:11px;
+    font-weight:900;
+}
+
+.combined-icon{
+    position:relative;
+    width:45px;
+    height:40px;
+    flex:none;
+}
+
+.combined-icon span{
+    position:absolute;
+    width:27px;
+    height:27px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:8px;
+    background:#20202d;
+    border:1px solid #ff8c00;
+    font-size:18px;
+}
+
+.combined-icon span:nth-child(1){
+    left:0;
+    top:7px;
+}
+
+.combined-icon span:nth-child(2){
+    left:9px;
+    top:0;
+}
+
+.combined-icon span:nth-child(3){
+    left:18px;
+    top:10px;
+}
+
+.fuse-finished{
+    border-color:#ffb300 !important;
+    box-shadow:0 0 20px #ff8c0033;
+}
+
+@media(max-width:700px){
+
+    .header{
+        height:65px;
+        padding:0 7px;
+    }
+
+    .logo{
+        font-size:14px;
+    }
+
+    .icon-btn{
+        width:37px;
+        height:37px;
+    }
+
+    .promo{
+        font-size:9px;
+        padding:9px 5px;
+    }
+
+    .balance{
+        padding:8px 6px;
+        font-size:11px;
+    }
+
+    .container{
+        padding:90px 12px 50px;
+    }
+
+    h1{
+        font-size:30px;
+    }
+
+    .cases{
+        grid-template-columns:1fr;
+    }
+
+    .roulette-grid{
+        grid-template-columns:1fr;
+    }
+
+    .inventory-window,
+    .index-window{
+        left:10px;
+        right:10px;
+        width:auto;
+    }
+
+    .upgrade-selects{
+        grid-template-columns:1fr;
+    }
+
+    .upgrade-arrow{
+        height:25px;
+        transform:rotate(90deg);
+    }
+
+    .upgrade-wheel,
+    .wheel-spinner{
+        width:260px;
+        height:260px;
+    }
+
+    .shop-item{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .shop-buy{
+        width:100%;
+    }
+
+    .fuse-slots{
+        grid-template-columns:1fr;
+    }
+
+    .fuse-inventory{
+        grid-template-columns:1fr;
+    }
+
+    .fuse-summary{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="header-left">
+
+<div class="logo">CASE WEB</div>
+
+<button class="icon-btn" onclick="resetGame()" title="Старт с нуля">↻</button>
+<button class="icon-btn" onclick="toggleIndex()" title="Индекс">📖</button>
+<button class="icon-btn" onclick="openUpgrade()" title="Upgrade">🔄</button>
+<button class="icon-btn fuse-button" onclick="openFuse()" title="Fuse">🔥</button>
+<button class="icon-btn" onclick="openShop()" title="Магазин">🛒</button>
+<button class="icon-btn" onclick="openDiamondMarket()" title="Алмазный рынок">💎</button>
+<button id="dailyWheelButton" class="daily-wheel-button" onclick="openDailyWheel()" title="Ежедневное колесо">🎡</button>
+
+</div>
+
+<div class="header-right">
+
+<button class="icon-btn" onclick="openTasks()" title="Задания">📋</button>
+<button class="promo" onclick="openPromo()">🎟️ ПРОМО</button>
+
+<div class="balance">
+🪙 <span id="balance">100</span>
+</div>
+
+<div class="balance">
+💎 <span id="diamonds">0</span>
+</div>
+
+<button class="icon-btn" onclick="toggleInventory()" title="Инвентарь">🎒</button>
+
+</div>
+
+</header>
+
+<div id="inventoryWindow" class="window inventory-window">
+
+<div class="window-header">
+<h2>🎒 Инвентарь</h2>
+<button class="close" onclick="toggleInventory()">×</button>
+</div>
+
+<button class="sell-all" onclick="sellAll()">💰 ПРОДАТЬ ВСЁ</button>
+
+<div id="inventory"></div>
+
+</div>
+
+<div id="indexWindow" class="window index-window">
+
+<div class="window-header">
+<h2>📖 Индекс</h2>
+<button class="close" onclick="toggleIndex()">×</button>
+</div>
+
+<div id="indexContent"></div>
+
+</div>
+
+<div id="shopModal" class="shop-modal">
+
+<div class="shop-box">
+
+<div class="shop-header">
+<h2>🛒 Магазин</h2>
+<button class="close" onclick="closeShop()">×</button>
+</div>
+
+<div class="shop-diamonds">
+💎 Алмазы: <span id="shopDiamonds">0</span>
+</div>
+
+<div class="shop-items">
+
+<div class="shop-item">
+<div class="shop-item-info">
+<div class="shop-item-title">🍀 Зелье удачи I</div>
+<div class="shop-item-description">Увеличивает удачу в 1.5 раза на 60 секунд</div>
+<div class="shop-item-price">🪙 1 000 000</div>
+</div>
+<button class="shop-buy" onclick="buyLuck(1)">КУПИТЬ</button>
+</div>
+
+<div class="shop-item">
+<div class="shop-item-info">
+<div class="shop-item-title">🍀 Зелье удачи II</div>
+<div class="shop-item-description">Увеличивает удачу в 2 раза на 60 секунд</div>
+<div class="shop-item-price">🪙 5 000 000</div>
+</div>
+<button class="shop-buy" onclick="buyLuck(2)">КУПИТЬ</button>
+</div>
+
+<div class="shop-item">
+<div class="shop-item-info">
+<div class="shop-item-title">🍀 Зелье удачи III</div>
+<div class="shop-item-description">Увеличивает удачу в 3 раза на 60 секунд</div>
+<div class="shop-item-price">🪙 10 000 000</div>
+</div>
+<button class="shop-buy" onclick="buyLuck(3)">КУПИТЬ</button>
+</div>
+
+<div class="shop-item">
+<div class="shop-item-info">
+<div class="shop-item-title">🍀 Зелье удачи IV</div>
+<div class="shop-item-description">Увеличивает удачу в 5 раз на 60 секунд</div>
+<div class="shop-item-price">🪙 50 000 000</div>
+</div>
+<button class="shop-buy" onclick="buyLuck(4)">КУПИТЬ</button>
+</div>
+
+<div class="shop-item">
+<div class="shop-item-info">
+<div class="shop-item-title">🍀 Зелье удачи V</div>
+<div class="shop-item-description">Увеличивает удачу в 8 раз на 60 секунд</div>
+<div class="shop-item-price">🪙 100 000 000</div>
+</div>
+<button class="shop-buy" onclick="buyLuck(5)">КУПИТЬ</button>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="diamondModal" class="diamond-modal">
+
+<div class="diamond-box">
+
+<div class="diamond-header">
+<h2>💎 Алмазный рынок</h2>
+<button class="close" onclick="closeDiamondMarket()">×</button>
+</div>
+
+<div class="diamond-rate">
+
+<div class="diamond-rate-title">ТЕКУЩИЙ КУРС</div>
+
+<div id="diamondRate" class="diamond-rate-number">
+1 💎 = 100 🪙
+</div>
+
+<div id="diamondRateTimer" class="diamond-rate-timer">
+Новый курс через 10 сек.
+</div>
+
+</div>
+
+<div class="diamond-input-title">
+Сколько алмазов купить?
+</div>
+
+<input
+id="diamondAmount"
+class="diamond-input"
+type="number"
+min="1"
+max="100000"
+value="1"
+oninput="updateDiamondCost()">
+
+<div class="diamond-cost">
+Стоимость:
+<b>
+<span id="diamondCost">100</span> 🪙
+</b>
+</div>
+
+<button id="diamondBuyButton" class="diamond-buy" onclick="buyDiamonds()">
+💎 КУПИТЬ АЛМАЗЫ
+</button>
+
+<div class="diamond-info">
+Минимум: 1 💎 · Максимум: 100 000 💎
+</div>
+
+</div>
+</div>
+
+<!-- FUSE -->
+
+<div id="fuseModal" class="fuse-modal">
+
+<div class="fuse-box">
+
+<div class="fuse-header">
+
+<h2>🔥 FUSE</h2>
+
+<button class="close" onclick="closeFuse()">×</button>
+
+</div>
+
+<div class="fuse-description">
+Объедини 3 предмета в один
+</div>
+
+<div class="fuse-slots">
+
+<div id="fuseSlot0" class="fuse-slot">
+<div class="fuse-empty">+</div>
+<div>СЛОТ 1</div>
+</div>
+
+<div id="fuseSlot1" class="fuse-slot">
+<div class="fuse-empty">+</div>
+<div>СЛОТ 2</div>
+</div>
+
+<div id="fuseSlot2" class="fuse-slot">
+<div class="fuse-empty">+</div>
+<div>СЛОТ 3</div>
+</div>
+
+</div>
+
+<div class="fuse-summary">
+
+<div class="fuse-total">
+
+<div class="fuse-total-title">
+ОБЩАЯ СТОИМОСТЬ
+</div>
+
+<div id="fuseTotal" class="fuse-total-number">
+0 🪙
+</div>
+
+</div>
+
+<div class="fuse-price">
+
+<div class="fuse-price-title">
+ЦЕНА FUSE
+</div>
+
+<div id="fusePrice" class="fuse-price-number">
+0 🪙
+</div>
+
+</div>
+
+</div>
+
+<div id="fuseTimer" class="fuse-timer"></div>
+
+<div class="fuse-inventory-title">
+ВЫБЕРИ 3 ПРЕДМЕТА ИЗ ИНВЕНТАРЯ
+</div>
+
+<div id="fuseInventory" class="fuse-inventory"></div>
+
+<button
+id="fuseStartButton"
+class="upgrade-spin"
+onclick="startFuse()"
+disabled>
+
+🔥 ЗАПУСТИТЬ FUSE
+
+</button>
+
+</div>
+
+</div>
+
+<div id="luckTimer" class="luck-timer"></div>
+
+<div id="dailyWheelModal" class="daily-wheel-modal">
+
+<div class="daily-wheel-box">
+
+<div class="daily-wheel-header">
+<h2>🎡 КОЛЕСО УДАЧИ</h2>
+<button class="close" onclick="closeDailyWheel()">×</button>
+</div>
+
+<div class="daily-wheel-subtitle">
+Бесплатное вращение каждый день
+</div>
+
+<div class="daily-wheel-area">
+
+<div class="daily-wheel-pointer">▼</div>
+
+<div id="dailyWheelSpinner" class="daily-wheel-spinner">
+
+<div class="daily-wheel-label">
+<span>1 000 🪙</span>
+<span>5 000 🪙</span>
+<span>10 000 🪙</span>
+<span>50 000 🪙</span>
+<span>100 000 🪙</span>
+<span>250 000 🪙</span>
+<span>500 000 🪙</span>
+<span>👑 LIMITED<br>1 111 111 111 🪙</span>
+</div>
+
+<div class="daily-wheel-center">🎡</div>
+
+</div>
+
+</div>
+
+<div id="dailyWheelResult" class="daily-wheel-result"></div>
+
+<button id="dailyWheelSpin" class="daily-wheel-spin" onclick="spinDailyWheel()">
+🎰 КРУТИТЬ БЕСПЛАТНО
+</button>
+
+<div id="dailyWheelNext" class="daily-wheel-next"></div>
+
+</div>
+</div>
+
+<div id="tasksModal" class="tasks-modal">
+
+<div class="tasks-box">
+
+<div class="tasks-header">
+<h2>📋 ЗАДАНИЯ</h2>
+<button class="close" onclick="closeTasks()">×</button>
+</div>
+
+<div id="tasksTimer" class="tasks-timer">
+Новые задания через 00:00:00
+</div>
+
+<div id="taskList" class="task-list"></div>
+
+</div>
+</div>
+
+<main class="container">
+
+<h1>STARTER CASES</h1>
+
+<div class="cases">
+
+<div class="case">
+<div class="case-icon">⛏️</div>
+<div class="case-name">Ore Case</div>
+<div class="case-price">Цена: <b>20 🪙</b></div>
+<button onclick="inspectCase('ore')">ОСМОТРЕТЬ</button>
+</div>
+
+<div class="case">
+<div class="case-icon">💻</div>
+<div class="case-name">Nano Case</div>
+<div class="case-price">Цена: <b>100 🪙</b></div>
+<button onclick="inspectCase('nano')">ОСМОТРЕТЬ</button>
+</div>
+
+<div class="case">
+<div class="case-icon">🐾</div>
+<div class="case-name">Animal Case</div>
+<div class="case-price">Цена: <b>150 🪙</b></div>
+<button onclick="inspectCase('animal')">ОСМОТРЕТЬ</button>
+</div>
+
+<div class="case">
+<div class="case-icon">🚗</div>
+<div class="case-name">Transport Case</div>
+<div class="case-price">Цена: <b>500 🪙</b></div>
+<button onclick="inspectCase('transport')">ОСМОТРЕТЬ</button>
+</div>
+
+</div>
+
+<div class="section-title limited-title">
+🔥 LIMITED CASES
+</div>
+
+<div class="cases">
+
+<div class="case limited-case">
+<div class="case-icon">🎃</div>
+<div class="case-name">Halloween Case</div>
+<div class="case-price">Цена: <b>10 000 🪙</b></div>
+<button onclick="inspectCase('halloween')">ОСМОТРЕТЬ</button>
+</div>
+
+<div class="case limited-case">
+<div class="case-icon">🎄</div>
+<div class="case-name">New Year Case</div>
+<div class="case-price">Цена: <b>50 000 🪙</b></div>
+<button onclick="inspectCase('newyear')">ОСМОТРЕТЬ</button>
+</div>
+
+<div class="case limited-case space-case">
+<div class="case-icon">🚀</div>
+<div class="case-name">Space Case</div>
+<div class="case-price">Цена: <b>100 000 🪙</b></div>
+<button onclick="inspectCase('space')">ОСМОТРЕТЬ</button>
+</div>
+
+<div class="case limited-case golden-case">
+<div class="case-icon">🏆</div>
+<div class="case-name">Golden Era Case</div>
+<div class="case-price">Цена: <b>1 000 000 🪙</b></div>
+<button onclick="inspectCase('golden')">ОСМОТРЕТЬ</button>
+</div>
+
+<div class="case limited-case marvel-case">
+<div class="case-icon">🦸</div>
+<div class="case-name">MARVEL CASE</div>
+<div class="case-price">Цена: <b>5 000 000 🪙</b></div>
+<button onclick="inspectCase('marvel')">ОСМОТРЕТЬ</button>
+</div>
+
+<div class="case limited-case dc-case">
+<div class="case-icon">🦇</div>
+<div class="case-name">DC CASE</div>
+<div class="case-price">Цена: <b>5 000 000 🪙</b></div>
+<button onclick="inspectCase('dc')">ОСМОТРЕТЬ</button>
+</div>
+
+</div>
+
+<!-- NFT НЕ ТРОГАЛ -->
+
+<div class="section-title nft-title">
+💎 NFT CASES
+</div>
+
+<div class="cases">
+
+<div class="case nft-case">
+<div class="case-icon">💎</div>
+<div class="case-name">NFT Case</div>
+<div class="case-price">Цена: <b>2 500 000 🪙</b></div>
+<button onclick="inspectCase('nft')">ОСМОТРЕТЬ</button>
+</div>
+
+</div>
+
+<!-- PREMIUM CASES -->
+
+<div class="section-title premium-title">
+👑 PREMIUM CASES
+</div>
+
+<div class="cases">
+
+<div class="case premium-case">
+<div class="case-icon">🦖</div>
+<div class="case-name">PREHISTORIC CASE</div>
+<div class="case-price">Цена: <b>10 000 000 🪙</b></div>
+<button onclick="inspectCase('prehistoric')">ОСМОТРЕТЬ</button>
+</div>
+
+<div class="case premium-case">
+<div class="case-icon">🌌</div>
+<div class="case-name">MYTHICAL CASE</div>
+<div class="case-price">Цена: <b>150 000 000 🪙</b></div>
+<button onclick="inspectCase('mythical')">ОСМОТРЕТЬ</button>
+</div>
+
+<div class="case premium-case">
+<div class="case-icon">💰</div>
+<div class="case-name">MILLIARDER CASE</div>
+<div class="case-price">Цена: <b>20 000 000 🪙</b></div>
+<button onclick="inspectCase('billionaire')">ОСМОТРЕТЬ</button>
+</div>
+
+</div>
+
+<div class="section-title crystal-title">
+💎 DIAMOND CASES
+</div>
+
+<div class="cases">
+
+<div class="case crystal-case">
+
+<div class="case-icon">💎</div>
+
+<div class="case-name">
+CRYSTAL CASE
+</div>
+
+<div class="case-price">
+Цена: <b>2 500 💎</b>
+</div>
+
+<button onclick="inspectCase('crystal')">
+ОСМОТРЕТЬ
+</button>
+
+</div>
+
+<div class="case dark-void-case">
+
+<div class="case-icon">
+🌑
+</div>
+
+<div class="case-name">
+DARK VOID CASE
+</div>
+
+<div class="case-price">
+Цена: <b>7 777 💎</b>
+</div>
+
+<button onclick="inspectCase('darkvoid')">
+ОСМОТРЕТЬ
+</button>
+
+</div>
+
+</div>
+
+<div class="section-title black-title">
+◼ BLACK MARKET
+</div>
+
+<div class="cases">
+
+<div class="case black-case">
+
+<div class="case-icon">
+◼️
+</div>
+
+<div class="case-name">
+Black Market Case
+</div>
+
+<div class="case-price">
+Цена: <b>33 333 🪙</b>
+</div>
+
+<button onclick="inspectCase('black')">
+ОСМОТРЕТЬ
+</button>
+
+</div>
+
+</div>
+
+<!-- CONTRABAND -->
+
+<div class="section-title contraband-title">
+🚨 ОГРАНИЧЕННЫЕ ПО ВРЕМЕНИ
+</div>
+
+<div class="cases">
+
+<div class="case contraband-case">
+
+<div class="case-icon">
+☠️
+</div>
+
+<div class="case-name">
+CONTRABAND CASE
+</div>
+
+<div class="case-price">
+Цена: <b>25 000 000 🪙</b>
+</div>
+
+<div id="contrabandTimer" class="contraband-timer">
+Загрузка таймера...
+</div>
+
+<button onclick="inspectCase('contraband')">
+ОСМОТРЕТЬ
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+<div id="caseModal" class="modal">
+
+<div class="modal-box">
+
+<div class="modal-header">
+
+<h2 id="modalTitle"></h2>
+
+<button class="close" onclick="closeCaseModal()">
+×
+</button>
+
+</div>
+
+<div id="modalIcon" class="preview"></div>
+
+<div id="modalPrice" class="preview-price"></div>
+
+<div>
+Количество:
+</div>
+
+<br>
+
+<div id="multipliers" class="multipliers"></div>
+
+<button id="openSelected" class="open-case"></button>
+
+<div class="chances-title">
+Шансы на дроп
+</div>
+
+<div id="chances"></div>
+
+</div>
+</div>
+
+<div id="rouletteOverlay" class="roulette-overlay">
+
+<div class="roulette-wrapper">
+
+<div class="roulette-title">
+Открытие кейсов...
+</div>
+
+<div id="rouletteGrid" class="roulette-grid"></div>
+
+<div id="loadingText"
+style="text-align:center;margin-top:18px;color:#aaa">
+Открытие...
+</div>
+
+</div>
+</div>
+
+<div id="blackOverlay" class="black-overlay">
+
+<div class="black-scene">
+
+<div id="blackCircle" class="black-circle"></div>
+
+<div id="blackItem" class="black-item">
+
+<div id="blackItemIcon" style="font-size:60px"></div>
+
+<div id="blackItemName"></div>
+
+<div id="blackItemPrice"
+style="margin-top:5px;color:#aaa">
+</div>
+
+</div>
+
+<div id="blackResult" class="black-result">
+
+<div id="blackResultTitle" style="font-size:22px"></div>
+
+<div id="blackResultPrice"
+style="margin-top:5px;color:#aaa">
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div id="upgradeModal" class="upgrade-modal">
+
+<div class="upgrade-box">
+
+<div class="upgrade-header">
+
+<h2>🔄 UPGRADE</h2>
+
+<button class="close" onclick="closeUpgrade()">
+×
+</button>
+
+</div>
+
+<div class="upgrade-selects">
+
+<div class="upgrade-side">
+
+<h3>ТВОЙ ПРЕДМЕТ</h3>
+
+<div id="upgradeYourItem" class="upgrade-selected">
+
+<div class="upgrade-placeholder">
+Выбери предмет
+</div>
+
+</div>
+
+<div id="upgradeInventoryList" class="upgrade-list"></div>
+
+</div>
+
+<div class="upgrade-arrow">
+→
+</div>
+
+<div class="upgrade-side">
+
+<h3>ЦЕЛЬ</h3>
+
+<div id="upgradeTargetItem" class="upgrade-selected">
+
+<div class="upgrade-placeholder">
+Выбери цель
+</div>
+
+</div>
+
+<div id="upgradeTargetList" class="upgrade-list"></div>
+
+</div>
+
+</div>
+
+<div class="upgrade-chance">
+
+<div class="chance-label">
+ШАНС УСПЕХА
+</div>
+
+<div id="upgradeChance" class="chance-number">
+0%
+</div>
+
+</div>
+
+<div class="upgrade-wheel-area">
+
+<div class="upgrade-wheel">
+
+<div class="wheel-pointer">
+▼
+</div>
+
+<div id="wheelSpinner" class="wheel-spinner">
+
+<div class="wheel-green">
+ПОБЕДА
+</div>
+
+<div class="wheel-red">
+ПРОИГРЫШ
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="upgradeResult" class="upgrade-result"></div>
+
+<button id="upgradeSpinButton"
+class="upgrade-spin"
+onclick="spinUpgrade()"
+disabled>
+
+🎰 КРУТИТЬ
+
+</button>
+
+</div>
+</div>
+
+<script>
+
+/* SAVE DATA */
+
+let balance=Number(localStorage.getItem("caseBalance"));
+
+let inventory=JSON.parse(
+localStorage.getItem("caseInventory")||"[]"
+);
+
+let usedPromoCodes=JSON.parse(
+localStorage.getItem("usedPromoCodes")||"[]"
+);
+
+let diamonds=Number(localStorage.getItem("caseDiamonds"));
+
+let luckMultiplier=Number(
+localStorage.getItem("luckMultiplier")
+);
+
+let luckEndTime=Number(
+localStorage.getItem("luckEndTime")
+);
+
+/* CONTRABAND TIMER */
+
+const CONTRABAND_DURATION =
+    7 * 24 * 60 * 60 * 1000;
+
+let contrabandEndTime =
+    Number(localStorage.getItem("contrabandEndTime"));
+
+if(
+    !Number.isFinite(contrabandEndTime) ||
+    contrabandEndTime <= Date.now()
+){
+
+    contrabandEndTime =
+        Date.now() + CONTRABAND_DURATION;
+
+    localStorage.setItem(
+        "contrabandEndTime",
+        String(contrabandEndTime)
+    );
+
+}
+
+/* DAILY LUCK WHEEL */
+
+let dailyWheelDate=
+localStorage.getItem("dailyWheelDate")||"";
+
+let dailyWheelSpinning=false;
+
+const dailyWheelRewards=[
+    {type:"coins",name:"1 000 🪙",value:1000,chance:14.2142857},
+    {type:"coins",name:"5 000 🪙",value:5000,chance:14.2142857},
+    {type:"coins",name:"10 000 🪙",value:10000,chance:14.2142857},
+    {type:"coins",name:"50 000 🪙",value:50000,chance:14.2142857},
+    {type:"coins",name:"100 000 🪙",value:100000,chance:14.2142857},
+    {type:"coins",name:"250 000 🪙",value:250000,chance:14.2142857},
+    {type:"coins",name:"500 000 🪙",value:500000,chance:14.2142857},
+    {type:"item",name:"DAILY LIMITED",value:1111111111,icon:"👑",chance:0.5}
+];
+
+if(!Number.isFinite(balance)) balance=100;
+if(!Array.isArray(inventory)) inventory=[];
+if(!Array.isArray(usedPromoCodes)) usedPromoCodes=[];
+if(!Number.isFinite(diamonds)) diamonds=0;
+if(!Number.isFinite(luckMultiplier)||luckMultiplier<1) luckMultiplier=1;
+if(!Number.isFinite(luckEndTime)) luckEndTime=0;
+
+/* FUSE DATA */
+
+let fuseSlots=[null,null,null];
+
+let fuseEndTime=Number(
+localStorage.getItem("fuseEndTime")
+);
+
+let fuseSourceIds=JSON.parse(
+localStorage.getItem("fuseSourceIds")||"[]"
+);
+
+let fuseRunning=
+localStorage.getItem("fuseRunning")==="true";
+
+if(!Number.isFinite(fuseEndTime))
+fuseEndTime=0;
+
+if(!Array.isArray(fuseSourceIds))
+fuseSourceIds=[];
+
+/* ITEM IDS */
+
+function createItemId(){
+
+return Date.now().toString(36)+"-"+
+
+Math.random()
+.toString(36)
+.slice(2);
+
+}
+
+function ensureInventoryIds(){
+
+let changed=false;
+
+inventory.forEach(item=>{
+
+if(!item.id){
+item.id=createItemId();
+changed=true;
+}
+
+if(typeof item.locked!=="boolean"){
+item.locked=false;
+changed=true;
+}
+
+if(typeof item.fuseLocked!=="boolean"){
+item.fuseLocked=false;
+changed=true;
+}
+
+});
+
+if(changed){
+
+localStorage.setItem(
+"caseInventory",
+JSON.stringify(inventory)
+);
+
+}
+
+}
+
+ensureInventoryIds();
+
+/* HOURLY TASKS */
+
+const TASK_POOL = [
+    {id:"open1", icon:"📦", name:"Первое открытие", desc:"Открой 1 кейс", type:"open", target:1, reward:25000},
+    {id:"open3", icon:"📦", name:"Начало дня", desc:"Открой 3 кейса", type:"open", target:3, reward:75000},
+    {id:"open5", icon:"📦", name:"Коллекционер", desc:"Открой 5 кейсов", type:"open", target:5, reward:150000},
+    {id:"open10", icon:"📦", name:"Кейс-марафон", desc:"Открой 10 кейсов", type:"open", target:10, reward:400000},
+    {id:"open20", icon:"📦", name:"Без остановки", desc:"Открой 20 кейсов", type:"open", target:20, reward:1000000},
+
+    {id:"sell1", icon:"💰", name:"Продажа", desc:"Продай 1 предмет", type:"sell", target:1, reward:25000},
+    {id:"sell3", icon:"💰", name:"Торговец", desc:"Продай 3 предмета", type:"sell", target:3, reward:75000},
+    {id:"sell5", icon:"💰", name:"Большая распродажа", desc:"Продай 5 предметов", type:"sell", target:5, reward:150000},
+    {id:"sell10", icon:"💰", name:"Оптовик", desc:"Продай 10 предметов", type:"sell", target:10, reward:400000},
+
+    {id:"earn10k", icon:"🪙", name:"Заработок", desc:"Заработай 10 000 🪙", type:"earn", target:10000, reward:25000},
+    {id:"earn50k", icon:"🪙", name:"Хороший доход", desc:"Заработай 50 000 🪙", type:"earn", target:50000, reward:100000},
+    {id:"earn100k", icon:"🪙", name:"Серьёзный доход", desc:"Заработай 100 000 🪙", type:"earn", target:100000, reward:250000},
+    {id:"earn1m", icon:"🪙", name:"Миллионер", desc:"Заработай 1 000 000 🪙", type:"earn", target:1000000, reward:1000000},
+
+    {id:"diam1", icon:"💎", name:"Алмазный покупатель", desc:"Купи 1 💎", type:"diamond", target:1, reward:25000},
+    {id:"diam10", icon:"💎", name:"Алмазный запас", desc:"Купи 10 💎", type:"diamond", target:10, reward:100000},
+    {id:"diam100", icon:"💎", name:"Алмазный магнат", desc:"Купи 100 💎", type:"diamond", target:100, reward:500000},
+
+    {id:"fuse1", icon:"🔥", name:"Плавильщик", desc:"Заверши 1 FUSE", type:"fuse", target:1, reward:150000},
+    {id:"fuse3", icon:"🔥", name:"Мастер FUSE", desc:"Заверши 3 FUSE", type:"fuse", target:3, reward:750000},
+
+    {id:"upgrade1", icon:"🔄", name:"Апгрейд", desc:"Сделай 1 Upgrade", type:"upgrade", target:1, reward:100000},
+    {id:"upgrade3", icon:"🔄", name:"Улучшатель", desc:"Сделай 3 Upgrade", type:"upgrade", target:3, reward:500000},
+
+    {id:"rare1", icon:"✨", name:"Редкая находка", desc:"Получи предмет стоимостью от 100 000 🪙", type:"rare", target:1, reward:250000},
+    {id:"rare3", icon:"✨", name:"Охотник за редкостями", desc:"Получи 3 предмета стоимостью от 100 000 🪙", type:"rare", target:3, reward:750000},
+
+    {id:"million1", icon:"👑", name:"Дорогой дроп", desc:"Получи предмет стоимостью от 1 000 000 🪙", type:"million", target:1, reward:750000},
+    {id:"million3", icon:"👑", name:"Королевская охота", desc:"Получи 3 предмета от 1 000 000 🪙", type:"million", target:3, reward:2500000},
+
+    {id:"luck1", icon:"🍀", name:"На удачу", desc:"Активируй зелье удачи", type:"luck", target:1, reward:75000},
+    {id:"luck3", icon:"🍀", name:"Удачливый", desc:"Активируй 3 зелья удачи", type:"luck", target:3, reward:300000},
+
+    {id:"black1", icon:"◼️", name:"Тёмная сделка", desc:"Открой Black Market Case", type:"black", target:1, reward:300000},
+    {id:"black3", icon:"◼️", name:"Чёрный рынок", desc:"Открой 3 Black Market Case", type:"black", target:3, reward:1500000},
+
+    {id:"crystal1", icon:"💎", name:"Кристальный путь", desc:"Открой 1 Diamond Case", type:"crystal", target:1, reward:250000},
+    {id:"crystal3", icon:"💎", name:"Кристальный охотник", desc:"Открой 3 Diamond Case", type:"crystal", target:3, reward:1000000},
+
+    {id:"premium1", icon:"👑", name:"Премиум", desc:"Открой 1 Premium Case", type:"premium", target:1, reward:500000},
+    {id:"premium3", icon:"👑", name:"Премиум-коллекционер", desc:"Открой 3 Premium Case", type:"premium", target:3, reward:2500000},
+
+    {id:"nft1", icon:"💠", name:"NFT охотник", desc:"Открой 1 NFT Case", type:"nft", target:1, reward:500000},
+    {id:"nft3", icon:"💠", name:"NFT коллекционер", desc:"Открой 3 NFT Case", type:"nft", target:3, reward:2000000},
+
+    {id:"daily1", icon:"🎡", name:"Колесо удачи", desc:"Используй ежедневное колесо", type:"daily", target:1, reward:150000},
+    {id:"daily3", icon:"🎡", name:"Любимец удачи", desc:"Получи 3 награды с колеса", type:"daily", target:3, reward:750000},
+
+    {id:"bigwin", icon:"🏆", name:"Большая победа", desc:"Получи предмет дороже 10 000 000 🪙", type:"bigwin", target:1, reward:3000000},
+    {id:"bigwin3", icon:"🏆", name:"Джекпот", desc:"Получи 3 предмета дороже 10 000 000 🪙", type:"bigwin", target:3, reward:10000000}
+];
+
+let taskState = JSON.parse(localStorage.getItem("caseTasksState") || "{}");
+let taskHourKey = localStorage.getItem("caseTasksHourKey") || "";
+
+function currentTaskHourKey(){
+    const d = new Date();
+    return d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()+"-"+d.getHours();
+}
+
+function taskSeed(){
+    const key = currentTaskHourKey();
+    let hash = 0;
+    for(let i=0;i<key.length;i++) hash = ((hash<<5)-hash)+key.charCodeAt(i);
+    return Math.abs(hash);
+}
+
+function getCurrentTasks(){
+    const pool = TASK_POOL.slice();
+    let seed = taskSeed();
+    const result = [];
+    while(result.length < 5 && pool.length){
+        seed = (seed * 9301 + 49297) % 233280;
+        const index = seed % pool.length;
+        result.push(pool.splice(index,1)[0]);
+    }
+    return result;
+}
+
+function ensureTaskHour(){
+    const key = currentTaskHourKey();
+    if(taskHourKey !== key){
+        taskHourKey = key;
+        taskState = {};
+        localStorage.setItem("caseTasksHourKey", key);
+        localStorage.setItem("caseTasksState", JSON.stringify(taskState));
+    }
+}
+
+function taskProgress(type, amount=1){
+    ensureTaskHour();
+    let changed = false;
+
+    getCurrentTasks().forEach(task=>{
+        if(task.type !== type) return;
+        const old = Number(taskState[task.id]?.progress || 0);
+        const value = Math.min(task.target, old + Number(amount || 0));
+        if(value !== old){
+            taskState[task.id] = {
+                progress:value,
+                claimed:Boolean(taskState[task.id]?.claimed)
+            };
+            changed = true;
+        }
+    });
+
+    if(changed){
+        localStorage.setItem("caseTasksState", JSON.stringify(taskState));
+        updateTasksUI();
+    }
+}
+
+function claimTask(id){
+    ensureTaskHour();
+    const task = getCurrentTasks().find(x=>x.id===id);
+    if(!task) return;
+
+    const state = taskState[id] || {progress:0, claimed:false};
+    if(state.claimed || state.progress < task.target) return;
+
+    state.claimed = true;
+    taskState[id] = state;
+    balance += task.reward;
+
+    localStorage.setItem("caseTasksState", JSON.stringify(taskState));
+    updateBalance();
+    updateTasksUI();
+
+    alert(
+        "🎉 ЗАДАНИЕ ВЫПОЛНЕНО!\n\n"+
+        task.icon+" "+task.name+"\n"+
+        "Награда: +"+task.reward.toLocaleString("ru-RU")+" 🪙"
+    );
+}
+
+function formatTaskTime(){
+    const now = new Date();
+    const next = new Date(now);
+    next.setMinutes(0,0,0);
+    next.setHours(next.getHours()+1);
+    let sec = Math.max(0, Math.ceil((next-now)/1000));
+    const h = Math.floor(sec/3600);
+    sec %= 3600;
+    const m = Math.floor(sec/60);
+    const s = sec%60;
+    return [h,m,s].map(x=>String(x).padStart(2,"0")).join(":");
+}
+
+function updateTasksUI(){
+    const box = document.getElementById("taskList");
+    const timer = document.getElementById("tasksTimer");
+    if(!box || !timer) return;
+
+    ensureTaskHour();
+    timer.textContent = "⏱️ Новые 5 заданий через "+formatTaskTime();
+
+    box.innerHTML = "";
+
+    getCurrentTasks().forEach(task=>{
+        const state = taskState[task.id] || {progress:0, claimed:false};
+        const progress = Math.min(task.target, Number(state.progress||0));
+        const percent = Math.min(100, (progress/task.target)*100);
+
+        const card = document.createElement("div");
+        card.className = "task-card"+(state.claimed ? " completed":"");
+
+        card.innerHTML = `
+            <div class="task-top">
+                <div class="task-name">${task.icon} ${task.name}</div>
+                <div class="task-reward">+${task.reward.toLocaleString("ru-RU")} 🪙</div>
+            </div>
+            <div class="task-description">${task.desc}</div>
+            <div class="task-progress">
+                <div class="task-progress-bar" style="width:${percent}%"></div>
+            </div>
+            <div class="task-bottom">
+                <div class="task-count">${progress.toLocaleString("ru-RU")} / ${task.target.toLocaleString("ru-RU")}</div>
+                ${
+                    state.claimed
+                    ? '<div class="task-claimed">✓ ПОЛУЧЕНО</div>'
+                    : `<button class="task-claim" onclick="claimTask('${task.id}')" ${progress<task.target?'disabled':''}>${progress>=task.target?'ЗАБРАТЬ':'В ПРОЦЕССЕ'}</button>`
+                }
+            </div>
+        `;
+        box.appendChild(card);
+    });
+}
+
+function openTasks(){
+    updateTasksUI();
+    document.getElementById("tasksModal").classList.add("show");
+}
+
+function closeTasks(){
+    document.getElementById("tasksModal").classList.remove("show");
+}
+
+setInterval(()=>{
+    ensureTaskHour();
+    updateTasksUI();
+},1000);
+
+/* CASE DATABASE */
+
+const cases={
+
+ore:{
+name:"Ore Case",
+icon:"⛏️",
+price:20,
+items:[
+{name:"Уголь",price:10,icon:"⚫",chance:40},
+{name:"Железо",price:30,icon:"🔩",chance:30},
+{name:"Золото",price:60,icon:"🟨",chance:15},
+{name:"Алмаз",price:100,icon:"💎",chance:9},
+{name:"Титан",price:250,icon:"🔷",chance:5},
+{name:"Палладий",price:500,icon:"🟣",chance:1}
+]
+},
+
+nano:{
+name:"Nano Case",
+icon:"💻",
+price:100,
+items:[
+{name:"Телефон",price:50,icon:"📱",chance:50},
+{name:"ПК",price:100,icon:"🖥️",chance:35},
+{name:"Геймпад",price:1000,icon:"🎮",chance:15}
+]
+},
+
+animal:{
+name:"Animal Case",
+icon:"🐾",
+price:150,
+items:[
+{name:"Свинья",price:50,icon:"🐷",chance:50},
+{name:"Собака",price:150,icon:"🐶",chance:40},
+{name:"Лошадь",price:300,icon:"🐴",chance:9},
+{name:"Кот",price:2500,icon:"🐱",chance:1}
+]
+},
+
+transport:{
+name:"Transport Case",
+icon:"🚗",
+price:500,
+items:[
+{name:"Машина",price:250,icon:"🚗",chance:60},
+{name:"Корабль",price:700,icon:"🚢",chance:30},
+{name:"Поезд",price:1500,icon:"🚆",chance:9.5},
+{name:"Самолёт",price:10000,icon:"✈️",chance:.5}
+]
+},
+
+halloween:{
+name:"Halloween Case",
+icon:"🎃",
+price:10000,
+limited:true,
+items:[
+{name:"Тыква",price:5000,icon:"🎃",chance:50},
+{name:"Ведьмина шляпа",price:15000,icon:"🧙",chance:20},
+{name:"Призрак",price:40000,icon:"👻",chance:10},
+{name:"Вампир",price:50000,icon:"🧛",chance:5},
+{name:"Золотой череп",price:100000,icon:"💀",chance:4.5},
+{name:"Проклятый артефакт",price:1000000,icon:"🔮",chance:.1},
+{name:"Паук",price:45000,icon:"🕷️",chance:10.4}
+]
+},
+
+newyear:{
+name:"New Year Case",
+icon:"🎄",
+price:50000,
+limited:true,
+items:[
+{name:"Подарок",price:5000,icon:"🎁",chance:45},
+{name:"Снежинка",price:12000,icon:"❄️",chance:25},
+{name:"Снеговик",price:25000,icon:"⛄",chance:15},
+{name:"Ёлка",price:50000,icon:"🎄",chance:8},
+{name:"Золотой колокольчик",price:100000,icon:"🔔",chance:5},
+{name:"Рудольф",price:250000,icon:"🦌",chance:1.5},
+{name:"Корона Деда Мороза",price:1000000,icon:"👑",chance:.5}
+]
+},
+
+space:{
+name:"Space Case",
+icon:"🚀",
+price:100000,
+limited:true,
+items:[
+{name:"Лунный камень",price:25000,icon:"🪨",chance:45},
+{name:"Спутник",price:60000,icon:"🛰️",chance:25},
+{name:"Луна",price:150000,icon:"🌕",chance:15},
+{name:"Астронавт",price:400000,icon:"👨‍🚀",chance:9},
+{name:"Ракета",price:1000000,icon:"🚀",chance:5},
+{name:"Сатурн",price:5000000,icon:"🪐",chance:.9},
+{name:"Галактика",price:25000000,icon:"🌌",chance:.1}
+]
+},
+
+golden:{
+name:"Golden Era Case",
+icon:"🏆",
+price:1000000,
+limited:true,
+items:[
+{name:"Золотая монета",price:100000,icon:"🪙",chance:45},
+{name:"Золотые часы",price:250000,icon:"⌚",chance:25},
+{name:"Золотое кольцо",price:600000,icon:"💍",chance:15},
+{name:"Золотая корона",price:1500000,icon:"👑",chance:8},
+{name:"Золотая статуя",price:5000000,icon:"🗿",chance:5},
+{name:"Золотой трофей",price:15000000,icon:"🏆",chance:1.9},
+{name:"Golden Relic",price:100000000,icon:"💎",chance:.1}
+]
+},
+
+marvel:{
+name:"MARVEL CASE",
+icon:"🦸",
+price:5000000,
+limited:true,
+items:[
+{name:"Spider-Man",price:1000000,icon:"🕷️",chance:40},
+{name:"Captain America",price:5000000,icon:"🛡️",chance:25},
+{name:"Hulk",price:15000000,icon:"💚",chance:15},
+{name:"Thor",price:30000000,icon:"⚡",chance:10},
+{name:"Doctor Strange",price:75000000,icon:"🌀",chance:6},
+{name:"Wolverine",price:150000000,icon:"🧬",chance:3},
+{name:"Scarlet Witch",price:300000000,icon:"🔴",chance:.9},
+{name:"Doctor Doom",price:800000000,icon:"🟣",chance:.1}
+]
+},
+
+dc:{
+name:"DC CASE",
+icon:"🦇",
+price:5000000,
+limited:true,
+items:[
+{name:"Batman",price:1000000,icon:"🦇",chance:40},
+{name:"The Flash",price:5000000,icon:"⚡",chance:25},
+{name:"Wonder Woman",price:15000000,icon:"🛡️",chance:15},
+{name:"Aquaman",price:30000000,icon:"🔱",chance:10},
+{name:"Green Lantern",price:75000000,icon:"💚",chance:6},
+{name:"Superman",price:150000000,icon:"☀️",chance:3},
+{name:"Joker",price:300000000,icon:"🃏",chance:.9},
+{name:"Darkseid",price:800000000,icon:"⚫",chance:.1}
+]
+},
+
+nft:{
+name:"NFT Case",
+icon:"💎",
+price:2500000,
+limited:false,
+items:[
+{name:"Common NFT",price:1000000,icon:"🖼️",chance:45},
+{name:"Rare NFT",price:2000000,icon:"🎨",chance:30},
+{name:"Epic NFT",price:5000000,icon:"💠",chance:15},
+{name:"Legendary NFT",price:15000000,icon:"👑",chance:7},
+{name:"Mythic NFT",price:50000000,icon:"💎",chance:2.5},
+{name:"Golden NFT",price:250000000,icon:"🌟",chance:.5}
+]
+},
+
+prehistoric:{
+name:"PREHISTORIC CASE",
+icon:"🦖",
+price:10000000,
+premium:true,
+items:[
+{name:"Fossil",price:5000000,icon:"🦴",chance:40},
+{name:"Dinosaur Egg",price:10000000,icon:"🥚",chance:25},
+{name:"Triceratops",price:25000000,icon:"🦏",chance:15},
+{name:"Velociraptor",price:50000000,icon:"🦎",chance:10},
+{name:"T-Rex",price:100000000,icon:"🦖",chance:6},
+{name:"Spinosaurus",price:250000000,icon:"🐊",chance:3},
+{name:"Ancient Dragon",price:500000000,icon:"🐉",chance:.9},
+{name:"PRIMAL TITAN",price:1000000000,icon:"👑",chance:.1}
+]
+},
+
+mythical:{
+    name:"MYTHICAL CASE",
+    icon:"🌌",
+    price:150000000,
+    premium:true,
+    items:[
+        {name:"🦄 Unicorn",price:40000000,chance:55},
+        {name:"🦅 Griffin",price:80000000,chance:25},
+        {name:"🐺 Fenrir",price:160000000,chance:10},
+        {name:"🐙 Kraken",price:320000000,chance:5},
+        {name:"🔥 Phoenix",price:600000000,chance:3},
+        {name:"🐉 Ancient Dragon",price:800000000,chance:1.5},
+        {name:"👑 Mythical Titan",price:1000000000,chance:.4},
+        {name:"🌌 ETERNAL DRAGON",price:1250000000,chance:.1}
+    ]
+},
+
+billionaire:{
+name:"MILLIARDER CASE",
+icon:"💰",
+price:20000000,
+premium:true,
+items:[
+{name:"Super Car",price:20000000,icon:"🚗",chance:40},
+{name:"Hyper Car",price:50000000,icon:"🏎️",chance:25},
+{name:"Luxury Yacht",price:100000000,icon:"🛥️",chance:15},
+{name:"Private Jet",price:250000000,icon:"✈️",chance:10},
+{name:"Billionaire Mansion",price:500000000,icon:"🏰",chance:7},
+{name:"Billionaire Empire",price:1000000000,icon:"💎",chance:3}
+]
+},
+
+/* CONTRABAND CASE */
+
+contraband:{
+name:"CONTRABAND CASE",
+icon:"☠️",
+price:25000000,
+limited:true,
+black:true,
+items:[
+{name:"Illegal Package",price:5000000,icon:"📦",chance:50},
+{name:"Secret Briefcase",price:10000000,icon:"💼",chance:25},
+{name:"Smuggled Diamond",price:20000000,icon:"💎",chance:12},
+{name:"Black Deal",price:40000000,icon:"🕶️",chance:7},
+{name:"Kingpin Contract",price:100000000,icon:"👑",chance:4},
+{name:"Underground Empire",price:300000000,icon:"🏙️",chance:1.8},
+{name:"FORBIDDEN ARTIFACT",price:1000000000,icon:"☠️",chance:.2}
+]
+},
+
+crystal:{
+name:"CRYSTAL CASE",
+icon:"💎",
+price:2500,
+currency:"diamonds",
+items:[
+{name:"Shattered",price:500000,icon:"🔹",chance:35},
+{name:"Radiant",price:1500000,icon:"💠",chance:25},
+{name:"Eternal",price:5000000,icon:"🔷",chance:15},
+{name:"Celestial",price:15000000,icon:"✨",chance:10},
+{name:"Voidborn",price:25000000,icon:"🌌",chance:6},
+{name:"Abyssal",price:50000000,icon:"🌀",chance:4},
+{name:"Oblivion",price:100000000,icon:"🖤",chance:2.5},
+{name:"Genesis",price:199000000,icon:"🌟",chance:1.5},
+{name:"Divine",price:270000000,icon:"👑",chance:.9},
+{name:"Singularity",price:555000000,icon:"💎",chance:.1}
+]
+},
+
+darkvoid:{
+name:"DARK VOID CASE",
+icon:"🌑",
+price:7777,
+currency:"diamonds",
+items:[
+{name:"Dark Shard",price:1000000,icon:"🔹",chance:40},
+{name:"Nightfall",price:5000000,icon:"🌑",chance:25},
+{name:"Black Flame",price:15000000,icon:"🔥",chance:15},
+{name:"Void Crystal",price:30000000,icon:"💠",chance:10},
+{name:"Dark Matter",price:75000000,icon:"🌀",chance:6},
+{name:"Abyss Core",price:150000000,icon:"⚫",chance:3},
+{name:"Black Star",price:300000000,icon:"🌌",chance:.9},
+{name:"Eternal Void",price:500000000,icon:"👁️",chance:.1}
+]
+}
+
+};
+
+/* CONTRABAND TIMER */
+
+function updateContrabandTimer(){
+
+const box =
+document.getElementById("contrabandTimer");
+
+if(!box)return;
+
+const remaining =
+contrabandEndTime-Date.now();
+
+if(remaining<=0){
+
+box.textContent =
+"⛔ КЕЙС ЗАКОНЧИЛСЯ";
+
+return;
+
+}
+
+let total =
+Math.floor(remaining/1000);
+
+const days =
+Math.floor(total/86400);
+
+total%=86400;
+
+const hours =
+Math.floor(total/3600);
+
+total%=3600;
+
+const minutes =
+Math.floor(total/60);
+
+const seconds =
+total%60;
+
+box.textContent =
+"⏳ "+
+days+" дн. "+
+String(hours).padStart(2,"0")+" ч. "+
+String(minutes).padStart(2,"0")+" мин. "+
+String(seconds).padStart(2,"0")+" сек.";
+
+}
+
+setInterval(updateContrabandTimer,1000);
+
+/* PROMO */
+
+const promoCodes={
+START:10000,
+"2026":50000,
+LIMITED:500000,
+UPD:1000000
+};
+
+function openPromo(){
+
+const input=prompt("🎟️ Введите промокод:");
+
+if(input===null)return;
+
+const code=input.trim().toUpperCase();
+
+if(!Object.prototype.hasOwnProperty.call(promoCodes,code)){
+alert("❌ Промокод не найден!");
+return;
+}
+
+if(usedPromoCodes.includes(code)){
+alert("⚠️ Этот промокод уже использован!");
+return;
+}
+
+const reward=promoCodes[code];
+
+balance+=reward;
+usedPromoCodes.push(code);
+
+localStorage.setItem(
+"usedPromoCodes",
+JSON.stringify(usedPromoCodes)
+);
+
+updateBalance();
+
+alert(
+"🎉 ПРОМОКОД АКТИВИРОВАН!\n\n"+
+"+"+reward.toLocaleString("ru-RU")+" 🪙"
+);
+
+}
+
+/* SAVE */
+
+function saveGame(){
+
+localStorage.setItem("caseBalance",String(balance));
+localStorage.setItem("caseInventory",JSON.stringify(inventory));
+localStorage.setItem("caseDiamonds",String(diamonds));
+
+localStorage.setItem(
+"luckMultiplier",
+String(luckMultiplier)
+);
+
+localStorage.setItem(
+"luckEndTime",
+String(luckEndTime)
+);
+
+localStorage.setItem(
+"dailyWheelDate",
+dailyWheelDate
+);
+
+localStorage.setItem(
+"fuseEndTime",
+String(fuseEndTime)
+);
+
+localStorage.setItem(
+"fuseSourceIds",
+JSON.stringify(fuseSourceIds)
+);
+
+localStorage.setItem(
+"fuseRunning",
+fuseRunning?"true":"false"
+);
+
+}
+
+/* BALANCE */
+
+function updateBalance(){
+
+document.getElementById("balance").textContent=
+balance.toLocaleString("ru-RU");
+
+updateDiamonds();
+saveGame();
+
+}
+
+/* DIAMONDS */
+
+function updateDiamonds(){
+
+const diamondsBox=document.getElementById("diamonds");
+const shopDiamondsBox=document.getElementById("shopDiamonds");
+
+if(diamondsBox)
+diamondsBox.textContent=diamonds.toLocaleString("ru-RU");
+
+if(shopDiamondsBox)
+shopDiamondsBox.textContent=diamonds.toLocaleString("ru-RU");
+
+}
+
+/* DIAMOND MARKET */
+
+let diamondRate=100;
+let diamondRateTime=10;
+
+function generateDiamondRate(){
+
+diamondRate=Math.floor(Math.random()*100000)+1;
+diamondRateTime=10;
+
+updateDiamondMarket();
+
+}
+
+function updateDiamondMarket(){
+
+const rateBox=document.getElementById("diamondRate");
+const timerBox=document.getElementById("diamondRateTimer");
+
+if(rateBox)
+rateBox.textContent=
+"1 💎 = "+
+diamondRate.toLocaleString("ru-RU")+
+" 🪙";
+
+if(timerBox)
+timerBox.textContent=
+"Новый курс через "+
+diamondRateTime+
+" сек.";
+
+updateDiamondCost();
+
+}
+
+setInterval(()=>{
+
+diamondRateTime--;
+
+if(diamondRateTime<=0)
+generateDiamondRate();
+else
+updateDiamondMarket();
+
+},1000);
+
+function openDiamondMarket(){
+
+updateDiamondMarket();
+
+document.getElementById("diamondModal").classList.add("show");
+
+}
+
+function closeDiamondMarket(){
+
+document.getElementById("diamondModal").classList.remove("show");
+
+}
+
+function updateDiamondCost(){
+
+const input=document.getElementById("diamondAmount");
+const costBox=document.getElementById("diamondCost");
+const buyButton=document.getElementById("diamondBuyButton");
+
+if(!input||!costBox)return;
+
+let amount=Number(input.value);
+
+if(!Number.isFinite(amount))
+amount=1;
+
+amount=Math.floor(amount);
+
+if(amount<1)amount=1;
+if(amount>100000)amount=100000;
+
+input.value=amount;
+
+const cost=amount*diamondRate;
+
+costBox.textContent=cost.toLocaleString("ru-RU");
+
+if(buyButton)
+buyButton.disabled=balance<cost;
+
+}
+
+function buyDiamonds(){
+
+const input=document.getElementById("diamondAmount");
+
+let amount=Number(input.value);
+
+if(!Number.isFinite(amount)){
+alert("❌ Введи количество алмазов!");
+return;
+}
+
+amount=Math.floor(amount);
+
+if(amount<1){
+alert("❌ Минимум можно купить 1 💎!");
+input.value=1;
+updateDiamondCost();
+return;
+}
+
+if(amount>100000){
+alert("❌ Максимум можно купить 100 000 💎!");
+input.value=100000;
+updateDiamondCost();
+return;
+}
+
+const cost=amount*diamondRate;
+
+if(balance<cost){
+alert(
+"❌ Недостаточно монет!\n\n"+
+"Нужно: "+cost.toLocaleString("ru-RU")+" 🪙\n"+
+"Есть: "+balance.toLocaleString("ru-RU")+" 🪙"
+);
+return;
+}
+
+balance-=cost;
+diamonds+=amount;
+
+taskProgress("diamond",amount);
+
+updateBalance();
+updateDiamonds();
+
+alert(
+"💎 ПОКУПКА УСПЕШНА!\n\n"+
+"Получено: "+amount.toLocaleString("ru-RU")+" 💎\n"+
+"Потрачено: "+cost.toLocaleString("ru-RU")+" 🪙\n\n"+
+"Курс: 1 💎 = "+
+diamondRate.toLocaleString("ru-RU")+" 🪙"
+);
+
+updateDiamondCost();
+
+}
+
+/* SHOP */
+
+const luckPrices={
+1:1000000,
+2:5000000,
+3:10000000,
+4:50000000,
+5:100000000
+};
+
+const luckMultipliers={
+1:1.5,
+2:2,
+3:3,
+4:5,
+5:8
+};
+
+function openShop(){
+
+updateDiamonds();
+
+document.getElementById("shopModal").classList.add("show");
+
+}
+
+function closeShop(){
+
+document.getElementById("shopModal").classList.remove("show");
+
+}
+
+function buyLuck(level){
+
+const price=luckPrices[level];
+const multiplier=luckMultipliers[level];
+
+if(balance<price){
+alert("❌ Недостаточно монет!");
+return;
+}
+
+balance-=price;
+
+taskProgress("luck",1);
+
+luckMultiplier=multiplier;
+luckEndTime=Date.now()+60000;
+
+updateBalance();
+updateLuckTimer();
+
+alert(
+"🍀 Зелье удачи активировано!\n\n"+
+"Удача: ×"+multiplier+"\n"+
+"Время: 60 секунд"
+);
+
+}
+
+function updateLuckTimer(){
+
+const timer=document.getElementById("luckTimer");
+
+if(!timer)return;
+
+if(
+luckMultiplier<=1||
+luckEndTime<=Date.now()
+){
+
+luckMultiplier=1;
+luckEndTime=0;
+
+timer.classList.remove("show");
+
+saveGame();
+
+return;
+}
+
+const seconds=Math.ceil(
+(luckEndTime-Date.now())/1000
+);
+
+timer.textContent=
+"🍀 Удача ×"+
+luckMultiplier+
+" — "+
+seconds+
+" сек.";
+
+timer.classList.add("show");
+
+}
+
+setInterval(updateLuckTimer,250);
+
+/* DAILY LUCK WHEEL */
+
+function getTodayKey(){
+
+const now=new Date();
+
+return now.getFullYear()+"-"+
+String(now.getMonth()+1).padStart(2,"0")+"-"+
+String(now.getDate()).padStart(2,"0");
+
+}
+
+function getNextMidnight(){
+
+const now=new Date();
+
+const next=new Date(now);
+
+next.setHours(24,0,0,0);
+
+return next.getTime();
+
+}
+
+function dailyWheelAvailable(){
+
+return dailyWheelDate!==getTodayKey();
+
+}
+
+function formatDailyTime(ms){
+
+let total=Math.max(0,Math.floor(ms/1000));
+
+const hours=Math.floor(total/3600);
+
+total%=3600;
+
+const minutes=Math.floor(total/60);
+
+const seconds=total%60;
+
+return String(hours).padStart(2,"0")+":"+
+String(minutes).padStart(2,"0")+":"+
+String(seconds).padStart(2,"0");
+
+}
+
+function updateDailyWheel(){
+
+const button=document.getElementById("dailyWheelButton");
+const spin=document.getElementById("dailyWheelSpin");
+const next=document.getElementById("dailyWheelNext");
+
+if(!button)return;
+
+const available=dailyWheelAvailable();
+
+if(available){
+
+button.classList.add("ready");
+button.classList.remove("used");
+button.innerHTML="🎡";
+button.title="Ежедневное колесо — ГОТОВО!";
+
+if(spin){
+spin.disabled=dailyWheelSpinning;
+spin.textContent="🎰 КРУТИТЬ БЕСПЛАТНО";
+}
+
+if(next)
+next.textContent="Сегодняшнее вращение доступно!";
+
+}else{
+
+button.classList.remove("ready");
+button.classList.add("used");
+
+const time=formatDailyTime(
+getNextMidnight()-Date.now()
+);
+
+button.innerHTML="🎡";
+button.title="Следующее колесо через "+time;
+
+if(spin){
+spin.disabled=true;
+spin.textContent="⏳ УЖЕ ИСПОЛЬЗОВАНО";
+}
+
+if(next)
+next.textContent="Следующее вращение через "+time;
+
+}
+
+}
+
+function openDailyWheel(){
+
+if(dailyWheelSpinning)return;
+
+updateDailyWheel();
+
+document
+.getElementById("dailyWheelModal")
+.classList.add("show");
+
+}
+
+function closeDailyWheel(){
+
+if(dailyWheelSpinning)return;
+
+document
+.getElementById("dailyWheelModal")
+.classList.remove("show");
+
+}
+
+function spinDailyWheel(){
+
+if(dailyWheelSpinning)return;
+
+if(!dailyWheelAvailable()){
+
+alert(
+"⏳ Ты уже использовал ежедневное колесо!\n\n"+
+"Следующее вращение будет после 00:00."
+);
+
+updateDailyWheel();
+
+return;
+
+}
+
+dailyWheelSpinning=true;
+
+dailyWheelDate=getTodayKey();
+
+localStorage.setItem(
+"dailyWheelDate",
+dailyWheelDate
+);
+
+const spinner=
+document.getElementById("dailyWheelSpinner");
+
+const result=
+document.getElementById("dailyWheelResult");
+
+const spin=
+document.getElementById("dailyWheelSpin");
+
+const next=
+document.getElementById("dailyWheelNext");
+
+result.className="daily-wheel-result";
+result.textContent="";
+
+spin.disabled=true;
+spin.textContent="🎡 ВРАЩЕНИЕ...";
+
+let random=
+Math.random()*dailyWheelRewards.reduce((sum,item)=>sum+item.chance,0);
+
+let rewardIndex=0;
+let passed=0;
+
+for(let i=0;i<dailyWheelRewards.length;i++){
+    passed+=dailyWheelRewards[i].chance;
+    if(random<=passed){
+        rewardIndex=i;
+        break;
+    }
+}
+
+const reward=dailyWheelRewards[rewardIndex];
+
+const sectorCenter=rewardIndex*45+22.5;
+
+const extraSpins=8;
+
+const targetRotation=
+extraSpins*360+
+(360-sectorCenter);
+
+spinner.style.transform=
+"rotate("+targetRotation+"deg)";
+
+setTimeout(()=>{
+
+if(reward.type==="item"){
+
+    inventory.push({
+        id:createItemId(),
+        name:reward.name,
+        price:reward.value,
+        icon:reward.icon,
+        limited:true,
+        locked:false,
+        fuseLocked:false
+    });
+
+    result.className="daily-wheel-result win";
+    result.innerHTML=
+        "👑 ЛИМИТИРОВАННЫЙ ПРЕДМЕТ!<br>"+
+        "<span style='font-size:14px'>"+
+        reward.icon+" "+reward.name+" — "+
+        reward.value.toLocaleString("ru-RU")+" 🪙"+
+        "</span>";
+
+    updateInventory();
+    saveGame();
+
+}else{
+
+    balance+=reward.value;
+    updateBalance();
+
+    result.className="daily-wheel-result win";
+    result.textContent=
+        "🎉 ВЫИГРЫШ: +"+
+        reward.value.toLocaleString("ru-RU")+
+        " 🪙";
+
+}
+
+next.textContent=
+"Следующее вращение после 00:00";
+
+dailyWheelSpinning=false;
+
+updateDailyWheel();
+
+},5200);
+
+}
+
+setInterval(updateDailyWheel,1000);
+
+/* ALL ITEMS */
+
+function getAllItems(){
+
+const result=[];
+
+Object.values(cases).forEach(c=>{
+
+c.items.forEach(item=>{
+
+result.push({
+name:item.name,
+price:item.price,
+icon:item.icon
+});
+
+});
+
+});
+
+return result;
+
+}
+
+/* INSPECT CASE */
+
+let selectedCase=null;
+let selectedAmount=1;
+let opening=false;
+
+function inspectCase(type){
+
+if(opening)return;
+
+if(type==="black"){
+
+selectedCase={
+name:"Black Market Case",
+icon:"◼️",
+price:33333,
+black:true,
+items:getAllItems()
+};
+
+}else{
+
+selectedCase=cases[type];
+
+}
+
+if(!selectedCase)return;
+
+selectedAmount=1;
+
+document.getElementById("modalTitle").textContent=
+selectedCase.name;
+
+document.getElementById("modalIcon").textContent=
+selectedCase.icon;
+
+const currency=
+selectedCase.currency==="diamonds"
+?"💎"
+:"🪙";
+
+document.getElementById("modalPrice").innerHTML=
+"Цена: <b>"+
+selectedCase.price.toLocaleString("ru-RU")+
+" "+
+currency+
+"</b>";
+
+createMultipliers();
+showChances();
+updateOpenButton();
+
+document.getElementById("caseModal").classList.add("show");
+
+}
+
+function closeCaseModal(){
+
+if(opening)return;
+
+document.getElementById("caseModal").classList.remove("show");
+
+}
+
+/* MULTIPLIERS */
+
+function createMultipliers(){
+
+const box=document.getElementById("multipliers");
+
+box.innerHTML="";
+
+const max=
+selectedCase.black
+?1
+:10;
+
+for(let i=1;i<=max;i++){
+
+const btn=document.createElement("button");
+
+btn.className="multiplier";
+
+if(i===1)
+btn.classList.add("selected");
+
+btn.textContent="×"+i;
+
+btn.onclick=()=>{
+
+selectedAmount=i;
+
+document
+.querySelectorAll(".multiplier")
+.forEach(x=>
+x.classList.remove("selected")
+);
+
+btn.classList.add("selected");
+
+updateOpenButton();
+
+};
+
+box.appendChild(btn);
+
+}
+
+}
+
+/* OPEN BUTTON */
+
+function updateOpenButton(){
+
+const total=
+selectedCase.price*
+selectedAmount;
+
+const btn=
+document.getElementById("openSelected");
+
+const isDiamond=
+selectedCase.currency==="diamonds";
+
+const currency=
+isDiamond?"💎":"🪙";
+
+const available=
+isDiamond?diamonds:balance;
+
+btn.textContent=
+"ОТКРЫТЬ ×"+
+selectedAmount+
+" — "+
+total.toLocaleString("ru-RU")+
+" "+
+currency;
+
+btn.disabled=available<total;
+
+btn.onclick=startOpening;
+
+}
+
+/* CHANCES */
+
+function showChances(){
+
+const box=document.getElementById("chances");
+
+box.innerHTML="";
+
+if(selectedCase.black){
+
+box.innerHTML=`
+
+<div class="chance-row">
+<span>Любой предмет игры</span>
+<span>???</span>
+</div>
+
+<div style="color:#777;font-size:11px">
+Шансы засекречены.
+</div>
+
+`;
+
+return;
+
+}
+
+selectedCase.items.forEach(item=>{
+
+const row=document.createElement("div");
+
+row.className="chance-row";
+
+row.innerHTML=`
+
+<span>
+${item.icon}
+${item.name}
+</span>
+
+<span>
+${item.chance}% ·
+${item.price.toLocaleString("ru-RU")} 🪙
+</span>
+
+`;
+
+box.appendChild(row);
+
+});
+
+}
+
+/* RANDOM ITEM */
+
+function randomItem(items){
+
+let modifiedItems=
+items.map(item=>({
+
+...item,
+
+chance:
+item.chance*
+(
+item.chance<10
+?luckMultiplier
+:1
+)
+
+}));
+
+let totalChance=
+modifiedItems.reduce(
+(sum,item)=>sum+item.chance,
+0
+);
+
+let random=
+Math.random()*totalChance;
+
+let current=0;
+
+for(const item of modifiedItems){
+
+current+=item.chance;
+
+if(random<=current)
+return item;
+
+}
+
+return modifiedItems[modifiedItems.length-1];
+
+}
+
+/* START OPENING */
+
+function startOpening(){
+
+if(opening)return;
+
+if(
+selectedCase.limited &&
+selectedCase.name==="CONTRABAND CASE" &&
+contrabandEndTime<=Date.now()
+){
+
+alert("⛔ CONTRABAND CASE закончился!");
+
+return;
+
+}
+
+const total=
+selectedCase.price*
+selectedAmount;
+
+const isDiamond=
+selectedCase.currency==="diamonds";
+
+if(isDiamond){
+
+if(diamonds<total){
+
+alert(
+"❌ Недостаточно алмазов!\n\n"+
+"Нужно: "+
+total.toLocaleString("ru-RU")+
+" 💎\n"+
+"Есть: "+
+diamonds.toLocaleString("ru-RU")+
+" 💎"
+);
+
+return;
+
+}
+
+diamonds-=total;
+
+updateDiamonds();
+saveGame();
+
+}else{
+
+if(balance<total){
+
+alert("❌ Недостаточно монет!");
+return;
+
+}
+
+balance-=total;
+
+updateBalance();
+
+}
+
+opening=true;
+
+taskProgress("open", selectedAmount);
+if(selectedCase.black) taskProgress("black", selectedAmount);
+if(selectedCase.currency==="diamonds") taskProgress("crystal", selectedAmount);
+if(selectedCase.nft) taskProgress("nft", selectedAmount);
+if(selectedCase.premium) taskProgress("premium", selectedAmount);
+
+document.getElementById("caseModal").classList.remove("show");
+
+if(selectedCase.black)
+startBlackMarket();
+else
+startNormalOpening();
+
+}
+
+/* NORMAL OPENING */
+
+function startNormalOpening(){
+
+const overlay=
+document.getElementById("rouletteOverlay");
+
+const grid=
+document.getElementById("rouletteGrid");
+
+const text=
+document.getElementById("loadingText");
+
+grid.innerHTML="";
+text.textContent="Открытие...";
+
+overlay.classList.add("show");
+
+const winners=[];
+
+for(let i=0;i<selectedAmount;i++){
+
+const roulette=document.createElement("div");
+
+roulette.className="single-roulette";
+
+const line=document.createElement("div");
+
+line.className="center-line";
+
+const track=document.createElement("div");
+
+track.className="track";
+
+roulette.appendChild(line);
+roulette.appendChild(track);
+
+grid.appendChild(roulette);
+
+const winner=randomItem(selectedCase.items);
+
+winners.push(winner);
+
+createTrack(track,winner);
+
+}
+
+setTimeout(()=>{
+
+document
+.querySelectorAll(".track")
+.forEach(track=>{
+animateTrack(track);
+});
+
+},100);
+
+setTimeout(()=>{
+
+winners.forEach(item=>{
+
+inventory.push({
+id:createItemId(),
+name:item.name,
+price:item.price,
+icon:item.icon,
+locked:false,
+fuseLocked:false
+});
+
+if(Number(item.price)>=100000)
+taskProgress("rare",1);
+
+if(Number(item.price)>=1000000)
+taskProgress("million",1);
+
+if(Number(item.price)>10000000)
+taskProgress("bigwin",1);
+
+});
+
+saveGame();
+updateInventory();
+
+text.textContent="🎉 Награды получены!";
+
+setTimeout(()=>{
+
+overlay.classList.remove("show");
+
+grid.innerHTML="";
+
+opening=false;
+
+},1000);
+
+},6500);
+
+}
+
+/* CREATE TRACK */
+
+function createTrack(track,winner){
+
+const winningIndex=40;
+
+for(let i=0;i<50;i++){
+
+let item;
+
+if(i===winningIndex)
+item=winner;
+else
+item=randomItem(selectedCase.items);
+
+const element=document.createElement("div");
+
+element.className="roulette-item";
+
+element.innerHTML=`
+
+<div class="roulette-icon">
+${item.icon}
+</div>
+
+<div class="roulette-name">
+${item.name}
+</div>
+
+<div class="roulette-price">
+${item.price.toLocaleString("ru-RU")} 🪙
+</div>
+
+`;
+
+track.appendChild(element);
+
+}
+
+}
+
+function animateTrack(track){
+
+const parent=track.parentElement;
+
+const target=
+-(40*130)+
+parent.clientWidth/2-
+60;
+
+track.style.transform="translateX(0)";
+
+setTimeout(()=>{
+
+track.style.transition=
+"transform 6s cubic-bezier(.08,.70,.12,1)";
+
+track.style.transform=
+`translateX(${target}px)`;
+
+},50);
+
+}
+
+/* INVENTORY */
+
+function getInventoryIconHTML(item){
+
+if(Array.isArray(item.combinedIcons)){
+
+return `
+<div class="combined-icon">
+${item.combinedIcons
+.map(icon=>`<span>${icon}</span>`)
+.join("")}
+</div>
+`;
+
+}
+
+return item.icon;
+
+}
+
+function updateInventory(){
+
+ensureInventoryIds();
+
+const box=document.getElementById("inventory");
+
+if(inventory.length===0){
+
+box.innerHTML=
+`<div style="color:#777">
+Инвентарь пуст
+</div>`;
+
+return;
+
+}
+
+box.innerHTML="";
+
+inventory.forEach((item,index)=>{
+
+if(typeof item.locked!=="boolean")
+item.locked=false;
+
+if(typeof item.fuseLocked!=="boolean")
+item.fuseLocked=false;
+
+const div=document.createElement("div");
+
+div.className=
+"inventory-item"+
+(item.locked?" locked":"")+
+(item.fuseLocked?" fuse-locked":"");
+
+div.innerHTML=`
+
+<div class="item-info">
+
+<div class="item-icon">
+${getInventoryIconHTML(item)}
+</div>
+
+<div>
+
+<div class="item-name">
+${item.name}
+</div>
+
+<div class="item-price">
+${item.price.toLocaleString("ru-RU")} 🪙
+</div>
+
+${item.fuseLocked?
+`<div style="color:#ff9d24;font-size:9px;margin-top:3px">
+🔥 FUSE — ЗАНЯТ
+</div>`:""}
+
+</div>
+
+</div>
+
+<div class="item-actions">
+
+<button
+class="small pin"
+onclick="toggleLock(${index})"
+${item.fuseLocked?"disabled":""}>
+
+${item.locked?"🔓":"📌"}
+
+</button>
+
+<button
+class="small sell"
+onclick="sellItem(${index})"
+${item.locked||item.fuseLocked?"disabled":""}>
+
+ПРОДАТЬ
+
+</button>
+
+</div>
+
+`;
+
+box.appendChild(div);
+
+});
+
+}
+
+function toggleLock(index){
+
+if(!inventory[index])return;
+
+if(inventory[index].fuseLocked){
+
+alert("🔥 Этот предмет сейчас участвует в FUSE!");
+
+return;
+
+}
+
+inventory[index].locked=
+!inventory[index].locked;
+
+saveGame();
+updateInventory();
+
+}
+
+function sellItem(index){
+
+const item=inventory[index];
+
+if(!item)return;
+
+if(item.fuseLocked){
+
+alert(
+"🔥 Этот предмет участвует в FUSE!\n"+
+"Дождись окончания."
+);
+
+return;
+
+}
+
+if(item.locked){
+
+alert(
+"📌 Предмет закреплён!\n"+
+"Сначала открепи его."
+);
+
+return;
+
+}
+
+balance+=item.price;
+
+inventory.splice(index,1);
+
+taskProgress("sell",1);
+taskProgress("earn",Number(item.price)||0);
+
+updateBalance();
+updateInventory();
+
+}
+
+function sellAll(){
+
+const sellable=
+inventory.filter(item=>!item.locked&&!item.fuseLocked);
+
+if(sellable.length===0){
+
+alert("📌 Нет предметов для продажи!");
+
+return;
+
+}
+
+const total=
+sellable.reduce(
+(sum,item)=>sum+item.price,
+0
+);
+
+if(!confirm(
+"Продать "+
+sellable.length+
+" предмет(ов) за "+
+total.toLocaleString("ru-RU")+
+" 🪙?"
+))
+return;
+
+balance+=total;
+
+inventory=
+inventory.filter(item=>item.locked||item.fuseLocked);
+
+taskProgress("sell",sellable.length);
+taskProgress("earn",total);
+
+updateBalance();
+updateInventory();
+
+}
+
+/* WINDOWS */
+
+function toggleInventory(){
+
+document
+.getElementById("inventoryWindow")
+.classList.toggle("open");
+
+}
+
+function toggleIndex(){
+
+const win=
+document.getElementById("indexWindow");
+
+win.classList.toggle("open");
+
+if(win.classList.contains("open"))
+updateIndex();
+
+}
+
+/* INDEX */
+
+function updateIndex(){
+
+const box=
+document.getElementById("indexContent");
+
+box.innerHTML="";
+
+Object.values(cases).forEach(c=>{
+
+const block=document.createElement("div");
+
+block.className="index-case";
+
+const title=document.createElement("div");
+
+title.className="index-title";
+
+if(c.limited)
+title.classList.add("index-limited");
+
+if(c.currency==="diamonds")
+title.classList.add("index-crystal");
+
+if(c.premium)
+title.style.color="#ffd86b";
+
+const currency=
+c.currency==="diamonds"
+?"💎"
+:"🪙";
+
+title.textContent=
+`${c.icon} ${c.name} — `+
+`${c.price.toLocaleString("ru-RU")} ${currency}`;
+
+block.appendChild(title);
+
+c.items.forEach(item=>{
+
+const row=document.createElement("div");
+
+row.className="index-row";
+
+row.innerHTML=`
+
+<div class="index-left">
+
+<span>
+${item.icon}
+</span>
+
+<div>
+
+<div>
+${item.name}
+</div>
+
+<div class="index-chance">
+Шанс: ${item.chance}%
+</div>
+
+</div>
+
+</div>
+
+<div class="index-price">
+${item.price.toLocaleString("ru-RU")} 🪙
+</div>
+
+`;
+
+block.appendChild(row);
+
+});
+
+box.appendChild(block);
+
+});
+
+const black=document.createElement("div");
+
+black.className="index-case";
+
+black.innerHTML=`
+
+<div class="index-title">
+◼️ Black Market Case —
+33 333 🪙
+</div>
+
+<div class="index-row">
+
+<div class="index-left">
+
+◼️
+
+<div>
+
+Все предметы игры
+
+<div class="index-chance">
+Шанс: ???
+</div>
+
+</div>
+
+</div>
+
+<div class="index-price">
+???
+</div>
+
+</div>
+
+`;
+
+box.appendChild(black);
+
+}
+
+/* RESET */
+
+function resetGame(){
+
+if(opening)return;
+
+const answer=confirm(
+"⚠️ СТАРТ С НУЛЯ\n\n"+
+"Будут удалены:\n"+
+"• монеты\n"+
+"• алмазы\n"+
+"• инвентарь\n"+
+"• использованные промокоды\n"+
+"• активная удача\n"+
+"• активный FUSE\n\n"+
+"Начать заново?"
+);
+
+if(!answer)return;
+
+balance=100;
+diamonds=0;
+inventory=[];
+usedPromoCodes=[];
+luckMultiplier=1;
+luckEndTime=0;
+
+fuseSlots=[null,null,null];
+fuseRunning=false;
+fuseEndTime=0;
+fuseSourceIds=[];
+
+localStorage.removeItem("caseBalance");
+localStorage.removeItem("caseInventory");
+localStorage.removeItem("usedPromoCodes");
+localStorage.removeItem("caseDiamonds");
+localStorage.removeItem("luckMultiplier");
+localStorage.removeItem("luckEndTime");
+dailyWheelDate="";
+localStorage.removeItem("dailyWheelDate");
+
+localStorage.removeItem("fuseEndTime");
+localStorage.removeItem("fuseSourceIds");
+localStorage.removeItem("fuseRunning");
+
+localStorage.removeItem("caseTasksState");
+localStorage.removeItem("caseTasksHourKey");
+
+taskState={};
+taskHourKey=currentTaskHourKey();
+
+updateBalance();
+updateDiamonds();
+updateInventory();
+updateLuckTimer();
+updateFuseUI();
+
+alert(
+"Игра сброшена!\n"+
+"💰 100 🪙\n"+
+"💎 0"
+);
+
+}
+
+/* BLACK MARKET */
+
+function startBlackMarket(){
+
+const overlay=
+document.getElementById("blackOverlay");
+
+const circle=
+document.getElementById("blackCircle");
+
+const itemBox=
+document.getElementById("blackItem");
+
+const result=
+document.getElementById("blackResult");
+
+const item=
+selectedCase.items[
+Math.floor(
+Math.random()*selectedCase.items.length
+)
+];
+
+document.getElementById("blackItemIcon")
+.textContent=item.icon;
+
+document.getElementById("blackItemName")
+.textContent=item.name;
+
+document.getElementById("blackItemPrice")
+.textContent=
+item.price.toLocaleString("ru-RU")+
+" 🪙";
+
+document.getElementById("blackResultTitle")
+.textContent=
+item.icon+" "+item.name;
+
+document.getElementById("blackResultPrice")
+.textContent=
+item.price.toLocaleString("ru-RU")+
+" 🪙";
+
+overlay.classList.add("show");
+
+circle.classList.remove("show","hide");
+itemBox.classList.remove("fly");
+result.classList.remove("show");
+
+setTimeout(()=>{
+circle.classList.add("show");
+},300);
+
+setTimeout(()=>{
+circle.classList.add("hide");
+},1800);
+
+setTimeout(()=>{
+itemBox.classList.add("fly");
+},2100);
+
+setTimeout(()=>{
+
+inventory.push({
+id:createItemId(),
+name:item.name,
+price:item.price,
+icon:item.icon,
+locked:false,
+fuseLocked:false
+});
+
+if(Number(item.price)>=100000)
+taskProgress("rare",1);
+
+if(Number(item.price)>=1000000)
+taskProgress("million",1);
+
+if(Number(item.price)>10000000)
+taskProgress("bigwin",1);
+
+saveGame();
+updateInventory();
+
+result.classList.add("show");
+
+},3600);
+
+setTimeout(()=>{
+
+overlay.classList.remove("show");
+
+circle.classList.remove("show","hide");
+itemBox.classList.remove("fly");
+result.classList.remove("show");
+
+opening=false;
+
+},5200);
+
+}
+
+/* UPGRADE */
+
+let upgradeYourItem=null;
+let upgradeTargetItem=null;
+let upgradeSpinning=false;
+
+function openUpgrade(){
+
+if(upgradeSpinning)return;
+
+document.getElementById("upgradeModal")
+.classList.add("show");
+
+upgradeYourItem=null;
+upgradeTargetItem=null;
+
+renderUpgradeLists();
+updateUpgradeUI();
+
+}
+
+function closeUpgrade(){
+
+if(upgradeSpinning)return;
+
+document.getElementById("upgradeModal")
+.classList.remove("show");
+
+}
+
+function calculateUpgradeChance(from,to){
+
+if(!from||!to)
+return 0;
+
+if(to.price<=from.price)
+return 0;
+
+let chance=
+from.price/to.price*100;
+
+if(chance>95)
+chance=95;
+
+if(chance<0.01)
+chance=0.01;
+
+return Number(chance.toFixed(2));
+
+}
+
+function renderUpgradeLists(){
+
+const inventoryList=
+document.getElementById("upgradeInventoryList");
+
+const targetList=
+document.getElementById("upgradeTargetList");
+
+inventoryList.innerHTML="";
+targetList.innerHTML="";
+
+inventory.forEach((item,index)=>{
+
+const div=document.createElement("div");
+
+div.className="upgrade-list-item";
+
+div.innerHTML=`
+
+<div class="upgrade-list-left">
+
+<div class="upgrade-list-icon">
+${getInventoryIconHTML(item)}
+</div>
+
+<div>
+
+<div class="upgrade-list-name">
+${item.name}
+</div>
+
+<div class="upgrade-list-price">
+${item.price.toLocaleString("ru-RU")} 🪙
+</div>
+
+</div>
+
+</div>
+
+`;
+
+div.onclick=()=>{
+
+if(upgradeSpinning)return;
+
+if(item.fuseLocked){
+
+alert("🔥 Этот предмет участвует в FUSE!");
+
+return;
+
+}
+
+if(item.locked){
+
+alert("📌 Этот предмет закреплён!");
+return;
+
+}
+
+upgradeYourItem={
+...item,
+inventoryIndex:index
+};
+
+upgradeTargetItem=null;
+
+renderUpgradeLists();
+updateUpgradeUI();
+
+};
+
+inventoryList.appendChild(div);
+
+});
+
+let allItems=getAllItems();
+
+const unique=[];
+
+allItems.forEach(item=>{
+
+const exists=
+unique.some(
+x=>
+x.name===item.name&&
+x.price===item.price
+);
+
+if(!exists)
+unique.push(item);
+
+});
+
+if(upgradeYourItem){
+
+unique.splice(
+0,
+unique.length,
+...unique.filter(
+item=>
+item.price>
+upgradeYourItem.price
+)
+);
+
+}
+
+unique.forEach(item=>{
+
+const div=document.createElement("div");
+
+div.className="upgrade-list-item";
+
+div.innerHTML=`
+
+<div class="upgrade-list-left">
+
+<div class="upgrade-list-icon">
+${item.icon}
+</div>
+
+<div>
+
+<div class="upgrade-list-name">
+${item.name}
+</div>
+
+<div class="upgrade-list-price">
+${item.price.toLocaleString("ru-RU")} 🪙
+</div>
+
+</div>
+
+</div>
+
+`;
+
+div.onclick=()=>{
+
+if(!upgradeYourItem){
+
+alert("Сначала выбери свой предмет!");
+return;
+
+}
+
+upgradeTargetItem={
+...item
+};
+
+updateUpgradeUI();
+
+};
+
+targetList.appendChild(div);
+
+});
+
+}
+
+function updateUpgradeUI(){
+
+const yourBox=
+document.getElementById("upgradeYourItem");
+
+const targetBox=
+document.getElementById("upgradeTargetItem");
+
+const chanceBox=
+document.getElementById("upgradeChance");
+
+const spin=
+document.getElementById("upgradeSpinButton");
+
+if(upgradeYourItem){
+
+yourBox.innerHTML=`
+
+<div class="selected-content">
+
+<div class="icon">
+${getInventoryIconHTML(upgradeYourItem)}
+</div>
+
+<b>
+${upgradeYourItem.name}
+</b>
+
+<div class="price">
+${upgradeYourItem.price.toLocaleString("ru-RU")} 🪙
+</div>
+
+</div>
+
+`;
+
+yourBox.classList.add("active");
+
+}else{
+
+yourBox.innerHTML=`
+
+<div class="upgrade-placeholder">
+Выбери предмет
+</div>
+
+`;
+
+yourBox.classList.remove("active");
+
+}
+
+if(upgradeTargetItem){
+
+targetBox.innerHTML=`
+
+<div class="selected-content">
+
+<div class="icon">
+${upgradeTargetItem.icon}
+</div>
+
+<b>
+${upgradeTargetItem.name}
+</b>
+
+<div class="price">
+${upgradeTargetItem.price.toLocaleString("ru-RU")} 🪙
+</div>
+
+</div>
+
+`;
+
+targetBox.classList.add("active");
+
+}else{
+
+targetBox.innerHTML=`
+
+<div class="upgrade-placeholder">
+Выбери цель
+</div>
+
+`;
+
+targetBox.classList.remove("active");
+
+}
+
+if(upgradeYourItem&&upgradeTargetItem){
+
+const chance=
+calculateUpgradeChance(
+upgradeYourItem,
+upgradeTargetItem
+);
+
+chanceBox.textContent=chance+"%";
+
+}else{
+
+chanceBox.textContent="0%";
+
+}
+
+spin.disabled=
+!upgradeYourItem||
+!upgradeTargetItem||
+upgradeSpinning;
+
+}
+
+function spinUpgrade(){
+
+if(upgradeSpinning)return;
+
+if(!upgradeYourItem||!upgradeTargetItem){
+
+alert("Выбери свой предмет и цель!");
+
+return;
+
+}
+
+const index=
+inventory.findIndex(
+item=>
+item.id===upgradeYourItem.id&&
+!item.locked&&
+!item.fuseLocked
+);
+
+if(index===-1){
+
+alert("❌ Предмет не найден!");
+
+renderUpgradeLists();
+
+return;
+
+}
+
+upgradeSpinning=true;
+
+const spinButton=
+document.getElementById("upgradeSpinButton");
+
+const result=
+document.getElementById("upgradeResult");
+
+const wheel=
+document.getElementById("wheelSpinner");
+
+spinButton.disabled=true;
+
+result.className="upgrade-result";
+
+result.textContent=
+"🎰 Колесо вращается...";
+
+const chance=
+calculateUpgradeChance(
+upgradeYourItem,
+upgradeTargetItem
+);
+
+const won=
+Math.random()*100<=chance;
+
+const turns=
+5+Math.floor(Math.random()*3);
+
+let angle;
+
+if(won){
+
+angle=
+turns*360+
+20+
+Math.random()*120;
+
+}else{
+
+angle=
+turns*360+
+200+
+Math.random()*120;
+
+}
+
+wheel.style.transform="rotate(0deg)";
+
+setTimeout(()=>{
+
+wheel.style.transform=
+`rotate(${angle}deg)`;
+
+},50);
+
+setTimeout(()=>{
+
+if(won){
+
+inventory.splice(index,1);
+
+inventory.push({
+
+id:createItemId(),
+name:upgradeTargetItem.name,
+price:upgradeTargetItem.price,
+icon:upgradeTargetItem.icon,
+locked:false,
+fuseLocked:false
+
+});
+
+result.className="upgrade-result win";
+
+result.innerHTML=
+"🟢 ПОБЕДА!<br>"+
+"<span style='font-size:13px'>"+
+upgradeTargetItem.icon+
+" "+
+upgradeTargetItem.name+
+"</span>";
+
+}else{
+
+inventory.splice(index,1);
+
+result.className="upgrade-result lose";
+
+result.innerHTML=
+"🔴 ПРОИГРЫШ!<br>"+
+"<span style='font-size:13px'>"+
+"Предмет потерян"+
+"</span>";
+
+}
+
+saveGame();
+updateInventory();
+
+taskProgress("upgrade",1);
+
+setTimeout(()=>{
+
+upgradeSpinning=false;
+
+if(won){
+
+upgradeYourItem={
+...upgradeTargetItem
+};
+
+}else{
+
+upgradeYourItem=null;
+
+}
+
+upgradeTargetItem=null;
+
+renderUpgradeLists();
+updateUpgradeUI();
+
+},1300);
+
+},5300);
+
+}
+
+/* FUSE SYSTEM */
+
+function openFuse(){
+
+if(fuseRunning){
+
+document
+.getElementById("fuseModal")
+.classList.add("show");
+
+updateFuseUI();
+
+return;
+
+}
+
+fuseSlots=[null,null,null];
+
+document
+.getElementById("fuseModal")
+.classList.add("show");
+
+renderFuseInventory();
+updateFuseUI();
+
+}
+
+function closeFuse(){
+
+if(fuseRunning)return;
+
+document
+.getElementById("fuseModal")
+.classList.remove("show");
+
+}
+
+function getFuseTotal(){
+
+return fuseSlots.reduce(
+(sum,item)=>
+sum+(item?Number(item.price)||0:0),
+0
+);
+
+}
+
+function getFusePrice(){
+
+return Math.floor(
+getFuseTotal()/2
+);
+
+}
+
+function selectFuseItem(id){
+
+if(fuseRunning)return;
+
+const item=
+inventory.find(
+x=>x.id===id
+);
+
+if(!item)return;
+
+if(item.locked){
+
+alert("📌 Этот предмет закреплён!");
+
+return;
+
+}
+
+if(item.fuseLocked){
+
+alert("🔥 Этот предмет уже участвует в FUSE!");
+
+return;
+
+}
+
+if(fuseSlots.some(x=>x&&x.id===id)){
+
+return;
+
+}
+
+const slot=
+fuseSlots.findIndex(
+x=>x===null
+);
+
+if(slot===-1){
+
+alert("❌ Все 3 слота уже заняты!");
+
+return;
+
+}
+
+fuseSlots[slot]=item;
+
+renderFuseInventory();
+updateFuseUI();
+
+}
+
+function removeFuseItem(slot){
+
+if(fuseRunning)return;
+
+if(slot<0||slot>2)return;
+
+fuseSlots[slot]=null;
+
+renderFuseInventory();
+updateFuseUI();
+
+}
+
+function renderFuseInventory(){
+
+const box=
+document.getElementById("fuseInventory");
+
+if(!box)return;
+
+box.innerHTML="";
+
+if(inventory.length===0){
+
+box.innerHTML=
+`<div style="color:#777;grid-column:1/-1;text-align:center">
+Инвентарь пуст
+</div>`;
+
+return;
+
+}
+
+inventory.forEach(item=>{
+
+const selectedIndex=
+fuseSlots.findIndex(
+x=>x&&x.id===item.id
+);
+
+const div=
+document.createElement("div");
+
+div.className=
+"fuse-inventory-item"+
+(selectedIndex!==-1?" selected":"")+
+(
+item.locked||
+item.fuseLocked||
+fuseRunning
+?" disabled":""
+);
+
+div.innerHTML=`
+
+<div class="fuse-item-left">
+
+<div class="fuse-item-icon">
+${getInventoryIconHTML(item)}
+</div>
+
+<div>
+
+<div class="fuse-item-name">
+${item.name}
+</div>
+
+<div class="fuse-item-price">
+${Number(item.price).toLocaleString("ru-RU")} 🪙
+</div>
+
+</div>
+
+</div>
+
+${
+selectedIndex!==-1
+?
+`<div class="fuse-selected-number">
+${selectedIndex+1}
+</div>`
+:
+""
+}
+
+`;
+
+if(
+!item.locked&&
+!item.fuseLocked&&
+!fuseRunning
+){
+
+div.onclick=()=>
+selectFuseItem(item.id);
+
+}
+
+box.appendChild(div);
+
+});
+
+}
+
+function updateFuseUI(){
+
+const totalBox=
+document.getElementById("fuseTotal");
+
+const priceBox=
+document.getElementById("fusePrice");
+
+const timerBox=
+document.getElementById("fuseTimer");
+
+const startButton=
+document.getElementById("fuseStartButton");
+
+if(!totalBox||!priceBox||!startButton)
+return;
+
+const total=getFuseTotal();
+const price=getFusePrice();
+
+totalBox.textContent=
+total.toLocaleString("ru-RU")+
+" 🪙";
+
+priceBox.textContent=
+price.toLocaleString("ru-RU")+
+" 🪙";
+
+for(let i=0;i<3;i++){
+
+const slot=
+document.getElementById(
+"fuseSlot"+i
+);
+
+if(!slot)continue;
+
+const item=fuseSlots[i];
+
+if(item){
+
+slot.innerHTML=`
+
+<div class="fuse-slot-icon">
+${getInventoryIconHTML(item)}
+</div>
+
+<div class="fuse-slot-name">
+${item.name}
+</div>
+
+<div class="fuse-slot-price">
+${Number(item.price).toLocaleString("ru-RU")} 🪙
+</div>
+
+<button
+class="fuse-slot-remove"
+onclick="removeFuseItem(${i})"
+${fuseRunning?"disabled":""}>
+
+✕ УБРАТЬ
+
+</button>
+
+`;
+
+slot.classList.add("fuse-finished");
+
+}else{
+
+slot.classList.remove("fuse-finished");
+
+slot.innerHTML=`
+
+<div class="fuse-empty">
++
+</div>
+
+<div>
+СЛОТ ${i+1}
+</div>
+
+`;
+
+}
+
+}
+
+if(fuseRunning){
+
+startButton.disabled=true;
+
+startButton.textContent=
+"🔥 FUSE ЗАПУЩЕН";
+
+if(timerBox){
+
+const seconds=
+Math.max(
+0,
+Math.ceil(
+(fuseEndTime-Date.now())/1000
+)
+);
+
+timerBox.textContent=
+"🔥 Объединение через "+
+seconds+
+" сек.";
+
+}
+
+renderFuseInventory();
+
+return;
+
+}
+
+if(timerBox)
+timerBox.textContent=
+"";
+
+startButton.disabled=
+fuseSlots.some(x=>!x)||
+balance<price;
+
+if(fuseSlots.every(Boolean)){
+
+if(balance<price){
+
+startButton.textContent=
+"❌ НЕДОСТАТОЧНО МОНЕТ";
+
+}else{
+
+startButton.textContent=
+"🔥 ЗАПУСТИТЬ FUSE — "+
+price.toLocaleString("ru-RU")+
+" 🪙";
+
+}
+
+}else{
+
+startButton.textContent=
+"🔥 ЗАПУСТИТЬ FUSE";
+
+}
+
+renderFuseInventory();
+
+}
+
+function startFuse(){
+
+if(fuseRunning)return;
+
+if(fuseSlots.some(x=>!x)){
+
+alert(
+"❌ Выбери 3 предмета!"
+);
+
+return;
+
+}
+
+const ids=
+fuseSlots.map(item=>item.id);
+
+if(new Set(ids).size!==3){
+
+alert(
+"❌ Нельзя выбрать один предмет несколько раз!"
+);
+
+return;
+
+}
+
+const sourceItems=
+ids.map(
+id=>
+inventory.find(
+item=>item.id===id
+)
+);
+
+if(sourceItems.some(item=>!item)){
+
+alert(
+"❌ Один из предметов больше не существует!"
+);
+
+fuseSlots=[null,null,null];
+
+renderFuseInventory();
+updateFuseUI();
+
+return;
+
+}
+
+if(sourceItems.some(
+item=>
+item.locked||
+item.fuseLocked
+)){
+
+alert(
+"❌ Один из предметов закреплён или уже участвует в FUSE!"
+);
+
+return;
+
+}
+
+const total=
+sourceItems.reduce(
+(sum,item)=>
+sum+Number(item.price||0),
+0
+);
+
+const cost=
+Math.floor(total/2);
+
+if(balance<cost){
+
+alert(
+"❌ Недостаточно монет!\n\n"+
+"Цена FUSE: "+
+cost.toLocaleString("ru-RU")+
+" 🪙\n"+
+"Есть: "+
+balance.toLocaleString("ru-RU")+
+" 🪙"
+);
+
+return;
+
+}
+
+balance-=cost;
+
+sourceItems.forEach(
+item=>{
+item.fuseLocked=true;
+}
+);
+
+fuseSourceIds=ids;
+
+fuseEndTime=
+Date.now()+60000;
+
+fuseRunning=true;
+
+saveGame();
+
+updateBalance();
+updateInventory();
+updateFuseUI();
+
+alert(
+"🔥 FUSE ЗАПУЩЕН!\n\n"+
+"3 предмета будут объединены через 60 секунд.\n\n"+
+"Общая стоимость: "+
+total.toLocaleString("ru-RU")+
+" 🪙\n"+
+"Цена FUSE: "+
+cost.toLocaleString("ru-RU")+
+" 🪙"
+);
+
+startFuseTimer();
+
+}
+
+function startFuseTimer(){
+
+if(window.fuseTimerInterval)
+clearInterval(
+window.fuseTimerInterval
+);
+
+window.fuseTimerInterval=
+setInterval(()=>{
+
+if(!fuseRunning){
+
+clearInterval(
+window.fuseTimerInterval
+);
+
+return;
+
+}
+
+updateFuseUI();
+
+if(
+fuseEndTime<=Date.now()
+){
+
+clearInterval(
+window.fuseTimerInterval
+);
+
+completeFuse();
+
+}
+
+},250);
+
+}
+
+function completeFuse(){
+
+if(!fuseRunning)return;
+
+const sourceItems=
+fuseSourceIds.map(
+id=>
+inventory.find(
+item=>item.id===id
+)
+);
+
+if(sourceItems.length!==3||
+sourceItems.some(item=>!item)
+){
+
+inventory.forEach(item=>{
+if(
+fuseSourceIds.includes(item.id)
+)
+item.fuseLocked=false;
+});
+
+fuseRunning=false;
+fuseEndTime=0;
+fuseSourceIds=[];
+fuseSlots=[null,null,null];
+
+saveGame();
+updateInventory();
+updateFuseUI();
+
+alert(
+"❌ FUSE не удалось завершить."
+);
+
+return;
+
+}
+
+const total=
+sourceItems.reduce(
+(sum,item)=>
+sum+Number(item.price||0),
+0
+);
+
+const names=
+sourceItems.map(
+item=>item.name
+);
+
+const icons=
+sourceItems.map(
+item=>item.icon
+);
+
+inventory=
+inventory.filter(
+item=>
+!fuseSourceIds.includes(item.id)
+);
+
+inventory.push({
+
+id:createItemId(),
+
+name:"FUSED ITEM",
+
+price:total,
+
+icon:"🔥",
+
+combinedIcons:icons,
+
+locked:false,
+
+fuseLocked:false,
+
+fused:true,
+
+fusedItems:names
+
+});
+
+fuseRunning=false;
+fuseEndTime=0;
+fuseSourceIds=[];
+fuseSlots=[null,null,null];
+
+taskProgress("fuse",1);
+
+saveGame();
+
+updateInventory();
+updateFuseUI();
+
+document
+.getElementById("fuseModal")
+.classList.add("show");
+
+alert(
+"🔥 FUSE ЗАВЕРШЁН!\n\n"+
+"3 предмета объединены в один.\n\n"+
+"Новая стоимость: "+
+total.toLocaleString("ru-RU")+
+" 🪙"
+);
+
+}
+
+function restoreFuse(){
+
+if(
+!fuseRunning||
+fuseSourceIds.length!==3
+){
+
+fuseRunning=false;
+fuseEndTime=0;
+fuseSourceIds=[];
+
+saveGame();
+
+return;
+
+}
+
+const restored=
+fuseSourceIds.map(
+id=>
+inventory.find(
+item=>item.id===id
+)
+);
+
+if(restored.some(item=>!item)){
+
+inventory.forEach(item=>{
+if(
+fuseSourceIds.includes(item.id)
+)
+item.fuseLocked=false;
+});
+
+fuseRunning=false;
+fuseEndTime=0;
+fuseSourceIds=[];
+fuseSlots=[null,null,null];
+
+saveGame();
+updateInventory();
+
+return;
+
+}
+
+fuseSlots=restored;
+
+restored.forEach(
+item=>{
+item.fuseLocked=true;
+}
+);
+
+if(
+fuseEndTime<=Date.now()
+){
+
+completeFuse();
+
+return;
+
+}
+
+startFuseTimer();
+
+}
+
+/* START */
+
+updateBalance();
+updateDiamonds();
+updateInventory();
+updateLuckTimer();
+updateDailyWheel();
+updateDiamondMarket();
+updateFuseUI();
+updateContrabandTimer();
+restoreFuse();
+
+</script>
+
+</body>
+</html>
