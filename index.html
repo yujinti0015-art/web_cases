@@ -3422,6 +3422,11 @@ LIMITED:500000,
 UPD:1000000
 };
 
+const diamondPromoCodes={
+DIAMOND:10000,
+DIAMONDUPD:100000
+};
+
 function openPromo(){
 
 const input=prompt("🎟️ Введите промокод:");
@@ -3429,6 +3434,38 @@ const input=prompt("🎟️ Введите промокод:");
 if(input===null)return;
 
 const code=input.trim().toUpperCase();
+
+if(Object.prototype.hasOwnProperty.call(diamondPromoCodes,code)){
+
+if(usedPromoCodes.includes(code)){
+alert("⚠️ Этот промокод уже использован!");
+return;
+}
+
+const reward=diamondPromoCodes[code];
+
+diamonds+=reward;
+usedPromoCodes.push(code);
+
+localStorage.setItem(
+"usedPromoCodes",
+JSON.stringify(usedPromoCodes)
+);
+
+localStorage.setItem(
+"caseDiamonds",
+diamonds
+);
+
+updateDiamonds();
+
+alert(
+"💎 ПРОМОКОД АКТИВИРОВАН!\n\n"+
+"+"+reward.toLocaleString("ru-RU")+" 💎"
+);
+
+return;
+}
 
 if(!Object.prototype.hasOwnProperty.call(promoCodes,code)){
 alert("❌ Промокод не найден!");
@@ -3456,6 +3493,8 @@ alert(
 "🎉 ПРОМОКОД АКТИВИРОВАН!\n\n"+
 "+"+reward.toLocaleString("ru-RU")+" 🪙"
 );
+
+}
 
 }
 
