@@ -2099,7 +2099,7 @@ h1{
 <div class="shop-item">
 <div class="shop-item-info">
 <div class="shop-item-title">⚡ Зелье скорости I</div>
-<div class="shop-item-description">Ускоряет открытие кейсов на 10% · 60 секунд</div>
+<div class="shop-item-description">Ускоряет прокрутку кейса на 10% на 60 секунд</div>
 <div class="shop-item-price">🪙 10 000 000</div>
 </div>
 <button class="shop-buy" onclick="buySpeed(1)">КУПИТЬ</button>
@@ -2108,7 +2108,7 @@ h1{
 <div class="shop-item">
 <div class="shop-item-info">
 <div class="shop-item-title">⚡ Зелье скорости II</div>
-<div class="shop-item-description">Ускоряет открытие кейсов на 20% · 60 секунд</div>
+<div class="shop-item-description">Ускоряет прокрутку кейса на 20% на 60 секунд</div>
 <div class="shop-item-price">🪙 25 000 000</div>
 </div>
 <button class="shop-buy" onclick="buySpeed(2)">КУПИТЬ</button>
@@ -2117,7 +2117,7 @@ h1{
 <div class="shop-item">
 <div class="shop-item-info">
 <div class="shop-item-title">⚡ Зелье скорости III</div>
-<div class="shop-item-description">Ускоряет открытие кейсов на 30% · 60 секунд</div>
+<div class="shop-item-description">Ускоряет прокрутку кейса на 30% на 60 секунд</div>
 <div class="shop-item-price">🪙 50 000 000</div>
 </div>
 <button class="shop-buy" onclick="buySpeed(3)">КУПИТЬ</button>
@@ -2126,7 +2126,7 @@ h1{
 <div class="shop-item">
 <div class="shop-item-info">
 <div class="shop-item-title">⚡ Зелье скорости IV</div>
-<div class="shop-item-description">Ускоряет открытие кейсов на 40% · 60 секунд</div>
+<div class="shop-item-description">Ускоряет прокрутку кейса на 40% на 60 секунд</div>
 <div class="shop-item-price">🪙 100 000 000</div>
 </div>
 <button class="shop-buy" onclick="buySpeed(4)">КУПИТЬ</button>
@@ -2135,7 +2135,7 @@ h1{
 <div class="shop-item">
 <div class="shop-item-info">
 <div class="shop-item-title">⚡ Зелье скорости V</div>
-<div class="shop-item-description">Ускоряет открытие кейсов на 55% · 60 секунд</div>
+<div class="shop-item-description">Ускоряет прокрутку кейса на 55% на 60 секунд</div>
 <div class="shop-item-price">🪙 200 000 000</div>
 </div>
 <button class="shop-buy" onclick="buySpeed(5)">КУПИТЬ</button>
@@ -2144,7 +2144,7 @@ h1{
 <div class="shop-item">
 <div class="shop-item-info">
 <div class="shop-item-title">⚡ Зелье скорости VI</div>
-<div class="shop-item-description">Ускоряет открытие кейсов на 70% · 60 секунд</div>
+<div class="shop-item-description">Ускоряет прокрутку кейса на 70% на 60 секунд</div>
 <div class="shop-item-price">🪙 400 000 000</div>
 </div>
 <button class="shop-buy" onclick="buySpeed(6)">КУПИТЬ</button>
@@ -2153,7 +2153,7 @@ h1{
 <div class="shop-item">
 <div class="shop-item-info">
 <div class="shop-item-title">⚡ Зелье скорости VII</div>
-<div class="shop-item-description">Ускоряет открытие кейсов на 85% · 60 секунд</div>
+<div class="shop-item-description">Ускоряет прокрутку кейса на 85% на 60 секунд</div>
 <div class="shop-item-price">🪙 750 000 000</div>
 </div>
 <button class="shop-buy" onclick="buySpeed(7)">КУПИТЬ</button>
@@ -2162,7 +2162,7 @@ h1{
 <div class="shop-item">
 <div class="shop-item-info">
 <div class="shop-item-title">⚡ Зелье скорости VIII</div>
-<div class="shop-item-description">Ускоряет открытие кейсов на 100% · 60 секунд</div>
+<div class="shop-item-description">Ускоряет прокрутку кейса на 100% на 60 секунд</div>
 <div class="shop-item-price">🪙 1 500 000 000</div>
 </div>
 <button class="shop-buy" onclick="buySpeed(8)">КУПИТЬ</button>
@@ -2314,6 +2314,7 @@ disabled>
 </div>
 
 <div id="luckTimer" class="luck-timer"></div>
+<div id="speedTimer" class="luck-timer" style="bottom:60px;border-color:#42d9ff;box-shadow:0 0 20px #00d9ff44;"></div>
 
 <div id="dailyWheelModal" class="daily-wheel-modal">
 
@@ -2492,24 +2493,45 @@ disabled>
 <div class="cases">
 
 <div class="case premium-case">
-<div class="case-icon">⚡</div>
-<div class="case-name">NEON ELITE CASE</div>
-<div class="case-price">Цена: <b>100 000 000 🪙</b></div>
+<div class="case-icon">🦖</div>
+<div class="case-name">PREHISTORIC CASE</div>
+<div class="case-price">Цена: <b>10 000 000 🪙</b></div>
 <button onclick="inspectCase('prehistoric')">ОСМОТРЕТЬ</button>
 </div>
 
 <div class="case premium-case">
 <div class="case-icon">🌌</div>
-<div class="case-name">GALAXY ELITE CASE</div>
-<div class="case-price">Цена: <b>400 000 000 🪙</b></div>
+<div class="case-name">MYTHICAL CASE</div>
+<div class="case-price">Цена: <b>150 000 000 🪙</b></div>
 <button onclick="inspectCase('mythical')">ОСМОТРЕТЬ</button>
 </div>
 
 <div class="case premium-case">
-<div class="case-icon">♾️</div>
-<div class="case-name">INFINITY ELITE CASE</div>
-<div class="case-price">Цена: <b>500 000 000 🪙</b></div>
+<div class="case-icon">💰</div>
+<div class="case-name">MILLIARDER CASE</div>
+<div class="case-price">Цена: <b>20 000 000 🪙</b></div>
 <button onclick="inspectCase('billionaire')">ОСМОТРЕТЬ</button>
+</div>
+
+<div class="case premium-case">
+<div class="case-icon">💠</div>
+<div class="case-name">NEON VAULT CASE</div>
+<div class="case-price">Цена: <b>100 000 000 🪙</b></div>
+<button onclick="inspectCase('premium100')">ОСМОТРЕТЬ</button>
+</div>
+
+<div class="case premium-case">
+<div class="case-icon">🌠</div>
+<div class="case-name">GALAXY ELITE CASE</div>
+<div class="case-price">Цена: <b>400 000 000 🪙</b></div>
+<button onclick="inspectCase('premium400')">ОСМОТРЕТЬ</button>
+</div>
+
+<div class="case premium-case">
+<div class="case-icon">👑</div>
+<div class="case-name">INFINITY ROYAL CASE</div>
+<div class="case-price">Цена: <b>500 000 000 🪙</b></div>
+<button onclick="inspectCase('premium500')">ОСМОТРЕТЬ</button>
 </div>
 
 </div>
@@ -2591,12 +2613,12 @@ Black Market Case
 <!-- CONTRABAND -->
 
 <div class="section-title contraband-title">
-🚨 ОГРАНИЧЕННЫЕ ПО ВРЕМЕНИ
+☠️ CONTRABAND CASE
 </div>
 
 <div class="cases">
 
-<div class="case contraband-case">
+<div class="case">
 
 <div class="case-icon">
 ☠️
@@ -2608,10 +2630,6 @@ CONTRABAND CASE
 
 <div class="case-price">
 Цена: <b>25 000 000 🪙</b>
-</div>
-
-<div id="contrabandTimer" class="contraband-timer">
-Загрузка таймера...
 </div>
 
 <button onclick="inspectCase('contraband')">
@@ -2846,33 +2864,6 @@ let speedEndTime=Number(
 localStorage.getItem("speedEndTime")
 );
 
-if(!Number.isFinite(speedMultiplier)||speedMultiplier<1) speedMultiplier=1;
-if(!Number.isFinite(speedEndTime)) speedEndTime=0;
-
-
-/* CONTRABAND TIMER */
-
-const CONTRABAND_DURATION =
-    7 * 24 * 60 * 60 * 1000;
-
-let contrabandEndTime =
-    Number(localStorage.getItem("contrabandEndTime"));
-
-if(
-    !Number.isFinite(contrabandEndTime) ||
-    contrabandEndTime <= Date.now()
-){
-
-    contrabandEndTime =
-        Date.now() + CONTRABAND_DURATION;
-
-    localStorage.setItem(
-        "contrabandEndTime",
-        String(contrabandEndTime)
-    );
-
-}
-
 /* DAILY LUCK WHEEL */
 
 let dailyWheelDate=
@@ -2897,6 +2888,8 @@ if(!Array.isArray(usedPromoCodes)) usedPromoCodes=[];
 if(!Number.isFinite(diamonds)) diamonds=0;
 if(!Number.isFinite(luckMultiplier)||luckMultiplier<1) luckMultiplier=1;
 if(!Number.isFinite(luckEndTime)) luckEndTime=0;
+if(!Number.isFinite(speedMultiplier)||speedMultiplier<1) speedMultiplier=1;
+if(!Number.isFinite(speedEndTime)) speedEndTime=0;
 
 /* FUSE DATA */
 
@@ -3341,44 +3334,93 @@ items:[
 },
 
 prehistoric:{
-name:"NEON ELITE CASE",
-icon:"⚡",
-price:100000000,
+name:"PREHISTORIC CASE",
+icon:"🦖",
+price:10000000,
 premium:true,
 items:[
-{name:"Shadow Mask",price:50000000,icon:"😈",chance:55},
-{name:"Plasma Wolf",price:75000000,icon:"🐺",chance:25},
-{name:"Neon Core",price:100000000,icon:"💠",chance:12},
-{name:"Golden Eye",price:150000000,icon:"👁️",chance:5},
-{name:"Quantum Crown",price:250000000,icon:"👑",chance:2.5},
-{name:"Void Dragon",price:500000000,icon:"🐉",chance:.5}
+{name:"Fossil",price:5000000,icon:"🦴",chance:40},
+{name:"Dinosaur Egg",price:10000000,icon:"🥚",chance:25},
+{name:"Triceratops",price:25000000,icon:"🦏",chance:15},
+{name:"Velociraptor",price:50000000,icon:"🦎",chance:10},
+{name:"T-Rex",price:100000000,icon:"🦖",chance:6},
+{name:"Spinosaurus",price:250000000,icon:"🐊",chance:3},
+{name:"Ancient Dragon",price:500000000,icon:"🐉",chance:.9},
+{name:"PRIMAL TITAN",price:1000000000,icon:"👑",chance:.1}
 ]
 },
 
 mythical:{
-name:"GALAXY ELITE CASE",
-icon:"🌌",
-price:400000000,
-premium:true,
-items:[
-{name:"Cyber Mask X",price:150000000,icon:"🎭",chance:50},
-{name:"Plasma Beast",price:250000000,icon:"🐺",chance:25},
-{name:"Quantum Blade",price:400000000,icon:"⚔️",chance:13},
-{name:"Royal Matrix",price:600000000,icon:"👑",chance:7},
-{name:"Void Emperor",price:1000000000,icon:"🌑",chance:3.5},
-{name:"Black Nova",price:2000000000,icon:"🌠",chance:1.2},
-{name:"Galaxy King",price:5000000000,icon:"🌌",chance:.3}
-]
+    name:"MYTHICAL CASE",
+    icon:"🌌",
+    price:150000000,
+    premium:true,
+    items:[
+        {name:"🦄 Unicorn",price:40000000,chance:55},
+        {name:"🦅 Griffin",price:80000000,chance:25},
+        {name:"🐺 Fenrir",price:160000000,chance:10},
+        {name:"🐙 Kraken",price:320000000,chance:5},
+        {name:"🔥 Phoenix",price:600000000,chance:3},
+        {name:"🐉 Ancient Dragon",price:800000000,chance:1.5},
+        {name:"👑 Mythical Titan",price:1000000000,chance:.4},
+        {name:"🌌 ETERNAL DRAGON",price:1250000000,chance:.1}
+    ]
 },
 
 billionaire:{
-name:"INFINITY ELITE CASE",
-icon:"♾️",
+name:"MILLIARDER CASE",
+icon:"💰",
+price:20000000,
+premium:true,
+items:[
+{name:"Super Car",price:20000000,icon:"🚗",chance:40},
+{name:"Hyper Car",price:50000000,icon:"🏎️",chance:25},
+{name:"Luxury Yacht",price:100000000,icon:"🛥️",chance:15},
+{name:"Private Jet",price:250000000,icon:"✈️",chance:10},
+{name:"Billionaire Mansion",price:500000000,icon:"🏰",chance:7},
+{name:"Billionaire Empire",price:1000000000,icon:"💎",chance:3}
+]
+},
+
+premium100:{
+name:"NEON VAULT CASE",
+icon:"💠",
+price:100000000,
+premium:true,
+items:[
+{name:"Neon Skull",price:50000000,icon:"💀",chance:55},
+{name:"Cyber Wolf",price:75000000,icon:"🐺",chance:25},
+{name:"Purple Flame",price:100000000,icon:"🔥",chance:12},
+{name:"Golden Crown",price:150000000,icon:"👑",chance:5},
+{name:"Quantum Eye",price:250000000,icon:"👁️",chance:2.5},
+{name:"Black Dragon",price:500000000,icon:"🐉",chance:.5}
+]
+},
+
+premium400:{
+name:"GALAXY ELITE CASE",
+icon:"🌠",
+price:400000000,
+premium:true,
+items:[
+{name:"Cyber Pulse",price:150000000,icon:"⚡",chance:50},
+{name:"Void Wolf",price:250000000,icon:"🐺",chance:25},
+{name:"Galaxy Core",price:400000000,icon:"🌌",chance:13},
+{name:"Solar Crown",price:600000000,icon:"👑",chance:7},
+{name:"Quantum Heart",price:1000000000,icon:"💎",chance:3.5},
+{name:"Black Nova",price:2000000000,icon:"🌑",chance:1.2},
+{name:"Galaxy King",price:5000000000,icon:"🌠",chance:.3}
+]
+},
+
+premium500:{
+name:"INFINITY ROYAL CASE",
+icon:"👑",
 price:500000000,
 premium:true,
 items:[
-{name:"Dark Matter",price:250000000,icon:"🖤",chance:45},
-{name:"Cyber Samurai",price:400000000,icon:"🥷",chance:27},
+{name:"Dark Skull",price:250000000,icon:"💀",chance:45},
+{name:"Cyber Samurai",price:400000000,icon:"⚔️",chance:27},
 {name:"Galaxy Flame",price:600000000,icon:"🔥",chance:15},
 {name:"Golden Dragon",price:1000000000,icon:"🐉",chance:8},
 {name:"Quantum King",price:2000000000,icon:"👑",chance:3.5},
@@ -3392,17 +3434,15 @@ items:[
 contraband:{
 name:"CONTRABAND CASE",
 icon:"☠️",
-price:25000000,
-limited:true,
-black:true,
+price:50000000,
 items:[
-{name:"Illegal Package",price:5000000,icon:"📦",chance:50},
-{name:"Secret Briefcase",price:10000000,icon:"💼",chance:25},
-{name:"Smuggled Diamond",price:20000000,icon:"💎",chance:12},
-{name:"Black Deal",price:40000000,icon:"🕶️",chance:7},
-{name:"Kingpin Contract",price:100000000,icon:"👑",chance:4},
-{name:"Underground Empire",price:300000000,icon:"🏙️",chance:1.8},
-{name:"FORBIDDEN ARTIFACT",price:1000000000,icon:"☠️",chance:.2}
+{name:"Contraband Sticker",price:20000000,icon:"🏷️",chance:55},
+{name:"Smuggler",price:40000000,icon:"🕶️",chance:25},
+{name:"Black Market",price:60000000,icon:"🏴‍☠️",chance:12},
+{name:"Illegal Gold",price:100000000,icon:"🥇",chance:5},
+{name:"Forbidden",price:200000000,icon:"⛔",chance:2},
+{name:"Contraband King",price:500000000,icon:"👑",chance:.9},
+{name:"Black Phantom",price:2000000000,icon:"👻",chance:.1}
 ]
 },
 
@@ -3558,6 +3598,7 @@ localStorage.setItem(
 "luckEndTime",
 String(luckEndTime)
 );
+
 localStorage.setItem(
 "speedMultiplier",
 String(speedMultiplier)
@@ -3851,17 +3892,12 @@ function buySpeed(level){
 const price=speedPrices[level];
 const multiplier=speedMultipliers[level];
 
-if(!Number.isFinite(price)||!Number.isFinite(multiplier))return;
-
 if(balance<price){
 alert("❌ Недостаточно монет!");
 return;
 }
 
 balance-=price;
-
-taskProgress("speed",1);
-
 speedMultiplier=multiplier;
 speedEndTime=Date.now()+60000;
 
@@ -3870,7 +3906,7 @@ updateSpeedTimer();
 
 alert(
 "⚡ Зелье скорости активировано!\\n\\n"+
-"Скорость открытия: ×"+multiplier.toFixed(2)+"\\n"+
+"Скорость прокрутки: +"+Math.round((multiplier-1)*100)+"%\\n"+
 "Время: 60 секунд"
 );
 
@@ -3878,30 +3914,17 @@ alert(
 
 function updateSpeedTimer(){
 
-let timer=document.getElementById("speedTimer");
+const timer=document.getElementById("speedTimer");
 
-if(!timer){
+if(!timer)return;
 
-timer=document.createElement("div");
-timer.id="speedTimer";
-timer.className="luck-timer";
-document.body.appendChild(timer);
-
-}
-
-if(
-speedMultiplier<=1||
-speedEndTime<=Date.now()
-){
+if(speedMultiplier<=1 || speedEndTime<=Date.now()){
 
 speedMultiplier=1;
 speedEndTime=0;
-
 timer.classList.remove("show");
-
-saveGame();
-
 return;
+
 }
 
 const seconds=Math.ceil(
@@ -4296,10 +4319,7 @@ const box=document.getElementById("multipliers");
 
 box.innerHTML="";
 
-const max=
-selectedCase.black
-?1
-:10;
+const max=10;
 
 for(let i=1;i<=max;i++){
 
@@ -4376,25 +4396,6 @@ const box=document.getElementById("chances");
 
 box.innerHTML="";
 
-if(selectedCase.black){
-
-box.innerHTML=`
-
-<div class="chance-row">
-<span>Любой предмет игры</span>
-<span>???</span>
-</div>
-
-<div style="color:#777;font-size:11px">
-Шансы засекречены.
-</div>
-
-`;
-
-return;
-
-}
-
 selectedCase.items.forEach(item=>{
 
 const row=document.createElement("div");
@@ -4469,18 +4470,6 @@ return modifiedItems[modifiedItems.length-1];
 function startOpening(){
 
 if(opening)return;
-
-if(
-selectedCase.limited &&
-selectedCase.name==="CONTRABAND CASE" &&
-contrabandEndTime<=Date.now()
-){
-
-alert("⛔ CONTRABAND CASE закончился!");
-
-return;
-
-}
 
 const total=
 selectedCase.price*
@@ -4591,17 +4580,20 @@ createTrack(track,winner);
 
 }
 
+const openingDuration=Math.max(
+1200,
+Math.round(6000/speedMultiplier)
+);
+
 setTimeout(()=>{
 
 document
 .querySelectorAll(".track")
 .forEach(track=>{
-animateTrack(track);
+animateTrack(track,openingDuration);
 });
 
 },100);
-
-const openDuration=Math.max(1000,6500/speedMultiplier);
 
 setTimeout(()=>{
 
@@ -4642,7 +4634,7 @@ opening=false;
 
 },1000);
 
-},openDuration);
+},openingDuration+500);
 
 }
 
@@ -4687,7 +4679,7 @@ track.appendChild(element);
 
 }
 
-function animateTrack(track){
+function animateTrack(track,duration=6000){
 
 const parent=track.parentElement;
 
@@ -4700,9 +4692,8 @@ track.style.transform="translateX(0)";
 
 setTimeout(()=>{
 
-const duration=Math.max(1,6/speedMultiplier);
 track.style.transition=
-"transform "+duration+"s cubic-bezier(.08,.70,.12,1)";
+"transform "+duration+"ms cubic-bezier(.08,.70,.12,1)";
 
 track.style.transform=
 `translateX(${target}px)`;
@@ -5093,6 +5084,8 @@ inventory=[];
 usedPromoCodes=[];
 luckMultiplier=1;
 luckEndTime=0;
+speedMultiplier=1;
+speedEndTime=0;
 
 fuseSlots=[null,null,null];
 fuseRunning=false;
@@ -5105,6 +5098,8 @@ localStorage.removeItem("usedPromoCodes");
 localStorage.removeItem("caseDiamonds");
 localStorage.removeItem("luckMultiplier");
 localStorage.removeItem("luckEndTime");
+localStorage.removeItem("speedMultiplier");
+localStorage.removeItem("speedEndTime");
 dailyWheelDate="";
 localStorage.removeItem("dailyWheelDate");
 
@@ -5122,6 +5117,7 @@ updateBalance();
 updateDiamonds();
 updateInventory();
 updateLuckTimer();
+updateSpeedTimer();
 updateFuseUI();
 
 alert(
@@ -6433,7 +6429,6 @@ updateBalance();
 updateDiamonds();
 updateInventory();
 updateLuckTimer();
-updateSpeedTimer();
 updateDailyWheel();
 updateDiamondMarket();
 updateFuseUI();
